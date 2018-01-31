@@ -26,4 +26,13 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+
+
+    public function papeis()
+    {
+        return $this->belongsToMany(Papel::class);
+    }
+    
+
 }
