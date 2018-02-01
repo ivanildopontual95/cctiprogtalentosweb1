@@ -13,8 +13,10 @@ class AdminController extends Controller{
 
     }
     public function index(){
-
-        return view('admin.index');
+        $caminhos =[
+            ['url' => '','titulo'=>'Painel']
+        ];
+        return view('admin.index',compact ('caminhos'));
 
     }
 }

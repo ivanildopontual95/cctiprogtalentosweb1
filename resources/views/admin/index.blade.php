@@ -4,7 +4,11 @@
 <div class="container">
     <div class="row">
       <h2>Aéra do Administrador</h2>
-      <div class="row">
+    </div>    
+    
+    @include('admin._caminho')
+
+    <div class="row">
 
         <div class="col s12 m6">
           <div class="card purple darken-2">
@@ -56,6 +60,6 @@
 
       </div>
 
-    </div>
+    
 </div>
 @endsection
