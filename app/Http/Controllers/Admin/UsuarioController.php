@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
+use App\Papel;
 class UsuarioController extends Controller
 {
     /**
@@ -15,11 +16,33 @@ class UsuarioController extends Controller
     public function index()
     {
         $usuarios = User::all();
-        $caminhos =[
-            ['url' => '/admin','titulo'=>'Admin'],
-            ['url' => '','titulo'=>'Usuários'],
+        $caminhos = [
+            ['url'=>'/admin','titulo'=>'Admin'],
+            ['url'=>'','titulo'=>'Usuários'],
         ];
-        return view ('admin.usuarios.index',compact('usuarios','caminhos'));
+        return view('admin.usuarios.index',compact('usuarios','caminhos'));
+    }
+
+    public function papel($id)
+    {
+      $usuario = User::find($id);
+      $papel = Papel::all();
+      $caminhos = [
+          ['url'=>'/admin','titulo'=>'Admin'],
+          ['url'=>route('usuarios.index'),'titulo'=>'Usuários'],
+          ['url'=>'','titulo'=>'Papel'],
+      ];
+      return view('admin.usuarios.papel',compact('usuario','papel','caminhos'));
+    }
+
+    public function papelStore(Request $request,$id)
+    {
+        //
+    }
+
+    public function papelDestroy($id,$papel_id)
+    {
+        //
     }
 
     /**

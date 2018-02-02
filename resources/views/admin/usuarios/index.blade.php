@@ -25,7 +25,7 @@
 						<td>{{ $usuario->email }}</td>
 						<td>
 
-							<a title="Papel" class="btn blue" href="#"><i class="material-icons">lock_outline</i></a>
+							<a title="Papel" class="btn blue" href="{{route('usuarios.papel',$usuario->id)}}"><i class="material-icons">lock_outline</i></a>
 
 						</td>
 					</tr>
