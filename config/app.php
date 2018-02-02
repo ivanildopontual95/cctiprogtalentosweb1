@@ -1,6 +1,14 @@
 <?php
 
+$ano = date ('Y');
+
 return [
+
+    'logoSite' => 'CCTI',
+    'corSite' => 'light-blue darken-4',
+    'descricaoSite' => 'Descrição do site',
+    'autorSite' => 'CCTI Developers',
+    'anoSite' => $ano,
 
     /*
     |--------------------------------------------------------------------------
