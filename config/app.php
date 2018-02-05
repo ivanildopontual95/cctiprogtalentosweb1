@@ -4,7 +4,7 @@ $ano = date ('Y');
 
 return [
 
-    'logoSite' => 'CCTI',
+    'logoSite' => 'CCTI Seletivo',
     'corSite' => 'light-blue darken-4',
     'descricaoSite' => 'Descrição do site',
     'autorSite' => 'CCTI Developers',
