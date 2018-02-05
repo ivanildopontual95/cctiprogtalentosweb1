@@ -14,7 +14,7 @@
           <div class="card purple darken-2">
             <div class="card-content white-text">
               <span class="card-title">Usuários</span>
-              <p>Usuários do Sistema.</p>
+              <p>Usuários do sistema</p>
             </div>
             <div class="card-action">
               <a href="{{route('usuarios.index')}}">Visualizar</a>
@@ -26,7 +26,7 @@
           <div class="card blue">
             <div class="card-content white-text">
               <span class="card-title">Publicações</span>
-              <p>Lista de Publicações.</p>
+              <p>Lista de Publicações</p>
             </div>
             <div class="card-action">
               <a href="#">Visualizar</a>
@@ -38,7 +38,7 @@
           <div class="card green">
             <div class="card-content white-text">
               <span class="card-title">Perfil</span>
-              <p>Alterar Dados do Perfil.</p>
+              <p>Alterar dados do perfil</p>
             </div>
             <div class="card-action">
               <a href="#">Visualizar</a>
@@ -50,7 +50,7 @@
           <div class="card orange darken-4">
             <div class="card-content white-text">
               <span class="card-title">Papéis</span>
-              <p>Listar Papéis do Sistema.</p>
+              <p>Listar papéis do sistema</p>
             </div>
             <div class="card-action">
               <a href="{{route('papeis.index')}}">Visualizar</a>
