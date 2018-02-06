@@ -9,7 +9,7 @@
     @include('admin._caminho')
 
     <div class="row">
-
+      @can('usuario-view')
         <div class="col s12 m6">
           <div class="card purple darken-2">
             <div class="card-content white-text">
@@ -21,7 +21,8 @@
             </div>
           </div>
         </div>
-
+      @endcan
+      @can('favoritos-view')
         <div class="col s12 m6">
           <div class="card light-blue darken-4">
             <div class="card-content white-text">
@@ -33,7 +34,8 @@
             </div>
           </div>
         </div>
-
+      @endcan  
+      @can('perfil-view')
         <div class="col s12 m6">
           <div class="card green darken-1">
             <div class="card-content white-text">
@@ -45,7 +47,8 @@
             </div>
           </div>
         </div>
-
+      @endcan
+      @can('papel-view')  
         <div class="col s12 m6">
           <div class="card deep-orange accent-3">
             <div class="card-content white-text">
@@ -57,7 +60,7 @@
             </div>
           </div>
         </div>
-
+      @endcan  
       </div>
 
     

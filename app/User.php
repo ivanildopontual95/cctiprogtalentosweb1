@@ -27,7 +27,11 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function eAdmin(){
+        //return $this->id == 1;
 
+        return $this->existePapel('Admin');
+    }
 
     public function papeis()
     {
@@ -63,6 +67,11 @@ class User extends Authenticatable
         }
 
         return $this->papeis()->detach($papel);
+    }
+
+    public function temumPapelDesses($papeis){
+          $userPapeis = $this->papeis;
+          return $papeis->intersect($userPapeis)->count();
     }
 
 }
