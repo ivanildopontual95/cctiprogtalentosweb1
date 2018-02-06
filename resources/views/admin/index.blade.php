@@ -30,7 +30,7 @@
               <p>Lista de Publicações</p>
             </div>
             <div class="card-action">
-              <a href="#">Visualizar</a>
+              <a href="{{route ('publicacao.index')}}">Visualizar</a>
             </div>
           </div>
         </div>
