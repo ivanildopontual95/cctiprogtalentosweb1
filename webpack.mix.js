@@ -12,7 +12,7 @@ let mix = require('laravel-mix');
  */
 
 mix.combine([
-    'resources/assets/js/query.js',
+    'resources/assets/js/jquery.js',
     'resources/assets/js/materialize.js'
 ], 'public/js/app.js');
 
