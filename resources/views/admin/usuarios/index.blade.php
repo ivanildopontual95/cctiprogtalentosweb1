@@ -25,8 +25,16 @@
 						<td>{{ $usuario->email }}</td>
 						<td>
 
-							<a title="Papel" class="btn blue" href="{{route('usuarios.papel',$usuario->id)}}"><i class="material-icons">lock_outline</i></a>
+							
+							<form action="{{route('usuarios.destroy',$usuario->id)}}" method="post">
+								<a title="Papel" class="btn blue" href="{{route('usuarios.papel',$usuario->id)}}"><i class="material-icons">lock_outline</i></a>				
+								@can('usuario-delete')
+									{{ method_field('DELETE') }}
+									{{ csrf_field() }}
+									<button title="Deletar" class="btn red"><i class="material-icons">delete</i></button>
+								@endcan
 
+							</form>
 						</td>
 					</tr>
 				@endforeach

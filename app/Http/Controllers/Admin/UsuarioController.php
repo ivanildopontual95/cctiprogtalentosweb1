@@ -72,7 +72,9 @@ class UsuarioController extends Controller
      */
     public function create()
     {
-        //
+        if(Gate::denies('usuario-create')){
+            abort(403,"Não autorizado!");
+        }
     }
 
     /**
@@ -134,8 +136,8 @@ class UsuarioController extends Controller
      */
     public function destroy($id)
     {
-        if(Gate::denies('usuario-delete')){
-          abort(403,"Nao autorizado!");
-        }
+    
+        User::find($id)->delete();
+        return redirect()->route('usuarios.index');
     }
 }

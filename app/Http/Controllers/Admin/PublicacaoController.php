@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use App\Publicacao;
 class PublicacaoController extends Controller
 {
     /**
@@ -14,12 +14,12 @@ class PublicacaoController extends Controller
      */
     public function index()
     {    
-        //$publicacao = Publicacao::all();
+        $registros = Publicacao::all();
         $caminhos = [
             ['url'=>'/admin','titulo'=>'Admin'],
             ['url'=>'','titulo'=> 'Publicação'],
         ];
-        return view('admin.publicacao.index',compact ('permissao','caminhos'));
+        return view('admin.publicacao.index',compact ('registros','caminhos'));
     }
 
     /**
@@ -27,9 +27,18 @@ class PublicacaoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+   
     public function create()
     {
-        //
+        $caminhos = [
+            ['url'=>'/admin','titulo'=>'Admin'],
+            ['url'=>route('publicacao.index'),'titulo'=>'Publicacao'],
+            ['url'=>'','titulo'=>'Adicionar']
+        ];
+
+      return view('admin.publicacao.adicionar',compact('caminhos'));
+    
     }
 
     /**
@@ -40,8 +49,12 @@ class PublicacaoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+          Publicacao::create($request->all());
+          return redirect()->route('publicacao.index');
+       
     }
+    
 
     /**
      * Display the specified resource.
@@ -62,7 +75,15 @@ class PublicacaoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $registro = Publicacao::find($id);
+
+      $caminhos = [
+      ['url'=>'/admin','titulo'=>'Admin'],
+      ['url'=>route('publicacao.index'),'titulo'=>'Publicacao'],
+      ['url'=>'','titulo'=>'Editar']
+      ];
+
+      return view('admin.publicacao.editar',compact('registro','caminhos'));
     }
 
     /**
@@ -74,7 +95,9 @@ class PublicacaoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        Publicacao::find($id)->update($request->all());
+        return redirect()->route('publicacao.index');
     }
 
     /**
@@ -85,6 +108,7 @@ class PublicacaoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Publicacao::find($id)->delete();
+        return redirect()->route('publicacao.index');
     }
 }

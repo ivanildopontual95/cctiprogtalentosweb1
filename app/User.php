@@ -74,4 +74,28 @@ class User extends Authenticatable
           return $papeis->intersect($userPapeis)->count();
     }
 
+
+    public function adicionaPublicacao($publicacao)
+    {
+        if (is_string($publicacao)) {
+            $publicacao = publicacao::where('nome','=',$publicacao)->firstOrFail();
+        }
+
+        if($this->existePublicacao($publicacao)){
+            return;
+        }
+
+        return $this->publicacao()->attach($publicacao);
+
+    }
+
+    public function existePublicacao($publicacao)
+    {
+        if (is_string($publicacao)) {
+            $publicacao = publicacao::where('nome','=',$publicacao)->firstOrFail();
+        }
+
+        return (boolean) $this->publicacao()->find($publicacao->id);
+
+    }
 }

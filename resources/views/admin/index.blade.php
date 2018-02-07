@@ -61,7 +61,7 @@
           </div>
         </div>
       @endcan  
-      </div>
+    </div>
 
     
 </div>

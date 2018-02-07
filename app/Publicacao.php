@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Publicacao extends Model
 {
     protected $table = 'publicacoes';
-    protected $fillable = ['id', 'titulo', 'descricao', 'inicioInscricao', 'fimInscricao'];
+    protected $fillable = ['id', 'titulo', 'descricao'];
 
 
     public function documentos()

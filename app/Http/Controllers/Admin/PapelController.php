@@ -63,7 +63,7 @@ class PapelController extends Controller
       }
       $papel = Papel::find($id);
       $permissao = Permissao::find($permissao_id);
-      $usuario->removePermissao($permissao);
+      $papel->removePermissao($permissao);
       return redirect()->back();
     }
 
