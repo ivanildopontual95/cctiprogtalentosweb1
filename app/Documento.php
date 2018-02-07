@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Documento extends Model
 {
-    protected $fillable = ['id','titulo, url, deletado'];
+    protected $fillable = ['id','titulo', 'ordem', 'url', 'deletado'];
 
     public function publicacoes()
     {
