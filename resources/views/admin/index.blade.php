@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-      <h2>Painel do Administrador</h2>
+      <h3 class="center">Painel do Administrador</h3>
     </div>    
     
     @include('admin._caminho')

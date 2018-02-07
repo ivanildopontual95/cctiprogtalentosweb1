@@ -6,8 +6,9 @@ return [
 
     'logoSite' => 'CCTI',
     'corSite' => 'blue darken-2',
-    'descricaoSite' => 'Descrição do site',
-    'autorSite' => 'CCTI Developers',
+    'descricaoSite' => 'CCTI - Centro de Ciências, Tecnologia e Inovação.',
+    'dadosSite' => 'Av. Glaycon de Paiva, 1820 - Mecejana - CEP: 69304-560 | Telefone: 95 3625-6336 Boa Vista - Roraima - Brasil.',
+    'autorSite' => 'ICE Devs',
     'anoSite' => $ano,
 
     /*

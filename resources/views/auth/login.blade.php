@@ -3,7 +3,9 @@
 @section('content')
 <div class="container">
     <div class="row">
-      <h2 class="center">Entrar no Sistema</h2>
+        <center><i class="large material-icons">account_circle </i><center>
+        <h3 class="center">Fazer Login</h3>
+        <p class="center">Use suas credenciais</p>          
       @if (session('status'))
           <div class="card">
               {{ session('status') }}
