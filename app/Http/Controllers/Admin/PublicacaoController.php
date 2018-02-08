@@ -16,8 +16,8 @@ class PublicacaoController extends Controller
     {    
         $registros = Publicacao::all();
         $caminhos = [
-            ['url'=>'/admin','titulo'=>'Admin'],
-            ['url'=>'','titulo'=> 'Publicação'],
+            ['url'=>'/admin','titulo'=>'Painel Principal'],
+            ['url'=>'','titulo'=> 'Publicações'],
         ];
         return view('admin.publicacao.index',compact ('registros','caminhos'));
     }
@@ -32,9 +32,9 @@ class PublicacaoController extends Controller
     public function create()
     {
         $caminhos = [
-            ['url'=>'/admin','titulo'=>'Admin'],
-            ['url'=>route('publicacao.index'),'titulo'=>'Publicacao'],
-            ['url'=>'','titulo'=>'Adicionar']
+            ['url'=>'/admin','titulo'=>'Painel Principal'],
+            ['url'=>route('publicacao.index'),'titulo'=>'Publicações'],
+            ['url'=>'','titulo'=>'Adicionar Publicação']
         ];
 
       return view('admin.publicacao.adicionar',compact('caminhos'));

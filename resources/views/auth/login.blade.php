@@ -2,10 +2,11 @@
 
 @section('content')
 <div class="container">
+    <div class="card-panel">
     <div class="row">
         <center><i class="large material-icons">account_circle </i><center>
-        <h3 class="center">Fazer Login</h3>
-        <p class="center">Use suas credenciais</p>          
+        <h3 class="center">CCTI Seletivo</h3>
+        <p class="center">Insira suas Credenciais e Faça Login</p>          
       @if (session('status'))
           <div class="card">
               {{ session('status') }}

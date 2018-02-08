@@ -21,7 +21,7 @@ class UsuarioController extends Controller
         }
         $usuarios = User::all();
         $caminhos = [
-            ['url'=>'/admin','titulo'=>'Admin'],
+            ['url'=>'/admin','titulo'=>'Painel Principal'],
             ['url'=>'','titulo'=>'Usuários'],
         ];
         return view('admin.usuarios.index',compact('usuarios','caminhos'));
@@ -30,12 +30,12 @@ class UsuarioController extends Controller
     public function papel($id)
     {
         if(Gate::denies('usuario-edit')){
-          abort(403,"Nao autorizado!");
+          abort(403,"Não autorizado!");
         }  
       $usuario = User::find($id);
       $papel = Papel::all();
       $caminhos = [
-          ['url'=>'/admin','titulo'=>'Admin'],
+          ['url'=>'/admin','titulo'=>'Painel Principal'],
           ['url'=>route('usuarios.index'),'titulo'=>'Usuários'],
           ['url'=>'','titulo'=>'Papel'],
       ];

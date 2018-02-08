@@ -23,7 +23,7 @@ class PapelController extends Controller
 
       $registros = Papel::all();
       $caminhos = [
-      ['url'=>'/admin','titulo'=>'Admin'],
+      ['url'=>'/admin','titulo'=>'Painel Principal'],
       ['url'=>'','titulo'=>'Papéis']
       ];
       return view('admin.papel.index',compact('registros','caminhos'));
