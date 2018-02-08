@@ -1,9 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
-    <div class="card-panel">
+    
     <div class="row">
+           
+        <div class="col s6 offset-s3">
         <center><i class="large material-icons">account_circle </i><center>
         <h3 class="center">CCTI Seletivos</h3>
         <p class="center">Insira suas Credenciais e Faça Login</p>          
@@ -43,10 +46,12 @@
             <div class="col s12">
               <br/>
               <button class="btn green">Entrar</button>
-              <a href="{{ url('/password/reset') }}"  class="btn orange">Recuperar senha</a>
+              <!--<a href="{{ url('/password/reset') }}"  class="btn orange">Recuperar senha</a>-->
             </div>
           </form>
       </div>
   </div>
+</div>
+</div>
 
 @endsection
