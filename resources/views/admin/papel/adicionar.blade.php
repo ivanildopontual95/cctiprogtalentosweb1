@@ -2,7 +2,8 @@
 
 @section('content')
 <div class="container">
-	<h2 class="center">Adicionar Papel</h2>
+	<div class="row">
+	</div>
 
 	@include('admin._caminho')
 	
