@@ -7,7 +7,6 @@
                <p class="grey-text text-lighten-4">{{config('app.endereçoSite')}}<i class="material-icons left">place</i></p>
                <p class="grey-text text-lighten-4">{{config('app.cepSite')}}<i class="material-icons left">mail</i></p>
                <p class="grey-text text-lighten-4">{{config('app.telefoneSite')}}<i class="material-icons left">call</i></p>
-               
              </div>
              <div class="col l4 offset-l2 s12">
                <h5 class="white-text">Redes Sociais<i class="material-icons left">share</i></h5>
