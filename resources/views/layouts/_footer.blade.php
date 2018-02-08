@@ -12,9 +12,12 @@
                  <li><a class="grey-text text-lighten-3" href="https://www.facebook.com/pages/Centro-de-ci%C3%AAncias-Tecnologia-e-Inova%C3%A7%C3%A3o-CCTI/1133783413311133" target="_blank">Facebook</a></li>
                  <li><a class="grey-text text-lighten-3" href="#!">Twitter</a></li>
                  <li><a class="grey-text text-lighten-3" href="#!">Youtube</a></li>
-                 <li><a class="grey-text text-lighten-3" href="#!">Google +</a></li>
                </ul>
-             </div>
+               <br />
+                <h5 class="white-text">Fale Conosco</h5>
+                <a class="grey-text text-lighten-3" href="http://ccti.boavista.rr.gov.br/novo/contato.php" target=_"blank">Dúvida, crítica, sugestão ou elogio?<br /> Entre em Contato!</a>
+               </ul>
+            </div>
            </div>
          </div>
          <div class="footer-copyright">

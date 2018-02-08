@@ -5,7 +5,7 @@
     <div class="card-panel">
     <div class="row">
         <center><i class="large material-icons">account_circle </i><center>
-        <h3 class="center">CCTI Seletivo</h3>
+        <h3 class="center">CCTI Seletivos</h3>
         <p class="center">Insira suas Credenciais e Faça Login</p>          
       @if (session('status'))
           <div class="card">
