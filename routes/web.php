@@ -33,7 +33,8 @@ Route:: group (['middleware' => 'auth', 'prefix' =>'admin'], function () {
   Route::post('papeis/permissao/{permissao}', ['as'=>'papeis.permissao.store','uses'=>'Admin\PapelController@permissaoStore']);
   Route::delete('papeis/permissao/{papeis}/{permissao}', ['as'=>'papeis.permissao.destroy','uses'=>'Admin\PapelController@permissaoDestroy']);
   
-  
+  Route::get('publicacao/documento/{publicacao}', ['as'=> 'publicacao.documento.index','uses'=>'Admin\PublicacaoController@indexDocumento']);
   Route::resource('publicacao', 'Admin\PublicacaoController');
+
   
 });

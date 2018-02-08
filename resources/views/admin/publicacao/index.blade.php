@@ -28,7 +28,7 @@
 							<form action="{{route('publicacao.destroy',$registro->id)}}" method="post">
 								@can('publicacoes-edit')
 								<a title="Editar" class="btn orange" href="{{ route('publicacao.edit',$registro->id) }}"><i class="material-icons">mode_edit</i></a>
-								<a title="Documentos" class="btn blue" href="#"><i class="material-icons">note_add</i></a>
+								<a title="Documentos" class="btn blue" href="{{ route('publicacao.documento.index',$registro)}}"><i class="material-icons">note_add</i></a>
 								@endcan				
 								@can('publicacoes-delete')
 									{{ method_field('DELETE') }}

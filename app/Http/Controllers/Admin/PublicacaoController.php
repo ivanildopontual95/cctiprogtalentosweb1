@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Publicacao;
+
+use Illuminate\Support\Facades\Gate;
 class PublicacaoController extends Controller
 {
     /**
@@ -111,4 +113,21 @@ class PublicacaoController extends Controller
         Publicacao::find($id)->delete();
         return redirect()->route('publicacao.index');
     }
+
+    public function indexDocumento(Publicacao $publicacao){
+         if(Gate::denies('publicacoes-edit')){
+        abort(403,"Não autorizado!");
+      }
+
+      $registros = $publicacao;
+
+      $caminhos = [
+      ['url'=>'/admin','titulo'=>'Admin'],
+      ['url'=>route('publicacao.index'),'titulo'=>'publicacao'],
+      ['url'=>'','titulo'=>'Documentos']
+      ];
+
+      return view('admin.publicacao.documento',compact('registros','caminhos'));      
+    }
+
 }
