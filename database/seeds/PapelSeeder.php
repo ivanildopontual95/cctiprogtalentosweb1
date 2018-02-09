@@ -14,12 +14,12 @@ class PapelSeeder extends Seeder
     {
         $p1 = Papel::firstOrCreate([
             'nome' =>'Admin',
-            'descricao' =>'Acesso total ao sistema'
+            'descricao' =>'Acesso Total ao Sistema'
         ]);
   
         $p2 = Papel::firstOrCreate([
             'nome' =>'Gerente do Departamento',
-            'descricao' =>'Gerenciamento do sistema'
+            'descricao' =>'Gerenciamento do Sistema'
         ]);
 
         $p3 = Papel::firstOrCreate([
@@ -32,6 +32,6 @@ class PapelSeeder extends Seeder
             'descricao' =>'Acesso ao site como usuário'
         ]);
   
-        echo "Papeis criados com Sucesso";
+        echo "Papéis Criados com Sucesso!";
     }
 }

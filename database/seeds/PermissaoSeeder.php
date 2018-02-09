@@ -14,73 +14,68 @@ class PermissaoSeeder extends Seeder
     {
         $usuarios1 = Permissao::firstOrCreate([
             'nome' =>'usuario-view',
-            'descricao' =>'Acesso a lista de Usuários'
+            'descricao' =>'Acesso a Lista de Usuários.'
         ]);
         $usuarios2 = Permissao::firstOrCreate([
             'nome' =>'usuario-create',
-            'descricao' =>'Adicionar Usuários'
+            'descricao' =>'Adicionar Usuários.'
         ]);
         $usuarios2 = Permissao::firstOrCreate([
             'nome' =>'usuario-edit',
-            'descricao' =>'Editar Usuários'
+            'descricao' =>'Editar Usuários.'
         ]);
         $usuarios3 = Permissao::firstOrCreate([
             'nome' =>'usuario-delete',
-            'descricao' =>'Deletar Usuários'
+            'descricao' =>'Deletar Usuários.'
         ]);
   
         $papeis1 = Permissao::firstOrCreate([
             'nome' =>'papel-view',
-            'descricao' =>'Listar Papéis'
+            'descricao' =>'Listar Papéis.'
         ]);
         $papeis2 = Permissao::firstOrCreate([
             'nome' =>'papel-create',
-            'descricao' =>'Adicionar Papéis'
+            'descricao' =>'Adicionar Papéis.'
         ]);
         $papeis3 = Permissao::firstOrCreate([
             'nome' =>'papel-edit',
-            'descricao' =>'Editar Papéis'
+            'descricao' =>'Editar Papéis.'
         ]);
   
         $papeis4 = Permissao::firstOrCreate([
             'nome' =>'papel-delete',
-            'descricao' =>'Deletar Papéis'
-        ]);
-  
-        $favoritos1 = Permissao::firstOrCreate([
-            'nome' =>'favoritos-view',
-            'descricao' =>'Acesso aos favoritos'
+            'descricao' =>'Deletar Papéis.'
         ]);
   
         $perfil1 = Permissao::firstOrCreate([
           'nome' =>'perfil-view',
-          'descricao' =>'Acesso ao perfil'
+          'descricao' =>'Acesso ao Perfil.'
         ]);
         
         $perfil2 = Permissao::firstOrCreate([
           'nome' =>'perfil-edit',
-          'descricao' =>'Atualizar perfil'
+          'descricao' =>'Editar Perfil.'
         ]);
   
         $publicacoes1 = Permissao::firstOrCreate([
             'nome' =>'publicacoes-view',
-            'descricao' =>'Acesso as publicações'
+            'descricao' =>'Acesso as Publicações.'
         ]);
   
         $publicacoes2 = Permissao::firstOrCreate([
             'nome' =>'publicacoes-create',
-            'descricao' =>'Adicionar publicações'
+            'descricao' =>'Adicionar Publicações.'
         ]);
         $publicacoes3 = Permissao::firstOrCreate([
             'nome' =>'publicacoes-edit',
-            'descricao' =>'Editar publicações'
+            'descricao' =>'Editar Publicações.'
         ]);
         $publicacoes4 = Permissao::firstOrCreate([
             'nome' =>'publicacoes-delete',
-            'descricao' =>'Deletar publicações'
+            'descricao' =>'Deletar Publicações.'
         ]);
   
-        echo "Registros de Permissoes criados no sistema";
+        echo "Registros de Permissões Criados no Sistema!";
     }
 
 }

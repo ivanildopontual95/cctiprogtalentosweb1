@@ -21,7 +21,7 @@
           </div>
         </div>
       @endcan
-      @can('favoritos-view')
+      @can('publicacoes-view')
         <div class="col s12 m6">
           <div class="card light-blue darken-4">
             <div class="card-content white-text">
@@ -52,7 +52,7 @@
           <div class="card deep-orange accent-3">
             <div class="card-content white-text">
               <span class="card-title">Papéis</span>
-              <p>Listar Papéis do Sistema</p>
+              <p>Gerenciar Papéis do Sistema</p>
             </div>
             <div class="card-action">
               <a href="{{route('papeis.index')}}">Visualizar</a>
