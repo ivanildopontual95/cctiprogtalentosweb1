@@ -18,7 +18,7 @@ class SiteController extends Controller
       $user = Auth()->user();
 
       $caminhos = [
-      ['url'=>'/admin','titulo'=>'perfil'],
+      ['url'=>'/admin','titulo'=>'Painel Principal'],
       ['url'=>'','titulo'=>'Editar Perfil']
       ];
 
