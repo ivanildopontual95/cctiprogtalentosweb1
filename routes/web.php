@@ -36,5 +36,7 @@ Route:: group (['middleware' => 'auth', 'prefix' =>'admin'], function () {
   Route::get('publicacao/documento/{publicacao}', ['as'=> 'publicacao.documento.index','uses'=>'Admin\PublicacaoController@indexDocumento']);
   Route::resource('publicacao', 'Admin\PublicacaoController');
 
+  Route::get('perfil', ['as'=>'site.perfil','uses'=>'Site\SiteController@perfil']);
+  Route::put('perfil', ['as'=>'site.perfil.update','uses'=>'Site\SiteController@perfilUpdate']);
   
 });

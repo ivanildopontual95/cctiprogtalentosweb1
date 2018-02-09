@@ -53,8 +53,13 @@ class PermissaoSeeder extends Seeder
         ]);
   
         $perfil1 = Permissao::firstOrCreate([
-            'nome' =>'perfil-view',
-            'descricao' =>'Acesso ao perfil'
+          'nome' =>'perfil-view',
+          'descricao' =>'Acesso ao perfil'
+        ]);
+        
+        $perfil2 = Permissao::firstOrCreate([
+          'nome' =>'perfil-edit',
+          'descricao' =>'Atualizar perfil'
         ]);
   
         $publicacoes1 = Permissao::firstOrCreate([
