@@ -80,9 +80,9 @@ class PublicacaoController extends Controller
         $registro = Publicacao::find($id);
 
       $caminhos = [
-      ['url'=>'/admin','titulo'=>'Admin'],
-      ['url'=>route('publicacao.index'),'titulo'=>'Publicacao'],
-      ['url'=>'','titulo'=>'Editar']
+      ['url'=>'/admin','titulo'=>'Painel Principal'],
+      ['url'=>route('publicacao.index'),'titulo'=>'Publicações'],
+      ['url'=>'','titulo'=>'Editar Publicação']
       ];
 
       return view('admin.publicacao.editar',compact('registro','caminhos'));
@@ -122,7 +122,7 @@ class PublicacaoController extends Controller
       $registros = $publicacao;
 
       $caminhos = [
-      ['url'=>'/admin','titulo'=>'Admin'],
+      ['url'=>'/admin','titulo'=>'Painel Principal'],
       ['url'=>route('publicacao.index'),'titulo'=>'publicacao'],
       ['url'=>'','titulo'=>'Documentos']
       ];

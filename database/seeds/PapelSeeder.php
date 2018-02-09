@@ -18,18 +18,18 @@ class PapelSeeder extends Seeder
         ]);
   
         $p2 = Papel::firstOrCreate([
-            'nome' =>'Gerente do Departamento',
+            'nome' =>'Gerente de Departamento',
             'descricao' =>'Gerenciamento do Sistema'
         ]);
 
         $p3 = Papel::firstOrCreate([
-            'nome' =>'Auxiliar do Departamento',
-            'descricao' =>'Auxiliamento do sistema'
+            'nome' =>'Auxiliar de Departamento',
+            'descricao' =>'Visualização de Publicações'
         ]);
 
         $p4 = Papel::firstOrCreate([
-            'nome' =>'Usuario',
-            'descricao' =>'Acesso ao site como usuário'
+            'nome' =>'Usuário',
+            'descricao' =>'Acesso ao site como Usuário'
         ]);
   
         echo "Papéis Criados com Sucesso!";

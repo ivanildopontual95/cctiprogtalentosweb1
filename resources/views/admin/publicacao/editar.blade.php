@@ -2,7 +2,8 @@
 
 @section('content')
 <div class="container">
-	<h2 class="center">Editar Publicação</h2>
+	<div class="row">
+	</div>
 	@include('admin._caminho')
 	<div class="row">
 		<form action="{{ route('publicacao.update',$registro->id) }}" method="post">
