@@ -1,6 +1,6 @@
 <div class="input-field">
 	<input type="text" name="titulo" class="validade" value="{{ isset($registro->titulo) ? $registro->titulo : '' }}">
-	<label>Título da Publicação</label>
+	<label>Titulo da publicação</label>
 </div>
 
 <div class="input-field">

@@ -52,7 +52,7 @@
           <div class="card deep-orange accent-3">
             <div class="card-content white-text">
               <span class="card-title">Papéis</span>
-              <p>Gerenciar Papéis do Sistema</p>
+              <p>Listar Papéis do Sistema</p>
             </div>
             <div class="card-action">
               <a href="{{route('papeis.index')}}">Visualizar</a>

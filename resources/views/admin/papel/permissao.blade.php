@@ -27,7 +27,7 @@
 				<thead>
 					<tr>
 
-						<th>Permissão</th>
+						<th>Permissao</th>
 						<th>Descrição</th>
 						<th>Ação</th>
 					</tr>

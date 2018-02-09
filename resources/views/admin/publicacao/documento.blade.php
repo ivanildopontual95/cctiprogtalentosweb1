@@ -10,7 +10,7 @@
 				<thead>
 					<tr>
 						<th>Id</th>
-						<th>Título</th>
+						<th>Titulo</th>
 						<th>Ordem</th>
 						<th>Ação</th>
 					</tr>
