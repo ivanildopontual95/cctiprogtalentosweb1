@@ -3,54 +3,45 @@
 @section('content')
 
 <div class="container">
-    
     <div class="row">
-           
-        <div class="col s6 offset-s3">
-        <center><i class="large material-icons">account_circle </i><center>
-        <h3 class="center">CCTI Seletivos</h3>
-        <p class="center">Insira suas Credenciais e Faça Login</p>          
-      @if (session('status'))
-          <div class="card">
-              {{ session('status') }}
-          </div>
-      @endif
-        <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
-            {{ csrf_field() }}
-
-            <div class="input-field col s12">
-              <input type="text" name="email" value="{{ old('email') }}" class="validate" autofocus>
-              <label>E-mail</label>
-              @if ($errors->has('email'))
-                  <span>
+        <div class="col s3 offset-s4">
+            <div class="card-panel white">
+                <center><img class="responsive-img" src="/images/securityrsz.png"</i><center>
+                <label class="center">Entrar</label>          
+                @if (session('status'))
+                <div class="card">
+                    {{ session('status') }}
+                </div>
+                @endif
+                <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
+                {{ csrf_field() }}
+                
+                <div class="input-field">
+                    <input type="text" name="email" value="{{ old('email') }}" class="validate" autofocus>
+                    <label>E-mail</label>
+                    @if ($errors->has('email'))
+                    <span>
                       <strong>{{ $errors->first('email') }}</strong>
-                  </span>
-              @endif
-            </div>
-            <div class="input-field col s12">
-              <input type="password"  name="password" value="{{ old('password') }}" class="validate">
-              <label>Senha</label>
-              @if ($errors->has('password'))
-                  <span>
+                    </span>
+                    @endif
+                </div>
+                <div class="input-field">
+                    <input type="password"  name="password" value="{{ old('password') }}" class="validate">
+                    <label>Senha</label>
+                    @if ($errors->has('password'))
+                    <span>
                       <strong>{{ $errors->first('password') }}</strong>
-                  </span>
-              @endif
+                    </span>
+                     @endif
             </div>
-
-            <div class="col s12">
-              <p>
-                <input type="checkbox" id="lembrarSenha" name="remember" {{ old('remember') ? 'checked' : ''}} />
-                <label for="lembrarSenha">Lembrar senha?</label>
-              </p>
-            </div>
-            <div class="col s12">
-              <br/>
-              <button class="btn green">Entrar</button>
-              <!--<a href="{{ url('/password/reset') }}"  class="btn orange">Recuperar senha</a>-->
+            <div class="row">
+                <center><a href="{{ url('/password/reset') }}">Esqueceu sua senha?</a><center>
+                <button class="btn green">Entrar</button>
             </div>
           </form>
       </div>
   </div>
+</div>
 </div>
 </div>
 
