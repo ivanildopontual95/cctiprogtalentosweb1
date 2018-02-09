@@ -17,6 +17,7 @@ class CreateTablePublicacoes extends Migration
             $table->increments('id');
             $table->string('titulo');
             $table->longText('descricao');
+            $table->enum('deletado',["N","S"])->default("N");
             $table->timestamps();
         });
     }

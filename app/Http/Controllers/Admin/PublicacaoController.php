@@ -5,8 +5,11 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Publicacao;
+use App\Documento;
+use Validator;
 
 use Illuminate\Support\Facades\Gate;
+
 class PublicacaoController extends Controller
 {
     /**
@@ -16,6 +19,10 @@ class PublicacaoController extends Controller
      */
     public function index()
     {    
+        if(Gate::denies('publicacoes-view')){
+            abort(403,"Não autorizado!");
+        }
+
         $registros = Publicacao::all();
         $caminhos = [
             ['url'=>'/admin','titulo'=>'Painel Principal'],
@@ -33,6 +40,9 @@ class PublicacaoController extends Controller
    
     public function create()
     {
+        if(Gate::denies('publicacoes-create')){
+            abort(403,"Não autorizado!");
+        }
         $caminhos = [
             ['url'=>'/admin','titulo'=>'Painel Principal'],
             ['url'=>route('publicacao.index'),'titulo'=>'Publicações'],
@@ -51,6 +61,9 @@ class PublicacaoController extends Controller
      */
     public function store(Request $request)
     {
+        if(Gate::denies('publicacoes-create')){
+            abort(403,"Não autorizado!");
+        }
         
           Publicacao::create($request->all());
           return redirect()->route('publicacao.index');
@@ -77,11 +90,14 @@ class PublicacaoController extends Controller
      */
     public function edit($id)
     {
+        if(Gate::denies('publicacoes-edit')){
+            abort(403,"Não autorizado!");
+        }
         $registro = Publicacao::find($id);
 
       $caminhos = [
-      ['url'=>'/admin','titulo'=>'Admin'],
-      ['url'=>route('publicacao.index'),'titulo'=>'Publicacao'],
+      ['url'=>'/admin','titulo'=>'Painel Principal'],
+      ['url'=>route('publicacao.index'),'titulo'=>'Publicações'],
       ['url'=>'','titulo'=>'Editar']
       ];
 
@@ -97,7 +113,9 @@ class PublicacaoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+        if(Gate::denies('publicacoes-edit')){
+            abort(403,"Não autorizado!");
+        }
         Publicacao::find($id)->update($request->all());
         return redirect()->route('publicacao.index');
     }
@@ -110,24 +128,79 @@ class PublicacaoController extends Controller
      */
     public function destroy($id)
     {
+        if(Gate::denies('publicacoes-delete')){
+            abort(403,"Não autorizado!");
+        }
         Publicacao::find($id)->delete();
         return redirect()->route('publicacao.index');
     }
 
+
+    //---------------------------------------------------------------
     public function indexDocumento(Publicacao $publicacao){
-         if(Gate::denies('publicacoes-edit')){
+        
+        if(Gate::denies('publicacoes-edit')){
         abort(403,"Não autorizado!");
-      }
+        }
 
-      $registros = $publicacao;
+        $registros = $publicacao;
 
-      $caminhos = [
-      ['url'=>'/admin','titulo'=>'Admin'],
-      ['url'=>route('publicacao.index'),'titulo'=>'publicacao'],
-      ['url'=>'','titulo'=>'Documentos']
-      ];
+        $caminhos = [
+        ['url'=>'/admin','titulo'=>'Painel Principal'],
+        ['url'=>route('publicacao.index'),'titulo'=>'Publicações'],
+        ['url'=>'','titulo'=>'Documentos']
+        ];
 
-      return view('admin.publicacao.documento',compact('registros','caminhos'));      
+        return view('admin.publicacao.documento',compact('registros','caminhos', 'publicacao'));      
     }
+    
+
+
+   public function storeDocumento(Request $request, Publicacao $publicacao){
+       
+        if(Gate::denies('publicacoes-edit')){
+        abort(403,"Não autorizado!");
+        }
+
+        //  $this->validate($request,[
+        //      'arquivo'=>'required|file'
+        //  ]);
+
+        
+        if($request->hasFile('arquivos'))
+        {
+            $files = $request->arquivos;  
+
+            $fileRegras = array(
+            'arquivo' => 'required|file'
+            );
+  
+            foreach($files as $file){
+                $fileArray = array('arquivo' => $file);
+                $fileValidator = Validator::make($fileArray, $fileRegras);
+                if ($fileValidator->fails()) {
+                return redirect()->route('publicacao.documento.index')
+                            ->withErrors($fileValidator)
+                            ->withInput();
+                }
+            }
+
+
+            foreach ($files as $file) {
+                $file_nome = time().$file->getClientOriginalName(); 
+                $file->move("arquivos/",$file_nome);
+
+                $auxNome = explode(".",$file->getClientOriginalName());
+                $documento = Documento::create(["titulo"=>$auxNome[0],"url"=>"arquivos/".$file_nome]);
+                //$publicacao->adicionaDocumento($documento);
+
+
+            }
+        }
+        
+        return redirect()->back(); 
+    }
+
+    
 
 }
