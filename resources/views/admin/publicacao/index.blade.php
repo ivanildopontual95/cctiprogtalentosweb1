@@ -16,19 +16,19 @@
 					</tr>
 				</thead>
 				<tbody>
-				@foreach($registros as $registro)
+				@foreach($publicacoes as $publicacao)
 					<tr>
-						<td>{{ $registro->id }}</td>
-						<td>{{ $registro->titulo }}</td>
-						<td>{{ $registro->descricao }}</td>
+						<td>{{ $publicacao->id }}</td>
+						<td>{{ $publicacao->titulo }}</td>
+						<td>{{ $publicacao->descricao }}</td>
 
 						<td>
 
 
-							<form action="{{route('publicacao.destroy',$registro)}}" method="post">
+							<form action="{{route('publicacoes.destroy',$publicacao->id)}}" method="post">
 								@can('publicacoes-edit')
-								<a title="Editar" class="btn orange" href="{{ route('publicacao.edit',$registro) }}"><i class="material-icons">mode_edit</i></a>
-								<a title="Documentos" class="btn blue" href="{{ route('publicacao.documento.index',$registro)}}"><i class="material-icons">note_add</i></a>
+								<a title="Editar" class="btn orange" href="{{ route('publicacoes.edit',$publicacao->id) }}"><i class="material-icons">mode_edit</i></a>
+								<a title="Documentos" class="btn blue" href="{{ route('publicacoes.documento.index',$publicacao->id)}}"><i class="material-icons">note_add</i></a>
 								@endcan				
 								@can('publicacoes-delete')
 									{{ method_field('DELETE') }}
@@ -46,7 +46,7 @@
 
 		</div>
 		<div class="row">
-			<a class="btn blue" href="{{route('publicacao.create')}}">Adicionar</a>
+			<a class="btn blue" href="{{route('publicacoes.create')}}">Adicionar</a>
 		</div>
 	</div>
 

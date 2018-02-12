@@ -12,7 +12,7 @@ class Publicacao extends Model
 
     public function documentos()
     {
-        return $this->belongsToMany('App\Documento');
+        return $this->belongsToMany(Documento::class);
     }
 
     public function adicionaDocumento($documento)
@@ -24,6 +24,15 @@ class Publicacao extends Model
         
         return $this->documentos()->attach($documento);
 
+    }
+
+    public function removeDocumento($documento)
+    {
+        if (is_string($documento)) {
+            $documento = Documento::where('titulo','=',$documento)->firstOrFail();
+        }
+
+        return $this->documentos()->detach($documento);
     }
     
 }

@@ -33,10 +33,11 @@ Route:: group (['middleware' => 'auth', 'prefix' =>'admin'], function () {
   Route::post('papeis/permissao/{permissao}', ['as'=>'papeis.permissao.store','uses'=>'Admin\PapelController@permissaoStore']);
   Route::delete('papeis/permissao/{papeis}/{permissao}', ['as'=>'papeis.permissao.destroy','uses'=>'Admin\PapelController@permissaoDestroy']);
   
-  Route::resource('publicacao', 'Admin\PublicacaoController');
+  Route::resource('publicacoes', 'Admin\PublicacaoController');
 
-  Route::get('publicacao/documento/{publicacao}', ['as'=> 'publicacao.documento.index','uses'=>'Admin\PublicacaoController@indexDocumento']);
-  Route::post('publicacao/documento/{publicacao}', ['as'=> 'publicacao.documento.store','uses'=>'Admin\PublicacaoController@storeDocumento']);
+  Route::get('publicacoes/documento/{id}', ['as'=> 'publicacoes.documento.index','uses'=>'Admin\PublicacaoController@indexDocumento']);
+  Route::post('publicacoes/documento/{documento}', ['as'=> 'publicacoes.documento.store','uses'=>'Admin\PublicacaoController@storeDocumento']);
+  Route::delete('publicacoes/documento/{publicacoes}/{documento}', ['as'=> 'publicacoes.documento.destroy','uses'=>'Admin\PublicacaoController@destroyDocumento']);
   
   Route::get('perfil', ['as'=>'site.perfil','uses'=>'Site\SiteController@perfil']);
   Route::put('perfil', ['as'=>'site.perfil.update','uses'=>'Site\SiteController@perfilUpdate']);

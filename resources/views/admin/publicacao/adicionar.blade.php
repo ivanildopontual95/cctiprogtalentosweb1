@@ -8,7 +8,7 @@
 	@include('admin._caminho')
 	
 	<div class="row">
-		<form action="{{ route('publicacao.store') }}" method="post">
+		<form action="{{ route('publicacoes.store') }}" method="post">
 
 		{{csrf_field()}}
 		@include('admin.publicacao._form')

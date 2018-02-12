@@ -10,7 +10,7 @@ class Documento extends Model
 
     public function publicacoes()
     {
-        return $this->belongsToMany('App\Publicacao');
+        return $this->belongsToMany(Publicacao::class);
     }
 }
 
