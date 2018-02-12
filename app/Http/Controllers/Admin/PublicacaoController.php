@@ -23,12 +23,12 @@ class PublicacaoController extends Controller
             abort(403,"Não autorizado!");
         }
 
-        $registros = Publicacao::all();
+        $publicacoes = Publicacao::all();
         $caminhos = [
             ['url'=>'/admin','titulo'=>'Painel Principal'],
             ['url'=>'','titulo'=> 'Publicações'],
         ];
-        return view('admin.publicacao.index',compact ('registros','caminhos'));
+        return view('admin.publicacao.index',compact ('publicacoes','caminhos'));
     }
 
     /**
@@ -45,7 +45,7 @@ class PublicacaoController extends Controller
         }
         $caminhos = [
             ['url'=>'/admin','titulo'=>'Painel Principal'],
-            ['url'=>route('publicacao.index'),'titulo'=>'Publicações'],
+            ['url'=>route('publicacoes.index'),'titulo'=>'Publicações'],
             ['url'=>'','titulo'=>'Adicionar Publicação']
         ];
 
@@ -66,7 +66,7 @@ class PublicacaoController extends Controller
         }
         
           Publicacao::create($request->all());
-          return redirect()->route('publicacao.index');
+          return redirect()->route('publicacoes.index');
        
     }
     
@@ -93,15 +93,15 @@ class PublicacaoController extends Controller
         if(Gate::denies('publicacoes-edit')){
             abort(403,"Não autorizado!");
         }
-        $registro = Publicacao::find($id);
+        $publicacao = Publicacao::find($id);
 
       $caminhos = [
       ['url'=>'/admin','titulo'=>'Painel Principal'],
-      ['url'=>route('publicacao.index'),'titulo'=>'Publicações'],
+      ['url'=>route('publicacoes.index'),'titulo'=>'Publicações'],
       ['url'=>'','titulo'=>'Editar']
       ];
 
-      return view('admin.publicacao.editar',compact('registro','caminhos'));
+      return view('admin.publicacao.editar',compact('publicacao','caminhos'));
     }
 
     /**
@@ -117,7 +117,7 @@ class PublicacaoController extends Controller
             abort(403,"Não autorizado!");
         }
         Publicacao::find($id)->update($request->all());
-        return redirect()->route('publicacao.index');
+        return redirect()->route('publicacoes.index');
     }
 
     /**
@@ -132,31 +132,31 @@ class PublicacaoController extends Controller
             abort(403,"Não autorizado!");
         }
         Publicacao::find($id)->delete();
-        return redirect()->route('publicacao.index');
+        return redirect()->route('publicacoes.index');
     }
 
 
-    //---------------------------------------------------------------
-    public function indexDocumento(Publicacao $publicacao){
+    //--------------------Documento-------------------------------------------
+    public function indexDocumento($id){
         
         if(Gate::denies('publicacoes-edit')){
         abort(403,"Não autorizado!");
         }
 
-        $registros = $publicacao;
-
+        $publicacao = Publicacao::find($id);
+        $documento = Documento::all();
         $caminhos = [
         ['url'=>'/admin','titulo'=>'Painel Principal'],
-        ['url'=>route('publicacao.index'),'titulo'=>'Publicações'],
+        ['url'=>route('publicacoes.index'),'titulo'=>'Publicações'],
         ['url'=>'','titulo'=>'Documentos']
         ];
 
-        return view('admin.publicacao.documento',compact('registros','caminhos', 'publicacao'));      
+        return view('admin.publicacao.documento',compact( 'publicacao','documento','caminhos'));      
     }
     
 
 
-   public function storeDocumento(Request $request, Publicacao $publicacao){
+   public function storeDocumento(Request $request, $id){
        
         if(Gate::denies('publicacoes-edit')){
         abort(403,"Não autorizado!");
@@ -166,6 +166,7 @@ class PublicacaoController extends Controller
         //      'arquivo'=>'required|file'
         //  ]);
 
+        $publicacao = Publicacao::find($id);
         
         if($request->hasFile('arquivos'))
         {
@@ -179,7 +180,7 @@ class PublicacaoController extends Controller
                 $fileArray = array('arquivo' => $file);
                 $fileValidator = Validator::make($fileArray, $fileRegras);
                 if ($fileValidator->fails()) {
-                return redirect()->route('publicacao.documento.index')
+                return redirect()->route('publicacoes.documento.index')
                             ->withErrors($fileValidator)
                             ->withInput();
                 }
@@ -192,7 +193,7 @@ class PublicacaoController extends Controller
 
                 $auxNome = explode(".",$file->getClientOriginalName());
                 $documento = Documento::create(["titulo"=>$auxNome[0],"url"=>"arquivos/".$file_nome]);
-                //$publicacao->adicionaDocumento($documento);
+                $publicacao->adicionaDocumento($documento);
 
 
             }
@@ -202,5 +203,17 @@ class PublicacaoController extends Controller
     }
 
     
+    public function destroyDocumento($id, $documento_id)
+    {
+        if(Gate::denies('publicacoes-delete')){
+            abort(403,"Nao autorizado!");
+          }  
+        $publicacao = Publicacao::find($id);
+        $documento = Documento::find($documento_id);
+        $publicacao->removeDocumento($documento);
+        $documento->delete();
+        return redirect()->back();
+
+    }
 
 }

@@ -10,7 +10,7 @@
 		
 		  <div class="row">
 
-			<form action="{{ route('publicacao.documento.store',$publicacao->id) }}" method="post" enctype="multipart/form-data" >
+			<form action="{{ route('publicacoes.documento.store',$publicacao->id) }}" method="post" enctype="multipart/form-data" >
 			
 			  {{csrf_field()}}
 			
@@ -35,14 +35,30 @@
 					<thead>
 						<tr>
 	
-							<th>Id</th>
 							<th>Titulo</th>
 							<th>Ação</th>
+	
 						</tr>
 					</thead>
+
 					<tbody>
-					
-					</tbody>
+				@foreach($publicacao->documentos as $documento)
+					<tr>
+	
+						<td>{{ $documento->titulo }}</td>
+
+						<td>
+							<form action="{{route('publicacoes.documento.destroy',[$publicacao->id,$documento->id])}}" method="post">
+							<a title="Baixar" class="btn green" href="{{ $documento->url }}" download><i class="material-icons">file_download</i></a>
+									{{ method_field('DELETE') }}
+									{{ csrf_field() }}
+									<button title="Deletar" class="btn red"><i class="material-icons">delete</i></button>
+							</form>
+						</td>
+
+					</tr>
+				@endforeach
+				</tbody>
 				</table>
 	
 			</div>

@@ -19,6 +19,17 @@ class CreateTableDocumentos extends Migration
             $table->string('url');
             $table->timestamps();
         });
+
+        Schema::create('documento_publicacao', function (Blueprint $table) {
+            $table->integer('documento_id')->unsigned();
+            $table->integer('publicacao_id')->unsigned();
+
+            $table->foreign('documento_id')->references('id')->on('documentos')->onDelete('cascade');
+            $table->foreign('publicacao_id')->references('id')->on('publicacoes')->onDelete('cascade');
+
+
+            $table->primary(['documento_id','publicacao_id']);
+        });
     }
 
     /**
@@ -28,6 +39,7 @@ class CreateTableDocumentos extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('documento_publicacao');
         Schema::dropIfExists('documentos');
     }
 }
