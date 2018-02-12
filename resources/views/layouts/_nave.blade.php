@@ -4,7 +4,6 @@
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         @if (Auth::guest())
           <li><a href="{{ url('/login') }}">Entrar</a></li>
-          <li><a href="{{ url('/register') }}">Cadastro</a></li>
         @else
           <li><a href="/admin">{{ Auth::user()->name }}<i class="material-icons left">person</i></a></li></li>
           <li>

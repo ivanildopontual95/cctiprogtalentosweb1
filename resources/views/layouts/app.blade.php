@@ -13,6 +13,7 @@
     <!-- Styles -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="/css/app.css" rel="stylesheet">
+    <link href="/css/stylesheet.css" rel="stylesheet">
     <link rel="shortcut icon" href="{{ asset('images/ccti-logo-white.png') }}" >
 
     <!-- Scripts -->
@@ -23,10 +24,10 @@
     </script>
 </head>
 <body>
-
+<div class="background-image"></div>
   @include('layouts._nave')
 <main>
-  @yield('content')
+    @yield('content')
 </main>
 @include('layouts._footer')
 

@@ -2,14 +2,12 @@
 
 @section('content')
 
-<div class="background-image">
-    <div class="section">
         <div class="container">
             <div class="row">
                 <div class="col s4 offset-s4">
                     <div class="card-panel white"> 
                         <center><img class="" src="/images/user.png"</i><center>
-                        <p>Faça Login</p>
+                        <p>Login</p>
                         <label>Insira suas Credenciais</label>
                         @if (session('status'))
                             <div class="card">
@@ -50,7 +48,5 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
-
+    
 @endsection

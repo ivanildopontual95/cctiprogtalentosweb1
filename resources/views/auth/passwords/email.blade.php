@@ -2,8 +2,6 @@
 
 @section('content')
 
-<div class="background-image">
-    <div class="section">
         <div class="container">
             <div class="row">
                 <div class="col s4 offset-s4">
@@ -35,6 +33,5 @@
                 </div>
             </div>
         </div>
-    </div>
 
 @endsection
