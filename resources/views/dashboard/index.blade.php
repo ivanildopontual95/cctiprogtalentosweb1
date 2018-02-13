@@ -17,7 +17,7 @@
               <p>Alterar Dados do Perfil</p>
             </div>
             <div class="card-action">
-              <a href="{{route('site.perfil')}}">Visualizar</a>
+              <a href="{{route('perfil.perfil')}}">Visualizar</a>
             </div>
           </div>
         </div>

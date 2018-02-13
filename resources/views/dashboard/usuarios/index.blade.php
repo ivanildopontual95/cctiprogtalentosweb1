@@ -7,7 +7,7 @@
 
 		@include('admin._caminho')
 
-
+		<div class="card-panel white">
 		<div class="row">
 			<table>
 				<thead>
@@ -43,7 +43,7 @@
 			</table>
 
 		</div>
-
 	</div>
+</div>
 
 @endsection

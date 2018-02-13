@@ -33,12 +33,14 @@
 	@endif
 	
 	@include('admin._caminho')
-	<div class="row">
-		<form action="{{ route('site.perfil.update') }}" method="post">
 
-		{{csrf_field()}}
-		{{ method_field('PUT') }}
-		<div class="input-field">
+<div class="container">
+	<div class="card-panel white">
+		<div class="row">
+			<form action="{{ route('site.perfil.update') }}" method="post">
+			{{csrf_field()}}
+			{{ method_field('PUT') }}
+			<div class="input-field">
 			<input type="text" name="name" class="validade" value="{{ isset($user->name) && !old('name') ? $user->name : '' }}{{old('name')}}">
 			<label>Nome</label>
 		</div>
@@ -53,18 +55,16 @@
 			<label>Senha</label>
 		</div>
 
-		<div class="input-field">
-			<input type="password" name="password_confirmation" class="validade" >
-			<label>Confirme a senha</label>
+			<div class="input-field">
+				<input type="password" name="password_confirmation" class="validade" >
+				<label>Confirme a senha</label>
+			</div>
+				<button class="btn blue">Atualizar</button>
+				</form>
+
+			</div>
 		</div>
-
-		<button class="btn blue">Atualizar</button>
-
-		</form>
-
 	</div>
-
 </div>
-
 
 @endsection

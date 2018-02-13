@@ -1,6 +1,6 @@
 <nav class="{{config('app.corSite')}}">
   <div class="nav-wrapper container">
-    <a href="{{ url('/') }}"><img class="responsive-img" src="/images/cctirsz2.png" title="CCTI"</i></a>
+    <a href="{{ url('/') }}"><img class="responsive-img" src="/images/cctirsz.png" title="Início"</i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         @if (Auth::guest())
           <li><a href="{{ url('/login') }}">Entrar</a></li>

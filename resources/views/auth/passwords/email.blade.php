@@ -26,7 +26,7 @@
                                 @endif
                             </div>
                             <div class="section">
-                                <button class="btn green">Recuperar</button>
+                                <button class="btn green">Recuperar<i class="material-icons right">send</i></button>
                             </div>
                         </form>
                     </div>

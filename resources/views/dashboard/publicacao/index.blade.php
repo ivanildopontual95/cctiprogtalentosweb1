@@ -5,6 +5,7 @@
 		<div class="row">
 		</div>
 		@include('admin._caminho')
+		<div class="card-panel white">
 		<div class="row">
 			<table>
 				<thead>
@@ -28,7 +29,7 @@
 							<form action="{{route('publicacoes.destroy',$publicacao->id)}}" method="post">
 								@can('publicacoes-edit')
 								<a title="Editar" class="btn orange" href="{{ route('publicacoes.edit',$publicacao->id) }}"><i class="material-icons">mode_edit</i></a>
-								<a title="Documentos" class="btn blue" href="{{ route('publicacoes.documento.index',$publicacao->id)}}"><i class="material-icons">note_add</i></a>
+								<a title="Documentos" class="btn blue" href="{{ route('publicacoes.documento.index',$publicacao->id)}}"><i class="material-icons">attach_file</i></a>
 								@endcan				
 								@can('publicacoes-delete')
 									{{ method_field('DELETE') }}
@@ -49,5 +50,6 @@
 			<a class="btn blue" href="{{route('publicacoes.create')}}">Adicionar</a>
 		</div>
 	</div>
+</div>  
 
 @endsection

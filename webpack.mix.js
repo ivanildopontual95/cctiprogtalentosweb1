@@ -19,5 +19,5 @@ mix.combine([
 
 mix.combine([
     'resources/assets/css/materialize.css',
-    'resources/assets/css/style.css'
+    'resources/assets/css/style.css',
 ],'public/css/app.css');
