@@ -32,12 +32,12 @@
       </div>
 	@endif
 	
-	@include('admin._caminho')
+	@include('dashboard._caminho')
 
 <div class="container">
 	<div class="card-panel white">
 		<div class="row">
-			<form action="{{ route('site.perfil.update') }}" method="post">
+			<form action="{{ route('perfil.perfil.update') }}" method="post">
 			{{csrf_field()}}
 			{{ method_field('PUT') }}
 			<div class="input-field">

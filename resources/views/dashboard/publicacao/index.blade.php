@@ -4,7 +4,7 @@
 	<div class="container">
 		<div class="row">
 		</div>
-		@include('admin._caminho')
+		@include('dashboard._caminho')
 		<div class="card-panel white">
 		<div class="row">
 			<table>

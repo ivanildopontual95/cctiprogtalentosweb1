@@ -5,7 +5,7 @@
         @if (Auth::guest())
           <li><a href="{{ url('/login') }}">Entrar</a></li>
         @else
-          <li><a href="/admin">{{ Auth::user()->name }}<i class="material-icons left">person</i></a></li></li>
+          <li><a href="/dashboard">{{ Auth::user()->name }}<i class="material-icons left">person</i></a></li></li>
           <li>
               <a href="{{ url('/logout') }}"
                   onclick="event.preventDefault();

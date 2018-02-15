@@ -23,10 +23,10 @@ class PapelController extends Controller
 
       $registros = Papel::all();
       $caminhos = [
-      ['url'=>'/admin','titulo'=>'Painel Principal'],
+      ['url'=>'/dashboard','titulo'=>'Painel Principal'],
       ['url'=>'','titulo'=>'Papéis']
       ];
-      return view('admin.papel.index',compact('registros','caminhos'));
+      return view('dashboard.papel.index',compact('registros','caminhos'));
     }
 
     public function permissao($id)
@@ -37,11 +37,11 @@ class PapelController extends Controller
       $papel = Papel::find($id);
       $permissao = Permissao::all();
       $caminhos = [
-          ['url'=>'/admin','titulo'=>'Admin'],
+          ['url'=>'/dashboard','titulo'=>'Painel Principal'],
           ['url'=>route('papeis.index'),'titulo'=>'Papéis'],
           ['url'=>'','titulo'=>'Permissões'],
       ];
-      return view('admin.papel.permissao',compact('papel','permissao','caminhos'));
+      return view('dashboard.papel.permissao',compact('papel','permissao','caminhos'));
     }
 
     public function permissaoStore(Request $request,$id)
@@ -78,12 +78,12 @@ class PapelController extends Controller
           abort(403,"Nao autorizado!");
       }
       $caminhos = [
-      ['url'=>'/admin','titulo'=>'Admin'],
+      ['url'=>'/dashboard','titulo'=>'Painel Principal'],
       ['url'=>route('papeis.index'),'titulo'=>'Papéis'],
       ['url'=>'','titulo'=>'Adicionar']
       ];
 
-      return view('admin.papel.adicionar',compact('caminhos'));
+      return view('dashboard.papel.adicionar',compact('caminhos'));
     }
 
     /**
@@ -135,12 +135,12 @@ class PapelController extends Controller
       $registro = Papel::find($id);
 
       $caminhos = [
-      ['url'=>'/admin','titulo'=>'Admin'],
+      ['url'=>'/dashboard','titulo'=>'Painel Principal'],
       ['url'=>route('papeis.index'),'titulo'=>'Papéis'],
       ['url'=>'','titulo'=>'Editar']
       ];
 
-      return view('admin.papel.editar',compact('registro','caminhos'));
+      return view('dashboard.papel.editar',compact('registro','caminhos'));
     }
 
     /**

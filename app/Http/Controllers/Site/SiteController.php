@@ -18,11 +18,11 @@ class SiteController extends Controller
       $user = Auth()->user();
 
       $caminhos = [
-      ['url'=>'/admin','titulo'=>'Painel Principal'],
+      ['url'=>'/dashboard','titulo'=>'Painel Principal'],
       ['url'=>'','titulo'=>'Editar Perfil']
       ];
 
-      return view('site.perfil',compact('user','caminhos'));
+      return view('dashboard.perfil.perfil',compact('user','caminhos'));
 
     }
 
@@ -50,6 +50,6 @@ class SiteController extends Controller
 
       $user->update($dados);
 
-      return redirect()->route('site.perfil')->with('status', 'Perfil atualizado!');
+      return redirect()->route('perfil.perfil')->with('status', 'Perfil atualizado!');
     }
 }

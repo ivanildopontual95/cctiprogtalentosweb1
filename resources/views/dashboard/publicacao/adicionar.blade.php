@@ -5,13 +5,13 @@
 	<div class="row">
 	</div>
 
-	@include('admin._caminho')
+	@include('dashboard._caminho')
 	
 	<div class="row">
 		<form action="{{ route('publicacoes.store') }}" method="post">
 
 		{{csrf_field()}}
-		@include('admin.publicacao._form')
+		@include('dashboard.publicacao._form')
 
 		<button class="btn green">Adicionar</button>
 

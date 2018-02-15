@@ -12,13 +12,13 @@
 */
 
 Route::get('/', function () {
-    return view('site.home');
+    return view('home');
 });
 
 Auth::routes();
 
 
-Route:: group (['middleware' => 'auth', 'prefix' =>'admin'], function () {
+Route:: group (['middleware' => 'auth', 'prefix' =>'dashboard'], function () {
 
   Route::get('/', 'Admin\AdminController@index');
   Route::resource('usuarios', 'Admin\UsuarioController');
@@ -39,7 +39,7 @@ Route:: group (['middleware' => 'auth', 'prefix' =>'admin'], function () {
   Route::post('publicacoes/documento/{documento}', ['as'=> 'publicacoes.documento.store','uses'=>'Admin\PublicacaoController@storeDocumento']);
   Route::delete('publicacoes/documento/{publicacoes}/{documento}', ['as'=> 'publicacoes.documento.destroy','uses'=>'Admin\PublicacaoController@destroyDocumento']);
   
-  Route::get('perfil', ['as'=>'site.perfil','uses'=>'Site\SiteController@perfil']);
-  Route::put('perfil', ['as'=>'site.perfil.update','uses'=>'Site\SiteController@perfilUpdate']);
+  Route::get('perfil', ['as'=>'perfil.perfil','uses'=>'Site\SiteController@perfil']);
+  Route::put('perfil', ['as'=>'perfil.perfil.update','uses'=>'Site\SiteController@perfilUpdate']);
   
 });

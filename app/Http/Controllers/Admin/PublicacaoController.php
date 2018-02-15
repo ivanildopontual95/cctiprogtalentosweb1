@@ -25,10 +25,10 @@ class PublicacaoController extends Controller
 
         $publicacoes = Publicacao::all();
         $caminhos = [
-            ['url'=>'/admin','titulo'=>'Painel Principal'],
+            ['url'=>'/dashboard','titulo'=>'Painel Principal'],
             ['url'=>'','titulo'=> 'Publicações'],
         ];
-        return view('admin.publicacao.index',compact ('publicacoes','caminhos'));
+        return view('dashboard.publicacao.index',compact ('publicacoes','caminhos'));
     }
 
     /**
@@ -44,12 +44,12 @@ class PublicacaoController extends Controller
             abort(403,"Não autorizado!");
         }
         $caminhos = [
-            ['url'=>'/admin','titulo'=>'Painel Principal'],
+            ['url'=>'/dashboard','titulo'=>'Painel Principal'],
             ['url'=>route('publicacoes.index'),'titulo'=>'Publicações'],
             ['url'=>'','titulo'=>'Adicionar Publicação']
         ];
 
-      return view('admin.publicacao.adicionar',compact('caminhos'));
+      return view('dashboard.publicacao.adicionar',compact('caminhos'));
     
     }
 
@@ -96,12 +96,12 @@ class PublicacaoController extends Controller
         $publicacao = Publicacao::find($id);
 
       $caminhos = [
-      ['url'=>'/admin','titulo'=>'Painel Principal'],
+      ['url'=>'/dashboard','titulo'=>'Painel Principal'],
       ['url'=>route('publicacoes.index'),'titulo'=>'Publicações'],
       ['url'=>'','titulo'=>'Editar']
       ];
 
-      return view('admin.publicacao.editar',compact('publicacao','caminhos'));
+      return view('dashboard.publicacao.editar',compact('publicacao','caminhos'));
     }
 
     /**
@@ -146,12 +146,12 @@ class PublicacaoController extends Controller
         $publicacao = Publicacao::find($id);
         $documento = Documento::all();
         $caminhos = [
-        ['url'=>'/admin','titulo'=>'Painel Principal'],
+        ['url'=>'/dashboard','titulo'=>'Painel Principal'],
         ['url'=>route('publicacoes.index'),'titulo'=>'Publicações'],
         ['url'=>'','titulo'=>'Documentos']
         ];
 
-        return view('admin.publicacao.documento',compact( 'publicacao','documento','caminhos'));      
+        return view('dashboard.publicacao.documento',compact( 'publicacao','documento','caminhos'));      
     }
     
 

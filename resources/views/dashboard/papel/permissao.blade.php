@@ -4,7 +4,7 @@
 	<div class="container">
 		<h2 class="center">Lista de Permissões para {{$papel->nome}}</h2>
 
-		@include('admin._caminho')
+		@include('dashboard._caminho')
 
 		<div class="row">
 			<form action="{{route('papeis.permissao.store',$papel->id)}}" method="post">

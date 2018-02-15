@@ -6,7 +6,7 @@
     <div class="row">
     </div>
     
-    @include('admin._caminho')
+    @include('dashboard._caminho')
 
     <div class="row">
     @can('perfil-view')

@@ -21,10 +21,10 @@ class UsuarioController extends Controller
         }
         $usuarios = User::all();
         $caminhos = [
-            ['url'=>'/admin','titulo'=>'Painel Principal'],
+            ['url'=>'/dashboard','titulo'=>'Painel Principal'],
             ['url'=>'','titulo'=>'Usuários'],
         ];
-        return view('admin.usuarios.index',compact('usuarios','caminhos'));
+        return view('dashboard.usuarios.index',compact('usuarios','caminhos'));
     }
 
     public function papel($id)
@@ -35,11 +35,11 @@ class UsuarioController extends Controller
         $usuario = User::find($id);
         $papel = Papel::all();
         $caminhos = [
-            ['url'=>'/admin','titulo'=>'Painel Principal'],
+            ['url'=>'/dashboard','titulo'=>'Painel Principal'],
             ['url'=>route('usuarios.index'),'titulo'=>'Usuários'],
             ['url'=>'','titulo'=>'Papel'],
         ];
-      return view('admin.usuarios.papel',compact('usuario','papel','caminhos'));
+      return view('dashboard.usuarios.papel',compact('usuario','papel','caminhos'));
     }
 
     public function papelStore(Request $request,$id)
