@@ -10,12 +10,13 @@
 	<div class="row">
 		<form action="{{ route('publicacoes.store') }}" method="post">
 
-		{{csrf_field()}}
-		@include('dashboard.publicacao._form')
+			{{csrf_field()}}
+			@include('dashboard.publicacao._form')
+			<div class="row">
+			</div>
 
-		<button class="btn green">Adicionar</button>
-
-			
+			<button class="btn blue">Adicionar</button>
+	
 		</form>
 			
 	</div>

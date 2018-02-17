@@ -6,10 +6,12 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Publicacao;
 use App\Documento;
+use App\Cargo;
 use Validator;
+use Carbon\Carbon;
 
 use Illuminate\Support\Facades\Gate;
-
+    
 class PublicacaoController extends Controller
 {
     /**
@@ -22,8 +24,7 @@ class PublicacaoController extends Controller
         if(Gate::denies('publicacoes-view')){
             abort(403,"Não autorizado!");
         }
-
-        $publicacoes = Publicacao::all();
+        $publicacoes = Publicacao::orderBy("id","DESC")->paginate(10);
         $caminhos = [
             ['url'=>'/dashboard','titulo'=>'Painel Principal'],
             ['url'=>'','titulo'=> 'Publicações'],
@@ -64,9 +65,12 @@ class PublicacaoController extends Controller
         if(Gate::denies('publicacoes-create')){
             abort(403,"Não autorizado!");
         }
-        
-          Publicacao::create($request->all());
-          return redirect()->route('publicacoes.index');
+        $this->validate($request, [
+            'titulo' => 'required',
+            'descricao' => 'required'
+        ]);
+        Publicacao::create($request->all());
+        return redirect()->route('publicacoes.index');
        
     }
     
@@ -98,7 +102,7 @@ class PublicacaoController extends Controller
       $caminhos = [
       ['url'=>'/dashboard','titulo'=>'Painel Principal'],
       ['url'=>route('publicacoes.index'),'titulo'=>'Publicações'],
-      ['url'=>'','titulo'=>'Editar']
+      ['url'=>'','titulo'=>'Editar Publicação']
       ];
 
       return view('dashboard.publicacao.editar',compact('publicacao','caminhos'));
@@ -156,7 +160,7 @@ class PublicacaoController extends Controller
     
 
 
-   public function storeDocumento(Request $request, $id){
+    public function storeDocumento(Request $request, $id){
        
         if(Gate::denies('publicacoes-edit')){
         abort(403,"Não autorizado!");
@@ -215,5 +219,58 @@ class PublicacaoController extends Controller
         return redirect()->back();
 
     }
+    //----------------------------------------------------------
 
+
+    //---------------Cargo--------------------------------------
+    public function indexCargo($id){
+        
+        if(Gate::denies('publicacoes-edit')){
+        abort(403,"Não autorizado!");
+        }
+
+        $publicacao = Publicacao::find($id);
+        $cargo = Cargo::all();
+        $caminhos = [
+        ['url'=>'/dashboard','titulo'=>'Painel Principal'],
+        ['url'=>route('publicacoes.index'),'titulo'=>'Publicações'],
+        ['url'=>'','titulo'=>'Adicionar Cargos']
+        ];
+
+        return view('dashboard.publicacao.cargo',compact( 'publicacao','cargo','caminhos'));      
+    }
+    
+
+
+   public function storeCargo(Request $request, $id){
+       
+        if(Gate::denies('publicacoes-edit')){
+        abort(403,"Não autorizado!");
+        }
+
+        $this->validate($request, [
+            'cargo' => 'required',
+            'escolaridade' => 'required'
+      ]);
+
+        $publicacao = Publicacao::find($id);
+        $cargo = Cargo::create($request->all());
+        $publicacao->adicionaCargo($cargo);
+        return redirect()->back(); 
+    }
+
+    
+    public function destroyCargo($id, $cargo_id)
+    {
+        if(Gate::denies('publicacoes-delete')){
+            abort(403,"Nao autorizado!");
+          }  
+        $publicacao = Publicacao::find($id);
+        $cargo = Cargo::find($cargo_id);
+        $publicacao->removeCargo($cargo);
+        $cargo->delete();
+        return redirect()->back();
+
+    }
+    //-------------------------------------------------------
 }

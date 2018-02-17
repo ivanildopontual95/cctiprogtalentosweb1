@@ -2,9 +2,11 @@
 
 @section('content')
 	<div class="container">
-		<h2 class="center">Lista de Permissões para {{$papel->nome}}</h2>
+		<div class="row">
+		</div>
 
 		@include('dashboard._caminho')
+		<h4 class="center">Lista de Permissões para {{$papel->nome}}</h4>
 
 		<div class="row">
 			<form action="{{route('papeis.permissao.store',$papel->id)}}" method="post">

@@ -2,8 +2,9 @@
 
 @section('content')
 <div class="container">
-	<h2 class="center">Editar Papel</h2>
-	@include('dashboard._caminho')
+		<div class="row">
+		</div>
+		@include('dashboard._caminho')
 	<div class="row">
 		<form action="{{ route('papeis.update',$registro->id) }}" method="post">
 

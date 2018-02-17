@@ -34,6 +34,9 @@ class PapelController extends Controller
       if(Gate::denies('papel-edit')){
           abort(403,"Nao autorizado!");
       }
+      if(Papel::find($id)->nome == "Admin"){
+          return redirect()->route('papeis.index');
+      }
       $papel = Papel::find($id);
       $permissao = Permissao::all();
       $caminhos = [
@@ -80,7 +83,7 @@ class PapelController extends Controller
       $caminhos = [
       ['url'=>'/dashboard','titulo'=>'Painel Principal'],
       ['url'=>route('papeis.index'),'titulo'=>'Papéis'],
-      ['url'=>'','titulo'=>'Adicionar']
+      ['url'=>'','titulo'=>'Adicionar Papel']
       ];
 
       return view('dashboard.papel.adicionar',compact('caminhos'));
@@ -137,7 +140,7 @@ class PapelController extends Controller
       $caminhos = [
       ['url'=>'/dashboard','titulo'=>'Painel Principal'],
       ['url'=>route('papeis.index'),'titulo'=>'Papéis'],
-      ['url'=>'','titulo'=>'Editar']
+      ['url'=>'','titulo'=>'Editar Papel']
       ];
 
       return view('dashboard.papel.editar',compact('registro','caminhos'));

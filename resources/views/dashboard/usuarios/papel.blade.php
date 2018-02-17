@@ -2,9 +2,11 @@
 
 @section('content')
 	<div class="container">
-		<h2 class="center">Lista de Papéis para {{$usuario->name}}</h2>
+			<div class="row">
+			</div>
 
 		@include('dashboard._caminho')
+			<h4 class="center">Lista de Papéis para {{$usuario->name}}</h4>
 
 		<div class="row">
 			<form action="{{route('usuarios.papel.store',$usuario->id)}}" method="post">
