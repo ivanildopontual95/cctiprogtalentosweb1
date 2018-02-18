@@ -250,7 +250,8 @@ class PublicacaoController extends Controller
 
         $this->validate($request, [
             'cargo' => 'required',
-            'escolaridade' => 'required'
+            'escolaridade' => 'required',
+            'pontuacao' => 'required'
       ]);
 
         $publicacao = Publicacao::find($id);

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cargo extends Model
 {
-    protected $fillable = ['id', 'cargo', 'escolaridade'];
+    protected $fillable = ['id', 'cargo', 'escolaridade', 'pontuacao'];
 
     public function publicacoes()
     {

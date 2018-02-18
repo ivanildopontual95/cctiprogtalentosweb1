@@ -17,6 +17,7 @@ class CreateCargosTable extends Migration
             $table->increments('id');
             $table->string('cargo');
             $table->string('escolaridade');
+            $table->integer('pontuacao');
             $table->timestamps();
         });
 

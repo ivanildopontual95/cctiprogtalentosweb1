@@ -18,6 +18,10 @@
 					<input type="text" name="cargo" class="validate" value="{{ isset($cargo->cargo) && !old('cargo') ? $cargo->cargo : '' }}{{old('cargo')}}">
 					<label for="cargo">Cargo</label>
 				</div>
+				<div class="input-field col s2">
+					<input type="number" name="pontuacao" min="0" max="10" class="validate" value="{{ isset($pontuacao->pontuacao) && !old('pontuacao') ? $pontuacao->pontuacao : '' }}{{old('pontuacao')}}">
+					<label for="pontuacao">Pontuação</label>
+				</div>
 				<div class="input-field col s3">
 				<button  class="btn green">Adicionar</button>
 				</div>	
@@ -31,6 +35,7 @@
 
 						<th>Escolaridade</th>
 						<th>Cargo</th>
+						<th>Pontuação</th>
 						<th>Ação</th>
 
 					</tr>
@@ -42,6 +47,7 @@
 
 						<td>{{ $cargo->escolaridade }}</td>
 						<td>{{ $cargo->cargo }}</td>
+						<td>{{ $cargo->pontuacao }}</td>
 
 						<td>
 							<form action="{{route('publicacoes.cargo.destroy',[$publicacao->id,$cargo->id])}}" method="post">
