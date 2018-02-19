@@ -4,6 +4,6 @@
         <p>{{$descricao}}</p>
     </div>
     <div class="card-action">
-        <a href="{{$url}}">Leia Mais</a>
+        <a href="{{$url}}">Ver Mais</a>
     </div>
 </div>
