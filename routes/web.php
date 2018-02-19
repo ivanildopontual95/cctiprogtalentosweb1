@@ -12,7 +12,14 @@
 */
 
 Route::get('/', function () {
-    return view('home');
+    $seletivos = [
+      (object)[
+        'titulo'=>'Seletivo Teste',
+        'descricao'=>'Teste',
+        'url'=>'#link',
+        ]
+      ];
+    return view('home',compact('seletivos'));
 });
 
 Auth::routes();
