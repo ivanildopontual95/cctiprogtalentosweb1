@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Support\Facades\Gate;
+use App\Publicacao;
 
 
 class SiteController extends Controller
@@ -51,5 +52,12 @@ class SiteController extends Controller
       $user->update($dados);
 
       return redirect()->route('perfil.perfil')->with('status', 'Perfil atualizado!');
+    }
+
+    public function home()
+    {
+      $publicacoes = Publicacao::all();
+
+      return view('home',compact('seletivos','publicacoes'));
     }
 }

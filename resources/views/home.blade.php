@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    @component('componentes.lista_cartao',['lista'=>$seletivos,])
+    @component('lista_cartao',['lista'=>$publicacoes,])
     @endcomponent
 </div>
 @endsection

@@ -11,16 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    $seletivos = [
-      (object)[
-        'titulo'=>'Seletivo Teste',
-        'descricao'=>'Teste',
-        'url'=>'#link',
-        ]
-      ];
-    return view('home',compact('seletivos'));
-});
+Route::get('/', ['as'=>'home','uses'=>'Site\SiteController@home']);
 
 Auth::routes();
 
