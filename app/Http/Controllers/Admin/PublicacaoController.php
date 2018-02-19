@@ -67,7 +67,11 @@ class PublicacaoController extends Controller
         }
         $this->validate($request, [
             'titulo' => 'required',
-            'descricao' => 'required'
+            'descricao' => 'required',
+            'dataInicio' => 'required',
+            'horaInicio' => 'required',
+            'dataTermino' => 'required',
+            'horaTermino' => 'required'
         ]);
         Publicacao::create($request->all());
         return redirect()->route('publicacoes.index');
