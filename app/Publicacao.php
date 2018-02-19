@@ -14,6 +14,7 @@ class Publicacao extends Model
     
     protected $dates = ['dataInicio','dataTermino', 'horaInicio', 'horaTermino'];
 
+    //--------Periodo de inscricao------------------------
     function setDataInicioAttribute($date)
     {
         return $this->attributes['dataInicio'] = Carbon::createFromFormat('d/m/Y', $date)->format('d/m/Y');
@@ -54,6 +55,7 @@ class Publicacao extends Model
         return $this->attributes['horaTermino'];
     }
     
+    //--------Cargos-----------------------------------
     public function cargos()
     {
         return $this->belongsToMany(Cargo::class);
@@ -78,7 +80,7 @@ class Publicacao extends Model
     }
 
     
-        
+    //----------Documentos--------------------------------    
     public function documentos()
     {
         return $this->belongsToMany(Documento::class);
@@ -102,6 +104,11 @@ class Publicacao extends Model
         return $this->documentos()->detach($documento);
     }
     
+    //-------Inscricao--------------------------
+    public function inscricoes()
+    {
+        return $this->belongsToMany(Inscricao::class);
+    }
 }
 
     
