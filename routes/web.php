@@ -45,3 +45,5 @@ Route:: group (['middleware' => 'auth', 'prefix' =>'dashboard'], function () {
   Route::put('perfil', ['as'=>'perfil.perfil.update','uses'=>'Site\SiteController@perfilUpdate']);
   
 });
+
+  Route::resource('inscricoes', 'InscricaoController');

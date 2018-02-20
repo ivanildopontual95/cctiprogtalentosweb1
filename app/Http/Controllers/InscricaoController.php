@@ -1,10 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Inscricao;
 
 class InscricaoController extends Controller
 {
@@ -15,15 +13,7 @@ class InscricaoController extends Controller
      */
     public function index()
     {
-        if(Gate::denies('usuario-view')){
-          abort(403,"Nao autorizado!");
-        }
-        $usuarios = User::all();
-        $caminhos = [
-            ['url'=>'/dashboard','titulo'=>'Painel Principal'],
-            ['url'=>'','titulo'=>'Inscricoes'],
-        ];
-        return view('dashboard.inscricao.index',compact('inscricoes','caminhos'));
+        //
     }
 
     /**
@@ -33,7 +23,7 @@ class InscricaoController extends Controller
      */
     public function create()
     {
-        //
+        return view('inscricao');
     }
 
     /**
