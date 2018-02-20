@@ -60,4 +60,10 @@ class SiteController extends Controller
 
       return view('home',compact('seletivos','publicacoes'));
     }
+
+    public function detalhes($id, $titulo = null)
+    {
+      $publicacao = Publicacao::find($id);
+      return view('detalhes',compact('publicacao'));
+    }
 }

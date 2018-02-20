@@ -8,10 +8,9 @@
                 'horaInicio'=>$value->horaInicio,
                 'dataTermino'=>$value->dataTermino,
                 'horaTermino'=>$value->horaTermino,
-                'url'=>$value->url,
-                ])
+                'url'=>route('detalhes',[$value->id,str_slug($value->titulo)])
+            ])
             @endcomponent
         </div>
     @endforeach
-
 </div>

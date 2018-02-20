@@ -12,6 +12,7 @@
 */
 
 Route::get('/', ['as'=>'home','uses'=>'Site\SiteController@home']);
+Route::get('/publicacoes/{id}/{titulo?}', ['as'=>'detalhes','uses'=>'Site\SiteController@detalhes']);
 
 Auth::routes();
 
