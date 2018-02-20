@@ -34,7 +34,25 @@ class InscricaoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $this->validate($request,[
+            'nomeCompleto'=>'required',
+            'dataNascimento'=>'required',
+            'pai'=>'required',
+            'mae'=>'required',
+            'sexo'=>'required',
+            'escolaridade'=>'required',
+            'identidade'=>'required',
+            'cpf'=>'required',
+            'estado'=>'required',
+            'cep'=>'required',
+            'bairro'=>'required',
+            'numero'=>'required',
+            'email'=>'required',
+            'telefone'=>'required',
+
+       ]);
+       dd($request->all());
+
     }
 
     /**
