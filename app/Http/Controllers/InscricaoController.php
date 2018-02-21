@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Inscricao;
 class InscricaoController extends Controller
 {
     /**
@@ -23,7 +23,8 @@ class InscricaoController extends Controller
      */
     public function create()
     {
-        return view('inscricao');
+        
+        return view('inscricao',compact('caminhos'));
     }
 
     /**
@@ -44,14 +45,17 @@ class InscricaoController extends Controller
             'identidade'=>'required',
             'cpf'=>'required',
             'estado'=>'required',
+            'cidade'=>'required',
+            'endereco'=>'required',
             'cep'=>'required',
             'bairro'=>'required',
             'numero'=>'required',
             'email'=>'required',
-            'telefone'=>'required',
-
+            'telefone'=>'required',  
+            
        ]);
-       dd($request->all());
+       Inscricao::create($request->all());
+       return redirect()->route('inscricoes.index');
 
     }
 
