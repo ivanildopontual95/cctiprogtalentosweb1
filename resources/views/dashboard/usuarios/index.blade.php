@@ -24,9 +24,8 @@
 						<td>{{ $usuario->id }}</td>
 						<td>{{ $usuario->name }}</td>
 						<td>{{ $usuario->email }}</td>
+						
 						<td>
-
-							
 							<form action="{{route('usuarios.destroy',$usuario->id)}}" method="post">
 								<a title="Papel" class="btn blue" href="{{route('usuarios.papel',$usuario->id)}}"><i class="material-icons">lock_outline</i></a>				
 								@can('usuario-delete')

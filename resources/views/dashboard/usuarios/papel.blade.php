@@ -7,52 +7,53 @@
 
 		@include('dashboard._caminho')
 			<h4 class="center">Lista de Papéis para {{$usuario->name}}</h4>
-
-		<div class="row">
-			<form action="{{route('usuarios.papel.store',$usuario->id)}}" method="post">
-			{{ csrf_field() }}
-			<div class="input-field">
-				<select name="papel_id">
-					@foreach($papel as $valor)
-					<option value="{{$valor->id}}">{{$valor->nome}}</option>
-					@endforeach
-				</select>
+		<div class="card-panel white">
+			<div class="row">
+				<form action="{{route('usuarios.papel.store',$usuario->id)}}" method="post">
+				{{ csrf_field() }}
+				<div class="input-field col s5">
+					<select name="papel_id">
+						@foreach($papel as $valor)
+						<option value="{{$valor->id}}">{{$valor->nome}}</option>
+						@endforeach
+					</select>
+				</div>
+					<div class="input-field col s2">
+						<button class="btn blue">Adicionar</button>
+					</div>
+				</form>
 			</div>
-				<button class="btn blue">Adicionar</button>
-			</form>
 
+			<div class="row">
+				<table>
+					<thead>
+						<tr>
 
-		</div>
+							<th>Papel</th>
+							<th>Descrição</th>
+							<th>Ação</th>
+						</tr>
+					</thead>
+					<tbody>
+					@foreach($usuario->papeis as $papel)
+						<tr>
+							<td>{{ $papel->nome }}</td>
+							<td>{{ $papel->descricao }}</td>
 
-		<div class="row">
-			<table>
-				<thead>
-					<tr>
+							<td>
 
-						<th>Papel</th>
-						<th>Descrição</th>
-						<th>Ação</th>
-					</tr>
-				</thead>
-				<tbody>
-				@foreach($usuario->papeis as $papel)
-					<tr>
-						<td>{{ $papel->nome }}</td>
-						<td>{{ $papel->descricao }}</td>
+								<form action="{{route('usuarios.papel.destroy',[$usuario->id,$papel->id])}}" method="post">
+										{{ method_field('DELETE') }}
+										{{ csrf_field() }}
+										<button title="Deletar" class="btn red"><i class="material-icons">delete</i></button>
+								</form>
+							</td>
+						</tr>
+					@endforeach
+					</tbody>
+				</table>
 
-						<td>
-
-							<form action="{{route('usuarios.papel.destroy',[$usuario->id,$papel->id])}}" method="post">
-									{{ method_field('DELETE') }}
-									{{ csrf_field() }}
-									<button title="Deletar" class="btn red"><i class="material-icons">delete</i></button>
-							</form>
-						</td>
-					</tr>
-				@endforeach
-				</tbody>
-			</table>
-
+			</div>
 		</div>
 
 	</div>

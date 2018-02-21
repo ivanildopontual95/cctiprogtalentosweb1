@@ -6,20 +6,21 @@
 	</div>
 
 	@include('dashboard._caminho')
-	
-	<div class="row">
-		<form action="{{ route('papeis.store') }}" method="post">
+	<div class="card-panel white">
+		<div class="row">
+			<form action="{{ route('papeis.store') }}" method="post">
 
-		{{csrf_field()}}
-		@include('dashboard.papel._form')
+			{{csrf_field()}}
+			@include('dashboard.papel._form')
 
-		<button class="btn green">Adicionar</button>
+			<button class="btn green">Adicionar</button>
 
-			
-		</form>
-			
+				
+			</form>
+				
+		</div>
 	</div>
-	
+		
 </div>
 	
 
