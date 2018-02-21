@@ -13,9 +13,10 @@
 
 Route::get('/', ['as'=>'home','uses'=>'Site\SiteController@home']);
 Route::get('/publicacoes/{id}/{titulo?}', ['as'=>'detalhes','uses'=>'Site\SiteController@detalhes']);
+Route::get('inscricao', ['as'=>'inscricoes','uses'=>'InscricaoController@create']);
+Route::resource('inscricoes', 'InscricaoController');
 
 Auth::routes();
-
 
 Route:: group (['middleware' => 'auth', 'prefix' =>'dashboard'], function () {
 
@@ -46,5 +47,3 @@ Route:: group (['middleware' => 'auth', 'prefix' =>'dashboard'], function () {
   Route::put('perfil', ['as'=>'perfil.perfil.update','uses'=>'Site\SiteController@perfilUpdate']);
   
 });
-
-  Route::resource('inscricoes', 'InscricaoController');

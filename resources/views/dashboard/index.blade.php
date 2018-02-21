@@ -62,7 +62,6 @@
         </div>
       @endcan  
     </div>
-
     
 </div>
 @endsection

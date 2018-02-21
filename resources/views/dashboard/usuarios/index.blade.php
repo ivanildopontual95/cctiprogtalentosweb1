@@ -41,8 +41,12 @@
 				</tbody>
 			</table>
 
+			</div>
+			<div class="row">
+				<a class="btn blue" href="{{route('adicionar')}}">Adicionar</a>
+			</div>
 		</div>
+		
 	</div>
-</div>
 
 @endsection

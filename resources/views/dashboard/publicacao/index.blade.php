@@ -29,7 +29,7 @@
 							<form action="{{route('publicacoes.destroy',$publicacao->id)}}" method="post">
 								@can('publicacoes-edit')
 								<a title="Editar" class="btn orange" href="{{ route('publicacoes.edit',$publicacao->id) }}"><i class="material-icons">mode_edit</i></a>
-								<a title="Adicionar cargos" class="btn green" href="{{ route('publicacoes.cargo.index',$publicacao->id)}}"><i class="material-icons">add_circle_outline</i></a>
+								<a title="Adicionar Cargos" class="btn green" href="{{ route('publicacoes.cargo.index',$publicacao->id)}}"><i class="material-icons">person_add</i></a>
 								<a title="Documentos" class="btn blue" href="{{ route('publicacoes.documento.index',$publicacao->id)}}"><i class="material-icons">attach_file</i></a>
 								
 								@endcan				

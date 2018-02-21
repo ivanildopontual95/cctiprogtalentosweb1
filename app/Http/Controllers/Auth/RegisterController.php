@@ -68,9 +68,9 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
         ]);
 
-        //if(User:: all()->count ()== 0){
-        //    $user->adicionaPapel('Admin');
-       // }
+        if(User:: all()->count ()== 0){
+            $user->adicionaPapel('Admin');
+        }
         $user->adicionaPapel('Usuário');
         return $user;
     }
