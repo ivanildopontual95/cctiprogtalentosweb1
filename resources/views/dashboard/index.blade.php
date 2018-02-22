@@ -5,7 +5,6 @@
 <div class="container">
     <div class="row">
     </div>
-    
     @include('dashboard._caminho')
 
     <div class="row">
@@ -27,7 +26,7 @@
           <div class="card light-blue darken-4">
             <div class="card-content white-text">
               <span class="card-title">Publicações</span>
-              <p>Lista de Publicações</p>
+              <p>Gerenciar Publicações</p>
             </div>
             <div class="card-action">
               <a href="{{route ('publicacoes.index')}}">Visualizar</a>
@@ -40,7 +39,7 @@
           <div class="card purple darken-2">
             <div class="card-content white-text">
               <span class="card-title">Usuários</span>
-              <p>Usuários do Sistema</p>
+              <p>Gerenciar Usuários do Sistema</p>
             </div>
             <div class="card-action">
               <a href="{{route('usuarios.index')}}">Visualizar</a>
@@ -53,7 +52,7 @@
           <div class="card deep-orange accent-3">
             <div class="card-content white-text">
               <span class="card-title">Papéis</span>
-              <p>Listar Papéis do Sistema</p>
+              <p>Configurações de Acesso</p>
             </div>
             <div class="card-action">
               <a href="{{route('papeis.index')}}">Visualizar</a>

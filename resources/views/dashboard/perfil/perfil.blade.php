@@ -34,34 +34,39 @@
 	
 	@include('dashboard._caminho')
 
-<div class="container">
+
 	<div class="card-panel white">
 		<div class="row">
 			<form action="{{ route('perfil.perfil.update') }}" method="post">
 			{{csrf_field()}}
 			{{ method_field('PUT') }}
-			<div class="input-field">
-			<input type="text" name="name" class="validade" value="{{ isset($user->name) && !old('name') ? $user->name : '' }}{{old('name')}}">
-			<label>Nome</label>
+			<div class="input-field col s12">
+					<i class="material-icons prefix">face</i>
+          <input id="icon_prefix" type="text" name="name" class="validate" value="{{ isset($user->name) && !old('name') ? $user->name : '' }}{{old('name')}}">
+          <label for="icon_prefix">Nome</label>
 		</div>
 
-		<div class="input-field">
-			<input type="email" name="email" class="validade" value="{{ isset($user->email) && !old('email') ? $user->email : '' }}{{old('email')}}">
-			<label>E-mail</label>
+		<div class="input-field col s12">
+				<i class="material-icons prefix">email</i>
+				<input id="icon_prefix" type="email" name="email" class="validate" value="{{ isset($user->email) && !old('email') ? $user->email : '' }}{{old('email')}}">
+				<label for="icon_prefix">E-mail</label>
 		</div>
 
-		<div class="input-field">
-			<input type="password" name="password" class="validade" >
-			<label>Senha</label>
+		<div class="input-field col s12">
+				<i class="material-icons prefix">lock_outline</i>
+				<input id="icon_prefix" type="password" name="password" class="validate">
+				<label for="icon_prefix">Senha</label>
 		</div>
 
-			<div class="input-field">
-				<input type="password" name="password_confirmation" class="validade" >
-				<label>Confirme a senha</label>
+			<div class="input-field col s12">
+					<i class="material-icons prefix">lock_outline</i>
+					<input id="icon_prefix" type="password" name="password_confirmation" class="validate">
+					<label for="icon_prefix">Confirme a Senha</label>
 			</div>
+		</div>
 				<button class="btn blue">Atualizar</button>
-				</form>
-
+			</div>
+			</form>
 			</div>
 		</div>
 	</div>

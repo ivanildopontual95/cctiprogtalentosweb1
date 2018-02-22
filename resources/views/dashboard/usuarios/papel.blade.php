@@ -17,10 +17,8 @@
 						<option value="{{$valor->id}}">{{$valor->nome}}</option>
 						@endforeach
 					</select>
+					<button class="btn blue">Adicionar</button>
 				</div>
-					<div class="input-field col s2">
-						<button class="btn blue">Adicionar</button>
-					</div>
 				</form>
 			</div>
 

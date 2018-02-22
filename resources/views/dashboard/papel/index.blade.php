@@ -4,7 +4,6 @@
 	<div class="container">
 		<div class="row">
 		</div>
-
 		@include('dashboard._caminho')
 		<div class="card-panel white">
 			<div class="row">
@@ -28,7 +27,7 @@
 									<form action="{{route('papeis.destroy',$registro->id)}}" method="post">
 										@can('papel-edit')
 										<a title="Editar" class="btn orange" href="{{ route('papeis.edit',$registro->id) }}"><i class="material-icons">mode_edit</i></a>
-										<a title="Permissões" class="btn blue" href="{{route('papeis.permissao',$registro->id)}}"><i class="material-icons">lock_outline</i></a>
+										<a title="Permissões" class="btn blue" href="{{route('papeis.permissao',$registro->id)}}"><i class="material-icons">lock</i></a>
 										@endcan				
 										@can('papel-delete')
 											{{ method_field('DELETE') }}
@@ -38,17 +37,13 @@
 									</form>
 								</td>
 							</tr>
-						@endforeach
-					</tbody>
-				</table>
-
-			</div>
-			<div class="row">
-				@can('papel-create')
-				<a class="btn blue" href="{{route('papeis.create')}}">Adicionar</a>
-				@endcan
-			</div>
+					@endforeach
+				</tbody>
+			</table>
+		</div>
+		@can('papel-create')
+		<a class="btn blue" href="{{route('papeis.create')}}">Adicionar</a>
+		@endcan
 		</div>
 	</div>
-
 @endsection

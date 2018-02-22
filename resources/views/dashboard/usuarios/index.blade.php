@@ -4,11 +4,9 @@
 	<div class="container">
 		<div class="row">
 		</div>
-
 		@include('dashboard._caminho')
-
 		<div class="card-panel white">
-		<div class="row">
+			<div class="row">
 			<table>
 				<thead>
 					<tr>
@@ -27,7 +25,7 @@
 						
 						<td>
 							<form action="{{route('usuarios.destroy',$usuario->id)}}" method="post">
-								<a title="Papel" class="btn blue" href="{{route('usuarios.papel',$usuario->id)}}"><i class="material-icons">lock_outline</i></a>				
+								<a title="Papel" class="btn blue" href="{{route('usuarios.papel',$usuario->id)}}"><i class="material-icons">visibility</i></a>				
 								@can('usuario-delete')
 									{{ method_field('DELETE') }}
 									{{ csrf_field() }}
@@ -40,13 +38,9 @@
 				@endforeach
 				</tbody>
 			</table>
-
-			</div>
-			<div class="row">
-				<a class="btn blue" href="{{route('adicionar')}}">Adicionar</a>
-			</div>
 		</div>
-		
+		<a class="btn blue" href="#!">Adicionar</a>
 	</div>
+</div>
 
 @endsection
