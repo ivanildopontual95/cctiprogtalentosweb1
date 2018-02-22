@@ -36,21 +36,21 @@ class InscricaoController extends Controller
     public function store(Request $request)
     {
        $this->validate($request,[
-            'nomeCompleto'=>'required',
+            'nomeCompleto'=>'required|string|max:255',
             'dataNascimento'=>'required',
-            'pai'=>'required',
-            'mae'=>'required',
+            'pai'=>'required|string|max:255',
+            'mae'=>'required|string|max:255',
             'sexo'=>'required',
-            'escolaridade'=>'required',
-            'identidade'=>'required',
-            'cpf'=>'required',
-            'estado'=>'required',
-            'cidade'=>'required',
+            'escolaridade'=>'required|string|max:255',
+            'identidade'=>'required|numeric',
+            'cpf'=>'required|cpf|unique:inscricoes',
+            'estado'=>'required|string',
+            'cidade'=>'required|string',
             'endereco'=>'required',
-            'cep'=>'required',
+            'cep'=>'required|numeric',
             'bairro'=>'required',
-            'numero'=>'required',
-            'email'=>'required',
+            'numero'=>'required|numeric',
+            'email'=>'required|string|email|max:255|unique:inscricoes',
             'telefone'=>'required',  
             
        ]);
