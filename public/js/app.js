@@ -20805,7 +20805,7 @@ if (Vel) {
 $(document).ready(function() {
   Materialize.updateTextFields();
   $('select').material_select();
-  $("#telefone").mask('(00) 00009-0000');
+  $("#telefone").mask('(00)00009-0000');
 
   $('.datepicker').pickadate({
     selectMonths: true, // Creates a dropdown to control month
