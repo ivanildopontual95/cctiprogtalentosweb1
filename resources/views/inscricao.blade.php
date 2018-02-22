@@ -181,7 +181,7 @@
                     </div>
 
                     <div class="input-field {{$errors->has('telefone') ? 'has-error' : ''}}">
-                        <input type="text" name = "telefone" class="validate" value = "{{old('telefone')}}">
+                        <input type="text" name ="telefone" id="telefone" pattern="\([0-9]{2}\)[\s][0-9]{4}-[0-9]{4,5}" class='validate' value = "{{old('telefone')}}">
                         <label >Contatos </label>
                         @if($errors->has('telefone'))
                             <span class = "help-block">
