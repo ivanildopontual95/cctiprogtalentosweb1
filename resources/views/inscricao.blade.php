@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col s12">
             <div class="card-panel white">
-                <h4 class="center">Formulário de Inscrição</h4>
+                <h1 class="center">Formulário de Inscrição</h1>
                 @if(count($errors) > 0)
                 <div class="alert alert-danger">
                     <ul>
@@ -181,7 +181,7 @@
                     </div>
 
                     <div class="input-field {{$errors->has('telefone') ? 'has-error' : ''}}">
-                        <input type="text" name ="telefone" id="telefone" pattern="\([0-9]{2}\)[\s][0-9]{4,5}-[0-9]{4}" class='validate' value = "{{old('telefone')}}">
+                        <input type="text" name ="telefone" id="telefone" pattern="\([0-9]{2}\)[\s][0-9]{4}-[0-9]{4,5}" class='validate' value = "{{old('telefone')}}">
                         <label >Contatos </label>
                         @if($errors->has('telefone'))
                             <span class = "help-block">
