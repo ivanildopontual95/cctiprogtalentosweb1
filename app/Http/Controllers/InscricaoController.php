@@ -47,7 +47,7 @@ class InscricaoController extends Controller
             'estado'=>'required|string',
             'cidade'=>'required|string',
             'endereco'=>'required',
-            'cep'=>'required|numeric',
+            'cep'=>'required',
             'bairro'=>'required',
             'numero'=>'required|numeric',
             'email'=>'required|string|email|max:255|unique:inscricoes',
