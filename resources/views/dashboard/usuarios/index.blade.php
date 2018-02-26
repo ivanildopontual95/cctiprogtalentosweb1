@@ -39,7 +39,7 @@
 				</tbody>
 			</table>
 		</div>
-		<a class="btn blue" href="#!">Adicionar</a>
+		<a class="btn blue" href="{{route('usuarios.create')}}">Adicionar</a>
 	</div>
 </div>
 

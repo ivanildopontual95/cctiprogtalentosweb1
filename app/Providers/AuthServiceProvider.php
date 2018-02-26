@@ -4,7 +4,6 @@ namespace App\Providers;
 
 use App\Model;
 use App\Permissao;
-
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
@@ -36,7 +35,6 @@ class AuthServiceProvider extends ServiceProvider
     }
 
     public function listapermissoes(){
-
         return Permissao::with('papeis')->get();
     }
 }

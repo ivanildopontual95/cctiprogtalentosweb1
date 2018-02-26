@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Site;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
 use Illuminate\Support\Facades\Gate;
 use App\Publicacao;
 use App\Cargo;
@@ -91,5 +90,4 @@ class SiteController extends Controller
         return redirect()->back();
         
     }
-    
 }

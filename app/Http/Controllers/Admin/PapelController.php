@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Papel;
@@ -18,7 +17,7 @@ class PapelController extends Controller
     {
 
       if(Gate::denies('papel-view')){
-          abort(403,"Nao autorizado!");
+          abort(403,"Não autorizado!");
       }
 
       $registros = Papel::all();
@@ -32,7 +31,7 @@ class PapelController extends Controller
     public function permissao($id)
     {
       if(Gate::denies('papel-edit')){
-          abort(403,"Nao autorizado!");
+          abort(403,"Não autorizado!");
       }
       if(Papel::find($id)->nome == "Admin"){
           return redirect()->route('papeis.index');
@@ -62,7 +61,7 @@ class PapelController extends Controller
     public function permissaoDestroy($id,$permissao_id)
     {
       if(Gate::denies('papel-edit')){
-          abort(403,"Nao autorizado!");
+          abort(403,"Não autorizado!");
       }
       $papel = Papel::find($id);
       $permissao = Permissao::find($permissao_id);
@@ -78,7 +77,7 @@ class PapelController extends Controller
     public function create()
     {
       if(Gate::denies('papel-create')){
-          abort(403,"Nao autorizado!");
+          abort(403,"Não autorizado!");
       }
       $caminhos = [
       ['url'=>'/dashboard','titulo'=>'Painel Principal'],
@@ -98,7 +97,7 @@ class PapelController extends Controller
     public function store(Request $request)
     {
       if(Gate::denies('papel-create')){
-          abort(403,"Nao autorizado!");
+          abort(403,"Não autorizado!");
       }
       if($request['nome'] && $request['nome'] != "Admin"){
           Papel::create($request->all());
@@ -129,7 +128,7 @@ class PapelController extends Controller
     public function edit($id)
     {
       if(Gate::denies('papel-edit')){
-          abort(403,"Nao autorizado!");
+          abort(403,"Não autorizado!");
       }
       if(Papel::find($id)->nome == "Admin"){
           return redirect()->route('papeis.index');
@@ -156,7 +155,7 @@ class PapelController extends Controller
     public function update(Request $request, $id)
     {
       if(Gate::denies('papel-update')){
-          abort(403,"Nao autorizado!");
+          abort(403,"Não autorizado!");
       }
       if(Papel::find($id)->nome == "Admin"){
           return redirect()->route('papeis.index');
@@ -177,7 +176,7 @@ class PapelController extends Controller
     public function destroy($id)
     {
       if(Gate::denies('papel-delete')){
-          abort(403,"Nao autorizado!");
+          abort(403,"Não autorizado!");
       }
       if(Papel::find($id)->nome == "Admin"){
           return redirect()->route('papeis.index');

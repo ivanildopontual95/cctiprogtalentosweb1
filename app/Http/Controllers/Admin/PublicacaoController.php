@@ -75,7 +75,6 @@ class PublicacaoController extends Controller
         ]);
         Publicacao::create($request->all());
         return redirect()->route('publicacoes.index');
-       
     }
     
 

@@ -17,7 +17,7 @@ class UsuarioController extends Controller
     public function index()
     {
         if(Gate::denies('usuario-view')){
-          abort(403,"Nao autorizado!");
+          abort(403,"Não autorizado!");
         }
         $usuarios = User::all();
         $caminhos = [
@@ -45,7 +45,7 @@ class UsuarioController extends Controller
     public function papelStore(Request $request,$id)
     {
         if(Gate::denies('usuario-edit')){
-          abort(403,"Nao autorizado!");
+          abort(403,"Não autorizado!");
         }
         $usuario = User::find($id);
         $dados = $request->all();
@@ -57,7 +57,7 @@ class UsuarioController extends Controller
     public function papelDestroy($id,$papel_id)
     {
       if(Gate::denies('usuario-edit')){
-          abort(403,"Nao autorizado!");
+          abort(403,"Não autorizado!");
         }  
       $usuario = User::find($id);
       $papel = Papel::find($papel_id);
@@ -70,11 +70,21 @@ class UsuarioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function create()
     {
         if(Gate::denies('usuario-create')){
             abort(403,"Não autorizado!");
         }
+        $user = Auth()->user();
+
+        $caminhos = [
+            ['url'=>'/dashboard','titulo'=>'Painel Principal'],
+            ['url'=>route('usuarios.index'),'titulo'=>'Usuários'],
+            ['url'=>'','titulo'=>'Adicionar Usuário']
+        ];
+
+        return view('dashboard.usuarios.adicionar',compact('user','caminhos'));
     }
 
     /**
@@ -83,11 +93,49 @@ class UsuarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    
+    /**
+     * 
+     * Define validação de campos.
+     * 
+     */
+    protected function validator(array $data)
     {
-       if(Gate::denies('usuario-create')){
-          abort(403,"Nao autorizado!");
+        return Validator::make($data, [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+    }
+
+    /**
+     * 
+     * Permite criar usuário.
+     * 
+     */
+
+    protected function store(Request $request)
+    {
+        if(Gate::denies('usuario-create')){
+          abort(403,"Não autorizado!");
         }
+
+        $data = ($request->all());
+
+        $user = Auth()->user();
+
+        $user = User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => bcrypt($data['password']),
+        ]);
+    
+        if(User:: all()->count ()== 0){
+            $user->adicionaPapel('Admin');
+        }
+
+        $user->adicionaPapel('Usuário');
+        return redirect()->route('usuarios.index');
     }
 
     /**
