@@ -12,8 +12,11 @@
 */
 
 Route::get('/', ['as'=>'home','uses'=>'Site\SiteController@home']);
-Route::get('/publicacoes/{id}/{titulo?}', ['as'=>'detalhes','uses'=>'Site\SiteController@detalhes']);
-Route::get('inscricao', ['as'=>'inscricoes','uses'=>'InscricaoController@create']);
+Route::get('/publicacoes/{publicacao}/{titulo?}', ['as'=>'detalhes','uses'=>'Site\SiteController@detalhes']);
+Route::get('inscricao/{publicacao}', ['as'=> 'inscricoes.inscrever.index','uses'=>'Site\SiteController@indexInscrever']);
+Route::get('inscricoes/cargo/{publicacao}', ['as'=> 'inscricoes.cargo.index','uses'=>'Site\SiteController@indexCargo']);
+Route::post('inscricoes/cargo/{publicacao}', ['as'=>'inscricoes.cargo.store','uses'=>'Site\SiteController@storeCargo']);
+Route::get('inscricoes/confirmacao', ['as'=> 'inscricoes.confirmacao.index','uses'=>'InscricaoController@indexConfirmacao']);
 Route::resource('inscricoes', 'InscricaoController');
 
 Auth::routes();

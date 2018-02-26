@@ -17,7 +17,7 @@
                             <label >Nome Completo</label>
                             @if($errors->has('nomeCompleto'))
                                 <span class = "red-text">
-                                    <Text>{{$errors->first('nomeCompleto')}}</Text>
+                                    <text>{{$errors->first('nomeCompleto')}}</text>
                                 </span>        
                             @endif                       
                         </div>
@@ -27,7 +27,7 @@
                             <label >Data de Nascimento</label>
                             @if($errors->has('dataNascimento'))
                                 <span class = "red-text">
-                                    <Text>{{$errors->first('dataNascimento')}}</Text>
+                                    <text>{{$errors->first('dataNascimento')}}</text>
                                 </span>        
                             @endif                        
                         </div>
@@ -39,7 +39,7 @@
                             <label>Nome da Mãe </label>
                             @if($errors->has('mae'))
                                 <span class = "red-text">
-                                    <Text>{{$errors->first('mae')}}</Text>
+                                    <text>{{$errors->first('mae')}}</text>
                                 </span>        
                             @endif
                         </div>
@@ -49,7 +49,7 @@
                             <label >Nome do Pai</label>
                             @if($errors->has('pai'))
                                 <span class = "red-text">
-                                    <Text>{{$errors->first('pai')}}</Text>
+                                    <text>{{$errors->first('pai')}}</text>
                                 </span>        
                             @endif
                         </div>
@@ -61,7 +61,7 @@
                             <label >Escolaridade </label>
                             @if($errors->has('escolaridade'))
                                 <span class = "red-text">
-                                    <Text>{{$errors->first('escolaridade')}}</Text>
+                                    <text>{{$errors->first('escolaridade')}}</text>
                                 </span>        
                             @endif
                         </div>
@@ -78,7 +78,7 @@
                             <label>Sexo</label>
                             @if($errors->has('sexo'))
                                 <span class = "red-text">
-                                    <Text>{{$errors->first('sexo')}}</Text>
+                                    <text>{{$errors->first('sexo')}}</text>
                                 </span>        
                             @endif
                         </div>
@@ -88,7 +88,7 @@
                             <label >CPF </label>
                             @if($errors->has('cpf'))
                                 <span class = "red-text">
-                                    <Text>{{$errors->first('cpf')}}</Text>
+                                    <text>{{$errors->first('cpf')}}</text>
                                 </span>        
                             @endif
                         </div>
@@ -98,7 +98,7 @@
                             <label >RG </label>
                             @if($errors->has('identidade'))
                                 <span class = "red-text">
-                                    <Text>{{$errors->first('identidade')}}</Text>
+                                    <text>{{$errors->first('identidade')}}</text>
                                 </span>        
                             @endif
                         </div>
@@ -110,7 +110,7 @@
                             <label >CEP</label>
                             @if($errors->has('cep'))
                                 <span class = "red-text">
-                                    <Text>{{$errors->first('cep')}}</Text>
+                                    <text>{{$errors->first('cep')}}</text>
                                 </span>        
                             @endif
                         </div>
@@ -130,7 +130,7 @@
                             <label >UF</label>
                             @if($errors->has('estado'))
                                 <span class = "red-text">
-                                    <Text>{{$errors->first('estado')}}</Text>
+                                    <text>{{$errors->first('estado')}}</text>
                                 </span>        
                             @endif
                         </div>
@@ -142,7 +142,7 @@
                             <label >Endereço</label>
                             @if($errors->has('endereco'))
                                 <span class = "red-text">
-                                    <Text>{{$errors->first('endereco')}}</Text>
+                                    <text>{{$errors->first('endereco')}}</text>
                                 </span>        
                             @endif
                         </div>
@@ -152,7 +152,7 @@
                             <label >Bairro </label>
                             @if($errors->has('bairro'))
                                 <span class = "red-text">
-                                    <Text>{{$errors->first('bairro')}}</Text>
+                                    <text>{{$errors->first('bairro')}}</text>
                                 </span>        
                             @endif
                         </div>
@@ -162,7 +162,7 @@
                             <label >Nº</label>
                             @if($errors->has('numero'))
                                 <span class = "red-text">
-                                    <Text>{{$errors->first('numero')}}</Text>
+                                    <text>{{$errors->first('numero')}}</text>
                                 </span>        
                             @endif
                         </div>                    
@@ -174,7 +174,7 @@
                             <label >Email </label>
                             @if($errors->has('email'))
                                 <span class = "red-text">
-                                    <Text>{{$errors->first('email')}}</Text>
+                                    <text>{{$errors->first('email')}}</text>
                                 </span>        
                             @endif
                         </div>
@@ -184,7 +184,7 @@
                             <label >Contato</label>
                             @if($errors->has('telefone'))
                                 <span class = "red-text">
-                                    <Text>{{$errors->first('telefone')}}</Text>
+                                    <text>{{$errors->first('telefone')}}</text>
                                 </span>        
                             @endif
                         </div>
@@ -194,7 +194,7 @@
                     </div>
 
                      <div class="row">
-                        <button class="btn btn-info right">Salvar</button>
+                        <button class="btn green btn-info right">Salvar</button>
                     </div>
                    
                 </form>

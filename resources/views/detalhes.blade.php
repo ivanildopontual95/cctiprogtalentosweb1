@@ -12,7 +12,7 @@
                         <p><strong>Período de Inscrições:</strong> de {{$publicacao->dataInicio}} - {{$publicacao->horaInicio}}h até {{$publicacao->dataTermino}} - {{$publicacao->horaTermino}}h (Horário de Boa Vista).</p>
                     </div>
                     <div class="card-action">
-                        <a href="{{route('inscricoes')}}">Inscreva-se!</a>
+                        <a href="{{route('inscricoes.inscrever.index', $publicacao)}}">Inscreva-se!</a>
                     </div>
                 </div>
             </div>

@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Inscricao;
+use App\Publicacao;
+use App\Cargo;
+
 class InscricaoController extends Controller
 {
     /**
@@ -13,7 +16,8 @@ class InscricaoController extends Controller
      */
     public function index()
     {
-        //
+        $inscricoes = Inscricao::orderBy("id","DESC")->paginate(10);
+        return view('inscricao.login', compact('inscricoes'));       
     }
 
     /**
@@ -23,8 +27,7 @@ class InscricaoController extends Controller
      */
     public function create()
     {
-        
-        return view('inscricao',compact('caminhos'));
+        return view('inscricao.cadastro');
     }
 
     /**
@@ -41,21 +44,21 @@ class InscricaoController extends Controller
             'pai'=>'required|string|max:255',
             'mae'=>'required|string|max:255',
             'sexo'=>'required',
-            'escolaridade'=>'required|string|max:255',
+            'escolaridade'=>'required|string|max:60',
             'identidade'=>'required|numeric',
             'cpf'=>'required|cpf|unique:inscricoes',
-            'estado'=>'required|string',
-            'cidade'=>'required|string',
-            'endereco'=>'required',
             'cep'=>'required',
-            'bairro'=>'required',
+            'estado'=>'required|string|max:2',
+            'cidade'=>'required|string|max:40',
+            'endereco'=>'required|string|max:60',
+            'bairro'=>'required|string|max:40',
             'numero'=>'required|numeric',
-            'email'=>'required|string|email|max:255|unique:inscricoes',
+            'email'=>'required|string|email|max:255',
             'telefone'=>'required',  
             
        ]);
        Inscricao::create($request->all());
-       return redirect()->route('inscricoes.index');
+       return redirect()->route('inscricoes.confirmacao.index');
 
     }
 
@@ -78,7 +81,8 @@ class InscricaoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $inscricao = Inscricao::find($id);
+        return view('inscricao.editar',compact('inscricao'));
     }
 
     /**
@@ -90,7 +94,26 @@ class InscricaoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'nomeCompleto'=>'required|string|max:255',
+            'dataNascimento'=>'required',
+            'pai'=>'required|string|max:255',
+            'mae'=>'required|string|max:255',
+            'sexo'=>'required',
+            'escolaridade'=>'required|string|max:60',
+            'identidade'=>'required|numeric',
+            'cep'=>'required',
+            'estado'=>'required|string|max:2',
+            'cidade'=>'required|string|max:40',
+            'endereco'=>'required|string|max:60',
+            'bairro'=>'required|string|max:40',
+            'numero'=>'required|numeric',
+            'email'=>'required|string|email|max:255',
+            'telefone'=>'required', 
+          ]);
+
+        Inscricao::find($id)->update($request->all());
+        return redirect()->route('inscricoes.index');
     }
 
     /**
@@ -103,4 +126,12 @@ class InscricaoController extends Controller
     {
         //
     }
+
+    //--------------Confirmação Inscrição ------------------------
+    public function indexConfirmacao()
+    {
+        return view('inscricao.confirmacao');      
+    }
+
+   
 }

@@ -33,6 +33,17 @@ class CreateTableInscricoes extends Migration
             $table->string('telefone');
             $table->timestamps();
         });
+
+        Schema::create('inscricao_publicacao', function (Blueprint $table) {
+            $table->integer('inscricao_id')->unsigned();
+            $table->integer('publicacao_id')->unsigned();
+
+            $table->foreign('inscricao_id')->references('id')->on('inscricoes')->onDelete('cascade');
+            $table->foreign('publicacao_id')->references('id')->on('publicacoes')->onDelete('cascade');
+
+
+            $table->primary(['inscricao_id','publicacao_id']);
+        });
     }
 
     /**
@@ -42,6 +53,7 @@ class CreateTableInscricoes extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('inscricao_publicacao');
         Schema::dropIfExists('inscricoes');
     }
 }

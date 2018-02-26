@@ -12,4 +12,9 @@ class Cargo extends Model
     {
         return $this->belongsToMany(Publicacao::class);
     }
+
+    public function inscricoes()
+    {
+        return $this->hasMany(Inscricao::class);
+    }
 }

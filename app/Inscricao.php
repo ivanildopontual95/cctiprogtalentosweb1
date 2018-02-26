@@ -16,4 +16,9 @@ class Inscricao extends Model
     {
         return $this->belongsToMany(Publicacao::class);
     }
+
+    public function cargos()
+    {
+        return $this->belongsTo(Cargo::class);
+    }
 }
