@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Inscricao;
 use App\Publicacao;
 use App\Cargo;
+use App\Http\Requests\InscricaoRequest;
 
 class InscricaoController extends Controller
 {
@@ -36,27 +37,8 @@ class InscricaoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(InscricaoRequest $request)
     {
-       $this->validate($request,[
-            'nomeCompleto'=>'required|string|max:255',
-            'dataNascimento'=>'required',
-            'pai'=>'required|string|max:255',
-            'mae'=>'required|string|max:255',
-            'sexo'=>'required',
-            'escolaridade'=>'required|string|max:60',
-            'identidade'=>'required|numeric',
-            'cpf'=>'required|cpf|unique:inscricoes',
-            'cep'=>'required',
-            'estado'=>'required|string|max:2',
-            'cidade'=>'required|string|max:40',
-            'endereco'=>'required|string|max:60',
-            'bairro'=>'required|string|max:40',
-            'numero'=>'required|numeric',
-            'email'=>'required|string|email|max:255',
-            'telefone'=>'required',  
-            
-       ]);
        Inscricao::create($request->all());
        return redirect()->route('inscricoes.confirmacao.index');
 
@@ -92,26 +74,8 @@ class InscricaoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(InscricaoRequest $request, $id)
     {
-        $this->validate($request,[
-            'nomeCompleto'=>'required|string|max:255',
-            'dataNascimento'=>'required',
-            'pai'=>'required|string|max:255',
-            'mae'=>'required|string|max:255',
-            'sexo'=>'required',
-            'escolaridade'=>'required|string|max:60',
-            'identidade'=>'required|numeric',
-            'cep'=>'required',
-            'estado'=>'required|string|max:2',
-            'cidade'=>'required|string|max:40',
-            'endereco'=>'required|string|max:60',
-            'bairro'=>'required|string|max:40',
-            'numero'=>'required|numeric',
-            'email'=>'required|string|email|max:255',
-            'telefone'=>'required', 
-          ]);
-
         Inscricao::find($id)->update($request->all());
         return redirect()->route('inscricoes.index');
     }
