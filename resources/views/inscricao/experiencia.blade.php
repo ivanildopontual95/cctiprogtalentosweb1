@@ -59,6 +59,49 @@
                             @endif                       
                         </div>
 
+                        <div class="row">
+                        </div>
+                      
+                        <div class="input-field col s4 {{$errors->has('') ? 'has-error' : ''}}">
+                            <input type="text" name = "" class="validate"  value = "{{old('')}}">
+                            <label >Empresa 2</label>
+                            @if($errors->has(''))
+                                <span class = "red-text">
+                                    <text>{{$errors->first('')}}</text>
+                                </span>        
+                            @endif                       
+                        </div>
+
+                        <div class="input-field col s4 {{$errors->has('') ? 'has-error' : ''}}">
+                            <input type="text" name = "" class="validate"  value = "{{old('')}}">
+                            <label >Função</label>
+                            @if($errors->has(''))
+                                <span class = "red-text">
+                                    <text>{{$errors->first('')}}</text>
+                                </span>        
+                            @endif                       
+                        </div>
+                        
+                        <div class="input-field col s4 {{$errors->has('') ? 'has-error' : ''}}">
+                            <input type="text" name = "" class="validate"  value = "{{old('')}}">
+                            <label >Período</label>
+                            @if($errors->has(''))
+                                <span class = "red-text">
+                                    <text>{{$errors->first('')}}</text>
+                                </span>        
+                            @endif                       
+                        </div>
+
+                        <div class="input-field col s12 {{$errors->has('') ? 'has-error' : ''}}">
+                            <input type="text" name = "" class="validate"  value = "{{old('')}}">
+                            <label >Atividades Desempenhadas</label>
+                            @if($errors->has(''))
+                                <span class = "red-text">
+                                    <text>{{$errors->first('')}}</text>
+                                </span>        
+                            @endif                       
+                        </div>
+
 
                         
                     </div> 
