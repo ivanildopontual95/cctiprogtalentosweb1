@@ -17,6 +17,7 @@ Route::get('inscricao/{publicacao}', ['as'=> 'inscricoes.inscrever.index','uses'
 Route::get('inscricoes/cargo/{publicacao}', ['as'=> 'inscricoes.cargo.index','uses'=>'Site\SiteController@indexCargo']);
 Route::post('inscricoes/cargo/{publicacao}', ['as'=>'inscricoes.cargo.store','uses'=>'Site\SiteController@storeCargo']);
 Route::get('inscricoes/confirmacao', ['as'=> 'inscricoes.confirmacao.index','uses'=>'InscricaoController@indexConfirmacao']);
+Route::get('inscricoes/experiencia', ['as'=> 'inscricoes.experiencia.index','uses'=>'InscricaoController@indexexperiencia']);
 Route::resource('inscricoes', 'InscricaoController');
 
 Auth::routes();

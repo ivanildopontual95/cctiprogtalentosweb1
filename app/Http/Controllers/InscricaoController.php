@@ -97,5 +97,9 @@ class InscricaoController extends Controller
         return view('inscricao.confirmacao');      
     }
 
+    public function indexexperiencia(){
+
+        return view('inscricao.experiencia');
+    }
    
 }

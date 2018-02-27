@@ -195,7 +195,7 @@
                     </div>
 
                      <div class="row">
-                        <button class="btn btn-info right">Salvar</button>
+                        <button class="btn btn-info right">Atualizar</button>
                     </div>
                    
                 </form>

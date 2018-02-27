@@ -13,7 +13,8 @@
                             <h4>Inscrição do Seletivo</h4>
                         </div>
                             <a class="btn green" href="{{route('inscricoes.index')}}">Login</a>
-                            <a class="btn green" href="{{route('inscricoes.cargo.index', $publicacao)}}">Cargo</a>                      
+                            <a class="btn green" href="{{route('inscricoes.cargo.index', $publicacao)}}">Cargo</a>     
+                            <a class="btn red" href="{{route('inscricoes.experiencia.index')}}">Experiencia</a>                   
                     <center> 
                     </div>
                 </div>
