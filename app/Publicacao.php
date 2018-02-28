@@ -109,6 +109,18 @@ class Publicacao extends Model
     {
         return $this->belongsToMany(Inscricao::class);
     }
-}
 
-    
+    //----------Relatorios--------------------------------
+
+    public function relatorios()
+    {
+        return $this->belongsToMany(Relatorio::class);
+    }
+
+    public function adicionaRelatorio($relatorio)
+    {
+        if (is_string($relatorio)) {
+            $relatorio = Relatorio::where('titulo','=',$relatorio)->firstOrFail();
+        }
+    }
+}

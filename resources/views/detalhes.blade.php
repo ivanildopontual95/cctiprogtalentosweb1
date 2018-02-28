@@ -3,6 +3,8 @@
 
 <div class="container">
     <div class="row">
+    </div>
+    <div class="row">
         <div class="col s6">
             <div class="card">
                 <div class="card-stacked">

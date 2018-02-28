@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Publicacao;
 use App\Documento;
 use App\Cargo;
+use App\Relatorio;
 use Validator;
 use Carbon\Carbon;
 
@@ -142,8 +143,10 @@ class PublicacaoController extends Controller
         return redirect()->route('publicacoes.index');
     }
 
+    //-------------------------------------------------------
 
-    //--------------------Documento-------------------------------------------
+    //--------------------Documentos--------------------------
+
     public function indexDocumento($id){
         
         if(Gate::denies('publicacoes-edit')){
@@ -209,7 +212,6 @@ class PublicacaoController extends Controller
         return redirect()->back(); 
     }
 
-    
     public function destroyDocumento($id, $documento_id)
     {
         if(Gate::denies('publicacoes-delete')){
@@ -222,10 +224,11 @@ class PublicacaoController extends Controller
         return redirect()->back();
 
     }
-    //----------------------------------------------------------
 
+    //-------------------------------------------------------
 
-    //---------------Cargo--------------------------------------
+    //---------------Cargos-----------------------------------
+
     public function indexCargo($id){
         
         if(Gate::denies('publicacoes-edit')){
@@ -243,9 +246,7 @@ class PublicacaoController extends Controller
         return view('dashboard.publicacao.cargo',compact( 'publicacao','cargo','caminhos'));      
     }
     
-
-
-   public function storeCargo(Request $request, $id){
+    public function storeCargo(Request $request, $id){
        
         if(Gate::denies('publicacoes-edit')){
         abort(403,"Não autorizado!");
@@ -263,7 +264,6 @@ class PublicacaoController extends Controller
         return redirect()->back(); 
     }
 
-    
     public function destroyCargo($id, $cargo_id)
     {
         if(Gate::denies('publicacoes-delete')){
@@ -276,5 +276,28 @@ class PublicacaoController extends Controller
         return redirect()->back();
 
     }
+
     //-------------------------------------------------------
+
+    //--------------------Relatórios--------------------------
+    
+    public function indexRelatorio($id){
+        
+        if(Gate::denies('publicacoes-edit')){
+        abort(403,"Não autorizado!");
+        }
+
+        $publicacao = Publicacao::find($id);
+        $relatorio = Relatorio::all();
+        $caminhos = [
+        ['url'=>'/dashboard','titulo'=>'Painel Principal'],
+        ['url'=>route('publicacoes.index'),'titulo'=>'Publicações'],
+        ['url'=>'','titulo'=>'Relatórios']
+        ];
+
+        return view('dashboard.publicacao.relatorio',compact( 'publicacao','relatorio','caminhos'));      
+    }
+    
+    //-------------------------------------------------------
+
 }
