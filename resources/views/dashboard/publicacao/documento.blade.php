@@ -6,7 +6,11 @@
 			</div>
 
 			@include('dashboard._caminho')
-		
+			
+			<div class="row">
+				<h5 class="left">Anexos de {{$publicacao->titulo}}</h5>
+				</div>
+				<div class="row">
 			<div class="card-panel white">
 				<div class="row">
 					<form action="{{ route('publicacoes.documento.store',$publicacao->id) }}" method="post" enctype="multipart/form-data" >
@@ -62,7 +66,6 @@
 		
 				</div>
 			</div>
-	
+		</div>
 	</div>
-
 @endsection

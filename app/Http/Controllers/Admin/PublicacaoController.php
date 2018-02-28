@@ -295,7 +295,7 @@ class PublicacaoController extends Controller
         ['url'=>'','titulo'=>'Relatórios']
         ];
 
-        return view('dashboard.publicacao.relatorio',compact( 'publicacao','relatorio','caminhos'));      
+        return view('dashboard.publicacao.relatorios.index',compact( 'publicacao','relatorio','caminhos'));      
     }
     
     //-------------------------------------------------------

@@ -2,25 +2,28 @@
 
 @section('content')
 	<div class="container">
-			<div class="row">
-			</div>
+		<div class="row">
+		</div>
 
 		@include('dashboard._caminho')
-			<h4 class="center">Lista de Papéis para {{$usuario->name}}</h4>
-		<div class="card-panel white">
-			<div class="row">
-				<form action="{{route('usuarios.papel.store',$usuario->id)}}" method="post">
-				{{ csrf_field() }}
-				<div class="input-field col s5">
-					<select name="papel_id">
-						@foreach($papel as $valor)
-						<option value="{{$valor->id}}">{{$valor->nome}}</option>
-						@endforeach
-					</select>
-					<button class="btn blue">Adicionar</button>
+		<div class="row">
+		<h5 class="left">Lista de Papéis para {{$usuario->name}}</h5>
+		</div>
+		<div class="row">
+			<div class="card-panel white">
+				<div class="row">
+					<form action="{{route('usuarios.papel.store',$usuario->id)}}" method="post">
+					{{ csrf_field() }}
+					<div class="input-field col s5">
+						<select name="papel_id">
+							@foreach($papel as $valor)
+							<option value="{{$valor->id}}">{{$valor->nome}}</option>
+							@endforeach
+						</select>
+						<button class="btn blue">Adicionar</button>
+					</div>
+					</form>
 				</div>
-				</form>
-			</div>
 
 			<div class="row">
 				<table>
@@ -53,7 +56,6 @@
 
 			</div>
 		</div>
-
 	</div>
-
+</div>
 @endsection
