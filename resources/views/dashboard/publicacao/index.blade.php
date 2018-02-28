@@ -31,7 +31,7 @@
 								<a title="Editar" class="btn orange" href="{{ route('publicacoes.edit',$publicacao->id) }}"><i class="material-icons">mode_edit</i></a>
 								<a title="Adicionar Cargos" class="btn green" href="{{ route('publicacoes.cargo.index',$publicacao->id)}}"><i class="material-icons">person_add</i></a>
 								<a title="Arquivos" class="btn blue" href="{{ route('publicacoes.documento.index',$publicacao->id)}}"><i class="material-icons">attach_file</i></a>
-								<a title="Relatórios" class="btn" href="{{ route('publicacoes.documento.index',$publicacao->id)}}"><i class="material-icons">assignment</i></a>
+								<a title="Relatórios" class="btn" href="{{ route('publicacoes.relatorio.index',$publicacao->id)}}"><i class="material-icons">assignment</i></a>
 								
 								@endcan				
 								@can('publicacoes-delete')
