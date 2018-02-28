@@ -8,6 +8,9 @@
             <div class="card-panel white">
                 <h4 class="center">Formulário de Edição</h4>
                 
+                <div class="row">
+                </div>
+
                 <form class="form-horizontal" action="{{route('inscricoes.update', $inscricao->id)}}" method="post">
                     {{csrf_field()}}
                     {{ method_field('PUT') }}
