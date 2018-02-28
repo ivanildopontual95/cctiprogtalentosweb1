@@ -1,14 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\experiencia;
 use Illuminate\Http\Request;
-use App\Inscricao;
-use App\Publicacao;
-use App\Cargo;
-use App\Http\Requests\InscricaoRequest;
-
-class InscricaoController extends Controller
+use App\Http\Requests\ExperienciaRequest;
+class ExperienciaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +13,7 @@ class InscricaoController extends Controller
      */
     public function index()
     {
-        $inscricoes = Inscricao::orderBy("id","DESC")->paginate(10);
-        return view('inscricao.login', compact('inscricoes'));       
+        //
     }
 
     /**
@@ -28,7 +23,7 @@ class InscricaoController extends Controller
      */
     public function create()
     {
-        return view('inscricao.cadastro');
+        return view('inscricao.experiencia');
     }
 
     /**
@@ -37,11 +32,10 @@ class InscricaoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(InscricaoRequest $request)
+    public function store(ExperienciaRequest $request)
     {
-       Inscricao::create($request->all());
-       //return redirect()->route('inscricoes.confirmacao.index');
-        return redirect()->route('experiencias.create');
+       Experiencia::create($request->all());
+       return redirect()->route('inscricoes.experiencia.index');
     }
 
     /**
@@ -63,8 +57,7 @@ class InscricaoController extends Controller
      */
     public function edit($id)
     {
-        $inscricao = Inscricao::find($id);
-        return view('inscricao.editar',compact('inscricao'));
+        //
     }
 
     /**
@@ -74,10 +67,9 @@ class InscricaoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(InscricaoRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        Inscricao::find($id)->update($request->all());
-        return redirect()->route('inscricoes.index');
+        //
     }
 
     /**
@@ -91,12 +83,9 @@ class InscricaoController extends Controller
         //
     }
 
-    //--------------Confirmação Inscrição ------------------------
-    public function indexConfirmacao()
-    {
-        return view('inscricao.confirmacao');      
-    }
+     //--------------Confirmação Experiencia ------------------------
+    public function indexExperiencia(){
 
-   
-   
+        return view('inscricao.confirmacao');
+    }
 }

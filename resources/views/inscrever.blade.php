@@ -14,7 +14,7 @@
                         </div>
                             <a class="btn green" href="{{route('inscricoes.index')}}">Login</a>
                             <a class="btn green" href="{{route('inscricoes.cargo.index', $publicacao)}}">Cargo</a>     
-                            <a class="btn red" href="{{route('inscricoes.experiencia.index')}}">Experiencia</a>                   
+                            <a class="btn red" href="{{route('experiencias.create')}}">Experiencia</a>                   
                     <center> 
                     </div>
                 </div>
