@@ -21,4 +21,9 @@ class Inscricao extends Model
     {
         return $this->belongsTo(Cargo::class);
     }
+
+    public function experiencias()
+    {
+        return $this->belongsToMany(Experiencia::class);
+    }
 }
