@@ -8,6 +8,7 @@ use App\Publicacao;
 use App\Documento;
 use App\Cargo;
 use App\Relatorio;
+use App\Inscricao;
 use Validator;
 use Carbon\Carbon;
 
@@ -298,6 +299,23 @@ class PublicacaoController extends Controller
         return view('dashboard.publicacao.relatorios.index',compact( 'publicacao','relatorio','caminhos'));      
     }
     
+    public function listadeinscritosRelatorio($id){
+        
+        if(Gate::denies('publicacoes-edit')){
+        abort(403,"Não autorizado!");
+        }
+
+        $publicacao = Publicacao::find($id);
+        $relatorio = Relatorio::all();
+        $inscricoes = Inscricao::all();
+        $caminhos = [
+        ['url'=>'/dashboard','titulo'=>'Painel Principal'],
+        ['url'=>route('publicacoes.index'),'titulo'=>'Publicações'],
+        ['url'=>'','titulo'=>'Lista de Inscritos']
+        ];
+
+        return view('dashboard.publicacao.relatorios.listadeinscritos',compact( 'publicacao','relatorio','inscricoes','caminhos'));      
+    }
     //-------------------------------------------------------
 
 }

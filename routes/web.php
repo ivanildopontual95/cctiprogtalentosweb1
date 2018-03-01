@@ -54,12 +54,16 @@ Route:: group (['middleware' => 'auth', 'prefix' =>'dashboard'], function () {
   Route::post('publicacoes/cargo/{cargo}', ['as'=> 'publicacoes.cargo.store','uses'=>'Admin\PublicacaoController@storeCargo']);
   Route::delete('publicacoes/cargo/{publicacoes}/{cargo}', ['as'=> 'publicacoes.cargo.destroy','uses'=>'Admin\PublicacaoController@destroyCargo']);
 
-  //--------------------Relatórios--------------------------
+  //--------------------Relatórios----------------------
 
   Route::get('publicacoes/{id}/relatorios/', ['as'=> 'publicacoes.relatorio.index','uses'=>'Admin\PublicacaoController@indexRelatorio']);
   Route::post('publicacoes/relatorios/{relatorio}', ['as'=> 'publicacoes.relatorio.store','uses'=>'Admin\PublicacaoController@storeRelatorio']);
   Route::delete('publicacoes/relatorios/{publicacoes}/{relatorio}', ['as'=> 'publicacoes.relatorio.destroy','uses'=>'Admin\PublicacaoController@destroyRelatorio']);
 
+  //--------------------ListadeInscritos----------------
+
+  Route::get('publicacoes/{id}/relatorios/listadeinscritos', ['as'=> 'publicacoes.relatorio.listadeinscritos','uses'=>'Admin\PublicacaoController@listadeinscritosRelatorio']);
+  
   //--------------------Perfis--------------------------
 
   Route::get('perfil', ['as'=>'perfil.perfil','uses'=>'Site\SiteController@perfil']);
