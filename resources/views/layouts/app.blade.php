@@ -13,7 +13,7 @@
         <!-- Styles -->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="/css/app.css" rel="stylesheet">
-        <link rel="shortcut icon" href="{{ asset('images/cctirsz.png') }}" >
+        <link rel="shortcut icon" href="{{ asset('images/cctibulb.png') }}" >
 
         <!-- Scripts -->
         <script>
