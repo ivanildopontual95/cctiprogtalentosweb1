@@ -20,6 +20,7 @@ Route::get('inscricoes/confirmacao', ['as'=> 'inscricoes.confirmacao.index','use
 Route::get('inscricoes/experiencia', ['as'=> 'inscricoes.experiencia.index','uses'=>'ExperienciaController@indexExperiencia']);
 Route::resource('inscricoes', 'InscricaoController');
 Route::resource('experiencias', 'ExperienciaController');
+Route::get('pdf','PDFController@GerarPDF');
 
 Auth::routes();
 
@@ -68,5 +69,6 @@ Route:: group (['middleware' => 'auth', 'prefix' =>'dashboard'], function () {
 
   Route::get('perfil', ['as'=>'perfil.perfil','uses'=>'Site\SiteController@perfil']);
   Route::put('perfil', ['as'=>'perfil.perfil.update','uses'=>'Site\SiteController@perfilUpdate']);
+  
   
 });
