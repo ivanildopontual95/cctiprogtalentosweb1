@@ -4,6 +4,7 @@
 <div class="container">
 	<div class="row">
 	</div>
+
 	@if (count($errors) > 0)
 		<div class="row">
         <div class="col s12">
@@ -34,6 +35,11 @@
 	
 	@include('dashboard._caminho')
 
+	
+	<div class="row">
+		<h5 class="left">Editar Perfil</h5>
+	</div>
+	<div class="row">
 	<div class="card-panel white">
 		<div class="row">
 			<form action="{{ route('perfil.perfil.update') }}" method="post">

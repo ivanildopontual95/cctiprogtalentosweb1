@@ -20,7 +20,7 @@ class SiteController extends Controller
 
       $caminhos = [
       ['url'=>'/dashboard','titulo'=>'Painel Principal'],
-      ['url'=>'','titulo'=>'Editar Perfil']
+      ['url'=>'','titulo'=>'Perfil']
       ];
 
       return view('dashboard.perfil.perfil',compact('user','caminhos'));

@@ -7,7 +7,7 @@
 
 		@include('dashboard._caminho')
 		<div class="row">
-		<h5 class="left">Lista de Papéis - {{$usuario->name}}</h5>
+		<h5 class="left">Papel de {{$usuario->name}}</h5>
 		</div>
 		<div class="row">
 			<div class="card-panel white">

@@ -5,6 +5,10 @@
 		<div class="row">
 		</div>
 		@include('dashboard._caminho')
+		<div class="row">
+		<h5 class="left">Gerenciar Papéis</h5>
+		</div>
+		<div class="row">
 		<div class="card-panel white">
 			<div class="row">
 				<table>
