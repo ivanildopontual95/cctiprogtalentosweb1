@@ -12,8 +12,8 @@
                         <div class="row">
                             <h4>Inscrição do Seletivo</h4>
                         </div>
-                            <a class="btn green" href="{{route('inscricoes.index')}}">Login</a>
-                            <a class="btn green" href="{{route('inscricoes.cargo.index', $publicacao)}}">Cargo</a>     
+                            <a class="btn green" href="{{route('inscricoes.create')}}">Criar cadastro</a>
+                            <a class="btn green" href="{{route('inscricoes.cargo.index')}}">Cargo</a>     
                             <a class="btn red" href="{{route('experiencias.create')}}">Experiencia</a>                   
                     <center> 
                     </div>

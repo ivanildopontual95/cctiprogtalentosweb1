@@ -44,6 +44,17 @@ class CreateTableInscricoes extends Migration
 
             $table->primary(['inscricao_id','publicacao_id']);
         });
+
+        Schema::create('inscricao_user', function (Blueprint $table) {
+            $table->integer('inscricao_id')->unsigned();
+            $table->integer('user_id')->unsigned();
+
+            $table->foreign('inscricao_id')->references('id')->on('inscricoes')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
+
+            $table->primary(['inscricao_id','user_id']);
+        });
     }
 
     /**
@@ -53,6 +64,7 @@ class CreateTableInscricoes extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('inscricao_user');
         Schema::dropIfExists('inscricao_publicacao');
         Schema::dropIfExists('inscricoes');
     }

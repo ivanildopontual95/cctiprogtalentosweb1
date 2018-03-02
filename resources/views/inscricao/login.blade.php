@@ -14,12 +14,21 @@
                         </div>
                         <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                             {{ csrf_field() }}
-                            <div class="input-field {{$errors->has('cpf') ? 'has-error' : ''}}">
-                                <input type="text" name="cpf" id="cpf" pattern="[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}" value="{{ old('cpf') }}" class="validate" autofocus>
-                                <label>Insira o seu CPF</label>
-                                @if ($errors->has('cpf'))
-                                    <span class = "red-text">
-                                        <text>{{ $errors->first('cpf') }}</text>
+                            <div class="input-field">
+                                <input type="text" name="email" value="{{ old('email') }}" class="validate" autofocus>
+                                <label>E-mail</label>
+                                @if ($errors->has('email'))
+                                    <span>
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                            <div class="input-field">
+                                <input type="password"  name="password" value="{{ old('password') }}" class="validate">
+                                <label>Senha</label>
+                                @if ($errors->has('password'))
+                                    <span>
+                                        <strong>{{ $errors->first('password') }}</strong>
                                     </span>
                                 @endif
                             </div>

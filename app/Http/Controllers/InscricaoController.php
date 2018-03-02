@@ -18,7 +18,7 @@ class InscricaoController extends Controller
     public function index()
     {
         $inscricoes = Inscricao::orderBy("id","DESC")->paginate(10);
-        return view('inscricao.login', compact('inscricoes'));       
+        return view('inscricao.index', compact('inscricoes'));       
     }
 
     /**
@@ -99,4 +99,20 @@ class InscricaoController extends Controller
         return view('inscricao.confirmacao');      
     }
 
+     //--------------Seleciona Cargo ------------------------
+     public function indexCargo(Publicacao $publicacao)
+     {
+         $cargo = Cargo::all();
+         //dd($cargo);
+         return view('inscricao.cargo', compact('publicacao','cargo'));      
+     } 
+ 
+     public function storeCargo(Request $request, Publicacao $publicacao, Inscricao $inscricao)
+     {
+         //$publicacao = Publicacao::find($id);
+         $cargo = Cargo::create($request->all());
+         //$publicacao->adicionaCargo($cargo, $inscricao);
+         return redirect()->back();
+         
+     }
 }
