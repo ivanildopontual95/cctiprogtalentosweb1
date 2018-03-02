@@ -80,7 +80,7 @@ class Publicacao extends Model
     }
 
     
-    //----------Documentos--------------------------------    
+    //-----------------------Documentos--------------------------------    
     public function documentos()
     {
         return $this->belongsToMany(Documento::class);
@@ -104,7 +104,8 @@ class Publicacao extends Model
         return $this->documentos()->detach($documento);
     }
     
-    //-------Inscricao--------------------------
+    //---------------------Inscrição--------------------------
+
     public function inscricoes()
     {
         return $this->belongsToMany(Inscricao::class);

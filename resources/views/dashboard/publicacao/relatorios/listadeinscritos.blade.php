@@ -1,17 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
-	<div class="container">
-		<div class="row">
-		</div>
-		@include('dashboard._caminho')
 
-		<div class="row">
+<div class="container">
+	<div class="row">
+	</div>
+
+	@include('dashboard._caminho')
+	
+	<div class="row">
+	<h5 class="left">Lista de Inscritos - {{$publicacao->titulo}}</h5>
+	</div>
+	<div class="row">
+		<div class="card-panel white">
 			<div class="row">
-				<h5 class="left">Lista de Inscritos - {{$publicacao->titulo}}</h5>
-			</div>
-			<div class="card-panel white">
-				<div class="row">
 					<table>
 						<thead>
 							<tr>
@@ -29,13 +31,7 @@
 								<td>{{ $inscricao->cpf }}</td>
 
 								<td>
-
-									<a title="Editar" class="btn orange" href="#!"><i class="material-icons">mode_edit</i></a>
-									<a title="Editar" class="btn green" href="#!"><i class="material-icons">person_add</i></a>
-									<a title="Editar" class="btn blue" href="#!"><i class="material-icons">attach_file</i></a>
-									<a title="Editar" class="btn" href="#!"><i class="material-icons">assignment</i></a>
-									<a title="Editar" class="btn red" href="#!"><i class="material-icons">delete</i></a>
-									
+									<a title="Visualizar Currículo" class="btn green" href="{{ route('publicacoes.relatorio.curriculo',$inscricao->id) }}"><i class="material-icons">work</i></a>
 								</td>
 							</tr>
 						@endforeach
@@ -44,5 +40,6 @@
 				</div>
 			</div>
 		</div>
-	</div> 
+	</div>
+</div>
 @endsection

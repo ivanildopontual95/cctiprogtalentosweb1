@@ -14,7 +14,7 @@
 				<div class="input-field col s5">
 					<select name="permissao_id">
 						@foreach($permissao as $valor)
-						<option value="{{$valor->id}}">{{$valor->nome}}</option>
+							<option value="{{$valor->id}}">{{$valor->nome}}</option>
 						@endforeach
 					</select>
 				</div>

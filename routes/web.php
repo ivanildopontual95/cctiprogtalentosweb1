@@ -64,6 +64,10 @@ Route:: group (['middleware' => 'auth', 'prefix' =>'dashboard'], function () {
   //--------------------ListadeInscritos----------------
 
   Route::get('publicacoes/{id}/relatorios/listadeinscritos', ['as'=> 'publicacoes.relatorio.listadeinscritos','uses'=>'Admin\PublicacaoController@listadeinscritosRelatorio']);
+
+  //--------------------Currículo-----------------------
+
+  Route::get('publicacoes/{id}/relatorios/listadeinscritos/curriculo', ['as'=> 'publicacoes.relatorio.curriculo','uses'=>'Admin\PublicacaoController@curriculoListadeinscritos']);
   
   //--------------------Perfis--------------------------
 

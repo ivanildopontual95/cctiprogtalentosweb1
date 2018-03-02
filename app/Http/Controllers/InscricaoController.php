@@ -96,7 +96,4 @@ class InscricaoController extends Controller
     {
         return view('inscricao.confirmacao');      
     }
-
-   
-   
 }

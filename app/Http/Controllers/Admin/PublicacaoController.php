@@ -316,6 +316,24 @@ class PublicacaoController extends Controller
 
         return view('dashboard.publicacao.relatorios.listadeinscritos',compact( 'publicacao','relatorio','inscricoes','caminhos'));      
     }
+
+    public function curriculoListadeinscritos($id){
+        
+        if(Gate::denies('publicacoes-edit')){
+            abort(403,"Não autorizado!");
+        }
+
+        $publicacao = Publicacao::find($id);
+        $relatorio = Relatorio::find($id);
+        $inscricao = Inscricao::find($id);
+        $caminhos = [
+        ['url'=>'/dashboard','titulo'=>'Painel Principal'],
+        ['url'=>route('publicacoes.index'),'titulo'=>'Publicações'],
+        ['url'=>'','titulo'=>'Lista de Inscritos']
+        ];
+
+        return view('dashboard.publicacao.relatorios.curriculo',compact( 'publicacao','relatorio','inscricao','caminhos'));      
+    }
     //-------------------------------------------------------
 
 }
