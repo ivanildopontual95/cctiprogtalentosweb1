@@ -80,7 +80,8 @@ class Publicacao extends Model
     }
 
     
-    //-----------------------Documentos--------------------------------    
+    //-----------------------Documentos--------------------------------
+
     public function documentos()
     {
         return $this->belongsToMany(Documento::class);
@@ -109,6 +110,37 @@ class Publicacao extends Model
     public function inscricoes()
     {
         return $this->belongsToMany(Inscricao::class);
+    }
+
+    public function adicionaInscricao($inscricao)
+    {
+        if (is_string($inscricao)) {
+            $inscricao = Inscricao::where('nome','=',$inscricao)->firstOrFail();
+        }
+
+        if($this->existeInscricao($inscricao)){
+            return;
+        }
+
+        return $this->inscricoes()->attach($inscricao);
+
+    }
+    public function existeInscricao($inscricao)
+    {
+        if (is_string($inscricao)) {
+            $inscricao = Inscricao::where('nome','=',$inscricao)->firstOrFail();
+        }
+
+        return (boolean) $this->inscricoes()->find($inscricao->id);
+
+    }
+    public function removeInscricao($inscricao)
+    {
+        if (is_string($inscricao)) {
+            $inscricao = Inscricao::where('nome','=',$inscricao)->firstOrFail();
+        }
+
+        return $this->inscricoes()->detach($inscricao);
     }
 
     //----------Relatorios--------------------------------

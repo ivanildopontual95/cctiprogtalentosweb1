@@ -86,14 +86,17 @@ class InscricaoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    
     public function destroy($id)
     {
         //
     }
 
     //--------------Confirmação Inscrição ------------------------
+
     public function indexConfirmacao()
     {
         return view('inscricao.confirmacao');      
     }
+
 }
