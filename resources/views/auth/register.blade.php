@@ -49,10 +49,10 @@
                             </span>
                         @endif
                     </div>
-
+                    <button class="btn green">Cadastrar</button>
                 </form>
             </div>
-            <button class="btn green">Cadastrar</button>
+
         </div>
     </div>
 </div>
