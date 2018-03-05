@@ -2,22 +2,24 @@
 
 @section('content')
 
-        <div class="container">
-            <div class="row">
-            </div>
-            <div class="row">
-                <div class="col s4 offset-s4">
-                    <div class="card-panel white"> 
-                        <center><img class="" src="/images/user.png"</i><center>
-                        <p>Login</p>
-                        <label>Insira suas Credenciais</label>
-                        @if (session('status'))
-                            <div class="card">
-                                {{ session('status') }}
-                            </div>
-                        @endif
-                        <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
-                        {{ csrf_field() }}
+<div class="container">
+    <div class="row">
+    </div>
+    <div class="row">
+        <div class="col s4 offset-s4">
+            <div class="card-panel white"> 
+                <center><img class="" src="/images/user.png"</i><center>
+                <p>Login</p>
+                <label>Insira suas Credenciais</label>
+                    @if (session('status'))
+                        <div class="card">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+                <div class="row">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
+                    {{ csrf_field() }}
+                        <div class="col-md-6 offset-md-4">
                             <div class="input-field">
                                 <input type="text" name="email" value="{{ old('email') }}" class="validate" autofocus>
                                 <label>E-mail</label>
@@ -26,26 +28,36 @@
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
                                 @endif
-                            </div>
-                            <div class="input-field">
-                                <input type="password"  name="password" value="{{ old('password') }}" class="validate">
-                                <label>Senha</label>
-                                @if ($errors->has('password'))
-                                    <span>
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                            <div class="section">
+                                </div>
+                                <div class="input-field">
+                                    <input type="password"  name="password" value="{{ old('password') }}" class="validate">
+                                    <label>Senha</label>
+                                    @if ($errors->has('password'))
+                                        <span>
+                                            <strong>{{ $errors->first('password') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                            </form>
+                        </div>
+                        <div class="row">
+                            <div class="checkbox">
+                            <input type="checkbox" id="remember" {{ old('remember') ? 'checked' : '' }}/>
+                            <label for="remember">Lembrar-me</label>
+                        </div>
+                                </div>
                                 <div class="row">
                                     <center><a href="{{ url('/password/reset') }}">Esqueceu sua Senha?</a><center>
                                 </div>
-                            </div>
-                            <div class="divider"></div>
-                            <div class="row">
-                            </div>
-                                <button class="btn green">Entrar</button>
-                        </form>
+                                <div class="row">
+                                    <button class="btn green">Entrar</button>
+                                </div>
+                                <div class="divider">ou</div>
+                                <div class="row">
+                                </div>
+                                    <a title="Registrar" class="btn blue" href="{{ url('/register') }}">Registre-se</a>
+                 
+                        </div>
                     </div>
                 </div>
             </div>

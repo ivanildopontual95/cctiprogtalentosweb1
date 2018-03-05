@@ -3,6 +3,7 @@
     <a href="{{ url('/') }}"><img class="responsive-img" src="/images/cctirsz.png" title="Início"</i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         @if (Auth::guest())
+          <li><a href="{{ url('/register') }}">Registrar-se</a></li>
           <li><a href="{{ url('/login') }}">Entrar</a></li>
         @else
           <li><a href="/dashboard">{{ Auth::user()->name }}<i class="material-icons left">person</i></a></li></li>
