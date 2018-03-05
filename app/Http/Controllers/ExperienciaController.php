@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\experiencia;
+use App\Experiencia;
 use Illuminate\Http\Request;
 use App\Http\Requests\ExperienciaRequest;
 class ExperienciaController extends Controller
@@ -34,8 +34,13 @@ class ExperienciaController extends Controller
      */
     public function store(ExperienciaRequest $request)
     {
-       Experiencia::create($request->all());
-       return redirect()->route('inscricoes.experiencia.index');
+        $user = Auth()->user();
+
+        $experiencia = Experiencia::create($request->all());
+
+        $user->adicionaExperiencia($experiencia);
+        
+        return redirect()->route('inscricoes.experiencia.index');
     }
 
     /**
@@ -84,8 +89,8 @@ class ExperienciaController extends Controller
     }
 
      //--------------Confirmação Experiencia ------------------------
-    public function indexExperiencia(){
-
+    public function indexExperiencia()
+    {
         return view('inscricao.confirmacao');
     }
 }

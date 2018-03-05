@@ -29,7 +29,7 @@ class CreateTableInscricoes extends Migration
             $table->string('cep');
             $table->string('bairro');
             $table->string('numero');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->string('telefone');
             $table->timestamps();
         });

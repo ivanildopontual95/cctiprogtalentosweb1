@@ -13,8 +13,8 @@
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', ['as'=>'home','uses'=>'Site\SiteController@home']);
 Route::get('/publicacoes/{publicacao}/{titulo?}', ['as'=>'detalhes','uses'=>'Site\SiteController@detalhes']);
-Route::get('inscricoes/cargo', ['as'=> 'inscricoes.cargo.index','uses'=>'InscricaoController@indexCargo']);
-Route::post('inscricoes/cargo', ['as'=>'inscricoes.cargo.store','uses'=>'InscricaoController@storeCargo']);
+Route::get('inscricoes/cargo', ['as'=> 'inscricoes.cargo.index','uses'=>'InscricaoController@indexSelectCargo']);
+Route::post('inscricoes/cargo', ['as'=>'inscricoes.cargo.store','uses'=>'InscricaoController@storeSelectCargo']);
 Route::get('inscricoes/confirmacao', ['as'=> 'inscricoes.confirmacao.index','uses'=>'InscricaoController@indexConfirmacao']);
 Route::get('inscricoes/experiencia', ['as'=> 'inscricoes.experiencia.index','uses'=>'ExperienciaController@indexExperiencia']);
 Route::resource('inscricoes', 'InscricaoController');

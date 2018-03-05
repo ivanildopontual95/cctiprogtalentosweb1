@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class experiencia extends Model
+class Experiencia extends Model
 {
     protected $fillable = 
             [ 'empresa', 'funcao','atividade',
@@ -12,9 +12,9 @@ class experiencia extends Model
              'curso', 'dataInI', 'dataTermI', 
              'cargaHora', 'aptidao' ];
 
-    public function inscricoes()
+    public function users()
     {
-        return $this->belongsToMany(Inscricao::class);
+        return $this->belongsToMany(User::class);
     }
     
 }

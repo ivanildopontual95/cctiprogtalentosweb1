@@ -64,7 +64,6 @@ class SiteController extends Controller
     //--------------Detalhes------------------------------------
     public function detalhes(Publicacao $publicacao, $titulo = null)
     {
-      //$publicacao = Publicacao::find($id);
       return view('detalhes',compact('publicacao'));
     }
 }

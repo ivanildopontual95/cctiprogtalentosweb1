@@ -105,7 +105,7 @@ class Publicacao extends Model
         return $this->documentos()->detach($documento);
     }
     
-    //---------------------Inscrição--------------------------
+    //---------------------Adiciona Inscrição--------------------------
 
     public function inscricoes()
     {
@@ -115,7 +115,7 @@ class Publicacao extends Model
     public function adicionaInscricao($inscricao)
     {
         if (is_string($inscricao)) {
-            $inscricao = Inscricao::where('nome','=',$inscricao)->firstOrFail();
+            $inscricao = Inscricao::where('cpf','=',$inscricao)->firstOrFail();
         }
 
         if($this->existeInscricao($inscricao)){
@@ -128,19 +128,11 @@ class Publicacao extends Model
     public function existeInscricao($inscricao)
     {
         if (is_string($inscricao)) {
-            $inscricao = Inscricao::where('nome','=',$inscricao)->firstOrFail();
+            $inscricao = Inscricao::where('cpf','=',$inscricao)->firstOrFail();
         }
 
         return (boolean) $this->inscricoes()->find($inscricao->id);
 
-    }
-    public function removeInscricao($inscricao)
-    {
-        if (is_string($inscricao)) {
-            $inscricao = Inscricao::where('nome','=',$inscricao)->firstOrFail();
-        }
-
-        return $this->inscricoes()->detach($inscricao);
     }
 
     //----------Relatorios--------------------------------

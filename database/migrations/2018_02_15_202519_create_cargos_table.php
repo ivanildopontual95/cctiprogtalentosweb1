@@ -31,6 +31,17 @@ class CreateCargosTable extends Migration
 
             $table->primary(['cargo_id','publicacao_id']);
         });
+
+        Schema::create('cargo_user', function (Blueprint $table) {
+            $table->integer('cargo_id')->unsigned();
+            $table->integer('user_id')->unsigned();
+
+            $table->foreign('cargo_id')->references('id')->on('cargos')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
+
+            $table->primary(['cargo_id','user_id']);
+        });
     }
 
     /**
@@ -40,6 +51,7 @@ class CreateCargosTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('cargo_user');
         Schema::dropIfExists('cargo_publicacao');
         Schema::dropIfExists('cargos');
     }

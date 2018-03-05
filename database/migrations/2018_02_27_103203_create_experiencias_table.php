@@ -29,15 +29,15 @@ class CreateExperienciasTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('experiencia_inscricao', function (Blueprint $table) {
+        Schema::create('experiencia_user', function (Blueprint $table) {
             $table->integer('experiencia_id')->unsigned();
-            $table->integer('inscricao_id')->unsigned();
+            $table->integer('user_id')->unsigned();
 
             $table->foreign('experiencia_id')->references('id')->on('experiencias')->onDelete('cascade');
-            $table->foreign('inscricao_id')->references('id')->on('inscricoes')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
 
-            $table->primary(['experiencia_id','inscricao_id']);
+            $table->primary(['experiencia_id','user_id']);
         });
     }
 
@@ -48,7 +48,7 @@ class CreateExperienciasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('experiencia_inscricao');
+        Schema::dropIfExists('experiencia_user');
         Schema::dropIfExists('experiencias');
     }
 }

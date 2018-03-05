@@ -25,13 +25,13 @@ class HomeController extends Controller
     public function index()
     {
         $user = Auth::user();
-        //return view('home');
         //dd($user->papeis[0]->nome);
         if($user->papeis[0]->nome == 'Admin' || $user->papeis[0]->nome == 'Gerente do Departamento' ||  $user->papeis[0]->nome == 'Auxiliar do Departamento' ) 
         {
-            echo('chegamos aqui');
             return view('dashboard.index');
+        }elseif($user->papeis[0]->nome == 'Usuário')
+        {
+            return redirect()->route('inscricoes.index');
         }
-        return redirect()->route('inscricoes.index');
     }
 }

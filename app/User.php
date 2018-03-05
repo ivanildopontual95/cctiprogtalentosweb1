@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'inscricao_id','name', 'email', 'password',
+        'name', 'email', 'password',
     ];
 
     /**
@@ -27,7 +27,7 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public $with = ['papeis'];
+    public $with = ['papeis', 'inscricoes', 'experiencias', 'cargos'];
 
 
     public function eAdmin(){
@@ -77,4 +77,49 @@ class User extends Authenticatable
           return $papeis->intersect($userPapeis)->count();
     }
 
+
+    //--------------Adiciona Formulário de inscrição------------//
+    public function inscricoes()
+    {
+        return $this->belongsToMany(Inscricao::class);
+    }
+
+    public function adicionaFormulario($inscricao)
+    {
+        if (is_string($inscricao)) {
+            $inscricao = Inscricao::where('cpf','=',$inscricao)->firstOrFail();
+        }
+
+        return $this->inscricoes()->attach($inscricao);
+    }
+
+    //--------------Adiciona Formulário de experiencia------------//
+    public function experiencias()
+    {
+        return $this->belongsToMany(Experiencia::class);
+    }
+
+    public function adicionaExperiencia($experiencia)
+    {
+        if (is_string($experiencia)) {
+            $experiencia = Experiencia::where('empresa','=',$experiencia)->firstOrFail();
+        }
+
+        return $this->experiencias()->attach($experiencia);
+    }
+
+    //--------------Seleciona Cargo------------------------//
+    public function cargos()
+    {
+        return $this->belongsToMany(Cargo::class);
+    }
+
+    public function selecionaCargo($cargo)
+    {
+        if (is_string($cargo)) {
+            $cargo = Cargo::where('cargo','=',$cargo)->firstOrFail();
+        }
+
+        return $this->cargos()->attach($cargo);
+    }
 }

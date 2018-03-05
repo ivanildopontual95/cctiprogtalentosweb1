@@ -15,10 +15,11 @@ class InscricaoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Publicacao $publicacao)
     {
-        $inscricoes = Inscricao::orderBy("id","DESC")->paginate(10);
-        return view('inscricao.index', compact('inscricoes'));       
+        //$user = Auth()-> user();
+        //dd($publicacao);
+        return view('inscricao.index', compact( 'publicacao'));        
     }
 
     /**
@@ -39,9 +40,13 @@ class InscricaoController extends Controller
      */
     public function store(InscricaoRequest $request)
     {
-       Inscricao::create($request->all());
-       //return redirect()->route('inscricoes.confirmacao.index');
-        return redirect()->route('experiencias.create');
+        $user = Auth()->user();
+        
+        $inscricao = Inscricao::create($request->all());
+        
+        $user->adicionaFormulario($inscricao);
+
+        return redirect()->route('inscricoes.cargo.index');
     }
 
     /**
@@ -74,7 +79,7 @@ class InscricaoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(InscricaoRequest $request, $id)
+    public function update(InscricaoRequest $request)
     {
         Inscricao::find($id)->update($request->all());
         return redirect()->route('inscricoes.index');
@@ -99,20 +104,25 @@ class InscricaoController extends Controller
         return view('inscricao.confirmacao');      
     }
 
-     //--------------Seleciona Cargo ------------------------
-     public function indexCargo(Publicacao $publicacao)
-     {
-         $cargo = Cargo::all();
-         //dd($cargo);
-         return view('inscricao.cargo', compact('publicacao','cargo'));      
-     } 
- 
-     public function storeCargo(Request $request, Publicacao $publicacao, Inscricao $inscricao)
-     {
-         //$publicacao = Publicacao::find($id);
-         $cargo = Cargo::create($request->all());
-         //$publicacao->adicionaCargo($cargo, $inscricao);
-         return redirect()->back();
-         
-     }
+    //--------------Seleciona Cargo ------------------------
+    public function indexSelectCargo(Publicacao $publicacao)
+    {
+        $cargo = Cargo::all();
+        return view('inscricao.cargo', compact('publicacao','cargo'));      
+    } 
+
+    public function storeSelectCargo(Request $request, Publicacao $publicacao)
+    {
+        $user = Auth()->user();
+        $inscricao = $user->inscricoes;
+
+        $dados = $request->all();
+        $cargo = Cargo::find($dados['cargo_id']);
+
+        $user->selecionaCargo($cargo);
+        
+        $publicacao->adicionaInscricao($inscricao);
+        
+        return redirect()->route('experiencias.create'); 
+    }
 }
