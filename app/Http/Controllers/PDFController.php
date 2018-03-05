@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Inscricao;
+use App\Experiencia;
 use PDF;
 class PDFController extends Controller
 {
@@ -86,5 +88,14 @@ class PDFController extends Controller
         $usuarios = User::all();
         $pdf=PDF::loadView('pdf',['usuarios'=>$usuarios]);
         return $pdf->download('usuarios.pdf');
+    }
+
+    public function GerarCurriculo($id){
+        $inscricao = Inscricao::find($id);
+        $experiencia = Experiencia::find($id);
+        $pdf=PDF::loadView('dashboard.publicacao.relatorios.PDFcurriculo',['inscricao'=>$inscricao],['experiencia'=>$experiencia]);
+      //  $pdf=PDF::loadView('dashboard.publicacao.relatorios.PDFcurriculo',['experiencia'=>$experiencia]);
+        return $pdf->download('Curriculo.pdf');
+
     }
 }

@@ -20,6 +20,7 @@ Route::get('inscricoes/experiencia', ['as'=> 'inscricoes.experiencia.index','use
 Route::resource('inscricoes', 'InscricaoController');
 Route::resource('experiencias', 'ExperienciaController');
 Route::get('pdf','PDFController@GerarPDF');
+Route::get('gerarCurriculo/{id}',['as'=>'dashboard.publicacao.relatorios.PDFcurriculo','uses'=>'PDFController@GerarCurriculo']);
 
 Auth::routes();
 
