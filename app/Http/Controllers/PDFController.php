@@ -94,8 +94,8 @@ class PDFController extends Controller
         $inscricao = Inscricao::find($id);
         $experiencia = Experiencia::find($id);
         $pdf=PDF::loadView('dashboard.publicacao.relatorios.PDFcurriculo',['inscricao'=>$inscricao],['experiencia'=>$experiencia]);
-        //$pdf=PDF::loadView('dashboard.publicacao.relatorios.PDFcurriculo',['experiencia'=>$experiencia]);
-        return $pdf->stream('Curriculo.pdf');
+      //  $pdf=PDF::loadView('dashboard.publicacao.relatorios.PDFcurriculo',['experiencia'=>$experiencia]);
+        return $pdf->download('Curriculo.pdf');
 
     }
 }
