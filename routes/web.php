@@ -39,7 +39,7 @@ Route::group(['as'=> 'experiencias.', 'prefix' =>'experiencias'], function(){
 });
 
 Route::get('pdf','PDFController@GerarPDF');
-Route::get('gerarCurriculo/{id}',['as'=>'dashboard.publicacao.relatorios.PDFcurriculo','uses'=>'PDFController@GerarCurriculo']);
+Route::get('gerarCurriculo/{id}',['as'=>'publicacao.relatorios.PDFcurriculo','uses'=>'PDFController@GerarCurriculo']);
 
 Auth::routes();
 
