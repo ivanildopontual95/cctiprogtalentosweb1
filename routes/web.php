@@ -13,12 +13,31 @@
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', ['as'=>'home','uses'=>'Site\SiteController@home']);
 Route::get('/publicacoes/{publicacao}/{titulo?}', ['as'=>'detalhes','uses'=>'Site\SiteController@detalhes']);
-Route::get('inscricoes/cargo', ['as'=> 'inscricoes.cargo.index','uses'=>'InscricaoController@indexSelectCargo']);
-Route::post('inscricoes/cargo', ['as'=>'inscricoes.cargo.store','uses'=>'InscricaoController@storeSelectCargo']);
-Route::get('inscricoes/confirmacao', ['as'=> 'inscricoes.confirmacao.index','uses'=>'InscricaoController@indexConfirmacao']);
-Route::get('inscricoes/experiencia', ['as'=> 'inscricoes.experiencia.index','uses'=>'ExperienciaController@indexExperiencia']);
-Route::resource('inscricoes', 'InscricaoController');
-Route::resource('experiencias', 'ExperienciaController');
+
+//-------------------------Inscricoes--------------------------------------------
+Route::group(['as'=> 'inscricoes.', 'prefix' =>'inscricoes'], function(){
+
+  Route::get('', ['as'=>'index','uses'=>'InscricaoController@index']);
+  Route::get('criar/{id}', ['as'=> 'create','uses'=>'InscricaoController@create']);
+  Route::post('salvar/{id}', ['as'=> 'store','uses'=>'InscricaoController@store']);
+  Route::get('{id}/editar', ['as'=> 'edit','uses'=>'InscricaoController@edit']);
+  Route::post('{id}/atualizar', ['as'=> 'update','uses'=>'InscricaoController@update']);
+  
+  Route::get('cargo/{id}', ['as'=> 'cargo.index','uses'=>'InscricaoController@indexSelectCargo']);
+  Route::post('cargo/{id}', ['as'=>'cargo.store','uses'=>'InscricaoController@storeSelectCargo']);
+
+  Route::get('confirmacao/{id}', ['as'=> 'confirmacao.index','uses'=>'InscricaoController@indexConfirmacao']); 
+});
+
+//---------------------------------Experiencias----------------------------------
+Route::group(['as'=> 'experiencias.', 'prefix' =>'experiencias'], function(){
+
+  Route::get('criar/{id}', ['as'=> 'create','uses'=>'ExperienciaController@create']);
+  Route::post('salvar/{id}', ['as'=> 'store','uses'=>'ExperienciaController@store']);
+  Route::get('{id}/editar', ['as'=> 'edit','uses'=>'ExperienciaController@edit']);
+  Route::post('{id}/atualizar', ['as'=> 'update','uses'=>'ExperienciaController@update']);
+});
+
 Route::get('pdf','PDFController@GerarPDF');
 Route::get('gerarCurriculo/{id}',['as'=>'dashboard.publicacao.relatorios.PDFcurriculo','uses'=>'PDFController@GerarCurriculo']);
 

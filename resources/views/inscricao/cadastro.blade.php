@@ -8,7 +8,7 @@
             <div class="card-panel white">
                 <h4 class="center">Formulário de Inscrição</h4>
                 
-                <form class="form-horizontal" action="{{route('inscricoes.store')}}" method="post">
+                <form class="form-horizontal" action="{{route('inscricoes.store', $id)}}" method="post">
                     {{csrf_field()}}
 
                     <div class="col s12">

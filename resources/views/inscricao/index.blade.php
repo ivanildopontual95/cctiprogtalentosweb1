@@ -1,24 +1,43 @@
-@extends('layouts.app')
+@extends('layouts.app') @section('content')
 
-@section('content')
-
-        <div class="container">
+<div class="container">
+    <div class="row">
+    </div>
+    <div class="row">
+        <center>
             <div class="row">
             </div>
-            <div class="row">
-                <div class="col s6 offset-s3">
-                    <div class="card-panel white">
-                    <center>
-                        <div class="row">
-                            <h4>Inscrição do Seletivo</h4>
-                        </div>
-                            <a class="btn green" href="{{route('inscricoes.create')}}">Formulário de inscrição</a>
-                            <a class="btn green" href="{{route('inscricoes.cargo.index')}}">Cargo</a>     
-                            <a class="btn red" href="{{route('experiencias.create')}}">Experiencia</a>                   
-                    <center> 
-                    </div>
+            <h4>Processo Seletivo</h4>
+        </center>
+        <div class="col s12">
+            <div class="card-panel white">
+                <div class="row">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Seletivo</th>
+                                <th>Inscrições</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($publicacoes as $publicacao)
+                            <tr>
+                                <td>{{ $publicacao->titulo }}</td>
+                                <td>{{$publicacao->dataInicio}} - {{$publicacao->horaInicio}}h até {{$publicacao->dataTermino}}
+                                    - {{$publicacao->horaTermino}}h</td>
+
+                                <td>
+                                    <a title="Inscrição" class="btn green" href="{{route('inscricoes.cargo.index', $publicacao->id)}}">Inscrição</a>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
+
         </div>
-    
+    </div>
+</div>
+
 @endsection

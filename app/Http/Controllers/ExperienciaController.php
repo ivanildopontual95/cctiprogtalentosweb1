@@ -21,9 +21,9 @@ class ExperienciaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        return view('inscricao.experiencia');
+        return view('inscricao.experiencia', compact('id'));
     }
 
     /**
@@ -32,15 +32,14 @@ class ExperienciaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ExperienciaRequest $request)
+    public function store(ExperienciaRequest $request, $id)
     {
         $user = Auth()->user();
-
         $experiencia = Experiencia::create($request->all());
 
         $user->adicionaExperiencia($experiencia);
         
-        return redirect()->route('inscricoes.experiencia.index');
+        return redirect()->route('inscricoes.confirmacao.index', compact('id'));
     }
 
     /**
@@ -86,11 +85,5 @@ class ExperienciaController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-     //--------------Confirmação Experiencia ------------------------
-    public function indexExperiencia()
-    {
-        return view('inscricao.confirmacao');
     }
 }

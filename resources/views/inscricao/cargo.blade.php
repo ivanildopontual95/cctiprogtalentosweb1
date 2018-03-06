@@ -12,11 +12,11 @@
                             <div class="row">
                                 <h4>Cargos do Seletivo</h4>
                             </div>
-                            <form action="{{route('inscricoes.cargo.store', $publicacao)}}" method="post">
+                            <form action="{{route('inscricoes.cargo.store', $publicacao->id)}}" method="post">
                                 {{ csrf_field() }}
                                 <div class="input-field">
                                     <select name="cargo_id">
-                                        @foreach($cargo as $valor)                                       
+                                        @foreach($cargos as $valor)                                       
                                         <optgroup label="{{$valor->escolaridade}}">
                                             <option value="{{$valor->id}}">{{$valor->cargo}}</option>
                                         </optgroup>

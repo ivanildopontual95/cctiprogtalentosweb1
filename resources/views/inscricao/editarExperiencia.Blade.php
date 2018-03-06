@@ -6,13 +6,14 @@
     <div class="row">
         <div class="col s12">
             <div class="card-panel white">
-                <h4 class="center">Formulário de Experiencia</h4>
+                <h4 class="center">Formulário Editar Experiencia</h4>
 
                 <div class="row">
                 </div>
         
-                <form class="form-horizontal" action="{{route('experiencias.store', $id)}}" method="post">
+                <form class="form-horizontal" action="{{route('experiencias.update', $experiencia->id)}}" method="post">
                     {{csrf_field()}}
+                    {{ method_field('PUT') }}
 
                     <div class="col s12">
 
@@ -20,7 +21,7 @@
                         <div class="row">
                         </div>
                         <div class="input-field col s6 {{$errors->has('empresa') ? 'has-error' : ''}}">
-                            <input type="text" name = "empresa" class="validate"  value = "{{old('empresa')}}">
+                            <input type="text" name = "empresa" class="validate"  value="{{ isset($experiencia->empresa) && !old('empresa') ? $experiencia->empresa : '' }}{{old('empresa')}}">>
                             <label >Empresa 1</label>
                             @if($errors->has('empresa'))
                                 <span class = "red-text">

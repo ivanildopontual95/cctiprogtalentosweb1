@@ -15,21 +15,44 @@ class InscricaoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Publicacao $publicacao)
+    public function index()
     {
         //$user = Auth()-> user();
-        //dd($publicacao);
-        return view('inscricao.index', compact( 'publicacao'));        
+        //dd('index', $publicacao);
+        $publicacoes = Publicacao::all();
+        return view('inscricao.index', compact( 'publicacoes'));        
     }
+
+    //--------------Seleciona Cargo -------------------------------------//
+    public function indexSelectCargo($id)
+    {
+        $publicacao = Publicacao::find($id);
+        $cargos = $publicacao->cargos;
+        return view('inscricao.cargo', compact('publicacao','cargos'));      
+    } 
+
+    public function storeSelectCargo(Request $request, $id)
+    {
+        $user = Auth()->user();
+
+        $dados = $request->all();
+        $cargo = Cargo::find($dados['cargo_id']);
+
+
+        //$user->selecionaCargo($cargo);
+        
+        return redirect()->route('inscricoes.create', compact('id')); 
+    }
+    //-------------------------------------------------------------------//
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        return view('inscricao.cadastro');
+        return view('inscricao.cadastro', compact('id'));
     }
 
     /**
@@ -38,7 +61,7 @@ class InscricaoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(InscricaoRequest $request)
+    public function store(InscricaoRequest $request, $id)
     {
         $user = Auth()->user();
         
@@ -46,7 +69,7 @@ class InscricaoController extends Controller
         
         $user->adicionaFormulario($inscricao);
 
-        return redirect()->route('inscricoes.cargo.index');
+        return redirect()->route('experiencias.create', compact('id'));
     }
 
     /**
@@ -99,30 +122,14 @@ class InscricaoController extends Controller
 
     //--------------Confirmação Inscrição ------------------------
 
-    public function indexConfirmacao()
-    {
-        return view('inscricao.confirmacao');      
-    }
-
-    //--------------Seleciona Cargo ------------------------
-    public function indexSelectCargo(Publicacao $publicacao)
-    {
-        $cargo = Cargo::all();
-        return view('inscricao.cargo', compact('publicacao','cargo'));      
-    } 
-
-    public function storeSelectCargo(Request $request, Publicacao $publicacao)
+    public function indexConfirmacao($id)
     {
         $user = Auth()->user();
         $inscricao = $user->inscricoes;
-
-        $dados = $request->all();
-        $cargo = Cargo::find($dados['cargo_id']);
-
-        $user->selecionaCargo($cargo);
+        $publicacao = Publicacao::find($id);
+        //$publicacao->adicionaInscricao($inscricao);
         
-        $publicacao->adicionaInscricao($inscricao);
-        
-        return redirect()->route('experiencias.create'); 
+        return view('inscricao.confirmacao', compact('publicacao'));      
     }
+
 }

@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col s12">
             <div class="card-panel white">
-                <h4 class="center">Formulário de Edição</h4>
+                <h4 class="center">Formulário Editar Inscrição</h4>
                 
                 <div class="row">
                 </div>
