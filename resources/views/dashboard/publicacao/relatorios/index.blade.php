@@ -14,9 +14,9 @@
 			<div class="row">
 					<div class="collection">
 						<a href="{{ route('publicacoes.relatorio.listadeinscritos',$publicacao->id) }}" class="collection-item">Lista de Inscritos</a>
-						<a href="#!" class="collection-item">#!</a>
-						<a href="#!" class="collection-item">#!</a>
-						<a href="#!" class="collection-item">#!</a>
+						<a href="{{ route('publicacoes.relatorio.listadeinscritos',$publicacao->id) }}" class="collection-item">Lista de Inscritos</a>
+						<a href="{{ route('publicacoes.relatorio.listadeinscritos',$publicacao->id) }}" class="collection-item">Lista de Inscritos</a>
+						<a href="{{ route('publicacoes.relatorio.listadeinscritos',$publicacao->id) }}" class="collection-item">Lista de Inscritos</a>
 					</div>
 			</div>
 		</div>

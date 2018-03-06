@@ -68,11 +68,11 @@ Route:: group (['middleware' => 'auth', 'prefix' =>'dashboard'], function () {
   //--------------------Currículo-----------------------
 
   Route::get('publicacoes/{id}/relatorios/listadeinscritos/curriculo', ['as'=> 'publicacoes.relatorio.curriculo','uses'=>'Admin\PublicacaoController@curriculoListadeinscritos']);
+  Route::get('publicacoes/{id}/relatorios/listadeinscritos/avaliacao', ['as'=> 'publicacoes.relatorio.avaliacao','uses'=>'Admin\PublicacaoController@avaliacaoInscrito']);
   
   //--------------------Perfis--------------------------
 
   Route::get('perfil', ['as'=>'perfil.perfil','uses'=>'Site\SiteController@perfil']);
   Route::put('perfil', ['as'=>'perfil.perfil.update','uses'=>'Site\SiteController@perfilUpdate']);
-  
   
 });

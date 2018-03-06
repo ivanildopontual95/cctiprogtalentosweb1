@@ -9,7 +9,7 @@
 	@include('dashboard._caminho')
 	
 	<div class="row">
-	<h5 class="left">Lista de Inscritos - {{$publicacao->titulo}}</h5>
+	<h5 class="center">Lista de Inscritos - {{$publicacao->titulo}}</h5>
 	</div>
 	<div class="row">
 		<div class="card-panel white">
@@ -31,7 +31,8 @@
 								<td>{{ $inscricao->cpf }}</td>
 
 								<td>
-									<a title="Visualizar Currículo" class="btn green" href="{{ route('publicacoes.relatorio.curriculo',$inscricao->id) }}"><i class="material-icons">work</i></a>
+										<a title="Visualizar Currículo" class="btn green" href="{{ route('publicacoes.relatorio.curriculo',$inscricao->id) }}"><i class="material-icons">work</i></a>
+									<a title="Avaliar Inscrito" class="btn" href="{{ route('publicacoes.relatorio.avaliacao',$inscricao->id) }}"><i class="material-icons">assignment</i></a>
 								</td>
 							</tr>
 						@endforeach
