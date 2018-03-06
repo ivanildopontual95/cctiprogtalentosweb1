@@ -9398,3 +9398,12 @@ body {
 main {
     flex: 1 0 auto;
 }
+
+.background-login
+{
+    background: url('/images/stefan-stefancik-257625-unsplash.jpg');
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
