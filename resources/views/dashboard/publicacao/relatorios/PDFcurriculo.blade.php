@@ -34,8 +34,6 @@
             <p>
                 <strong>Sexo: </strong> {{$inscricao->sexo}}</p>
             <p>
-                <strong>Escolaridade: </strong> {{$inscricao->escolaridade}}</p>
-            <p>
                 <strong>RG: </strong> {{$inscricao->identidade}}</p>
             <p>
                 <strong>Estado: </strong> {{$inscricao->estado}}</p>
@@ -77,9 +75,9 @@
             <strong>Curso: </strong> {{$experiencia->curso}} </p>
 
         <p>
-            <strong>Data de Inicio na Empresa: </strong> {{$experiencia->dataInI}}
+            <strong>Data de Inicio no Curso: </strong> {{$experiencia->dataInI}}
 
-            <strong>Data de Termino na Empresa : </strong> {{$experiencia->dataTermI}} </p>
+            <strong>Data do Fim no Curso : </strong> {{$experiencia->dataTermI}} </p>
 
         <p>
             <strong>Carga Horária do Curso: </strong> {{$experiencia->cargaHora}} Horas </p>
@@ -89,12 +87,15 @@
 
     </div>
 
-    
+
     <div class="secao">
 
         <caption>
             <h2>Formação</h2>
         </caption>
+
+        <p>
+            <strong>Escolaridade: </strong> {{$inscricao->escolaridade}} </p>
 
 
     </div>
