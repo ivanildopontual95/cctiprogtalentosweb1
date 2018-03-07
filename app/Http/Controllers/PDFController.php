@@ -84,17 +84,11 @@ class PDFController extends Controller
     {
         //
     }
-    public function GerarPDF(){
-        $usuarios = User::all();
-        $pdf=PDF::loadView('pdf',['usuarios'=>$usuarios]);
-        return $pdf->download('usuarios.pdf');
-    }
 
-    public function GerarCurriculo($id){
+    public function pdfCurriculoRelatorio($id){
         $inscricao = Inscricao::find($id);
         $experiencia = Experiencia::find($id);
         $pdf=PDF::loadView('dashboard.publicacao.relatorios.PDFcurriculo',['inscricao'=>$inscricao],['experiencia'=>$experiencia]);
-      //  $pdf=PDF::loadView('dashboard.publicacao.relatorios.PDFcurriculo',['experiencia'=>$experiencia]);
         return $pdf->stream('Curriculo.pdf');
 
     }

@@ -14,7 +14,7 @@ class Publicacao extends Model
     
     protected $dates = ['dataInicio','dataTermino', 'horaInicio', 'horaTermino'];
 
-    public $with = ['cargos'];
+    public $with = ['inscricoes','cargos'];
 
     //--------Periodo de inscricao------------------------
     function setDataInicioAttribute($date)

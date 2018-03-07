@@ -39,7 +39,7 @@ class InscricaoController extends Controller
         $cargo = Cargo::find($dados['cargo_id']);
 
 
-        //$user->selecionaCargo($cargo);
+        $user->selecionaCargo($cargo);
         
         return redirect()->route('inscricoes.create', compact('id')); 
     }
@@ -125,10 +125,9 @@ class InscricaoController extends Controller
     public function indexConfirmacao($id)
     {
         $user = Auth()->user();
-        $inscricao = $user->inscricoes;
+        $inscricao = $user->inscricoes[0];
         $publicacao = Publicacao::find($id);
-        //$publicacao->adicionaInscricao($inscricao);
-        
+        $publicacao->adicionaInscricao($inscricao);
         return view('inscricao.confirmacao', compact('publicacao'));      
     }
 

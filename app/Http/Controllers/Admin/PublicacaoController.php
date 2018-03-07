@@ -9,6 +9,7 @@ use App\Documento;
 use App\Cargo;
 use App\Relatorio;
 use App\Inscricao;
+use App\Experiencia;
 use Validator;
 use Carbon\Carbon;
 
@@ -288,7 +289,7 @@ class PublicacaoController extends Controller
         }
 
         $publicacao = Publicacao::find($id);
-        $inscricoes = Inscricao::all();
+        $inscricoes = $publicacao->inscricoes;
         $caminhos = [
         ['url'=>'/dashboard','titulo'=>'Painel Principal'],
         ['url'=>route('publicacoes.index'),'titulo'=>'Publicações'],
@@ -298,25 +299,25 @@ class PublicacaoController extends Controller
         return view('dashboard.publicacao.relatorios.index',compact( 'publicacao','relatorio','inscricoes','caminhos'));      
     }
 
-    public function curriculoListadeinscritos($id){
+    public function curriculoRelatorio($id){
         
         if(Gate::denies('publicacoes-edit')){
             abort(403,"Não autorizado!");
         }
 
         $publicacao = Publicacao::find($id);
-        $relatorio = Relatorio::find($id);
         $inscricao = Inscricao::find($id);
+        $experiencia = Experiencia::find($id);
         $caminhos = [
         ['url'=>'/dashboard','titulo'=>'Painel Principal'],
         ['url'=>route('publicacoes.index'),'titulo'=>'Publicações'],
         ['url'=>'','titulo'=>'Lista de Inscritos']
         ];
 
-        return view('dashboard.publicacao.relatorios.curriculo',compact( 'publicacao','relatorio','inscricao','caminhos'));      
+        return view('dashboard.publicacao.relatorios.curriculo',compact( 'publicacao','relatorio','inscricao','experiencia','caminhos'));      
     }
 
-    public function avaliacaoInscrito($id){
+    public function avaliacaoRelatorio($id){
         
         if(Gate::denies('publicacoes-edit')){
             abort(403,"Não autorizado!");
@@ -334,5 +335,4 @@ class PublicacaoController extends Controller
         return view('dashboard.publicacao.relatorios.avaliacao',compact( 'publicacao','relatorio','inscricao','caminhos'));      
     }
     //-------------------------------------------------------
-
 }

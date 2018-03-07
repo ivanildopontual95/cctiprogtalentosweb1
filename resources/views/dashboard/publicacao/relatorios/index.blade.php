@@ -9,7 +9,7 @@
 	@include('dashboard._caminho')
 	
 	<div class="row">
-	<h5 class="center">Lista de Inscritos - {{$publicacao->titulo}}</h5>
+	<h5 class="center">Relatórios de {{$publicacao->titulo}}</h5>
 	</div>
 	<div class="row">
 		<div class="card-panel white">

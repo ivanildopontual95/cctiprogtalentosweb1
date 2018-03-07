@@ -11,8 +11,9 @@ class Inscricao extends Model
         'nomeCompleto', 'dataNascimento', 'pai' , 'mae', 'sexo',
         'escolaridade', 'identidade', 'cpf', 'estado', 'cidade',
         'endereco', 'cep', 'bairro', 'numero', 'email', 'telefone' ];
-
     
+    //public $with = ['users'];
+
     //----------------User-----------------------//
     public function users()
     {
