@@ -37,7 +37,7 @@
 
 	
 	<div class="row">
-		<h5 class="left">Editar Perfil</h5>
+		<h5 class="center">Editar Perfil</h5>
 	</div>
 	<div class="row">
 	<div class="card-panel white">

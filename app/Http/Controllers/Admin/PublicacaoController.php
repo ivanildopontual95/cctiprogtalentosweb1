@@ -148,7 +148,7 @@ class PublicacaoController extends Controller
 
     //--------------------Documentos--------------------------
 
-    public function indexDocumento($id){
+    public function indexDocumentos($id){
         
         if(Gate::denies('publicacoes-edit')){
         abort(403,"Não autorizado!");
@@ -191,7 +191,7 @@ class PublicacaoController extends Controller
                 $fileArray = array('arquivo' => $file);
                 $fileValidator = Validator::make($fileArray, $fileRegras);
                 if ($fileValidator->fails()) {
-                return redirect()->route('publicacoes.documento.index')
+                return redirect()->route('publicacoes.documentos.index')
                             ->withErrors($fileValidator)
                             ->withInput();
                 }
@@ -281,7 +281,6 @@ class PublicacaoController extends Controller
     //-------------------------------------------------------
 
     //--------------------Relatórios--------------------------
-    
     public function indexRelatorio($id){
         
         if(Gate::denies('publicacoes-edit')){
@@ -289,24 +288,6 @@ class PublicacaoController extends Controller
         }
 
         $publicacao = Publicacao::find($id);
-        $relatorio = Relatorio::all();
-        $caminhos = [
-        ['url'=>'/dashboard','titulo'=>'Painel Principal'],
-        ['url'=>route('publicacoes.index'),'titulo'=>'Publicações'],
-        ['url'=>'','titulo'=>'Relatórios']
-        ];
-
-        return view('dashboard.publicacao.relatorios.index',compact( 'publicacao','relatorio','caminhos'));      
-    }
-    
-    public function listadeinscritosRelatorio($id){
-        
-        if(Gate::denies('publicacoes-edit')){
-        abort(403,"Não autorizado!");
-        }
-
-        $publicacao = Publicacao::find($id);
-        $relatorio = Relatorio::all();
         $inscricoes = Inscricao::all();
         $caminhos = [
         ['url'=>'/dashboard','titulo'=>'Painel Principal'],
@@ -314,7 +295,7 @@ class PublicacaoController extends Controller
         ['url'=>'','titulo'=>'Lista de Inscritos']
         ];
 
-        return view('dashboard.publicacao.relatorios.listadeinscritos',compact( 'publicacao','relatorio','inscricoes','caminhos'));      
+        return view('dashboard.publicacao.relatorios.index',compact( 'publicacao','relatorio','inscricoes','caminhos'));      
     }
 
     public function curriculoListadeinscritos($id){

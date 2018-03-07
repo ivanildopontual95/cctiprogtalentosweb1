@@ -8,12 +8,12 @@
 			@include('dashboard._caminho')
 			
 			<div class="row">
-				<h5 class="left">Documentos de {{$publicacao->titulo}}</h5>
+				<h5 class="center">Documentos de {{$publicacao->titulo}}</h5>
 			</div>
 			<div class="row">
 				<div class="card-panel white">
 					<div class="row">
-						<form action="{{ route('publicacoes.documento.store',$publicacao->id) }}" method="post" enctype="multipart/form-data" >
+						<form action="{{ route('publicacoes.documentos.store',$publicacao->id) }}" method="post" enctype="multipart/form-data" >
 					
 						{{csrf_field()}}
 					
@@ -50,7 +50,7 @@
 										<td>{{ $documento->titulo }}</td>
 
 										<td>
-											<form action="{{route('publicacoes.documento.destroy',[$publicacao->id,$documento->id])}}" method="post">
+											<form action="{{route('publicacoes.documentos.destroy',[$publicacao->id,$documento->id])}}" method="post">
 													<a title="Baixar" class="btn green" href="{{ $documento->url }}" download><i class="material-icons">file_download</i></a>
 													{{ method_field('DELETE') }}
 													{{ csrf_field() }}

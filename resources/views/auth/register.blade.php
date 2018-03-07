@@ -5,7 +5,7 @@
     <div class="row">
     </div>
     <div class="row">
-      <h4 class="left">Registro</h4>
+      <h5 class="left">Registro</h4>
     </div>
     <div class="row">
         <div class="card-panel white">

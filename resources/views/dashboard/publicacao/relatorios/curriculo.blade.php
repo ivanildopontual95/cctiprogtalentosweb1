@@ -27,7 +27,7 @@
                 <div id="dadosdocandidato" class="col s12">
                     <div class="row">
                     </div>
-                    <form class="form-horizontal" action="{{route('publicacao.relatorios.PDFcurriculo', $inscricao->id)}}">
+                    <form class="form-horizontal" action="{{route('publicacoes.relatorio.pdfcurriculo', $inscricao->id)}}">
                         {{csrf_field()}}
 
                         <div class="col s12">
@@ -63,8 +63,8 @@
 
                         <div class="col s12">
                             <div class="input-field col s3">
-                                <select name="sexo">
-                                    <option value="{{ isset($inscricao->sexo) && !old('sexo') ? $inscricao->sexo : '' }}{{old('sexo')}}" selected>Selecione uma opção </option>
+                                <select disabled name="sexo">
+                                    <option value="{{ isset($inscricao->sexo) && !old('sexo') ? $inscricao->sexo : '' }}{{old('sexo')}}" selected></option>
                                     <option disabled value="Masculino">Masculino</option>
                                     <option disabled value="Feminino">Feminino</option>
                                     <option disabled value="Outros">Outros</option>
@@ -135,7 +135,7 @@
                     <div class="row">
                     </div>
             
-                    <form class="form-horizontal" action="{{route('publicacao.relatorios.PDFcurriculo', $inscricao->id)}}">
+                    <form class="form-horizontal" action="{{route('publicacoes.relatorio.pdfcurriculo', $inscricao->id)}}">
                         {{csrf_field()}}
     
                         <div class="col s12">

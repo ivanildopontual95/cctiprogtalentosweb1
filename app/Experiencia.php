@@ -16,5 +16,4 @@ class Experiencia extends Model
     {
         return $this->belongsToMany(User::class);
     }
-    
 }

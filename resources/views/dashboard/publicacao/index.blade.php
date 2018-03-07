@@ -6,7 +6,7 @@
 		</div>
 		@include('dashboard._caminho')
 		<div class="row">
-		<h5 class="left">Lista de Publicações</h5>
+		<h5 class="center">Lista de Publicações</h5>
 		</div>
 		<div class="row">
 		<div class="card-panel white">
@@ -33,10 +33,9 @@
 							<form action="{{route('publicacoes.destroy',$publicacao->id)}}" method="post">
 								@can('publicacoes-edit')
 								<a title="Editar" class="btn orange" href="{{ route('publicacoes.edit',$publicacao->id) }}"><i class="material-icons">mode_edit</i></a>
-								<a title="Adicionar Cargos" class="btn" href="{{ route('publicacoes.cargo.index',$publicacao->id)}}"><i class="material-icons">person_add</i></a>
-								<a title="Arquivos" class="btn blue" href="{{ route('publicacoes.documento.index',$publicacao->id)}}"><i class="material-icons">attach_file</i></a>
+								<a title="Vagas" class="btn" href="{{ route('publicacoes.cargo.index',$publicacao->id)}}"><i class="material-icons">person_add</i></a>
+								<a title="Documentos" class="btn blue" href="{{ route('publicacoes.documentos.index',$publicacao->id)}}"><i class="material-icons">attach_file</i></a>
 								<a title="Relatórios" class="btn green" href="{{ route('publicacoes.relatorio.index',$publicacao->id)}}"><i class="material-icons">list</i></a>
-								
 								@endcan				
 								@can('publicacoes-delete')
 									{{ method_field('DELETE') }}
