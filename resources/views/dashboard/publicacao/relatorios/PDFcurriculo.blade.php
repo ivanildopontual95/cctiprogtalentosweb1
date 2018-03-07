@@ -6,6 +6,17 @@
 <head>
     <title>Curriculo Vitae</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        h2 {
+            background-color: #3b3b3b;
+            color: white;
+            padding-left: 15px;
+            margin: 0 0 0 -15px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: normal;
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body>
@@ -77,9 +88,9 @@
             <strong>Curso: </strong> {{$experiencia->curso}} </p>
 
         <p>
-            <strong>Data de Inicio na Empresa: </strong> {{$experiencia->dataInI}}
+            <strong>Data de Inicio do Curso: </strong> {{$experiencia->dataInI}}
 
-            <strong>Data de Termino na Empresa : </strong> {{$experiencia->dataTermI}} </p>
+            <strong>Data de Termino do Curso : </strong> {{$experiencia->dataTermI}} </p>
 
         <p>
             <strong>Carga Horária do Curso: </strong> {{$experiencia->cargaHora}} Horas </p>
@@ -89,7 +100,7 @@
 
     </div>
 
-    
+
     <div class="secao">
 
         <caption>
