@@ -13,7 +13,7 @@
           <div class="card green darken-1">
             <div class="card-content white-text">
               <span class="card-title">Perfil</span>
-              <p>Alterar Dados do Perfil</p>
+              <p>Alterar Dados de Perfil</p>
             </div>
             <div class="card-action">
               <a href="{{route('perfil.perfil')}}">Visualizar</a>

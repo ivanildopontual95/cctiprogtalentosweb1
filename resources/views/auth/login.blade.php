@@ -17,18 +17,20 @@
                             @endif
                             <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                             {{ csrf_field() }}
-                                <div class="input-field">
-                                    <input type="text" name="email" value="{{ old('email') }}" class="validate" autofocus>
-                                    <label>E-mail</label>
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">account_circle</i>
+                                    <input id="icon_prefix" type="text" name="email" value="{{ old('email') }}" class="validate" autofocus>
+                                    <label for="icon_prefix">E-mail</label>
                                     @if ($errors->has('email'))
                                         <span>
                                             <strong>{{ $errors->first('email') }}</strong>
                                         </span>
                                     @endif
                                 </div>
-                                <div class="input-field">
-                                    <input type="password"  name="password" value="{{ old('password') }}" class="validate">
-                                    <label>Senha</label>
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">lock_outline</i>
+                                    <input id="icon_prefix" type="password"  name="password" value="{{ old('password') }}" class="validate">
+                                    <label for="icon_prefix">Senha</label>
                                     @if ($errors->has('password'))
                                         <span>
                                             <strong>{{ $errors->first('password') }}</strong>

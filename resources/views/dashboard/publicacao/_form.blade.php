@@ -1,13 +1,13 @@
 <div class="row">
 	<div class="input-field col s12">
 		<i class="material-icons prefix">mode_edit</i>
-		<input id="icon_prefix" type="text" name="titulo" class="validate" value="{{ isset($publicacao->titulo) && !old('titulo') ? $publicacao->titulo : '' }}{{old('titulo')}}">
+		<input id="icon_prefix" type="text" name="titulo"  data-length="110" class="validate" data-length="75" value="{{ isset($publicacao->titulo) && !old('titulo') ? $publicacao->titulo : '' }}{{old('titulo')}}">
 		<label for="icon_prefix">Título da Publicação</label>
 	</div>
 
 	<div class="input-field col s12">
 		<i class="material-icons prefix">short_text</i>
-		<input id="icon_prefix" type="text" name="descricao" class="validate" value="{{ isset($publicacao->descricao) && !old('descricao') ? $publicacao->descricao : '' }}{{old('descricao')}}">
+		<input id="icon_prefix" type="text" name="descricao" data-length="280" class="validate" value="{{ isset($publicacao->descricao) && !old('descricao') ? $publicacao->descricao : '' }}{{old('descricao')}}">
 		<label for="icon_prefix">Descrição</label>
 	</div>
 

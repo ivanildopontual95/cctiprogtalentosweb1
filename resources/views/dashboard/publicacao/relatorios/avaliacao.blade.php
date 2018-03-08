@@ -11,7 +11,7 @@
         <div class="row">
             <div class="input-field col s12">
                 <select>
-                    <option value="1">Aguardando Avaliação</option>
+                    <option value="1">Aguardando Deferimento</option>
                     <option value="2">Deferido</option>
                     <option value="3">Indeferido</option>
                 </select>

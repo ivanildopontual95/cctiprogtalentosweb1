@@ -20,7 +20,7 @@
 						<label for="escolaridade">Escolaridade</label>
 					</div>
 					<div class="input-field col s6">
-						<input type="text" name="cargo" class="validate" value="{{ isset($cargo->cargo) && !old('cargo') ? $cargo->cargo : '' }}{{old('cargo')}}">
+						<input type="text" name="cargo" class="autocomplete" class="validate" value="{{ isset($cargo->cargo) && !old('cargo') ? $cargo->cargo : '' }}{{old('cargo')}}">
 						<label for="cargo">Cargo</label>
 					</div>
 					<div class="input-field col s2">
