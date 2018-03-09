@@ -17,32 +17,33 @@
                 {{csrf_field()}}
             <div class="row">
                 <div class="col s12">
-                    <ul class="tabs">
+                    <ul class="tabs">                       
                         <li class="tab col s4">
-                            <a href="#dadosdocandidato">Dados do Candidato</a>
+                            <a href="#dadosdocandidato" class="teal-text lighten-1-text">Dados do Candidato</a>
                         </li>
                         <li class="tab col s4">
-                            <a href="#qualificacoes">Qualificações</a>
+                            <a href="#qualificacoes" class="teal-text lighten-1-text">Qualificações</a>
                         </li>
                         <li class="tab col s4">
-                            <a href="#experiencias">Experiências</a>
+                            <a href="#experiencias" class="teal-text lighten-1-text">Experiências</a>
                         </li>
+                        <div class="indicator teal lighten-1" style="z-index:1"></div> 
                     </ul>
                 </div>
                 <div id="dadosdocandidato" class="col s12">
                     <div class="row">
                     </div>
-                        <div class="col s12">
-                            <div class="input-field col s8">
-                                <input type="text" name="nomeCompleto" class="validate" disabled value="{{ isset($inscricao->nomeCompleto) && !old('nomeCompleto') ? $inscricao->nomeCompleto : '' }}{{old('nomeCompleto')}}">
-                                <label>Nome Completo</label>
-                            </div>
-
-                            <div class="input-field col s4">
-                                <input type="text" name="dataNascimento" class="datepicker" disabled value="{{ isset($inscricao->dataNascimento) && !old('dataNascimento') ? $inscricao->dataNascimento : '' }}{{old('dataNascimento')}}">
-                                <label>Data de Nascimento</label>
-                            </div>
+                    <div class="col s12">
+                        <div class="input-field col s8">
+                            <input type="text" name="nomeCompleto" class="validate" disabled value="{{ isset($inscricao->nomeCompleto) && !old('nomeCompleto') ? $inscricao->nomeCompleto : '' }}{{old('nomeCompleto')}}">
+                            <label>Nome Completo</label>
                         </div>
+
+                        <div class="input-field col s4">
+                            <input type="text" name="dataNascimento" class="datepicker" disabled value="{{ isset($inscricao->dataNascimento) && !old('dataNascimento') ? $inscricao->dataNascimento : '' }}{{old('dataNascimento')}}">
+                            <label>Data de Nascimento</label>
+                        </div>
+                    </div>
 
                         <div class="col s12">
                             <div class="input-field col s6">
@@ -130,8 +131,7 @@
                                 <label>Contato</label>
                             </div>
                         </div>
-                        <button class="btn green left">Baixar</button>
-
+                    <button class="btn green left">Baixar<i class="material-icons left">file_download</i></button>
                 </div>
 
 
