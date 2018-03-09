@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'inscricao_id','name', 'email', 'password',
     ];
 
     /**
@@ -27,7 +27,7 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public $with = ['papeis', 'inscricoes', 'experiencias', 'cargos'];
+    public $with = ['papeis'];
 
 
     public function eAdmin(){
@@ -36,6 +36,7 @@ class User extends Authenticatable
         return $this->existePapel('Admin');
     }
 
+    //----------------------Adiciona papel----------------------//
     public function papeis()
     {
         return $this->belongsToMany(Papel::class);
@@ -78,48 +79,10 @@ class User extends Authenticatable
     }
 
 
-    //--------------Adiciona Formulário de inscrição------------//
-    public function inscricoes()
+    //--------------Inscrição------------//
+    public function inscricao()
     {
-        return $this->belongsToMany(Inscricao::class);
+        return $this->hasOne(Inscricao::class);
     }
 
-    public function adicionaFormulario($inscricao)
-    {
-        if (is_string($inscricao)) {
-            $inscricao = Inscricao::where('cpf','=',$inscricao)->firstOrFail();
-        }
-
-        return $this->inscricoes()->attach($inscricao);
-    }
-
-    //--------------Adiciona Formulário de experiencia------------//
-    public function experiencias()
-    {
-        return $this->belongsToMany(Experiencia::class);
-    }
-
-    public function adicionaExperiencia($experiencia)
-    {
-        if (is_string($experiencia)) {
-            $experiencia = Experiencia::where('empresa','=',$experiencia)->firstOrFail();
-        }
-
-        return $this->experiencias()->attach($experiencia);
-    }
-
-    //--------------Seleciona Cargo------------------------//
-    public function cargos()
-    {
-        return $this->belongsToMany(Cargo::class);
-    }
-
-    public function selecionaCargo($cargo)
-    {
-        if (is_string($cargo)) {
-            $cargo = Cargo::where('cargo','=',$cargo)->firstOrFail();
-        }
-
-        return $this->cargos()->attach($cargo);
-    }
 }

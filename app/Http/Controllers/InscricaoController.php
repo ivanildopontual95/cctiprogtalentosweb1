@@ -34,14 +34,15 @@ class InscricaoController extends Controller
     public function storeSelectCargo(Request $request, $id)
     {
         $user = Auth()->user();
-
+        
         $dados = $request->all();
         $cargo = Cargo::find($dados['cargo_id']);
 
 
         $user->selecionaCargo($cargo);
         
-        return redirect()->route('inscricoes.create', compact('id')); 
+        return redirect()->route('experiencias.create', compact('id'));
+        //return redirect()->route('inscricoes.create', compact('id')); 
     }
     //-------------------------------------------------------------------//
 
@@ -68,8 +69,9 @@ class InscricaoController extends Controller
         $inscricao = Inscricao::create($request->all());
         
         $user->adicionaFormulario($inscricao);
-
-        return redirect()->route('experiencias.create', compact('id'));
+        
+        return redirect()->route('inscricoes.cargo.index', compact('id')); 
+        //return redirect()->route('experiencias.create', compact('id'));
     }
 
     /**
@@ -126,8 +128,11 @@ class InscricaoController extends Controller
     {
         $user = Auth()->user();
         $inscricao = $user->inscricoes[0];
+
         $publicacao = Publicacao::find($id);
+
         $publicacao->adicionaInscricao($inscricao);
+
         return view('inscricao.confirmacao', compact('publicacao'));      
     }
 

@@ -13,8 +13,4 @@ class Cargo extends Model
         return $this->belongsToMany(Publicacao::class);
     }
 
-    public function users()
-    {
-        return $this->belongsToMany(User::class);
-    }
 }
