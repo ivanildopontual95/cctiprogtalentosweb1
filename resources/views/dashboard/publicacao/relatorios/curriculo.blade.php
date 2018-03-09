@@ -9,7 +9,9 @@
     @include('dashboard._caminho')
 
     <div class="row">
-        <h5 class="center">Currículo de {{$inscricao->nomeCompleto}}</h5>
+    </div>
+    <h5 class="center">Currículo de {{$inscricao->nomeCompleto}}</h5>
+    <div class="row">
     </div>
     <div class="row">
         <div class="card-panel white">

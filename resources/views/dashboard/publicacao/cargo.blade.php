@@ -8,7 +8,9 @@
 	@include('dashboard._caminho')
 
 	<div class="row">
+	</div>
 	<h5 class="center">Cargos de {{$publicacao->titulo}}</h5>
+	<div class="row">
 	</div>
 	<div class="row">
 		<div class="card-panel white">

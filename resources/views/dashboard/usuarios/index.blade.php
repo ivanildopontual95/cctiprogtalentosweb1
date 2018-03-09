@@ -6,7 +6,9 @@
 		</div>
 		@include('dashboard._caminho')
 		<div class="row">
+		</div>
 		<h5 class="center">Usuários do Sistema</h5>
+		<div class="row">
 		</div>
 		<div class="row">
 		<div class="card-panel white">

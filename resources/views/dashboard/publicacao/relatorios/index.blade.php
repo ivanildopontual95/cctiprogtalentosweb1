@@ -9,36 +9,163 @@
 	@include('dashboard._caminho')
 	
 	<div class="row">
+	</div>
 	<h5 class="center">Relatórios de {{$publicacao->titulo}}</h5>
+	<div class="row">
 	</div>
 	<div class="row">
 		<div class="card-panel white">
 			<div class="row">
-					<table>
-						<thead>
-							<tr>
-								<th>Id</th>
-								<th>Nome</th>
-								<th>CPF</th>
-								<th>Ação</th>
-							</tr>
-						</thead>
-						<tbody>
-						@foreach($inscricoes as $inscricao)
-							<tr>
-								<td>{{ $inscricao->id }}</td>
-								<td>{{ $inscricao->nomeCompleto }}</td>
-								<td>{{ $inscricao->cpf }}</td>
 
-								<td>
-									<a title="Visualizar Currículo" class="btn green" href="{{ route('publicacoes.relatorio.curriculo',$inscricao->id) }}"><i class="material-icons">work</i></a>
-									<a title="Avaliar Inscrito" class="btn" href="{{ route('publicacoes.relatorio.avaliacao',$inscricao->id) }}"><i class="material-icons">assignment</i></a>
-								</td>
-							</tr>
-						@endforeach
-						</tbody>
-					</table>
-				</div>
+					<div class="col s12">
+						<ul class="tabs">                       
+							<li class="tab col s3">
+								<a href="#listadeinscritos" class="teal-text lighten-1-text">Lista de Inscrições</a>
+							</li>
+							<li class="tab col s3">
+								<a href="#listadedeferimentos" class="teal-text lighten-1-text">Lista de Deferimentos</a>
+							</li>
+							<li class="tab col s3">
+								<a href="#listadeclassificados" class="teal-text lighten-1-text">Lista de Classificação</a>
+							</li>
+							<li class="tab col s3">
+								<a href="#listadeconvocacao" class="teal-text lighten-1-text">Lista de Convocação</a>
+							</li>
+							<div class="indicator teal lighten-1" style="z-index:1"></div> 
+						</ul>
+					</div>
+
+					<div id="listadeinscritos" class="col s12">
+						<div class="row">
+						</div>
+						<table>
+							<thead>
+								<tr>
+									<th>Id</th>
+									<th>Nome</th>
+									<th>CPF</th>
+									<th>Cargo<th>
+									<th>Ação</th>
+								</tr>
+							</thead>
+							<tbody>
+							@foreach($inscricoes as $inscricao)
+								<tr>
+									<td>{{ $inscricao->id }}</td>
+									<td>{{ $inscricao->nomeCompleto }}</td>
+									<td>{{ $inscricao->cpf }}</td>
+									<td>{{ $inscricao->cargo }}</td>
+
+									<td>
+										<a title="Visualizar Currículo" class="btn orange" href="{{ route('publicacoes.relatorio.curriculo',$inscricao->id) }}"><i class="material-icons">work</i></a>
+										<a title="Avaliar Inscrito" class="btn blue" href="{{ route('publicacoes.relatorio.avaliacao',$inscricao->id) }}"><i class="material-icons">assignment</i></a>
+									</td>
+								</tr>
+							@endforeach
+							</tbody>
+						</table>
+						<button class="btn green left">Baixar<i class="material-icons left">file_download</i></button>
+					</div>
+					<div id="listadedeferimentos" class="col s12">
+							<div class="row">
+							</div>
+						<table>
+							<thead>
+								<tr>
+									<th>Id</th>
+									<th>Nome</th>
+									<th>CPF</th>
+									<th>Deferimento</th>
+									<th>Cargo<th>
+									<th>Ação</th>
+								</tr>
+							</thead>
+							<tbody>
+							@foreach($inscricoes as $inscricao)
+								<tr>
+									<td>{{ $inscricao->id }}</td>
+									<td>{{ $inscricao->nomeCompleto }}</td>
+									<td>{{ $inscricao->cpf }}</td>
+									<td>{{ $inscricao->estadoCandidatura }}</td>
+									<td>{{ $inscricao->cargo }}</td>
+
+									<td>
+										<a title="Visualizar Currículo" class="btn orange" href="{{ route('publicacoes.relatorio.curriculo',$inscricao->id) }}"><i class="material-icons">work</i></a>
+										<a title="Avaliar Inscrito" class="btn blue" href="{{ route('publicacoes.relatorio.avaliacao',$inscricao->id) }}"><i class="material-icons">assignment</i></a>
+									</td>
+								</tr>
+							@endforeach
+							</tbody>
+						</table>
+						<button class="btn green left">Baixar<i class="material-icons left">file_download</i></button>
+					</div>
+
+					<div id="listadeclassificados" class="col s12">
+							<div class="row">
+							</div>
+						<table>
+							<thead>
+								<tr>
+									<th>Id</th>
+									<th>Nome</th>
+									<th>CPF</th>
+									<th>Pontuação</th>
+									<th>Classificação</th>
+									<th>Cargo<th>
+									<th>Ação</th>
+								</tr>
+							</thead>
+							<tbody>
+							@foreach($inscricoes as $inscricao)
+								<tr>
+									<td>{{ $inscricao->id }}</td>
+									<td>{{ $inscricao->nomeCompleto }}</td>
+									<td>{{ $inscricao->cpf }}</td>
+									<td>{{ $inscricao->pontuacao }}</td>
+									<td>{{ $inscricao->classificacao }}</td>
+									<td>{{ $inscricao->cargo }}</td>
+
+									<td>
+										<a title="Visualizar Currículo" class="btn orange" href="{{ route('publicacoes.relatorio.curriculo',$inscricao->id) }}"><i class="material-icons">work</i></a>
+										<a title="Avaliar Inscrito" class="btn blue" href="{{ route('publicacoes.relatorio.avaliacao',$inscricao->id) }}"><i class="material-icons">assignment</i></a>
+									</td>
+								</tr>
+							@endforeach
+							</tbody>
+						</table>
+						<button class="btn green left">Baixar<i class="material-icons left">file_download</i></button>
+					</div>
+
+					<div id="listadeconvocacao" class="col s12">
+							<div class="row">
+							</div>
+						<table>
+							<thead>
+								<tr>
+									<th>Id</th>
+									<th>Nome</th>
+									<th>CPF</th>
+									<th>Ação</th>
+								</tr>
+							</thead>
+							<tbody>
+							@foreach($inscricoes as $inscricao)
+								<tr>
+									<td>{{ $inscricao->id }}</td>
+									<td>{{ $inscricao->nomeCompleto }}</td>
+									<td>{{ $inscricao->cpf }}</td>
+
+									<td>
+										<a title="Visualizar Currículo" class="btn orange" href="{{ route('publicacoes.relatorio.curriculo',$inscricao->id) }}"><i class="material-icons">work</i></a>
+										<a title="Avaliar Inscrito" class="btn blue" href="{{ route('publicacoes.relatorio.avaliacao',$inscricao->id) }}"><i class="material-icons">assignment</i></a>
+									</td>
+								</tr>
+							@endforeach
+							</tbody>
+						</table>
+						<button class="btn green left">Baixar<i class="material-icons left">file_download</i></button>
+					</div>
+
 			</div>
 		</div>
 	</div>

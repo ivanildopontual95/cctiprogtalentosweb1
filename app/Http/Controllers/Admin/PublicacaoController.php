@@ -242,7 +242,7 @@ class PublicacaoController extends Controller
         $caminhos = [
         ['url'=>'/dashboard','titulo'=>'Painel Principal'],
         ['url'=>route('publicacoes.index'),'titulo'=>'Publicações'],
-        ['url'=>'','titulo'=>'Adicionar Cargos']
+        ['url'=>'','titulo'=>'Cargos']
         ];
 
         return view('dashboard.publicacao.cargo',compact( 'publicacao','cargo','caminhos'));      
