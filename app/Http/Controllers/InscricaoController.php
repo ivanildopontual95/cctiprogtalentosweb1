@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Inscricao;
 use App\Publicacao;
 use App\Cargo;
+use App\Qualificacao;
+use App\Experiencia;
 use App\Http\Requests\InscricaoRequest;
 
 class InscricaoController extends Controller
@@ -51,9 +53,14 @@ class InscricaoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
+    public function create(Publicacao $publicacao)
     {
-        return view('inscricao.cadastro', compact('id'));
+        $user = Auth()->user();
+        //dd($user);
+        //dd($publicacao->inscricoes[0]->cargo_id);
+        $cargos = $publicacao->cargos;
+
+        return view('inscricao.cadastroTeste', compact('publicacao','cargos'));
     }
 
     /**
@@ -62,16 +69,37 @@ class InscricaoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(InscricaoRequest $request, $id)
+    //public function store(InscricaoRequest $request, Publicacao $publicacao)
+    public function store(Request $request, Publicacao $publicacao)
     {
         $user = Auth()->user();
         
-        $inscricao = Inscricao::create($request->all());
+        $dados = $request->all();
+
+        $inscricao = Inscricao::create($dados);
+        $dados['inscricao_id'] = $inscricao->id;
+
+        //$user->inscricao()->associate($inscricao);
+        //$user->save();
+
+        foreach($dados['qualificacoes'] as $q => $qualificacao){
+            $qualificacoes[$q] = new Qualificacao($qualificacao);                      
+        }
+        $inscricao->qualificacoes()->saveMany($qualificacoes);  
+
+
+        foreach($dados['experiencias'] as $i => $experiencia){
+            $experiencias[$i] = new Experiencia($experiencia);                      
+        }
+        $inscricao->experiencias()->saveMany($experiencias);  
+
+
+        $cargo = Cargo::find($dados['cargo_id']);
+        $publicacao->inscricoes()->attach( $inscricao, ['cargo_id' => $cargo] ); 
         
-        $user->adicionaFormulario($inscricao);
-        
-        return redirect()->route('inscricoes.cargo.index', compact('id')); 
-        //return redirect()->route('experiencias.create', compact('id'));
+        //dd($publicacao->inscricoes);
+
+        return redirect()->route('confirmacao.index', compact('publicacao')); 
     }
 
     /**
@@ -124,14 +152,12 @@ class InscricaoController extends Controller
 
     //--------------Confirmação Inscrição ------------------------
 
-    public function indexConfirmacao($id)
+    public function indexConfirmacao(Publicacao $publicacao)
     {
-        $user = Auth()->user();
+        /*$user = Auth()->user();
         $inscricao = $user->inscricoes[0];
-
         $publicacao = Publicacao::find($id);
-
-        $publicacao->adicionaInscricao($inscricao);
+        $publicacao->adicionaInscricao($inscricao);*/
 
         return view('inscricao.confirmacao', compact('publicacao'));      
     }
