@@ -380,8 +380,6 @@
                 </div>
                 <div style="overflow:auto;">
                     <div>
-                        <button class="btn blue btn-info left " id="prevBtn" onclick="nextPrev(-1)">Voltar</button>
-                        <button class="btn green btn-info right " id="nextBtn" onclick="nextPrev(1)">Próximo</button>
                         <button class="btn green btn-info right">Confirmar</button>
                     </div>
                 </div>
