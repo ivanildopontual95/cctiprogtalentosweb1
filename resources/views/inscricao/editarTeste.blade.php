@@ -37,7 +37,7 @@
 
                         <div class="col s12">
                                 <div class="input-field col s8 {{$errors->has('nomeCompleto') ? 'has-error' : ''}}">
-                                    <input type="text" name = "nomeCompleto" class="validate"  value = "{{old('nomeCompleto')}}">
+                                    <input type="text" name = "nomeCompleto" class="validate"  value="{{ isset($inscricao->nomeCompleto) && !old('nomeCompleto') ? $inscricao->nomeCompleto : '' }}{{old('nomeCompleto')}}">
                                     <label >Nome Completo</label>
                                     @if($errors->has('nomeCompleto'))
                                         <span class = "red-text">
@@ -47,7 +47,7 @@
                                 </div>
                                 
                                 <div class="input-field col s4 {{$errors->has('dataNascimento') ? 'has-error' : ''}}">
-                                    <input type="text" name = "dataNascimento" class="datepicker" value = "{{old('dataNascimento')}}">
+                                    <input type="text" name = "dataNascimento" class="datepicker" value="{{ isset($inscricao->dataNascimento) && !old('dataNascimento') ? $inscricao->dataNascimento : '' }}{{old('dataNascimento')}}">
                                     <label >Data de Nascimento</label>
                                     @if($errors->has('dataNascimento'))
                                         <span class = "red-text">
@@ -59,7 +59,7 @@
                             
                             <div class="col s12">
                                 <div class="input-field col s6 {{$errors->has('mae') ? 'has-error' : ''}}">
-                                    <input type="text" name = "mae" class="validate" value = "{{old('mae')}}">
+                                    <input type="text" name = "mae" class="validate" value="{{ isset($inscricao->mae) && !old('mae') ? $inscricao->mae : '' }}{{old('mae')}}">
                                     <label>Nome da Mãe </label>
                                     @if($errors->has('mae'))
                                         <span class = "red-text">
@@ -69,7 +69,7 @@
                                 </div>
         
                                 <div class="input-field col s6 {{$errors->has('pai') ? 'has-error' : ''}}">
-                                <input type="text" name = "pai" class="validate" value = "{{old('pai')}}">
+                                <input type="text" name = "pai" class="validate" value="{{ isset($inscricao->pai) && !old('pai') ? $inscricao->pai : '' }}{{old('pai')}}">
                                     <label >Nome do Pai</label>
                                     @if($errors->has('pai'))
                                         <span class = "red-text">
@@ -81,7 +81,7 @@
                             
                             <div class="col s12">
                                 <div class="input-field col s12 {{$errors->has('escolaridade') ? 'has-error' : ''}}">
-                                    <input type="text" name = "escolaridade" class="validate" value = "{{old('escolaridade')}}">
+                                    <input type="text" name = "escolaridade" class="validate" value="{{ isset($inscricao->escolaridade) && !old('escolaridade') ? $inscricao->escolaridade : '' }}{{old('escolaridade')}}">
                                     <label >Escolaridade </label>
                                     @if($errors->has('escolaridade'))
                                         <span class = "red-text">
@@ -94,7 +94,7 @@
                             <div class="col s12">
                                 <div class="input-field col s3 {{$errors->has('sexo') ? 'has-error' : ''}}">
                                     <select name= "sexo" >
-                                        <option value="{{old('sexo')}}" disabled selected >Selecione uma opção </option>
+                                        <option value="{{ isset($inscricao->sexo) && !old('sexo') ? $inscricao->sexo : '' }}{{old('sexo')}}" disabled selected >Selecione uma opção </option>
                                         <option value="Masculino">Masculino</option>
                                         <option value="Feminino">Feminino</option>
                                         <option value="Outros">Outros</option>
@@ -294,7 +294,7 @@
 
                             <a class="input-field col s12">Experiências Profissionais</a>
 
-                            <div id="listas">
+                            <div id="listasexperiencias">
                                 
                                 <div class="input-field col s6 {{$errors->has('empresa') ? 'has-error' : ''}}">
                                     <input type="text" name="experiencias[0][empresa]" class="validate" value="{{old('empresa')}}">
@@ -351,7 +351,7 @@
                                 </div>
 
                                 <div class="col s12">
-                                        <button class="btn blue" id="add_field">Adicionar</button>
+                                        <button class="btn blue" id="add_field_experiencias">Adicionar</button>
                                 </div>
                                 <div class="row"></div>
                             </div>                                

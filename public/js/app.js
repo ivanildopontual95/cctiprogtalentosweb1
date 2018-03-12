@@ -20915,4 +20915,29 @@ $(document).ready(function() {
     minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
   });
 
+    //add campos
+    var campos_max          = 20;   //max de 10 campos
+    var x = 1; // campos iniciais
+    $('#add_field_experiencias').click (function(e) {
+            e.preventDefault();     //prevenir novos clicks
+            if (x < campos_max) {
+                    
+                    $('#listasexperiencias').append('<div>\
+                            <input type="text" name="experiencias['+x+'][descricao]">\
+                            <input type="text" name="experiencias['+x+'][funcao]">\
+                            <input type="text" name="experiencias['+x+'][dataInE]">\
+                            <input type="text" name="experiencias['+x+'][dataTermE]">\
+                            <input type="text" name="experiencias['+x+'][atividade]">\
+                            <a href="#" class="remover_campo">Remover</a>\
+                            </div>');
+                    x++;
+            }
+    });
+    // Remover o div anterior
+    $('#listasexperiencias').on("click",".remover_campo",function(e) {
+            e.preventDefault();
+            $(this).parent('div').remove();
+            x--;
+    });
+
 });
