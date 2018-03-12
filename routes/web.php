@@ -77,9 +77,10 @@ Route:: group (['middleware' => 'auth', 'prefix' =>'dashboard'], function () {
   //--------------------------------------Relatórios---------------------------------
 
   Route::get('publicacoes/{id}/relatorios/', ['as'=> 'publicacoes.relatorio.index','uses'=>'Admin\PublicacaoController@indexRelatorio']);
-  Route::get('publicacoes/{id}/relatorios//curriculo', ['as'=> 'publicacoes.relatorio.curriculo','uses'=>'Admin\PublicacaoController@curriculoRelatorio']);
-  Route::get('publicacoes/{id}/relatorios//curriculo/gerarcurriculopdf/',['as'=>'publicacoes.relatorio.pdfcurriculo','uses'=>'PDFController@pdfCurriculoRelatorio']);
+  Route::get('publicacoes/{id}/relatorios//deferimento', ['as'=> 'publicacoes.relatorio.deferimento','uses'=>'Admin\PublicacaoController@deferimentoRelatorio']);
   Route::get('publicacoes/{id}/relatorios//avaliacao', ['as'=> 'publicacoes.relatorio.avaliacao','uses'=>'Admin\PublicacaoController@avaliacaoRelatorio']);
+  Route::get('publicacoes/{id}/relatorios//convocacao', ['as'=> 'publicacoes.relatorio.convocacao','uses'=>'Admin\PublicacaoController@convocacaoRelatorio']);
+  Route::get('publicacoes/{id}/relatorios//gerarcurriculopdf/',['as'=>'publicacoes.relatorio.pdfcurriculo','uses'=>'PDFController@pdfCurriculoRelatorio']);
   
   //---------------------------------------Perfis--------------------------
 

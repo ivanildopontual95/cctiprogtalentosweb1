@@ -10,7 +10,7 @@
 
     <div class="row">
     </div>
-    <h5 class="center">Currículo de {{$inscricao->nomeCompleto}}</h5>
+    <h5 class="center">Deferimento da Candidatura de {{$inscricao->nomeCompleto}}</h5>
     <div class="row">
     </div>
     <div class="row">
@@ -20,14 +20,17 @@
             <div class="row">
                 <div class="col s12">
                     <ul class="tabs">                       
-                        <li class="tab col s4">
+                        <li class="tab col s3">
                             <a href="#dadosdocandidato" class="teal-text lighten-1-text">Dados do Candidato</a>
                         </li>
-                        <li class="tab col s4">
+                        <li class="tab col s3">
                             <a href="#qualificacoes" class="teal-text lighten-1-text">Qualificações</a>
                         </li>
-                        <li class="tab col s4">
+                        <li class="tab col s3">
                             <a href="#experiencias" class="teal-text lighten-1-text">Experiências</a>
+                        </li>
+                        <li class="tab col s3">
+                            <a href="#deferimento" class="teal-text lighten-1-text">Deferimento</a>
                         </li>
                         <div class="indicator teal lighten-1" style="z-index:1"></div> 
                     </ul>
@@ -289,7 +292,32 @@
                             @endif                       
                         </div>  
                     </div>
-                </div> 
+                </div>
+                <div id="deferimento" class="col s12">
+                    <div class="row">
+                    </div>
+    
+                    <div class="col s12">
+                        <form action="{{ route('inscricoes.update',$inscricao->id) }}" method="post">
+                            {{csrf_field()}}
+                            {{ method_field('PUT') }}
+                            
+                            <div class="input-field col s12">
+                                <select>
+                                    <option value="1">Aguardando Deferimento</option>
+                                    <option value="2">Deferido</option>
+                                    <option value="3">Indeferido</option>
+                                </select>
+                                <label>Estado da Candidatura</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <input id="icon_prefix" type="text" name="descricao" data-length="280" class="validate" value="{{ isset($publicacao->descricao) && !old('descricao') ? $inscricao->descricao : '' }}{{old('descricao')}}">
+                                <label>Obs.:</label>
+                            </div>
+                            <button class="btn blue">Salvar</button>
+                        </form>
+                    </div>
+                </div>
             </form>
         </div>
     </div>

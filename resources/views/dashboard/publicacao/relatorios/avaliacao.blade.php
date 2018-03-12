@@ -1,23 +1,20 @@
 @extends('layouts.app')
+
 @section('content')
 
 <div class="container">
     <div class="row">
     </div>
 
-@include('dashboard._caminho')
+    @include('dashboard._caminho')
 
-    <div class="card-panel white">
-        <div class="row">
-            <div class="input-field col s12">
-                <select>
-                    <option value="1">Aguardando Deferimento</option>
-                    <option value="2">Deferido</option>
-                    <option value="3">Indeferido</option>
-                </select>
-                <label>Estado da Candidatura</label>
-            </div>
+    <div class="row">
+    </div>
+    <h5 class="center">Avaliação da Candidatura de {{$inscricao->nomeCompleto}}</h5>
+    <div class="row">
+    </div>
+    <div class="row">
+        <div class="card-panel white">
         </div>
     </div>
-</div>
-@endsection
+    @endsection

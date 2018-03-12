@@ -299,7 +299,7 @@ class PublicacaoController extends Controller
         return view('dashboard.publicacao.relatorios.index',compact( 'publicacao','relatorio','inscricoes','caminhos'));      
     }
 
-    public function curriculoRelatorio($id){
+    public function deferimentoRelatorio($id){
         
         if(Gate::denies('publicacoes-edit')){
             abort(403,"Não autorizado!");
@@ -314,7 +314,7 @@ class PublicacaoController extends Controller
         ['url'=>'','titulo'=>'Lista de Inscritos']
         ];
 
-        return view('dashboard.publicacao.relatorios.curriculo',compact( 'publicacao','relatorio','inscricao','experiencia','caminhos'));      
+        return view('dashboard.publicacao.relatorios.deferimento',compact( 'publicacao','relatorio','inscricao','experiencia','caminhos'));      
     }
 
     public function avaliacaoRelatorio($id){
@@ -324,15 +324,33 @@ class PublicacaoController extends Controller
         }
 
         $publicacao = Publicacao::find($id);
-        $relatorio = Relatorio::find($id);
         $inscricao = Inscricao::find($id);
+        $experiencia = Experiencia::find($id);
         $caminhos = [
         ['url'=>'/dashboard','titulo'=>'Painel Principal'],
         ['url'=>route('publicacoes.index'),'titulo'=>'Publicações'],
         ['url'=>'','titulo'=>'Lista de Inscritos']
         ];
 
-        return view('dashboard.publicacao.relatorios.avaliacao',compact( 'publicacao','relatorio','inscricao','caminhos'));      
+        return view('dashboard.publicacao.relatorios.avaliacao',compact( 'publicacao','relatorio','inscricao','experiencia','caminhos'));      
+    }
+
+    public function convocacaoRelatorio($id){
+        
+        if(Gate::denies('publicacoes-edit')){
+            abort(403,"Não autorizado!");
+        }
+        
+        $publicacao = Publicacao::find($id);
+        $inscricao = Inscricao::find($id);
+        $experiencia = Experiencia::find($id);
+        $caminhos = [
+        ['url'=>'/dashboard','titulo'=>'Painel Principal'],
+        ['url'=>route('publicacoes.index'),'titulo'=>'Publicações'],
+        ['url'=>'','titulo'=>'Lista de Inscritos']
+        ];
+        return view('dashboard.publicacao.relatorios.convocacao',compact( 'publicacao','relatorio','inscricao','experiencia','caminhos'));
+
     }
     //-------------------------------------------------------
 }

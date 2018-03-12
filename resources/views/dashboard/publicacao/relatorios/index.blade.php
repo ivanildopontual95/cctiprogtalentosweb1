@@ -45,7 +45,7 @@
 									<th>Nome</th>
 									<th>CPF</th>
 									<th>Cargo<th>
-									<th>Ação</th>
+
 								</tr>
 							</thead>
 							<tbody>
@@ -55,11 +55,6 @@
 									<td>{{ $inscricao->nomeCompleto }}</td>
 									<td>{{ $inscricao->cpf }}</td>
 									<td>{{ $inscricao->cargo }}</td>
-
-									<td>
-										<a title="Visualizar Currículo" class="btn orange" href="{{ route('publicacoes.relatorio.curriculo',$inscricao->id) }}"><i class="material-icons">work</i></a>
-										<a title="Avaliar Inscrito" class="btn blue" href="{{ route('publicacoes.relatorio.avaliacao',$inscricao->id) }}"><i class="material-icons">assignment</i></a>
-									</td>
 								</tr>
 							@endforeach
 							</tbody>
@@ -75,8 +70,8 @@
 									<th>Id</th>
 									<th>Nome</th>
 									<th>CPF</th>
-									<th>Deferimento</th>
 									<th>Cargo<th>
+									<th>Deferimento</th>
 									<th>Ação</th>
 								</tr>
 							</thead>
@@ -86,12 +81,10 @@
 									<td>{{ $inscricao->id }}</td>
 									<td>{{ $inscricao->nomeCompleto }}</td>
 									<td>{{ $inscricao->cpf }}</td>
-									<td>{{ $inscricao->estadoCandidatura }}</td>
 									<td>{{ $inscricao->cargo }}</td>
-
+									<td>{{ $inscricao->deferimento }}</td>
 									<td>
-										<a title="Visualizar Currículo" class="btn orange" href="{{ route('publicacoes.relatorio.curriculo',$inscricao->id) }}"><i class="material-icons">work</i></a>
-										<a title="Avaliar Inscrito" class="btn blue" href="{{ route('publicacoes.relatorio.avaliacao',$inscricao->id) }}"><i class="material-icons">assignment</i></a>
+										<a title="Deferimento" class="btn blue" href="{{ route('publicacoes.relatorio.deferimento',$inscricao->id) }}"><i class="material-icons">assignment_turned_in</i></a>
 									</td>
 								</tr>
 							@endforeach
@@ -109,9 +102,9 @@
 									<th>Id</th>
 									<th>Nome</th>
 									<th>CPF</th>
-									<th>Pontuação</th>
-									<th>Classificação</th>
 									<th>Cargo<th>
+									<th>Classificação</th>
+									<th>Pontuação</th>
 									<th>Ação</th>
 								</tr>
 							</thead>
@@ -121,13 +114,11 @@
 									<td>{{ $inscricao->id }}</td>
 									<td>{{ $inscricao->nomeCompleto }}</td>
 									<td>{{ $inscricao->cpf }}</td>
-									<td>{{ $inscricao->pontuacao }}</td>
-									<td>{{ $inscricao->classificacao }}</td>
 									<td>{{ $inscricao->cargo }}</td>
-
+									<td>{{ $inscricao->classificacao }}</td>
+									<td>{{ $inscricao->pontuacao }}</td>
 									<td>
-										<a title="Visualizar Currículo" class="btn orange" href="{{ route('publicacoes.relatorio.curriculo',$inscricao->id) }}"><i class="material-icons">work</i></a>
-										<a title="Avaliar Inscrito" class="btn blue" href="{{ route('publicacoes.relatorio.avaliacao',$inscricao->id) }}"><i class="material-icons">assignment</i></a>
+										<a title="Avaliação" class="btn blue" href="{{ route('publicacoes.relatorio.avaliacao',$inscricao->id) }}"><i class="material-icons">assignment</i></a>
 									</td>
 								</tr>
 							@endforeach
@@ -145,6 +136,10 @@
 									<th>Id</th>
 									<th>Nome</th>
 									<th>CPF</th>
+									<th>Cargo<th>
+									<th>Classificação</th>
+									<th>Pontuação</th>
+									<th>Convocação</th>
 									<th>Ação</th>
 								</tr>
 							</thead>
@@ -154,10 +149,12 @@
 									<td>{{ $inscricao->id }}</td>
 									<td>{{ $inscricao->nomeCompleto }}</td>
 									<td>{{ $inscricao->cpf }}</td>
-
+									<td>{{ $inscricao->cargo }}</td>
+									<td>{{ $inscricao->classificacao }}</td>
+									<td>{{ $inscricao->pontuacao }}</td>
+									<td>{{ $inscricao->convocacao }}</td>
 									<td>
-										<a title="Visualizar Currículo" class="btn orange" href="{{ route('publicacoes.relatorio.curriculo',$inscricao->id) }}"><i class="material-icons">work</i></a>
-										<a title="Avaliar Inscrito" class="btn blue" href="{{ route('publicacoes.relatorio.avaliacao',$inscricao->id) }}"><i class="material-icons">assignment</i></a>
+										<a title="Deferimento" class="btn blue" href="{{ route('publicacoes.relatorio.convocacao',$inscricao->id) }}"><i class="material-icons">assignment_turned_in</i></a>
 									</td>
 								</tr>
 							@endforeach

@@ -4,7 +4,6 @@
         <div class="col l6 s12">
           <a href="https://www.boavista.rr.gov.br" target="_blank"><img class="responsive-img" src="/images/pmbvrsz.png" alt="Prefeitura de Boa Vista" title="Prefeitura de Boa Vista" </i></a>
           <p class="grey-text text-lighten-4">{{config('app.descricaoSite')}}</p>
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3985.0040140042775!2d-60.69107468515083!3d2.8149559979494656!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8d9305cf846b68f7%3A0x86ba049e871fc0c0!2sCCTI!5e0!3m2!1spt-BR!2sbr!4v1520517491229" width="200" height="200" frameborder="0" style="border:0" allowfullscreen></iframe>
           <p class="grey-text text-lighten-4">{{config('app.telefoneSite')}}<i class="material-icons left">call</i></p>
           <p class="grey-text text-lighten-4">{{config('app.cepSite')}}<i class="material-icons left">mail</i></p>
           <p class="grey-text text-lighten-4">{{config('app.endereçoSite')}}<i class="material-icons left">place</i></p>  

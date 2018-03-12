@@ -17,7 +17,7 @@
 			<div class="row">
 				<form action="{{ route('publicacoes.cargo.store',$publicacao->id) }}" method="post">
 					{{csrf_field()}}
-					<div class="input-field col s3">
+					<div class="input-field col s4">
 						<input  type="text" name="escolaridade" class="validate" value="{{ isset($cargo->escolaridade) && !old('escolaridade') ? $cargo->escolaridade : '' }}{{old('escolaridade')}}">
 						<label for="escolaridade">Escolaridade</label>
 					</div>
