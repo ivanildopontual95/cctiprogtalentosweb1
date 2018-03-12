@@ -127,10 +127,12 @@ class InscricaoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Publicacao $publicacao, $id)
+    public function edit( $id, Publicacao $publicacao)
     {
         $inscricao = Inscricao::find($id);
-        return view('inscricao.editar',compact('inscricao', 'publicacao'));
+        $cargos = $publicacao->cargos;
+        
+        return view('inscricao.editarTeste',compact('inscricao', 'publicacao', 'cargos'));
     }
 
     /**
@@ -140,10 +142,12 @@ class InscricaoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(InscricaoRequest $request, Publicacao $publicacao, $id)
+    //public function update(InscricaoRequest $request, $id, Publicacao $publicacao)
+    public function update(Request $request, $id, Publicacao $publicacao)
     {
         Inscricao::find($id)->update($request->all());
-        return redirect()->route('inscricoes.index');
+
+        return redirect()->route('confirmacao.index', compact('publicacao'));
     }
 
     /**
