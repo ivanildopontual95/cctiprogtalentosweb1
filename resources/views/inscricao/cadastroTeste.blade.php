@@ -14,23 +14,24 @@
                     <div class="col s12">
                         <ul class="tabs">
                             <li class="tab col s3">
-                                <a href="#cadastrodocandidato">Dados pessoais</a>
+                                <a href="#cadastrodocandidato" class="teal-text lighten-1-text">Dados pessoais</a>
                             </li>
                             <li class="tab col s3">
-                                <a href="#qualificacao">Qualificações</a>
+                                <a href="#qualificacao" class="teal-text lighten-1-text">Qualificações</a>
                             </li>
                             <li class="tab col s3">
-                                <a href="#experiencias">Experiências</a>
+                                <a href="#experiencias" class="teal-text lighten-1-text">Experiências</a>
                             </li>
                             <li class="tab col s3">
-                                <a href="#cargos">Escolha do Cargo </a>
+                                <a href="#cargos" class="teal-text lighten-1-text">Escolha do Cargo </a>
                             </li>
-
+                            <div class="indicator teal lighten-1" style="z-index:1"></div> 
                         </ul>
                     </div>
 
                     <!-- Cadastro do candidado -->
-                    <div id="cadastrodocandidato" class="col s12">
+                    <div id="cadastrodocandidato" >
+                        <div class="tab" >
                         <div class="row"></div>
 
                         <div class="col s12">
@@ -128,7 +129,7 @@
         
                             <div class="col s12">
                                 <div class="input-field col s3 {{$errors->has('cep') ? 'has-error' : ''}}">
-                                    <input type="text" name= "cep" id="cep" pattern="[0-9]{5}-[0-9]{3}" class="validate" value = "{{old('cep')}}">
+                                    <input type="text" name= "cep" id="cep" pattern="[0-9]{5}-[0-9]{3}" class="validate" value="{{old('cep')}}">
                                     <label >CEP</label>
                                     @if($errors->has('cep'))
                                         <span class = "red-text">
@@ -180,7 +181,7 @@
                                 </div>
         
                                 <div class="input-field col s2 {{$errors->has('numero') ? 'has-error' : ''}}">
-                                    <input type="text" name = "numero" class="validate" value = "{{old('numero')}}">
+                                    <input type="text" name = "numero" class="validate" value="{{old('numero')}}">
                                     <label >Nº</label>
                                     @if($errors->has('numero'))
                                         <span class = "red-text">
@@ -192,7 +193,7 @@
         
                             <div class="col s12">
                                 <div class="input-field col s6 {{$errors->has('email') ? 'has-error' : ''}}">
-                                    <input type="text" name = "email" class="validate" value = "{{old('email')}}">
+                                    <input type="text" name = "email" class="validate" value="{{old('email')}}">
                                     <label >Email </label>
                                     @if($errors->has('email'))
                                         <span class = "red-text">
@@ -202,7 +203,7 @@
                                 </div>
         
                                 <div class="input-field col s6 {{$errors->has('telefone') ? 'has-error' : ''}}">
-                                    <input type="text" name ="telefone" id="telefone" pattern="\([0-9]{2}\)[\s][0-9]{4}-[0-9]{4,5}" class='validate' value = "{{old('telefone')}}">
+                                    <input type="text" name ="telefone" id="telefone" pattern="\([0-9]{2}\)[\s][0-9]{4}-[0-9]{4,5}" class='validate' value="{{old('telefone')}}">
                                     <label >Contato</label>
                                     @if($errors->has('telefone'))
                                         <span class = "red-text">
@@ -211,16 +212,18 @@
                                     @endif
                                 </div>
                             </div>               
-                        <div class="row"></div>
+                            <div class="row"></div>
+                        </div>
                     </div>
 
                     <!-- Qualificacao -->
-                    <div id="qualificacao" class="col s12">
+                    <div id="qualificacao">
+                        <div class="tab" >
                         <div class="row"></div>
                         <div class="col s12">
                             <a class="input-field col s12">Participações em Cursos Profissionalizantes</a>
                             
-                            <div id="listas">
+                            <div id="listas_qualificacoes">
                                 <div class="input-field col s6 {{$errors->has('instituicao') ? 'has-error' : ''}}">
                                     <input type="text" name="qualificacoes[0][instituicao]" class="validate" value="{{old('instituicao')}}">
                                     <label>Instituição </label>
@@ -276,23 +279,24 @@
                                 </div>
 
                                 <div class="col s12">
-                                    <button class="btn blue" id="add_field">Adicionar</button>
+                                    <button class="btn blue" id="add_field_qualificacoes">Adicionar</button>
                                 </div>
                                 <div class="row"></div>
-
                             </div>
+                        </div>
                         </div>
                     </div>
 
                     <!-- Experiencia -->
-                    <div id="experiencias" class="col s12">
+                    <div id="experiencias" >
+                        <div class="tab" >
                         <div class="row"></div>
 
                         <div class="col s12">
 
                             <a class="input-field col s12">Experiências Profissionais</a>
 
-                            <div id="listas">
+                            <div id="listas_experiencias">
                                 
                                 <div class="input-field col s6 {{$errors->has('empresa') ? 'has-error' : ''}}">
                                     <input type="text" name="experiencias[0][empresa]" class="validate" value="{{old('empresa')}}">
@@ -319,7 +323,7 @@
                                 </div>
 
                                 <div class="input-field col s3 {{$errors->has('dataInE') ? 'has-error' : ''}}">
-                                    <input type="text" name="experiencias[0][dataInE]" class="datepicker" value="{{ isset($experiencia->dataInE) && !old('dataInE') ? $experiencia->funcao : '' }}{{old('dataInE')}}">
+                                    <input type="text" name="experiencias[0][dataInE]" class="datepicker" value="{{old('dataInE')}}">
                                     <label>Data de inicio</label>
                                     @if($errors->has('dataInE'))
                                     <span class="red-text">
@@ -329,7 +333,7 @@
                                 </div>
 
                                 <div class="input-field col s3 {{$errors->has('dataTermE') ? 'has-error' : ''}}">
-                                    <input type="text" name="experiencias[0][dataTermE]" class="datepicker" value="{{ isset($experiencia->dataTermE) && !old('dataTermE') ? $experiencia->dataTermE : '' }}{{old('dataTermE')}}">
+                                    <input type="text" name="experiencias[0][dataTermE]" class="datepicker" value="{{old('dataTermE')}}">
                                     <label>Data de fim</label>
                                     @if($errors->has('dataTermE'))
                                     <span class="red-text">
@@ -339,7 +343,7 @@
                                 </div>
 
                                 <div class="input-field col s6 {{$errors->has('atividade') ? 'has-error' : ''}}">
-                                    <input type="text" name="experiencias[0][atividade]" class="validate" value="{{ isset($experiencia->atividade) && !old('atividade') ? $experiencia->atividade : '' }}{{old('atividade')}}">
+                                    <input type="text" name="experiencias[0][atividade]" class="validate" value="{{old('atividade')}}">
                                     <label>Atividades Desempenhadas</label>
                                     @if($errors->has('atividade'))
                                     <span class="red-text">
@@ -349,15 +353,17 @@
                                 </div>
 
                                 <div class="col s12">
-                                        <button class="btn blue" id="add_field">Adicionar</button>
+                                        <button class="btn blue" id="add_field_experiencias">Adicionar</button>
                                 </div>
                                 <div class="row"></div>
                             </div>                                
                         </div>
+                        </div>
                     </div>
 
                     <!-- Cargos -->
-                    <div id="cargos" class="col s12">
+                    <div id="cargos" >
+                        <div class="tab" >
                         <div class="row"></div>
                         <div class="input-field col s6 offset-s3 {{$errors->has('cargo_id') ? 'has-error' : ''}}">
                             <select name="cargo_id">
@@ -377,12 +383,14 @@
                         </div>
                         <div class="row"></div>
                     </div>
-                </div>
-                <div style="overflow:auto;">
-                    <div>
+                    </div>
+
+                    <div class="row"></div>
+                    <div class="col s12">
                         <button class="btn green btn-info right">Confirmar</button>
                     </div>
-                </div>
+                        
+                </div>                
             </div>
         </form>
     </div>

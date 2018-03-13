@@ -56,13 +56,16 @@ class InscricaoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    //public function store(InscricaoRequest $request, Publicacao $publicacao)
-    public function store(Request $request, Publicacao $publicacao)
+    public function store(InscricaoRequest $request, Publicacao $publicacao)
+    //public function store(Request $request, Publicacao $publicacao)
     {
         $user = Auth()->user();
         
         $dados = $request->all();
+        $experiencias = [];
+        $qualificacoes = [];
 
+        //dd($dados);
         $inscricao = Inscricao::create($dados);
         $dados['inscricao_id'] = $inscricao->id;
 

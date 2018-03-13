@@ -61,17 +61,17 @@ class InscricaoRequest extends FormRequest
             'email'=>'required|string|email|max:255',
             'telefone'=>'required',
             //qualificacao
-            'instituicao'=>'required|string|max:80',
-            'curso'=>'required|string|max:80',
-            'dataInI'=>'required',
-            'dataTermI'=>'required',
-            'cargaHora'=>'required|numeric',
+            'instituicao'=>'string|max:80',
+            'curso'=>'string|max:80',
+            'cargaHora'=>'numeric',
+            'dataInI'=>'',
+            'dataTermI'=>'',
             //empresa
-            'empresa'=>'required|string|max:80',
-            'funcao'=>'required|string|max:80',
-            'atividade'=>'required|string|max:120',
-            'dataInE'=>'required',
-            'dataTermE'=>'required',
+            'empresa'=>'string|max:80',
+            'funcao'=>'string|max:80',
+            'atividade'=>'string|max:120',
+            'dataInE'=>'',
+            'dataTermE'=>'',
             
             //cargos
             'cargo_id'=>'required'

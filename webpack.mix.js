@@ -28,7 +28,8 @@ mix.combine([
     'resources/assets/js/jquery.js',
     'resources/assets/js/jquery.mask.js',
     'resources/assets/js/materialize.js',
-    'resources/assets/js/init.js'
+    'resources/assets/js/init.js',
+    'resources/assets/js/add.js'
 ], 'public/js/app.js');
 
 mix.combine([
