@@ -111,7 +111,7 @@ class Publicacao extends Model
 
     public function inscricoes()
     {
-        return $this->belongsToMany(Inscricao::class);
+        return $this->belongsToMany(Inscricao::class)->withPivot('cargo_id');
     }
 
     public function adicionaInscricao($inscricao)

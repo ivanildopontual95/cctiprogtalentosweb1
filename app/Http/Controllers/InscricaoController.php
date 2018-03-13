@@ -25,29 +25,6 @@ class InscricaoController extends Controller
         return view('inscricao.index', compact( 'publicacoes'));        
     }
 
-    //--------------Seleciona Cargo -------------------------------------//
-    /*public function indexSelectCargo($id)
-    {
-        $publicacao = Publicacao::find($id);
-        $cargos = $publicacao->cargos;
-        return view('inscricao.cargo', compact('publicacao','cargos'));      
-    } 
-
-    public function storeSelectCargo(Request $request, $id)
-    {
-        $user = Auth()->user();
-        
-        $dados = $request->all();
-        $cargo = Cargo::find($dados['cargo_id']);
-
-
-        $user->selecionaCargo($cargo);
-        
-        return redirect()->route('experiencias.create', compact('id'));
-        //return redirect()->route('inscricoes.create', compact('id')); 
-    }*/
-    //-------------------------------------------------------------------//
-
     /**
      * Show the form for creating a new resource.
      *
@@ -60,13 +37,15 @@ class InscricaoController extends Controller
         $cargos = $publicacao->cargos;
 
         $id = $user->inscricao_id;
-
+        //dd($publicacao->inscricoes[0]->pivot->cargo_id);
         if($id != null){
             return redirect()->route('inscricoes.edit', compact('publicacao', 'id'));
         }
         else{
             return view('inscricao.cadastroTeste', compact('publicacao','cargos'));
         }
+
+        return view('inscricao.cadastroTeste', compact('publicacao','cargos'));
 
        
     }
@@ -106,6 +85,7 @@ class InscricaoController extends Controller
        
         $publicacao->inscricoes()->attach( $inscricao, ['cargo_id' => $dados['cargo_id']] );
 
+        dd($publicacao);
 
         return redirect()->route('confirmacao.index', compact('publicacao')); 
     }
