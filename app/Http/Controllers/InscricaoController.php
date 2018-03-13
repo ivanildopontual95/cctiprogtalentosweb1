@@ -84,8 +84,7 @@ class InscricaoController extends Controller
 
        
         $publicacao->inscricoes()->attach( $inscricao, ['cargo_id' => $dados['cargo_id']] );
-
-        dd($publicacao);
+        
 
         return redirect()->route('confirmacao.index', compact('publicacao')); 
     }
