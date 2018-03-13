@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Inscricao;
 use App\Publicacao;
 use App\Cargo;
+use App\Qualificacao;
+use App\Experiencia;
 use App\Http\Requests\InscricaoRequest;
 
 class InscricaoController extends Controller
@@ -23,36 +25,29 @@ class InscricaoController extends Controller
         return view('inscricao.index', compact( 'publicacoes'));        
     }
 
-    //--------------Seleciona Cargo -------------------------------------//
-    public function indexSelectCargo($id)
-    {
-        $publicacao = Publicacao::find($id);
-        $cargos = $publicacao->cargos;
-        return view('inscricao.cargo', compact('publicacao','cargos'));      
-    } 
-
-    public function storeSelectCargo(Request $request, $id)
-    {
-        $user = Auth()->user();
-
-        $dados = $request->all();
-        $cargo = Cargo::find($dados['cargo_id']);
-
-
-        $user->selecionaCargo($cargo);
-        
-        return redirect()->route('inscricoes.create', compact('id')); 
-    }
-    //-------------------------------------------------------------------//
-
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
+    public function create(Publicacao $publicacao)
     {
-        return view('inscricao.cadastro', compact('id'));
+        $user = Auth()->user();
+
+        $cargos = $publicacao->cargos;
+
+        $id = $user->inscricao_id;
+        //dd($publicacao->inscricoes[0]->pivot->cargo_id);
+        if($id != null){
+            return redirect()->route('inscricoes.edit', compact('publicacao', 'id'));
+        }
+        else{
+            return view('inscricao.cadastroTeste', compact('publicacao','cargos'));
+        }
+
+        return view('inscricao.cadastroTeste', compact('publicacao','cargos'));
+
+       
     }
 
     /**
@@ -61,15 +56,37 @@ class InscricaoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(InscricaoRequest $request, $id)
+    //public function store(InscricaoRequest $request, Publicacao $publicacao)
+    public function store(Request $request, Publicacao $publicacao)
     {
         $user = Auth()->user();
         
-        $inscricao = Inscricao::create($request->all());
-        
-        $user->adicionaFormulario($inscricao);
+        $dados = $request->all();
 
-        return redirect()->route('experiencias.create', compact('id'));
+        $inscricao = Inscricao::create($dados);
+        $dados['inscricao_id'] = $inscricao->id;
+
+
+        $user->inscricao_id = $dados['inscricao_id'];
+        $user->save();
+
+
+        foreach($dados['qualificacoes'] as $q => $qualificacao){
+            $qualificacoes[$q] = new Qualificacao($qualificacao);                      
+        }
+        $inscricao->qualificacoes()->saveMany($qualificacoes);  
+
+
+        foreach($dados['experiencias'] as $i => $experiencia){
+            $experiencias[$i] = new Experiencia($experiencia);                      
+        }
+        $inscricao->experiencias()->saveMany($experiencias);  
+
+       
+        $publicacao->inscricoes()->attach( $inscricao, ['cargo_id' => $dados['cargo_id']] );
+        
+
+        return redirect()->route('confirmacao.index', compact('publicacao')); 
     }
 
     /**
@@ -89,10 +106,12 @@ class InscricaoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit( $id, Publicacao $publicacao)
     {
         $inscricao = Inscricao::find($id);
-        return view('inscricao.editar',compact('inscricao'));
+        $cargos = $publicacao->cargos;
+        
+        return view('inscricao.editarTeste',compact('inscricao', 'publicacao', 'cargos'));
     }
 
     /**
@@ -102,10 +121,12 @@ class InscricaoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(InscricaoRequest $request)
+    //public function update(InscricaoRequest $request, $id, Publicacao $publicacao)
+    public function update(Request $request, $id, Publicacao $publicacao)
     {
         Inscricao::find($id)->update($request->all());
-        return redirect()->route('inscricoes.index');
+
+        return redirect()->route('confirmacao.index', compact('publicacao'));
     }
 
     /**
@@ -122,12 +143,13 @@ class InscricaoController extends Controller
 
     //--------------Confirmação Inscrição ------------------------
 
-    public function indexConfirmacao($id)
+    public function indexConfirmacao(Publicacao $publicacao)
     {
-        $user = Auth()->user();
+        /*$user = Auth()->user();
         $inscricao = $user->inscricoes[0];
         $publicacao = Publicacao::find($id);
-        $publicacao->adicionaInscricao($inscricao);
+        $publicacao->adicionaInscricao($inscricao);*/
+
         return view('inscricao.confirmacao', compact('publicacao'));      
     }
 

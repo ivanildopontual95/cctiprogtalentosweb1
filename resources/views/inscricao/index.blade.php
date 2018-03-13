@@ -27,7 +27,7 @@
                                     - {{$publicacao->horaTermino}}h</td>
 
                                 <td>
-                                    <a title="Inscrição" class="btn green" href="{{route('inscricoes.cargo.index', $publicacao->id)}}">Inscrição</a>
+                                    <a title="Inscrição" class="btn green" href="{{route('inscricoes.create', $publicacao)}}">Inscrição</a>
                                 </td>
                             </tr>
                             @endforeach

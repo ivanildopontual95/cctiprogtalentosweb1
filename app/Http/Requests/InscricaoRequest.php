@@ -16,6 +16,25 @@ class InscricaoRequest extends FormRequest
         return true;
     }
 
+    public function messages()
+    {
+        return [
+            'empresa.required'=>'Informe o nome da empresa',
+            'funcao.required'=>'Informe a função que desempenhou na empresa',
+            'atividade.required'=>'Informe a atividade exercida',
+            'dataInE.required'=>'Informe o dia que iniciou os trabalhos na empresa',
+            'dataTermE.required'=>'Informe o dia que deixou os trabalhos da empresa',
+
+            'instituicao.required'=>'Informe a instituição no qual você se especializou(Cursos)',
+            'curso.required'=>'Informe os Cursos Profissionalizantes',
+            'dataInI.required'=>'Informe o dia do inicio do curso ',
+            'dataTermI.required'=>'Informe o dia do fim do curso',
+            'cargaHora.required'=>'Informe a carga Horária',
+
+            'cargo_id.required'=>'Informe o cargo do seletivo'
+        ];
+    }
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -24,6 +43,7 @@ class InscricaoRequest extends FormRequest
     public function rules()
     {
         return [
+            //dados pessoais
             'nomeCompleto'=>'required|string|max:255',
             'dataNascimento'=>'required',
             'pai'=>'required|string|max:255',
@@ -39,7 +59,22 @@ class InscricaoRequest extends FormRequest
             'bairro'=>'required|string|max:40',
             'numero'=>'required|numeric',
             'email'=>'required|string|email|max:255',
-            'telefone'=>'required' 
+            'telefone'=>'required',
+            //qualificacao
+            'instituicao'=>'required|string|max:80',
+            'curso'=>'required|string|max:80',
+            'dataInI'=>'required',
+            'dataTermI'=>'required',
+            'cargaHora'=>'required|numeric',
+            //empresa
+            'empresa'=>'required|string|max:80',
+            'funcao'=>'required|string|max:80',
+            'atividade'=>'required|string|max:120',
+            'dataInE'=>'required',
+            'dataTermE'=>'required',
+            
+            //cargos
+            'cargo_id'=>'required'
         ];
     }
 }

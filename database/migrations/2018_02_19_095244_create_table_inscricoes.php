@@ -37,24 +37,18 @@ class CreateTableInscricoes extends Migration
         Schema::create('inscricao_publicacao', function (Blueprint $table) {
             $table->integer('inscricao_id')->unsigned();
             $table->integer('publicacao_id')->unsigned();
-
+            $table->integer('cargo_id')->unsigned();
+           
             $table->foreign('inscricao_id')->references('id')->on('inscricoes')->onDelete('cascade');
             $table->foreign('publicacao_id')->references('id')->on('publicacoes')->onDelete('cascade');
-
-
+            $table->foreign('cargo_id')->references('id')->on('cargos')->onDelete('cascade');
+            
+            
             $table->primary(['inscricao_id','publicacao_id']);
+            
         });
 
-        Schema::create('inscricao_user', function (Blueprint $table) {
-            $table->integer('inscricao_id')->unsigned();
-            $table->integer('user_id')->unsigned();
-
-            $table->foreign('inscricao_id')->references('id')->on('inscricoes')->onDelete('cascade');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-
-
-            $table->primary(['inscricao_id','user_id']);
-        });
+        
     }
 
     /**
@@ -64,7 +58,6 @@ class CreateTableInscricoes extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('inscricao_user');
         Schema::dropIfExists('inscricao_publicacao');
         Schema::dropIfExists('inscricoes');
     }

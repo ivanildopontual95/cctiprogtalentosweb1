@@ -12,19 +12,28 @@ class Inscricao extends Model
         'escolaridade', 'identidade', 'cpf', 'estado', 'cidade',
         'endereco', 'cep', 'bairro', 'numero', 'email', 'telefone' ];
     
-    //public $with = ['users'];
 
     //----------------User-----------------------//
-    public function users()
+    public function user()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsTo(User::class);
     }
 
-    //------------------Publicação-----------------------//
-
+    //------------------Publicação--------------------//
     public function publicacoes()
     {
         return $this->belongsToMany(Publicacao::class);
     }
 
+     //--------------Experiencia---------------------//
+     public function experiencias()
+     {
+         return $this->hasMany(Experiencia::class);
+     }
+
+     // ----------------Qualificacoes--------------//
+     public function qualificacoes()
+     {
+         return $this->hasMany(Experiencia::class);
+     }
 }

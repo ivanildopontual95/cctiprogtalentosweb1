@@ -20,25 +20,12 @@ Route::get('/publicacoes/{publicacao}/{titulo?}', ['as'=>'detalhes','uses'=>'Sit
 Route::group(['as'=> 'inscricoes.', 'prefix' =>'inscricoes'], function(){
 
   Route::get('', ['as'=>'index','uses'=>'InscricaoController@index']);
-  Route::get('criar/{id}', ['as'=> 'create','uses'=>'InscricaoController@create']);
-  Route::post('salvar/{id}', ['as'=> 'store','uses'=>'InscricaoController@store']);
-  Route::get('{id}/editar', ['as'=> 'edit','uses'=>'InscricaoController@edit']);
-  Route::post('{id}/atualizar', ['as'=> 'update','uses'=>'InscricaoController@update']);
-  
-  Route::get('cargo/{id}', ['as'=> 'cargo.index','uses'=>'InscricaoController@indexSelectCargo']);
-  Route::post('cargo/{id}', ['as'=>'cargo.store','uses'=>'InscricaoController@storeSelectCargo']);
+  Route::get('{publicacao}/criar', ['as'=> 'create','uses'=>'InscricaoController@create']);
+  Route::post('{publicacao}/salvar', ['as'=> 'store','uses'=>'InscricaoController@store']);
+  Route::get('{id}/{publicacao}/editar', ['as'=> 'edit','uses'=>'InscricaoController@edit']);
+  Route::put('{publicacao}/atualizar', ['as'=> 'update','uses'=>'InscricaoController@update']);
 
-  Route::get('confirmacao/{id}', ['as'=> 'confirmacao.index','uses'=>'InscricaoController@indexConfirmacao']); 
-});
-
-//---------------------------------Experiências----------------------------------
-
-Route::group(['as'=> 'experiencias.', 'prefix' =>'experiencias'], function(){
-
-  Route::get('criar/{id}', ['as'=> 'create','uses'=>'ExperienciaController@create']);
-  Route::post('salvar/{id}', ['as'=> 'store','uses'=>'ExperienciaController@store']);
-  Route::get('{id}/editar', ['as'=> 'edit','uses'=>'ExperienciaController@edit']);
-  Route::post('{id}/atualizar', ['as'=> 'update','uses'=>'ExperienciaController@update']);
+  Route::get('{publicacao}/confirmacao', ['as'=> 'confirmacao.index','uses'=>'InscricaoController@indexConfirmacao']); 
 });
 
 Auth::routes();

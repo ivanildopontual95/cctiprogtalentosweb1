@@ -57,7 +57,7 @@ class Publicacao extends Model
         return $this->attributes['horaTermino'];
     }
     
-    //--------Cargos-----------------------------------
+    //--------Adiciona Cargos-----------------------------------
     public function cargos()
     {
         return $this->belongsToMany(Cargo::class);
@@ -82,7 +82,7 @@ class Publicacao extends Model
     }
 
     
-    //-----------------------Documentos--------------------------------
+    //----------------------- Adiciona Documentos--------------------------------
 
     public function documentos()
     {
@@ -111,7 +111,7 @@ class Publicacao extends Model
 
     public function inscricoes()
     {
-        return $this->belongsToMany(Inscricao::class);
+        return $this->belongsToMany(Inscricao::class)->withPivot('cargo_id');
     }
 
     public function adicionaInscricao($inscricao)

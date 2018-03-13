@@ -7,13 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Experiencia extends Model
 {
     protected $fillable = 
-            [ 'empresa', 'funcao','atividade',
-             'dataInE', 'dataTermE', 'instituicao',
-             'curso', 'dataInI', 'dataTermI', 
-             'cargaHora', 'aptidao' ];
+            ['inscricao_id', 'empresa', 'funcao','atividade',
+             'dataInE', 'dataTermE' ];
 
-    public function users()
+    
+    public function inscricao()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsTo(Inscricao::class);
     }
 }
