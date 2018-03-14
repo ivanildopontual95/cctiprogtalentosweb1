@@ -15,7 +15,7 @@
           <a href="https://twitter.com" target="_blank"><img class="responsive-img" src="/images/twrsz.png" alt="Twitter" title="Twitter" </i></a>
           <a href="https://youtube.com" target="_blank"><img class="responsive-img" src="/images/ytrsz.png"alt="YouTube" title="YouTube" </i></a>
           <li><h5 class="white-text">Fale Conosco<i class="material-icons left">chat</i></h5></li>
-          <li><a class="white-text text-lighten-3" href="http://ccti.boavista.rr.gov.br/novo/contato.php" target=_"blank">Dúvida, crítica, sugestão ou elogio? Entre em Contato!</a><li>
+          <li><a class="white-text text-lighten-3" href="http://ccti.boavista.rr.gov.br/novo/contato.php" target=_"blank">Dúvida, crítica, sugestão ou elogio?<br>Entre em Contato!</a><li>
         </ul>
         </div>
       </div>
