@@ -225,7 +225,7 @@
                             
                             <div id="listas_qualificacoes">
                                 <div class="input-field col s6 {{$errors->has('instituicao') ? 'has-error' : ''}}">
-                                    <input type="text" name="qualificacoes[0][instituicao]" class="validate" value="{{old('instituicao')}}">
+                                    <input type="text" name="qualificacoes[0][instituicao]" class="validate" value="{{old('qualificacoes.0.instituicao')}}">
                                     <label>Instituição </label>
                                     @if($errors->has('instituicao'))
                                     <span class="red-text">
@@ -235,7 +235,7 @@
                                 </div>
 
                                 <div class="input-field col s6 {{$errors->has('curso') ? 'has-error' : ''}}">
-                                    <input type="text" name="qualificacoes[0][curso]" class="validate" value="{{old('curso')}}">
+                                    <input type="text" name="qualificacoes[0][curso]" class="validate" value="{{old('qualificacoes.0.curso')}}">
                                     <label>Curso</label>
                                     @if($errors->has('curso'))
                                     <span class="red-text">
@@ -249,7 +249,7 @@
                                 </div>
 
                                 <div class="input-field col s3 {{$errors->has('dataInI') ? 'has-error' : ''}}">
-                                    <input type="text" name="qualificacoes[0][dataInI]" class="datepicker" value="{{old('dataInI')}}">
+                                    <input type="text" name="qualificacoes[0][dataInI]" class="datepicker" value="{{old('qualificacoes.0.dataInI')}}">
                                     <label>Data de inicio</label>
                                     @if($errors->has('dataInI'))
                                     <span class="red-text">
@@ -259,7 +259,7 @@
                                 </div>
 
                                 <div class="input-field col s3 {{$errors->has('dataTermI') ? 'has-error' : ''}}">
-                                    <input type="text" name="qualificacoes[0][dataTermI]" class="datepicker" value="{{old('dataTermI')}}">
+                                    <input type="text" name="qualificacoes[0][dataTermI]" class="datepicker" value="{{old('qualificacoes.0.dataTermI')}}">
                                     <label>Data de fim</label>
                                     @if($errors->has('dataTermI'))
                                     <span class="red-text">
@@ -269,7 +269,7 @@
                                 </div>
 
                                 <div class="input-field col s6 {{$errors->has('cargaHora') ? 'has-error' : ''}}">
-                                    <input type="text" name="qualificacoes[0][cargaHora]" class="validate" value="{{old('cargaHora')}}">
+                                    <input type="text" name="qualificacoes[0][cargaHora]" class="validate" value="{{old('qualificacoes.0.cargaHora')}}">
                                     <label>Carga horária</label>
                                     @if($errors->has('cargaHora'))
                                     <span class="red-text">
@@ -299,7 +299,7 @@
                             <div id="listas_experiencias">
                                 
                                 <div class="input-field col s6 {{$errors->has('empresa') ? 'has-error' : ''}}">
-                                    <input type="text" name="experiencias[0][empresa]" class="validate" value="{{old('empresa')}}">
+                                    <input type="text" name="experiencias[0][empresa]" class="validate" value="{{old('experiencias.0.empresa')}}">
                                     <label >Empresa</label>
                                     @if($errors->has('empresa'))
                                         <span class = "red-text">
@@ -309,7 +309,7 @@
                                 </div>
         
                                 <div class="input-field col s6 {{$errors->has('funcao') ? 'has-error' : ''}}">
-                                    <input type="text" name="experiencias[0][funcao]" class="validate"  value = "{{old('funcao')}}">
+                                    <input type="text" name="experiencias[0][funcao]" class="validate"  value = "{{old('experiencias.0.funcao')}}">
                                     <label >Função</label>
                                     @if($errors->has('funcao'))
                                         <span class = "red-text">
@@ -323,7 +323,7 @@
                                 </div>
 
                                 <div class="input-field col s3 {{$errors->has('dataInE') ? 'has-error' : ''}}">
-                                    <input type="text" name="experiencias[0][dataInE]" class="datepicker" value="{{old('dataInE')}}">
+                                    <input type="text" name="experiencias[0][dataInE]" class="datepicker" value="{{old('experiencias.0.dataInE')}}">
                                     <label>Data de inicio</label>
                                     @if($errors->has('dataInE'))
                                     <span class="red-text">
@@ -333,7 +333,7 @@
                                 </div>
 
                                 <div class="input-field col s3 {{$errors->has('dataTermE') ? 'has-error' : ''}}">
-                                    <input type="text" name="experiencias[0][dataTermE]" class="datepicker" value="{{old('dataTermE')}}">
+                                    <input type="text" name="experiencias[0][dataTermE]" class="datepicker" value="{{old('experiencias.0.dataTermE')}}">
                                     <label>Data de fim</label>
                                     @if($errors->has('dataTermE'))
                                     <span class="red-text">
@@ -343,7 +343,7 @@
                                 </div>
 
                                 <div class="input-field col s6 {{$errors->has('atividade') ? 'has-error' : ''}}">
-                                    <input type="text" name="experiencias[0][atividade]" class="validate" value="{{old('atividade')}}">
+                                    <input type="text" name="experiencias[0][atividade]" class="validate" value="{{old('experiencias.0.atividade')}}">
                                     <label>Atividades Desempenhadas</label>
                                     @if($errors->has('atividade'))
                                     <span class="red-text">
