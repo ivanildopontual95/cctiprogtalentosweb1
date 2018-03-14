@@ -25,7 +25,7 @@ Route::group(['as'=> 'inscricoes.', 'prefix' =>'inscricoes'], function(){
   Route::get('{id}/{publicacao}/editar', ['as'=> 'edit','uses'=>'InscricaoController@edit']);
   Route::put('{publicacao}/atualizar', ['as'=> 'update','uses'=>'InscricaoController@update']);
 
-  Route::get('{publicacao}/confirmacao', ['as'=> 'confirmacao.index','uses'=>'InscricaoController@indexConfirmacao']); 
+  Route::get('{publicacao}/confirmacao', ['as'=> 'confirmacao','uses'=>'InscricaoController@indexConfirmacao']); 
 });
 
 Auth::routes();

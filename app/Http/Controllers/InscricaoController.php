@@ -37,7 +37,7 @@ class InscricaoController extends Controller
         $cargos = $publicacao->cargos;
 
         $id = $user->inscricao_id;
-        //dd($publicacao->inscricoes[0]->pivot->cargo_id);
+        
         if($id != null){
             return redirect()->route('inscricoes.edit', compact('publicacao', 'id'));
         }
@@ -57,7 +57,6 @@ class InscricaoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(InscricaoRequest $request, Publicacao $publicacao)
-    //public function store(Request $request, Publicacao $publicacao)
     {
         $user = Auth()->user();
         
@@ -65,7 +64,6 @@ class InscricaoController extends Controller
         $experiencias = [];
         $qualificacoes = [];
 
-        //dd($dados);
         $inscricao = Inscricao::create($dados);
         $dados['inscricao_id'] = $inscricao->id;
 
@@ -89,7 +87,7 @@ class InscricaoController extends Controller
         $publicacao->inscricoes()->attach( $inscricao, ['cargo_id' => $dados['cargo_id']] );
         
 
-        return redirect()->route('confirmacao.index', compact('publicacao')); 
+        return redirect()->route('inscricoes.confirmacao', compact('publicacao')); 
     }
 
     /**
@@ -148,11 +146,6 @@ class InscricaoController extends Controller
 
     public function indexConfirmacao(Publicacao $publicacao)
     {
-        /*$user = Auth()->user();
-        $inscricao = $user->inscricoes[0];
-        $publicacao = Publicacao::find($id);
-        $publicacao->adicionaInscricao($inscricao);*/
-
         return view('inscricao.confirmacao', compact('publicacao'));      
     }
 

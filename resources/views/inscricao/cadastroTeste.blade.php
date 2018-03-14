@@ -221,7 +221,7 @@
                         <div class="tab" >
                         <div class="row"></div>
                         <div class="col s12">
-                            <a class="input-field col s12">Participações em Cursos Profissionalizantes</a>
+                            <a class="input-field col s12">Cursos Profissionalizantes</a>
                             
                             <div id="listas_qualificacoes">
                                 <div class="input-field col s6 {{$errors->has('instituicao') ? 'has-error' : ''}}">
