@@ -23,7 +23,7 @@ Route::group(['as'=> 'inscricoes.', 'prefix' =>'inscricoes'], function(){
   Route::get('{publicacao}/criar', ['as'=> 'create','uses'=>'InscricaoController@create']);
   Route::post('{publicacao}/salvar', ['as'=> 'store','uses'=>'InscricaoController@store']);
   Route::get('{id}/{publicacao}/editar', ['as'=> 'edit','uses'=>'InscricaoController@edit']);
-  Route::put('{publicacao}/atualizar', ['as'=> 'update','uses'=>'InscricaoController@update']);
+  Route::put('{id}/{publicacao}/atualizar', ['as'=> 'update','uses'=>'InscricaoController@update']);
 
   Route::get('{publicacao}/confirmacao', ['as'=> 'confirmacao','uses'=>'InscricaoController@indexConfirmacao']); 
 });

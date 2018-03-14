@@ -5,9 +5,9 @@
     <div class="row">
         <h4 class="center">Formulário de Inscrição</h4>
     </div>
-
+    
     <div class="row">
-        <form class="form-horizontal" id="regForm" action="{{route('inscricoes.update', $inscricao->id,  $publicacao )}}" method="post">
+        <form class="form-horizontal" id="regForm" action="{{route('inscricoes.update', [$inscricao->id, $publicacao->id] )}}" method="post">
             {{csrf_field()}}
             {{ method_field('PUT') }}
 
@@ -16,23 +16,24 @@
                     <div class="col s12">
                         <ul class="tabs">
                             <li class="tab col s3">
-                                <a href="#cadastrodocandidato">Dados pessoais</a>
+                                <a href="#cadastrodocandidato" class="teal-text lighten-1-text">Dados pessoais</a>
                             </li>
                             <li class="tab col s3">
-                                <a href="#qualificacao">Qualificações</a>
+                                <a href="#qualificacao" class="teal-text lighten-1-text">Qualificações</a>
                             </li>
                             <li class="tab col s3">
-                                <a href="#experiencias">Experiências</a>
+                                <a href="#experiencias" class="teal-text lighten-1-text">Experiências</a>
                             </li>
                             <li class="tab col s3">
-                                <a href="#cargos">Escolha do Cargo </a>
+                                <a href="#cargos" class="teal-text lighten-1-text">Escolha do Cargo </a>
                             </li>
-
+                            <div class="indicator teal lighten-1" style="z-index:1"></div> 
                         </ul>
                     </div>
 
                     <!-- Cadastro do candidado -->
-                    <div id="cadastrodocandidato" class="col s12">
+                    <div id="cadastrodocandidato" >
+                        <div class="tab" >
                         <div class="row"></div>
 
                         <div class="col s12">
@@ -108,7 +109,7 @@
                                 </div>
                         
                             <div class="input-field col s5 {{$errors->has('cpf') ? 'has-error' : ''}}">
-                                <input type="text" name = "cpf" id="cpf" pattern="[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}" class="validate" value = "{{old('cpf')}}">
+                                <input type="text" name = "cpf" id="cpf" pattern="[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}" class="validate" disabled value="{{ isset($inscricao->cpf) && !old('cpf') ? $inscricao->cpf : '' }}{{old('cpf')}}">
                                     <label >CPF </label>
                                     @if($errors->has('cpf'))
                                         <span class = "red-text">
@@ -118,7 +119,7 @@
                                 </div>
         
                                 <div class="input-field col s4 {{$errors->has('identidade') ? 'has-error' : ''}}">
-                                <input type="text" name = "identidade" class="validate" value = "{{old('identidade')}}">
+                                <input type="text" name = "identidade" class="validate" value="{{ isset($inscricao->identidade) && !old('identidade') ? $inscricao->identidade : '' }}{{old('identidade')}}">
                                     <label >RG </label>
                                     @if($errors->has('identidade'))
                                         <span class = "red-text">
@@ -130,7 +131,7 @@
         
                             <div class="col s12">
                                 <div class="input-field col s3 {{$errors->has('cep') ? 'has-error' : ''}}">
-                                    <input type="text" name= "cep" id="cep" pattern="[0-9]{5}-[0-9]{3}" class="validate" value = "{{old('cep')}}">
+                                    <input type="text" name= "cep" id="cep" pattern="[0-9]{5}-[0-9]{3}" class="validate" value="{{ isset($inscricao->cep) && !old('cep') ? $inscricao->cep : '' }}{{old('cep')}}">
                                     <label >CEP</label>
                                     @if($errors->has('cep'))
                                         <span class = "red-text">
@@ -140,7 +141,7 @@
                                 </div>
         
                                 <div class="input-field col s6 {{$errors->has('cidade') ? 'has-error' : ''}}">
-                                    <input type="text" name= "cidade" id="cidade" class="validate" value = "{{old('cidade')}}">
+                                    <input type="text" name= "cidade" id="cidade" class="validate" value="{{ isset($inscricao->cidade) && !old('cidade') ? $inscricao->cidade : '' }}{{old('cidade')}}">
                                     <label >Cidade</label>
                                     @if($errors->has('cidade'))
                                         <span class = "red-text">
@@ -150,7 +151,7 @@
                                 </div>
                         
                                 <div class="input-field col s3 {{$errors->has('estado') ? 'has-error' : ''}}">
-                                <input type="text" name = "estado" id="estado" class="validate" value = "{{old('estado')}}">
+                                <input type="text" name = "estado" id="estado" class="validate" value="{{ isset($inscricao->estado) && !old('estado') ? $inscricao->estado : '' }}{{old('estado')}}">
                                     <label >UF</label>
                                     @if($errors->has('estado'))
                                         <span class = "red-text">
@@ -162,7 +163,7 @@
         
                             <div class="col s12">
                                 <div class="input-field col s6 {{$errors->has('endereco') ? 'has-error' : ''}}">
-                                    <input type="text" name = "endereco" id="endereco"  class="validate" value = "{{old('endereco')}}">
+                                    <input type="text" name = "endereco" id="endereco"  value="{{ isset($inscricao->endereco) && !old('endereco') ? $inscricao->endereco : '' }}{{old('endereco')}}">
                                     <label >Endereço</label>
                                     @if($errors->has('endereco'))
                                         <span class = "red-text">
@@ -172,7 +173,7 @@
                                 </div>
         
                                 <div class="input-field col s4 {{$errors->has('bairro') ? 'has-error' : ''}}">
-                                    <input type="text" name = "bairro" id="bairro" class="validate" value = "{{old('bairro')}}">
+                                    <input type="text" name = "bairro" id="bairro" class="validate" value="{{ isset($inscricao->bairro) && !old('bairro') ? $inscricao->bairro : '' }}{{old('bairro')}}">
                                     <label >Bairro </label>
                                     @if($errors->has('bairro'))
                                         <span class = "red-text">
@@ -182,7 +183,7 @@
                                 </div>
         
                                 <div class="input-field col s2 {{$errors->has('numero') ? 'has-error' : ''}}">
-                                    <input type="text" name = "numero" class="validate" value = "{{old('numero')}}">
+                                    <input type="text" name = "numero" class="validate" value="{{ isset($inscricao->numero) && !old('numero') ? $inscricao->numero : '' }}{{old('numero')}}">
                                     <label >Nº</label>
                                     @if($errors->has('numero'))
                                         <span class = "red-text">
@@ -194,7 +195,7 @@
         
                             <div class="col s12">
                                 <div class="input-field col s6 {{$errors->has('email') ? 'has-error' : ''}}">
-                                    <input type="text" name = "email" class="validate" value = "{{old('email')}}">
+                                    <input type="text" name = "email" class="validate" value="{{ isset($inscricao->email) && !old('email') ? $inscricao->email : '' }}{{old('email')}}">
                                     <label >Email </label>
                                     @if($errors->has('email'))
                                         <span class = "red-text">
@@ -204,7 +205,7 @@
                                 </div>
         
                                 <div class="input-field col s6 {{$errors->has('telefone') ? 'has-error' : ''}}">
-                                    <input type="text" name ="telefone" id="telefone" pattern="\([0-9]{2}\)[\s][0-9]{4}-[0-9]{4,5}" class='validate' value = "{{old('telefone')}}">
+                                    <input type="text" name ="telefone" id="telefone" pattern="\([0-9]{2}\)[\s][0-9]{4}-[0-9]{4,5}" class='validate' value="{{ isset($inscricao->telefone) && !old('telefone') ? $inscricao->telefone : '' }}{{old('telefone')}}">
                                     <label >Contato</label>
                                     @if($errors->has('telefone'))
                                         <span class = "red-text">
@@ -213,18 +214,20 @@
                                     @endif
                                 </div>
                             </div>               
-                        <div class="row"></div>
+                            <div class="row"></div>
+                        </div>
                     </div>
 
                     <!-- Qualificacao -->
-                    <div id="qualificacao" class="col s12">
+                    <div id="qualificacao">
+                        <div class="tab" >
                         <div class="row"></div>
                         <div class="col s12">
-                            <a class="input-field col s12">Participações em Cursos Profissionalizantes</a>
+                            <a class="input-field col s12">Cursos Profissionalizantes</a>
                             
-                            <div id="listas">
+                            <div id="listas_qualificacoes">
                                 <div class="input-field col s6 {{$errors->has('instituicao') ? 'has-error' : ''}}">
-                                    <input type="text" name="qualificacoes[0][instituicao]" class="validate" value="{{old('instituicao')}}">
+                                    <input type="text" name="qualificacoes[0][instituicao]" class="validate" value="{{ isset($inscricao->qualificacoes[0]->instituicao) && !old('qualificacoes.0.instituicao') ? $inscricao->qualificacoes[0]->instituicao : '' }}{{old('qualificacoes.0.instituicao')}}">
                                     <label>Instituição </label>
                                     @if($errors->has('instituicao'))
                                     <span class="red-text">
@@ -234,7 +237,7 @@
                                 </div>
 
                                 <div class="input-field col s6 {{$errors->has('curso') ? 'has-error' : ''}}">
-                                    <input type="text" name="qualificacoes[0][curso]" class="validate" value="{{old('curso')}}">
+                                    <input type="text" name="qualificacoes[0][curso]" class="validate" value="{{ isset($inscricao->qualificacoes[0]->curso) && !old('qualificacoes.0.curso') ? $inscricao->qualificacoes[0]->curso : '' }}{{old('qualificacoes.0.curso')}}">
                                     <label>Curso</label>
                                     @if($errors->has('curso'))
                                     <span class="red-text">
@@ -248,7 +251,7 @@
                                 </div>
 
                                 <div class="input-field col s3 {{$errors->has('dataInI') ? 'has-error' : ''}}">
-                                    <input type="text" name="qualificacoes[0][dataInI]" class="datepicker" value="{{old('dataInI')}}">
+                                    <input type="text" name="qualificacoes[0][dataInI]" class="datepicker" value="{{ isset($inscricao->qualificacoes[0]->dataInI) && !old('qualificacoes.0.dataInI') ? $inscricao->qualificacoes[0]->dataInI : '' }}{{old('qualificacoes.0.dataInI')}}">
                                     <label>Data de inicio</label>
                                     @if($errors->has('dataInI'))
                                     <span class="red-text">
@@ -258,7 +261,7 @@
                                 </div>
 
                                 <div class="input-field col s3 {{$errors->has('dataTermI') ? 'has-error' : ''}}">
-                                    <input type="text" name="qualificacoes[0][dataTermI]" class="datepicker" value="{{old('dataTermI')}}">
+                                    <input type="text" name="qualificacoes[0][dataTermI]" class="datepicker" value="{{ isset($inscricao->qualificacoes[0]->dataTermI) && !old('qualificacoes.0.dataTermI') ? $inscricao->qualificacoes[0]->dataTermI : '' }}{{old('qualificacoes.0.dataTermI')}}">
                                     <label>Data de fim</label>
                                     @if($errors->has('dataTermI'))
                                     <span class="red-text">
@@ -268,7 +271,7 @@
                                 </div>
 
                                 <div class="input-field col s6 {{$errors->has('cargaHora') ? 'has-error' : ''}}">
-                                    <input type="text" name="qualificacoes[0][cargaHora]" class="validate" value="{{old('cargaHora')}}">
+                                    <input type="text" name="qualificacoes[0][cargaHora]" class="validate" value="{{ isset($inscricao->qualificacoes[0]->cargaHora) && !old('qualificacoes.0.cargaHora') ? $inscricao->qualificacoes[0]->cargaHora : '' }}{{old('qualificacoes.0.cargaHora')}}">
                                     <label>Carga horária</label>
                                     @if($errors->has('cargaHora'))
                                     <span class="red-text">
@@ -278,26 +281,27 @@
                                 </div>
 
                                 <div class="col s12">
-                                    <button class="btn blue" id="add_field">Adicionar</button>
+                                    <button class="btn blue" id="add_field_qualificacoes">Adicionar</button>
                                 </div>
                                 <div class="row"></div>
-
                             </div>
+                        </div>
                         </div>
                     </div>
 
                     <!-- Experiencia -->
-                    <div id="experiencias" class="col s12">
+                    <div id="experiencias" >
+                        <div class="tab" >
                         <div class="row"></div>
 
                         <div class="col s12">
 
                             <a class="input-field col s12">Experiências Profissionais</a>
 
-                            <div id="listasexperiencias">
+                            <div id="listas_experiencias">
                                 
                                 <div class="input-field col s6 {{$errors->has('empresa') ? 'has-error' : ''}}">
-                                    <input type="text" name="experiencias[0][empresa]" class="validate" value="{{old('empresa')}}">
+                                    <input type="text" name="experiencias[0][empresa]" class="validate" value="{{ isset($inscricao->experiencias[0]->empresa) && !old('experiencias.0.empresa') ? $inscricao->experiencias[0]->empresa : '' }}{{old('experiencias.0.empresa')}}">
                                     <label >Empresa</label>
                                     @if($errors->has('empresa'))
                                         <span class = "red-text">
@@ -307,7 +311,7 @@
                                 </div>
         
                                 <div class="input-field col s6 {{$errors->has('funcao') ? 'has-error' : ''}}">
-                                    <input type="text" name="experiencias[0][funcao]" class="validate"  value = "{{old('funcao')}}">
+                                    <input type="text" name="experiencias[0][funcao]" class="validate"  value = "{{ isset($inscricao->experiencias[0]->funcao) && !old('experiencias.0.funcao') ? $inscricao->experiencias[0]->funcao : '' }}{{old('experiencias.0.funcao')}}">
                                     <label >Função</label>
                                     @if($errors->has('funcao'))
                                         <span class = "red-text">
@@ -321,7 +325,7 @@
                                 </div>
 
                                 <div class="input-field col s3 {{$errors->has('dataInE') ? 'has-error' : ''}}">
-                                    <input type="text" name="experiencias[0][dataInE]" class="datepicker" value="{{ isset($experiencia->dataInE) && !old('dataInE') ? $experiencia->funcao : '' }}{{old('dataInE')}}">
+                                    <input type="text" name="experiencias[0][dataInE]" class="datepicker" value="{{ isset($inscricao->experiencias[0]->dataInE) && !old('experiencias.0.dataInE') ? $inscricao->experiencias[0]->dataInE : '' }}{{old('experiencias.0.dataInE')}}">
                                     <label>Data de inicio</label>
                                     @if($errors->has('dataInE'))
                                     <span class="red-text">
@@ -331,7 +335,7 @@
                                 </div>
 
                                 <div class="input-field col s3 {{$errors->has('dataTermE') ? 'has-error' : ''}}">
-                                    <input type="text" name="experiencias[0][dataTermE]" class="datepicker" value="{{ isset($experiencia->dataTermE) && !old('dataTermE') ? $experiencia->dataTermE : '' }}{{old('dataTermE')}}">
+                                    <input type="text" name="experiencias[0][dataTermE]" class="datepicker" value="{{ isset($inscricao->experiencias[0]->dataTermE) && !old('experiencias.0.dataTermE') ? $inscricao->experiencias[0]->dataTermE : '' }}{{old('experiencias.0.dataTermE')}}">
                                     <label>Data de fim</label>
                                     @if($errors->has('dataTermE'))
                                     <span class="red-text">
@@ -341,7 +345,7 @@
                                 </div>
 
                                 <div class="input-field col s6 {{$errors->has('atividade') ? 'has-error' : ''}}">
-                                    <input type="text" name="experiencias[0][atividade]" class="validate" value="{{ isset($experiencia->atividade) && !old('atividade') ? $experiencia->atividade : '' }}{{old('atividade')}}">
+                                    <input type="text" name="experiencias[0][atividade]" class="validate" value="{{ isset($inscricao->experiencias[0]->atividade) && !old('experiencias.0.atividade') ? $inscricao->experiencias[0]->atividade : '' }}{{old('experiencias.0.atividade')}}">
                                     <label>Atividades Desempenhadas</label>
                                     @if($errors->has('atividade'))
                                     <span class="red-text">
@@ -356,10 +360,12 @@
                                 <div class="row"></div>
                             </div>                                
                         </div>
+                        </div>
                     </div>
 
                     <!-- Cargos -->
-                    <div id="cargos" class="col s12">
+                    <div id="cargos" >
+                        <div class="tab" >
                         <div class="row"></div>
                         <div class="input-field col s6 offset-s3 {{$errors->has('cargo_id') ? 'has-error' : ''}}">
                             <select name="cargo_id">
@@ -379,12 +385,14 @@
                         </div>
                         <div class="row"></div>
                     </div>
-                </div>
-                <div style="overflow:auto;">
-                    <div>
+                    </div>
+
+                    <div class="row"></div>
+                    <div class="col s12">
                         <button class="btn green btn-info right">Confirmar</button>
                     </div>
-                </div>
+                        
+                </div>                
             </div>
         </form>
     </div>

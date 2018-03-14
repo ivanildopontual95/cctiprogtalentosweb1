@@ -8,6 +8,7 @@ use App\Publicacao;
 use App\Cargo;
 use App\Qualificacao;
 use App\Experiencia;
+use DB;
 use App\Http\Requests\InscricaoRequest;
 
 class InscricaoController extends Controller
@@ -37,7 +38,7 @@ class InscricaoController extends Controller
         $cargos = $publicacao->cargos;
 
         $id = $user->inscricao_id;
-        
+
         if($id != null){
             return redirect()->route('inscricoes.edit', compact('publicacao', 'id'));
         }
@@ -61,8 +62,9 @@ class InscricaoController extends Controller
         $user = Auth()->user();
         
         $dados = $request->all();
-        $experiencias = [];
         $qualificacoes = [];
+        $experiencias = [];
+
 
         $inscricao = Inscricao::create($dados);
         $dados['inscricao_id'] = $inscricao->id;
@@ -110,8 +112,9 @@ class InscricaoController extends Controller
     public function edit( $id, Publicacao $publicacao)
     {
         $inscricao = Inscricao::find($id);
-        $cargos = $publicacao->cargos;
         
+        $cargos = $publicacao->cargos;
+
         return view('inscricao.editarTeste',compact('inscricao', 'publicacao', 'cargos'));
     }
 
@@ -122,12 +125,40 @@ class InscricaoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    //public function update(InscricaoRequest $request, $id, Publicacao $publicacao)
-    public function update(Request $request, $id, Publicacao $publicacao)
+    public function update(InscricaoRequest $request, $id, $publicacao)
     {
-        Inscricao::find($id)->update($request->all());
+        DB::table('qualificacoes')->where('inscricao_id', $id)->delete();
+        DB::table('experiencias')->where('inscricao_id', $id)->delete();
 
-        return redirect()->route('confirmacao.index', compact('publicacao'));
+        $dados = $request->all();
+        $qualificacoes = [];
+        $experiencias = [];
+        
+
+        $inscricao = Inscricao::find($id);
+        $inscricao->update($dados);
+        $dados['inscricao_id'] = $inscricao->id;
+        
+
+        foreach($dados['qualificacoes'] as $q => $qualificacao){
+            $qualificacoes[$q] = new Qualificacao($qualificacao);                      
+        }
+        $inscricao->qualificacoes()->saveMany($qualificacoes);  
+
+
+        foreach($dados['experiencias'] as $i => $experiencia){
+            $experiencias[$i] = new Experiencia($experiencia);                      
+        }
+        $inscricao->experiencias()->saveMany($experiencias);  
+
+        
+        $addPublicacao = Publicacao::find($publicacao); 
+        $addPublicacao->inscricoes()->attach( $inscricao, ['cargo_id' => $dados['cargo_id']] );
+
+        
+
+
+        return redirect()->route('inscricoes.confirmacao', compact('addPublicacao'));
     }
 
     /**

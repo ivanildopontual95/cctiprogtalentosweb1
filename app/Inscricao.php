@@ -34,6 +34,6 @@ class Inscricao extends Model
      // ----------------Qualificacoes--------------//
      public function qualificacoes()
      {
-         return $this->hasMany(Experiencia::class);
+         return $this->hasMany(Qualificacao::class);
      }
 }

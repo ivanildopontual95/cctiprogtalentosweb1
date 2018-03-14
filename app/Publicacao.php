@@ -114,29 +114,6 @@ class Publicacao extends Model
         return $this->belongsToMany(Inscricao::class)->withPivot('cargo_id');
     }
 
-    public function adicionaInscricao($inscricao)
-    {
-        if (is_string($inscricao)) {
-            $inscricao = Inscricao::where('cpf','=',$inscricao)->firstOrFail();
-        }
-
-        if($this->existeInscricao($inscricao)){
-            return;
-        }
-
-        return $this->inscricoes()->attach($inscricao);
-
-    }
-    public function existeInscricao($inscricao)
-    {
-        if (is_string($inscricao)) {
-            $inscricao = Inscricao::where('cpf','=',$inscricao)->firstOrFail();
-        }
-
-        return (boolean) $this->inscricoes()->find($inscricao->id);
-
-    }
-
     //----------Relatorios--------------------------------
 
     public function relatorios()
