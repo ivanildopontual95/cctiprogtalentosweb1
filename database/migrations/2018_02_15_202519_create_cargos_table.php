@@ -28,7 +28,6 @@ class CreateCargosTable extends Migration
             $table->foreign('cargo_id')->references('id')->on('cargos')->onDelete('cascade');
             $table->foreign('publicacao_id')->references('id')->on('publicacoes')->onDelete('cascade');
 
-
             $table->primary(['cargo_id','publicacao_id']);
         });
 

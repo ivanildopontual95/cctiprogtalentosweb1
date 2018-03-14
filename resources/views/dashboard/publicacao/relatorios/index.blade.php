@@ -54,7 +54,7 @@
 									<td>{{ $inscricao->id }}</td>
 									<td>{{ $inscricao->nomeCompleto }}</td>
 									<td>{{ $inscricao->cpf }}</td>
-									<td>{{ $inscricao->cargo }}</td>
+									<td>{{ $inscricao->pivot->cargo_id }}</td>
 								</tr>
 							@endforeach
 							</tbody>
@@ -81,7 +81,7 @@
 									<td>{{ $inscricao->id }}</td>
 									<td>{{ $inscricao->nomeCompleto }}</td>
 									<td>{{ $inscricao->cpf }}</td>
-									<td>{{ $inscricao->cargo }}</td>
+									<td>{{ $inscricao->pivot->cargo_id }}</td>
 									<td>{{ $inscricao->deferimento }}</td>
 									<td>
 										<a title="Deferimento" class="btn blue" href="{{ route('publicacoes.relatorio.deferimento',$inscricao->id) }}"><i class="material-icons">assignment_turned_in</i></a>
@@ -114,7 +114,7 @@
 									<td>{{ $inscricao->id }}</td>
 									<td>{{ $inscricao->nomeCompleto }}</td>
 									<td>{{ $inscricao->cpf }}</td>
-									<td>{{ $inscricao->cargo }}</td>
+									<td>{{ $inscricao->pivot->cargo_id }}</td>
 									<td>{{ $inscricao->classificacao }}</td>
 									<td>{{ $inscricao->pontuacao }}</td>
 									<td>
@@ -149,7 +149,7 @@
 									<td>{{ $inscricao->id }}</td>
 									<td>{{ $inscricao->nomeCompleto }}</td>
 									<td>{{ $inscricao->cpf }}</td>
-									<td>{{ $inscricao->cargo }}</td>
+									<td>{{ $inscricao->pivot->cargo_id }}</td>
 									<td>{{ $inscricao->classificacao }}</td>
 									<td>{{ $inscricao->pontuacao }}</td>
 									<td>{{ $inscricao->convocacao }}</td>

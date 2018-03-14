@@ -296,7 +296,7 @@ class PublicacaoController extends Controller
         ['url'=>'','titulo'=>'Lista de Inscritos']
         ];
 
-        return view('dashboard.publicacao.relatorios.index',compact( 'publicacao','relatorio','inscricoes','caminhos'));      
+        return view('dashboard.publicacao.relatorios.index',compact('publicacao','inscricoes','caminhos'));      
     }
 
     public function deferimentoRelatorio($id){

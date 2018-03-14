@@ -41,8 +41,7 @@ class CreateTableInscricoes extends Migration
            
             $table->foreign('inscricao_id')->references('id')->on('inscricoes')->onDelete('cascade');
             $table->foreign('publicacao_id')->references('id')->on('publicacoes')->onDelete('cascade');
-            $table->foreign('cargo_id')->references('id')->on('cargos')->onDelete('cascade');
-            
+            $table->foreign('cargo_id')->references('id')->on('cargos')->onDelete('cascade'); 
             
             $table->primary(['inscricao_id','publicacao_id']);
             
