@@ -81,7 +81,7 @@
 									<td>{{ $inscricao->id }}</td>
 									<td>{{ $inscricao->nomeCompleto }}</td>
 									<td>{{ $inscricao->cpf }}</td>
-									<td>{{ $inscricao->cargo }}</td>
+									<td>{{ $inscricao->pivot->cargo_id }}</td>
 									<td>{{ $inscricao->deferimento }}</td>
 									<td>
 										<a title="Deferimento" class="btn blue" href="{{ route('publicacoes.relatorio.deferimento',$inscricao->id) }}"><i class="material-icons">assignment_turned_in</i></a>
@@ -162,7 +162,6 @@
 						</table>
 						<button class="btn green left">Baixar<i class="material-icons left">file_download</i></button>
 					</div>
-
 			</div>
 		</div>
 	</div>
