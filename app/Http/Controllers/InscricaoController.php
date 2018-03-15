@@ -38,16 +38,14 @@ class InscricaoController extends Controller
 
         $id = $user->inscricao_id;
 
-        if($id != null){
+        if($id != null)
+        {
             return redirect()->route('inscricoes.edit', compact('publicacao', 'id'));
         }
-        else{
-            return view('inscricao.cadastroTeste', compact('publicacao','cargos'));
+        else
+        {
+            return view('inscricao.cadastro', compact('publicacao','cargos'));
         }
-
-        return view('inscricao.cadastroTeste', compact('publicacao','cargos'));
-
-       
     }
 
     /**
@@ -114,7 +112,7 @@ class InscricaoController extends Controller
         
         $cargos = $publicacao->cargos;
 
-        return view('inscricao.editarTeste',compact('inscricao', 'publicacao', 'cargos'));
+        return view('inscricao.editar',compact('inscricao', 'publicacao', 'cargos'));
     }
 
     /**
