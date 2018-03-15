@@ -295,6 +295,8 @@ class PublicacaoController extends Controller
         ['url'=>route('publicacoes.index'),'titulo'=>'Publicações'],
         ['url'=>'','titulo'=>'Lista de Inscritos']
         ];
+        
+        //dd($publicacao->inscricoes[0]->pivot->cargo_id);
 
         return view('dashboard.publicacao.relatorios.index',compact('publicacao','inscricoes','caminhos'));      
     }

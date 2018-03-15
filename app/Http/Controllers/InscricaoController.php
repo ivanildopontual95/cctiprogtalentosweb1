@@ -82,9 +82,9 @@ class InscricaoController extends Controller
         }
         $inscricao->experiencias()->saveMany($experiencias);  
 
+        $cargo = Cargo::find($dados['cargo_id']);
        
-        $publicacao->inscricoes()->attach( $inscricao, ['cargo_id' => $dados['cargo_id']] );
-        
+        $publicacao->inscricoes()->attach( $inscricao, ['cargo_id' => $cargo->cargo] );
 
         return redirect()->route('inscricoes.confirmacao', compact('publicacao')); 
     }
@@ -150,8 +150,11 @@ class InscricaoController extends Controller
 
         
         $publicacao = Publicacao::find($idPublicacao); 
-        $publicacao->inscricoes()->attach( $inscricao, ['cargo_id' => $dados['cargo_id']] );
 
+
+        $cargo = Cargo::find($dados['cargo_id']);
+       
+        $publicacao->inscricoes()->attach( $inscricao, ['cargo_id' => $cargo->cargo] );
 
         return redirect()->route('inscricoes.confirmacao', compact('publicacao'));
     }
