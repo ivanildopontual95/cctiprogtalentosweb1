@@ -95,10 +95,10 @@
                             <div class="col s12">
                                 <div class="input-field col s3 {{$errors->has('sexo') ? 'has-error' : ''}}">
                                     <select name= "sexo" >
-                                        <option value="{{ isset($inscricao->sexo) && !old('sexo') ? $inscricao->sexo : '' }}{{old('sexo')}}" disabled selected >Selecione uma opção </option>
-                                        <option value="Masculino">Masculino</option>
-                                        <option value="Feminino">Feminino</option>
-                                        <option value="Outros">Outros</option>
+                                        <option value="" disabled selected >Selecione uma opção </option>
+                                        <option value="Masculino" {{ old('sexo', $inscricao->sexo) == 'Masculino' ? 'selected' : '' }} >Masculino</option>
+                                        <option value="Feminino" {{ old('sexo', $inscricao->sexo) == 'Feminino' ? 'selected' : '' }} >Feminino</option>
+                                        <option value="Outros" {{ old('sexo', $inscricao->sexo) == 'Outros' ? 'selected' : '' }} >Outros</option>
                                     </select>
                                     <label>Sexo</label>
                                     @if($errors->has('sexo'))
@@ -281,7 +281,7 @@
                                 </div>
 
                                 <div class="col s12">
-                                    <button class="btn blue" id="add_field_qualificacoes">Adicionar</button>
+                                    <button title="Adicionar mais qualificações" class="btn blue" id="add_field_qualificacoes"><i class="material-icons">add</i></button>
                                 </div>
                                 <div class="row"></div>
                             </div>
@@ -355,7 +355,7 @@
                                 </div>
 
                                 <div class="col s12">
-                                        <button class="btn blue" id="add_field_experiencias">Adicionar</button>
+                                        <button title="Adicionar mais experiências" class="btn blue" id="add_field_experiencias"><i class="material-icons">add</i></button>
                                 </div>
                                 <div class="row"></div>
                             </div>                                
@@ -366,6 +366,8 @@
                     <!-- Cargos -->
                     <div id="cargos" >
                         <div class="tab" >
+                        <div class="row"></div>
+                        <div class="row"></div>
                         <div class="row"></div>
                         <div class="input-field col s6 offset-s3 {{$errors->has('cargo_id') ? 'has-error' : ''}}">
                             <select name="cargo_id">
@@ -384,14 +386,15 @@
                             @endif
                         </div>
                         <div class="row"></div>
+                        <div class="row"></div>
+                        <div class="row"></div>
+                        <div class="row"></div>
+                        <div class="col s12">
+                            <button class="btn green btn-info right">Confirmar</button>
+                        </div>
                     </div>
                     </div>
 
-                    <div class="row"></div>
-                    <div class="col s12">
-                        <button class="btn green btn-info right">Confirmar</button>
-                    </div>
-                        
                 </div>                
             </div>
         </form>

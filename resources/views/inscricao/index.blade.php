@@ -27,13 +27,18 @@
                                     - {{$publicacao->horaTermino}}h</td>
 
                                 <td>
-                                    <a title="Inscrição" class="btn green" href="{{route('inscricoes.create', $publicacao)}}">Inscrição</a>
+                                    <a title="Inscrição" class="btn green" href="{{route('inscricoes.create', $publicacao)}}">Inscrever</a>
                                 </td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
                 </div>
+            </div>
+            <div class="row">
+            </div>
+            <div class="row" align="center">
+                {{ $publicacoes->links('layouts.pagination') }}
             </div>
 
         </div>

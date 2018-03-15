@@ -93,10 +93,10 @@
                             <div class="col s12">
                                 <div class="input-field col s3 {{$errors->has('sexo') ? 'has-error' : ''}}">
                                     <select name= "sexo" >
-                                        <option value="{{old('sexo')}}" disabled selected >Selecione uma opção </option>
-                                        <option value="Masculino">Masculino</option>
-                                        <option value="Feminino">Feminino</option>
-                                        <option value="Outros">Outros</option>
+                                        <option value="" disabled selected >Selecione uma opção </option>
+                                        <option value="Masculino" {{ old('sexo') == 'Masculino'? 'selected' : '' }}>Masculino</option>
+                                        <option value="Feminino" {{ old('sexo') == 'Feminino' ? 'selected' : '' }}>Feminino</option>
+                                        <option value="Outros" {{ old('sexo') == 'Outros' ? 'selected' : '' }}>Outros</option>
                                     </select>
                                     <label>Sexo</label>
                                     @if($errors->has('sexo'))
@@ -225,7 +225,7 @@
                             
                             <div id="listas_qualificacoes">
                                 <div class="input-field col s6 {{$errors->has('instituicao') ? 'has-error' : ''}}">
-                                    <input type="text" name="qualificacoes[0][instituicao]" class="validate" value="{{old('qualificacoes.0.instituicao')}}">
+                                    <input type="text" name="qualificacoes[][instituicao]" class="validate" value="{{old('qualificacoes.0.instituicao')}}">
                                     <label>Instituição </label>
                                     @if($errors->has('instituicao'))
                                     <span class="red-text">
@@ -279,7 +279,7 @@
                                 </div>
 
                                 <div class="col s12">
-                                    <button class="btn blue" id="add_field_qualificacoes">Adicionar</button>
+                                    <button title="Adicionar mais qualificações" class="btn blue" id="add_field_qualificacoes"><i class="material-icons">add</i></button>
                                 </div>
                                 <div class="row"></div>
                             </div>
@@ -353,7 +353,7 @@
                                 </div>
 
                                 <div class="col s12">
-                                        <button class="btn blue" id="add_field_experiencias">Adicionar</button>
+                                        <button title="Adicionar mais experiências" class="btn blue" id="add_field_experiencias"><i class="material-icons">add</i></button>
                                 </div>
                                 <div class="row"></div>
                             </div>                                
@@ -364,6 +364,8 @@
                     <!-- Cargos -->
                     <div id="cargos" >
                         <div class="tab" >
+                        <div class="row"></div>
+                        <div class="row"></div>
                         <div class="row"></div>
                         <div class="input-field col s6 offset-s3 {{$errors->has('cargo_id') ? 'has-error' : ''}}">
                             <select name="cargo_id">
@@ -382,12 +384,13 @@
                             @endif
                         </div>
                         <div class="row"></div>
+                        <div class="row"></div>
+                        <div class="row"></div>
+                        <div class="row"></div>
+                        <div class="col s12">
+                            <button class="btn green btn-info right">Confirmar</button>
+                        </div>
                     </div>
-                    </div>
-
-                    <div class="row"></div>
-                    <div class="col s12">
-                        <button class="btn green btn-info right">Confirmar</button>
                     </div>
                         
                 </div>                

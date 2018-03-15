@@ -20,9 +20,8 @@ class InscricaoController extends Controller
      */
     public function index()
     {
-        //$user = Auth()-> user();
-        //dd('index', $publicacao);
-        $publicacoes = Publicacao::all();
+        $publicacoes = Publicacao::orderBy("id","DESC")->paginate(10);
+
         return view('inscricao.index', compact( 'publicacoes'));        
     }
 
@@ -125,7 +124,7 @@ class InscricaoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(InscricaoRequest $request, $id, $publicacao)
+    public function update(InscricaoRequest $request, $id, $idPublicacao)
     {
         DB::table('qualificacoes')->where('inscricao_id', $id)->delete();
         DB::table('experiencias')->where('inscricao_id', $id)->delete();
@@ -152,13 +151,11 @@ class InscricaoController extends Controller
         $inscricao->experiencias()->saveMany($experiencias);  
 
         
-        $addPublicacao = Publicacao::find($publicacao); 
-        $addPublicacao->inscricoes()->attach( $inscricao, ['cargo_id' => $dados['cargo_id']] );
-
-        
+        $publicacao = Publicacao::find($idPublicacao); 
+        $publicacao->inscricoes()->attach( $inscricao, ['cargo_id' => $dados['cargo_id']] );
 
 
-        return redirect()->route('inscricoes.confirmacao', compact('addPublicacao'));
+        return redirect()->route('inscricoes.confirmacao', compact('publicacao'));
     }
 
     /**

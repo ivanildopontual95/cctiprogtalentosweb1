@@ -7,11 +7,11 @@
             </div>
             <div class="row">
                 <center><h4>Confirmação do Seletivo</h4></center>
-                <div class="col s6 offset-s3">
+                <div class="col s12">
                     <div class="card-panel white">
                     <center>
                         <div class="row">
-                            <h4>{{$publicacao->titulo}}</h4>
+                            <h5>{{$publicacao->titulo}}</h5>
                             <p>Inscrição realizada com sucesso!</p>
                         </div>
                     </center> 
