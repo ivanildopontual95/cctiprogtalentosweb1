@@ -293,30 +293,86 @@ class PublicacaoController extends Controller
         $caminhos = [
         ['url'=>'/dashboard','titulo'=>'Painel Principal'],
         ['url'=>route('publicacoes.index'),'titulo'=>'Publicações'],
-        ['url'=>'','titulo'=>'Lista de Inscritos']
+        ['url'=>'','titulo'=>'Relatórios']
         ];
         
         //dd($publicacao->inscricoes[0]->pivot->cargo_id);
 
-        return view('dashboard.publicacao.relatorios.index',compact('publicacao','inscricoes','caminhos'));      
+        return view('dashboard.publicacao.relatorios.index',compact('publicacao','inscricao','caminhos'));      
     }
 
-    public function deferimentoRelatorio($id){
+    public function listadeinscritosRelatorio($id){
         
         if(Gate::denies('publicacoes-edit')){
             abort(403,"Não autorizado!");
         }
 
         $publicacao = Publicacao::find($id);
-        $inscricao = Inscricao::find($id);
-        $experiencia = Experiencia::find($id);
+        $inscricoes = $publicacao->inscricoes;
         $caminhos = [
         ['url'=>'/dashboard','titulo'=>'Painel Principal'],
         ['url'=>route('publicacoes.index'),'titulo'=>'Publicações'],
+        ['url'=>'','titulo'=>'Relatórios'],
         ['url'=>'','titulo'=>'Lista de Inscritos']
         ];
 
-        return view('dashboard.publicacao.relatorios.deferimento',compact( 'publicacao','relatorio','inscricao','experiencia','caminhos'));      
+        return view('dashboard.publicacao.relatorios.listadeinscritos',compact( 'publicacao','inscricoes','caminhos'));      
+    }
+
+
+    public function listadedeferimentosRelatorio($id){
+        
+        if(Gate::denies('publicacoes-edit')){
+            abort(403,"Não autorizado!");
+        }
+
+        $publicacao = Publicacao::find($id);
+        $inscricoes = $publicacao->inscricoes;
+        $inscricao = Inscricao::find($id);
+        $caminhos = [
+        ['url'=>'/dashboard','titulo'=>'Painel Principal'],
+        ['url'=>route('publicacoes.index'),'titulo'=>'Publicações'],
+        ['url'=>'','titulo'=>'Relatórios'],
+        ['url'=>'','titulo'=>'Lista de Deferimentos']
+        ];
+
+        return view('dashboard.publicacao.relatorios.listadedeferimentos',compact( 'publicacao','inscricoes','caminhos'));      
+    }
+
+    public function listadeclassificadosRelatorio($id){
+        
+        if(Gate::denies('publicacoes-edit')){
+            abort(403,"Não autorizado!");
+        }
+        
+        $publicacao = Publicacao::find($id);
+        $inscricoes = $publicacao->inscricoes;
+        $caminhos = [
+        ['url'=>'/dashboard','titulo'=>'Painel Principal'],
+        ['url'=>route('publicacoes.index'),'titulo'=>'Publicações'],
+        ['url'=>'','titulo'=>'Relatórios'],
+        ['url'=>'','titulo'=>'Lista de Classificados']
+        ];
+        return view('dashboard.publicacao.relatorios.listadeclassificados',compact( 'publicacao','inscricoes','caminhos'));
+
+    }
+
+    public function listadeconvocacaoRelatorio($id){
+        
+        if(Gate::denies('publicacoes-edit')){
+            abort(403,"Não autorizado!");
+        }
+        
+        $publicacao = Publicacao::find($id);
+        $inscricoes = $publicacao->inscricoes;
+        $caminhos = [
+        ['url'=>'/dashboard','titulo'=>'Painel Principal'],
+        ['url'=>route('publicacoes.index'),'titulo'=>'Publicações'],
+        ['url'=>'','titulo'=>'Relatórios'],
+        ['url'=>'','titulo'=>'Lista de Convocacao']
+        ];
+        return view('dashboard.publicacao.relatorios.listadeconvocacao',compact( 'publicacao','inscricoes','caminhos'));
+
     }
 
     public function avaliacaoRelatorio($id){
@@ -334,25 +390,7 @@ class PublicacaoController extends Controller
         ['url'=>'','titulo'=>'Lista de Inscritos']
         ];
 
-        return view('dashboard.publicacao.relatorios.avaliacao',compact( 'publicacao','relatorio','inscricao','experiencia','caminhos'));      
-    }
-
-    public function convocacaoRelatorio($id){
-        
-        if(Gate::denies('publicacoes-edit')){
-            abort(403,"Não autorizado!");
-        }
-        
-        $publicacao = Publicacao::find($id);
-        $inscricao = Inscricao::find($id);
-        $experiencia = Experiencia::find($id);
-        $caminhos = [
-        ['url'=>'/dashboard','titulo'=>'Painel Principal'],
-        ['url'=>route('publicacoes.index'),'titulo'=>'Publicações'],
-        ['url'=>'','titulo'=>'Lista de Inscritos']
-        ];
-        return view('dashboard.publicacao.relatorios.convocacao',compact( 'publicacao','relatorio','inscricao','experiencia','caminhos'));
-
+        return view('dashboard.publicacao.relatorios.avaliacao',compact( 'publicacao','inscricao','experiencia','caminhos'));      
     }
     //-------------------------------------------------------
 }

@@ -87,7 +87,7 @@ class PDFController extends Controller
         //
     }
 
-    public function pdfCurriculoRelatorio($id){
+    public function pdfcurriculoRelatorio($id){
         $inscricao = Inscricao::find($id);
         $experiencia = Experiencia::find($id);
         $pdf=PDF::loadView('dashboard.publicacao.relatorios.PDFcurriculo',['inscricao'=>$inscricao],['experiencia'=>$experiencia]);

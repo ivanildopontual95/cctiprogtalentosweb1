@@ -36,7 +36,7 @@
 									<a title="Editar" class="btn orange" href="{{ route('publicacoes.edit',$publicacao->id) }}"><i class="material-icons">mode_edit</i></a>
 									<a title="Cargos" class="btn" href="{{ route('publicacoes.cargo.index',$publicacao->id)}}"><i class="material-icons">person_add</i></a>
 									<a title="Documentos" class="btn blue" href="{{ route('publicacoes.documentos.index',$publicacao->id)}}"><i class="material-icons">attach_file</i></a>
-									<a title="Relatórios" class="btn green" href="{{ route('publicacoes.relatorio.index',$publicacao->id)}}"><i class="material-icons">list</i></a>
+									<a title="Relatórios" class="btn green" href="{{ route('publicacoes.relatorios.index',$publicacao->id)}}"><i class="material-icons">list</i></a>
 									@endcan				
 									@can('publicacoes-delete')
 										{{ method_field('DELETE') }}
