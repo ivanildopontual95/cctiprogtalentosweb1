@@ -3,7 +3,12 @@ $(document).ready(function() {
     //add campos qualificacoes
     var campos_max          = 20;   //max de 10 campos
     var x = 1; // campos iniciais
-    $('#add_field_qualificacoes').click (function(e) {
+    var button = $('#add_field_qualificacoes');
+
+        if (button.attr('data-contador') > 0) {
+                x += parseInt(button.attr('data-contador'));
+        }
+        button.click (function(e) {
             e.preventDefault();     //prevenir novos clicks
             if (x < campos_max) {
                     
@@ -47,46 +52,51 @@ $(document).ready(function() {
 
     //add campos experiencias
     var campos_max          = 20;   //max de 10 campos
-    var x = 1; // campos iniciais
-    $('#add_field_experiencias').click (function(e) {
+    var z = 1; // campos iniciais
+    var button = $('#add_field_experiencias');
+
+        if (button.attr('data-contador') > 0) {
+                z += parseInt(button.attr('data-contador'));
+        }
+        button.click (function(e) {
             e.preventDefault();     //prevenir novos clicks
-            if (x < campos_max) {
+            if (z < campos_max) {
                     
                     $('#listas_experiencias').append('<div class="col s12">\
                         <div class="row"></div>\
                         <div class="input-field col s6">\
-                        <input type="text" name="experiencias['+x+'][empresa]">\
+                        <input type="text" name="experiencias['+z+'][empresa]">\
                         <label>Empresa</label>\
                         </div>\
                         <div class="input-field col s6">\
-                        <input type="text" name="experiencias['+x+'][funcao]">\
+                        <input type="text" name="experiencias['+z+'][funcao]">\
                         <label>Função</label>\
                         </div>\
                         <div class="input-field col s12">\
                                 <p>Período</p>\
                         </div>\
                         <div class="input-field col s3">\
-                        <input type="text" class="datepicker" name="experiencias['+x+'][dataInE]">\
+                        <input type="text" class="datepicker" name="experiencias['+z+'][dataInE]">\
                         <label>Data de inicio</label>\
                         </div>\
                         <div class="input-field col s3">\
-                        <input type="text" class="datepicker" name="experiencias['+x+'][dataTermE]">\
+                        <input type="text" class="datepicker" name="experiencias['+z+'][dataTermE]">\
                         <label>Data de fim</label>\
                         </div>\
                         <div class="input-field col s6">\
-                        <input type="text" name="experiencias['+x+'][atividade]">\
+                        <input type="text" name="experiencias['+z+'][atividade]">\
                         <label>Atividades Desempenhadas</label>\
                         </div>\
                                 <a href="#" class="remover_campo">Remover</a>\
                         </div>');
-                    x++;
+                    z++;
             }
     });
     // Remover o div anterior
     $('#listas_experiencias').on("click",".remover_campo",function(e) {
             e.preventDefault();
             $(this).parent('div').remove();
-            x--;
+            z--;
     });
   
 });
