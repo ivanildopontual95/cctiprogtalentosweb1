@@ -20,9 +20,18 @@ class InscricaoController extends Controller
      */
     public function index()
     {
+        $user = Auth()->user();
+        $inscricao = Inscricao::find($user->inscricao_id);
+        
+        if($inscricao->publicacoes()->count()){
+            $publicacaoInscrito = $inscricao->publicacoes()->get();
+        }else{
+            $publicacaoInscrito = null;
+        }
+        
         $publicacoes = Publicacao::orderBy("id","DESC")->paginate(10);
 
-        return view('inscricao.index', compact( 'publicacoes'));        
+        return view('inscricao.index', compact( 'publicacoes', 'publicacaoInscrito'));        
     }
 
     /**
