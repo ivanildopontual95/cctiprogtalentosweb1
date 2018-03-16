@@ -23,10 +23,13 @@ class InscricaoController extends Controller
         $user = Auth()->user();
         $inscricao = Inscricao::find($user->inscricao_id);
         
-        if($inscricao->publicacoes()->count()){
-            $publicacaoInscrito = $inscricao->publicacoes()->get();
-        }else{
-            $publicacaoInscrito = null;
+        $publicacaoInscrito = null;
+        if($inscricao != null){
+            if($inscricao->publicacoes()->count()){
+                $publicacaoInscrito = $inscricao->publicacoes()->get();
+            }else{
+                $publicacaoInscrito = null;
+            }
         }
         
         $publicacoes = Publicacao::orderBy("id","DESC")->paginate(10);
