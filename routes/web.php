@@ -26,6 +26,7 @@ Route::group(['as'=> 'inscricoes.', 'prefix' =>'inscricoes'], function(){
   Route::put('{id}/{publicacao}/atualizar', ['as'=> 'update','uses'=>'InscricaoController@update']);
 
   Route::get('{publicacao}/confirmacao', ['as'=> 'confirmacao','uses'=>'InscricaoController@indexConfirmacao']); 
+  Route::get('confirmarInscricao/{id}/{publicacao}',['as'=>'inscricaopdf','uses'=>'InscricaoController@pdfConfirmarInscricao']) ;
 });
 
 Auth::routes();
@@ -74,4 +75,7 @@ Route:: group (['middleware' => 'auth', 'prefix' =>'dashboard'], function () {
   Route::get('perfil', ['as'=>'perfil.perfil','uses'=>'Site\SiteController@perfil']);
   Route::put('perfil', ['as'=>'perfil.perfil.update','uses'=>'Site\SiteController@perfilUpdate']);
   
+
+ 
+
 });

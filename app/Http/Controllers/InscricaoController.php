@@ -9,6 +9,7 @@ use App\Cargo;
 use App\Qualificacao;
 use App\Experiencia;
 use DB;
+use PDF;
 use App\Http\Requests\InscricaoRequest;
 
 class InscricaoController extends Controller
@@ -187,7 +188,20 @@ class InscricaoController extends Controller
 
     public function indexConfirmacao(Publicacao $publicacao)
     {
-        return view('inscricao.confirmacao', compact('publicacao'));      
+        $user = Auth()->user();
+        $inscricao = Inscricao::find($user->inscricao_id);
+        return view('inscricao.confirmacao', compact('inscricao','publicacao'));      
+    }
+
+     public function pdfConfirmarInscricao($id, $idPublicacao){
+        $inscricao = Inscricao::find($id);
+        //$qualificacoes = Qualificacao::where('inscricao_id', $id);
+        //$experiencias = Experiencia::where('inscricao_id', $id);
+        $publicacao = Publicacao::find($idPublicacao);
+
+        $pdf=PDF::loadView('inscricao.confirmarIncricaoPDF',['inscricao'=>$inscricao],['publicacao'=>$publicacao]);
+        return $pdf->stream('Inscrição.pdf');
+
     }
 
 }
