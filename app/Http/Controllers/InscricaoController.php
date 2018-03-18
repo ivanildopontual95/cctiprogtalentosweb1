@@ -33,7 +33,7 @@ class InscricaoController extends Controller
             }
         }
         
-        $publicacoes = Publicacao::orderBy("id","DESC")->paginate(10);
+        $publicacoes = Publicacao::orderBy("id","DESC")->paginate(5);
 
         return view('inscricao.index', compact( 'publicacoes', 'publicacaoInscrito'));        
     }

@@ -18,10 +18,29 @@ main {
     background-size: cover;
 }
 
-.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
-    background-color: #26a69a;
-    border-color: #26a69a;
-    color: #fafafa;
-    cursor:pointer;
-    z-index:2;
+.pagination li {
+  color: #fff;
+  display: inline-block;
+  font-size: 20px;
+  border-radius: 2px;
+  text-align: center;
+  vertical-align: center;
+  height: 30px;
+  width: 30px;
+}
+
+.pagination li a {
+  color: #444;
+  display: inline-block;
+  font-size: 20px;
+  padding: 0 10px;
+  line-height: 30px;
+}
+
+.pagination li.active {
+  background-color: #1976d2;
+}
+
+.pagination li i {
+  font-size: 20px;
 }

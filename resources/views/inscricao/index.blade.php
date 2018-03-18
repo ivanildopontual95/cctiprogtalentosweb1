@@ -50,7 +50,7 @@
             <div class="row">
             </div>
             <div class="row" align="center">
-                {{ $publicacoes->links('layouts.pagination') }}
+                {{ $publicacoes->links() }}
             </div>
 
         </div>

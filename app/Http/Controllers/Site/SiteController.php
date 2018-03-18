@@ -57,7 +57,7 @@ class SiteController extends Controller
     //--------------Home------------------------------------
     public function home()
     {
-      $publicacoes = Publicacao::orderBy("id","DESC")->paginate(10);
+      $publicacoes = Publicacao::orderBy("id","DESC")->paginate(5);
       return view('home',compact('publicacoes'));
     }
 
