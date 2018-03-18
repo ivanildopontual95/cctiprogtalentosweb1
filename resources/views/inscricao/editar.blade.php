@@ -229,7 +229,7 @@
                                     <div>
                                         @foreach($inscricao->qualificacoes as $i => $qualificacao)
                                             <div>
-                                            <div class="row"></div>
+                                                <div class="row"></div>
                                                 <div class="input-field col s6 {{$errors->has('instituicao') ? 'has-error' : ''}}">
                                                     <input type="text" name="qualificacoes[{{$i}}][instituicao]" class="validate" value="{{ isset($qualificacao->instituicao) && !old('$qualificacao->instituicao') ? $qualificacao->instituicao : '' }}{{old('$qualificacao->instituicao')}}">
                                                     <label>Instituição </label>
@@ -250,7 +250,7 @@
                                                     @endif
                                                 </div>
 
-                                                <div class="input-field col s12">
+                                                <div class="col s12">
                                                     <p>Período</p>
                                                 </div>
 
@@ -283,9 +283,11 @@
                                                     </span>
                                                     @endif
                                                 </div>
-                                                @if($i>0)
-                                                    <a href="#" class="remover_campo">Remover</a>
-                                                @endif
+                                                <div class="col s12">
+                                                    @if($i>0)
+                                                        <a href="#" class="remover_campo">Remover</a>
+                                                    @endif
+                                                </div>
                                             </div>
                                         @endforeach
                                     </div>
@@ -311,7 +313,7 @@
                                         @endif
                                     </div>
 
-                                    <div class="input-field col s12">
+                                    <div class="col s12">
                                         <p>Período</p>
                                     </div>
 
@@ -348,7 +350,9 @@
                             </div>
                             <div class="row"></div>
                             <div class="col s12">
-                                <button title="Adicionar mais qualificações" class="btn blue" id="add_field_qualificacoes" data-contador-qualificacoes="{{ $inscricao->qualificacoes->count() }}"><i class="material-icons">add</i></button>
+                                <button title="Adicionar mais qualificações" class="btn blue" id="add_field_qualificacoes" data-contador="{{ $inscricao->qualificacoes->count() }}">
+                                    <i class="material-icons">add</i>
+                                </button>
                             </div>
                             <div class="row"></div>
                         </div>
@@ -388,7 +392,7 @@
                                                     @endif                       
                                                 </div>
                                                 
-                                                <div class="input-field col s12">
+                                                <div class="col s12">
                                                     <p>Período</p>
                                                 </div>
 
@@ -421,9 +425,11 @@
                                                     </span>
                                                     @endif
                                                 </div>
-                                                @if($i>0)
-                                                    <a href="#" class="remover_campo">Remover</a>
-                                                @endif
+                                                <div class="col s12">
+                                                    @if($i>0)
+                                                        <a href="#" class="remover_campo">Remover</a>
+                                                    @endif
+                                                </div>
                                             </div>
                                         @endforeach
                                     </div>
@@ -449,7 +455,7 @@
                                         @endif                       
                                     </div>
                                     
-                                    <div class="input-field col s12">
+                                    <div class="col s12">
                                         <p>Período</p>
                                     </div>
 
@@ -486,7 +492,9 @@
                             </div>
                             <div class="row"></div>        
                             <div class="col s12">
-                                <button title="Adicionar mais experiências" class="btn blue" id="add_field_experiencias"  data-contador-experiencias="{{ $inscricao->experiencias->count() }}" ><i class="material-icons">add</i></button>
+                                <button title="Adicionar mais experiências" class="btn blue" id="add_field_experiencias"  data-contador="{{ $inscricao->experiencias->count() }}" >
+                                    <i class="material-icons">add</i>
+                                </button>
                             </div>
                             <div class="row"></div>                        
                         </div>

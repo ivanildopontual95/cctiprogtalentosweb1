@@ -244,7 +244,7 @@
                                     @endif
                                 </div>
 
-                                <div class="input-field col s12">
+                                <div class="col s12">
                                     <p>Período</p>
                                 </div>
 
@@ -277,12 +277,14 @@
                                     </span>
                                     @endif
                                 </div>
-
-                                <div class="col s12">
-                                    <button title="Adicionar mais qualificações" class="btn blue" id="add_field_qualificacoes"><i class="material-icons">add</i></button>
-                                </div>
-                                <div class="row"></div>
                             </div>
+                            <div class="row"></div>
+                            <div class="col s12">
+                                <button title="Adicionar mais qualificações" class="btn blue" id="add_field_qualificacoes">
+                                    <i class="material-icons">add</i>
+                                </button>
+                            </div>
+                            <div class="row"></div>
                         </div>
                         </div>
                     </div>
@@ -297,7 +299,6 @@
                             <a class="input-field col s12">Experiências Profissionais</a>
 
                             <div id="listas_experiencias">
-                                
                                 <div class="input-field col s6 {{$errors->has('empresa') ? 'has-error' : ''}}">
                                     <input type="text" name="experiencias[0][empresa]" class="validate" value="{{old('experiencias.0.empresa')}}">
                                     <label >Empresa</label>
@@ -318,7 +319,7 @@
                                     @endif                       
                                 </div>
                                 
-                                <div class="input-field col s12">
+                                <div class="col s12">
                                     <p>Período</p>
                                 </div>
 
@@ -351,12 +352,14 @@
                                     </span>
                                     @endif
                                 </div>
-
-                                <div class="col s12">
-                                        <button title="Adicionar mais experiências" class="btn blue" id="add_field_experiencias"><i class="material-icons">add</i></button>
-                                </div>
-                                <div class="row"></div>
-                            </div>                                
+                            </div> 
+                            <div class="row"></div>
+                            <div class="col s12">
+                                <button title="Adicionar mais experiências" class="btn blue" id="add_field_experiencias">
+                                    <i class="material-icons">add</i>
+                                </button>
+                            </div>
+                            <div class="row"></div>
                         </div>
                         </div>
                     </div>
