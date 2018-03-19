@@ -10,7 +10,7 @@
     <div class="row">
     @can('perfil-view')
         <div class="col s12 m6">
-          <div class="card green darken-1">
+          <div class="card green darken-2">
             <div class="card-content white-text">
               <span class="card-title">Perfil</span>
               <p>Alterar Dados de Perfil</p>
@@ -23,7 +23,7 @@
       @endcan
       @can('publicacoes-view')
         <div class="col s12 m6">
-          <div class="card light-blue darken-4">
+          <div class="card grey darken-2">
             <div class="card-content white-text">
               <span class="card-title">Publicações</span>
               <p>Gerenciar Publicações</p>
@@ -36,7 +36,7 @@
       @endcan
       @can('usuario-view')
         <div class="col s12 m6">
-          <div class="card purple darken-2">
+          <div class="card cyan darken-2">
             <div class="card-content white-text">
               <span class="card-title">Usuários</span>
               <p>Gerenciar Usuários do Sistema</p>
@@ -49,7 +49,7 @@
       @endcan
       @can('papel-view')  
         <div class="col s12 m6">
-          <div class="card deep-orange accent-3">
+          <div class="card teal darken-2">
             <div class="card-content white-text">
               <span class="card-title">Papéis</span>
               <p>Configurações de Acesso</p>
@@ -59,7 +59,20 @@
             </div>
           </div>
         </div>
-      @endcan  
+      @endcan
+      @can('perfil-view')
+        <div class="col s12 m6">
+          <div class="card indigo darken-2">
+            <div class="card-content white-text">
+              <span class="card-title">Processos Seletivos</span>
+              <p>Acessar os Processos Seletivos</p>
+            </div>
+            <div class="card-action">
+              <a href="{{route('inscricoes.index')}}">Visualizar</a>
+            </div>
+          </div>
+        </div>
+      @endcan
     </div>
     
 </div>
