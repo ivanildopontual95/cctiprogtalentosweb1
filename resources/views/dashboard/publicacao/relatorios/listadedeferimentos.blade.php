@@ -12,6 +12,8 @@
         <div class="row">
         </div>
         <div class="card-panel white">
+            <form class="form-horizontal" action="{{route('publicacoes.relatorios.pdflistadedeferimentos', $publicacao->id)}}">
+            {{csrf_field()}}
             <div class="row">
             <table>
                 <thead>
@@ -41,5 +43,6 @@
             </table>
         <button class="btn green left">Baixar<i class="material-icons left">file_download</i></button>
     </div>
+</form>
 </div>
 @endsection

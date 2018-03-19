@@ -108,27 +108,27 @@ class PDFController extends Controller
         $inscricao = Inscricao::find($id);
         $experiencia = Experiencia::find($id);
         $pdf=PDF::loadView('dashboard.publicacao.relatorios.PDFlistadeinscritos',['inscricao'=>$inscricao],['experiencia'=>$experiencia]);
-        return $pdf->stream('Curriculo.pdf');
+        return $pdf->stream('ListadeInscritos.pdf');
     }
 
     public function pdflistadeDeferimentos($id){
         $inscricao = Inscricao::find($id);
         $experiencia = Experiencia::find($id);
         $pdf=PDF::loadView('dashboard.publicacao.relatorios.PDFlistadedeferimentos',['inscricao'=>$inscricao],['experiencia'=>$experiencia]);
-        return $pdf->stream('Curriculo.pdf');
+        return $pdf->stream('ListadeDeferimentos.pdf');
     }
 
     public function pdflistadeClassificados($id){
         $inscricao = Inscricao::find($id);
         $experiencia = Experiencia::find($id);
         $pdf=PDF::loadView('dashboard.publicacao.relatorios.PDFlistadeclassificados',['inscricao'=>$inscricao],['experiencia'=>$experiencia]);
-        return $pdf->stream('Curriculo.pdf');
+        return $pdf->stream('ListadeClassificados.pdf');
     }
 
     public function pdflistadeConvocacao($id){
         $inscricao = Inscricao::find($id);
         $experiencia = Experiencia::find($id);
         $pdf=PDF::loadView('dashboard.publicacao.relatorios.PDFlistadeconvocacao',['inscricao'=>$inscricao],['experiencia'=>$experiencia]);
-        return $pdf->stream('Curriculo.pdf');
+        return $pdf->stream('ListadeConvocação.pdf');
     }
 }

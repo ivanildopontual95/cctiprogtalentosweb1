@@ -315,7 +315,7 @@ class PublicacaoController extends Controller
         ['url'=>'','titulo'=>'Lista de Inscritos']
         ];
 
-        return view('dashboard.publicacao.relatorios.listadeinscritos',compact( 'publicacao','inscricoes','caminhos'));      
+        return view('dashboard.publicacao.relatorios.listadeinscritos',compact('publicacao','inscricoes','caminhos'));      
     }
 
 
@@ -327,7 +327,6 @@ class PublicacaoController extends Controller
 
         $publicacao = Publicacao::find($id);
         $inscricoes = $publicacao->inscricoes;
-        $inscricao = Inscricao::find($id);
         $caminhos = [
         ['url'=>'/dashboard','titulo'=>'Painel Principal'],
         ['url'=>route('publicacoes.index'),'titulo'=>'Publicações'],
@@ -335,7 +334,7 @@ class PublicacaoController extends Controller
         ['url'=>'','titulo'=>'Lista de Deferimentos']
         ];
 
-        return view('dashboard.publicacao.relatorios.listadedeferimentos',compact( 'publicacao','inscricoes','caminhos'));      
+        return view('dashboard.publicacao.relatorios.listadedeferimentos',compact('publicacao','inscricoes','caminhos'));      
     }
 
     public function listadeclassificadosRelatorio($id){
@@ -346,14 +345,13 @@ class PublicacaoController extends Controller
         
         $publicacao = Publicacao::find($id);
         $inscricoes = $publicacao->inscricoes;
-        $inscricao = Inscricao::find($id);
         $caminhos = [
         ['url'=>'/dashboard','titulo'=>'Painel Principal'],
         ['url'=>route('publicacoes.index'),'titulo'=>'Publicações'],
         ['url'=>'','titulo'=>'Relatórios'],
         ['url'=>'','titulo'=>'Lista de Classificados']
         ];
-        return view('dashboard.publicacao.relatorios.listadeclassificados',compact( 'publicacao','inscricoes','caminhos'));
+        return view('dashboard.publicacao.relatorios.listadeclassificados',compact('publicacao','inscricoes','caminhos'));
 
     }
 
@@ -365,14 +363,13 @@ class PublicacaoController extends Controller
         
         $publicacao = Publicacao::find($id);
         $inscricoes = $publicacao->inscricoes;
-        $inscricao = Inscricao::find($id);
         $caminhos = [
         ['url'=>'/dashboard','titulo'=>'Painel Principal'],
         ['url'=>route('publicacoes.index'),'titulo'=>'Publicações'],
         ['url'=>'','titulo'=>'Relatórios'],
         ['url'=>'','titulo'=>'Lista de Convocacao']
         ];
-        return view('dashboard.publicacao.relatorios.listadeconvocacao',compact( 'publicacao','inscricoes','caminhos'));
+        return view('dashboard.publicacao.relatorios.listadeconvocacao',compact('publicacao','inscricoes','caminhos'));
 
     }
 
@@ -392,7 +389,7 @@ class PublicacaoController extends Controller
         ['url'=>'','titulo'=>'Deferimento']
         ];
 
-        return view('dashboard.publicacao.relatorios.deferimento',compact( 'publicacao','inscricao','experiencia','caminhos')); 
+        return view('dashboard.publicacao.relatorios.deferimento',compact('publicacao','inscricao','experiencia','caminhos')); 
     }
 
     public function avaliacaoRelatorio($publicacao_id, $inscricao_id){
@@ -412,7 +409,7 @@ class PublicacaoController extends Controller
         ['url'=>'','titulo'=>'Avaliação']
         ];
 
-        return view('dashboard.publicacao.relatorios.avaliacao',compact( 'publicacao','inscricao','experiencia','caminhos'));      
+        return view('dashboard.publicacao.relatorios.avaliacao',compact('publicacao','inscricao','experiencia','caminhos'));      
     }
 
     public function convocacaoRelatorio($publicacao_id, $inscricao_id){
@@ -426,11 +423,12 @@ class PublicacaoController extends Controller
         $caminhos = [
         ['url'=>'/dashboard','titulo'=>'Painel Principal'],
         ['url'=>route('publicacoes.index'),'titulo'=>'Publicações'],
+        ['url'=>'','titulo'=>'Relatórios'],
         ['url'=>'','titulo'=>'Lista de Convocação'],
         ['url'=>'','titulo'=>'Convocação']
         ];
 
-        return view('dashboard.publicacao.relatorios.convocacao',compact( 'publicacao','inscricao','experiencia','caminhos'));      
+        return view('dashboard.publicacao.relatorios.convocacao',compact('publicacao','inscricao','experiencia','caminhos'));      
     }
     //-------------------------------------------------------
 }
