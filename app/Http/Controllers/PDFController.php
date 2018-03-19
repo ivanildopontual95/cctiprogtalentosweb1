@@ -89,17 +89,17 @@ class PDFController extends Controller
 
     public function pdfConfirmarInscricao($id){
         $inscricao = Inscricao::find($id);
-        $qualificacoes = Qualificacao::find($id);
         $publicacao = Publicacao::find($id);
-        $pdf=PDF::loadView('inscricao.confirmarIncricaoPDF',['inscricao'=>$inscricao],['qualificacoes'=>$qualificacoes],['publicacao'=>$publicacao]);
+        $pdf=PDF::loadView('inscricao.confirmarIncricaoPDF',['inscricao'=>$inscricao],['publicacao'=>$publicacao]);
         return $pdf->stream('Inscrição.pdf');
 
     }
 
     public function pdfcurriculoRelatorio($id){
         $inscricao = Inscricao::find($id);
-        $experiencia = Experiencia::find($id);
-        $pdf=PDF::loadView('dashboard.publicacao.relatorios.PDFcurriculo',['inscricao'=>$inscricao],['experiencia'=>$experiencia]);
+        $experiencias = Experiencia::where('inscricao_id', $id)->get();
+        $qualificacoes = Qualificacao::where('inscricao_id', $id)->get();
+        $pdf=PDF::loadView('dashboard.publicacao.relatorios.PDFcurriculo',['inscricao'=>$inscricao,'experiencias'=>$experiencias, 'qualificacoes'=>$qualificacoes]);
         return $pdf->stream('Curriculo.pdf');
 
     }

@@ -63,14 +63,16 @@
 
 
         </div>
+
     </div>
-    </div>
+
+
 
     <div class="secao">
         <caption>
             <h2>Dados Profissionais</h2>
         </caption>
-
+        @foreach ($experiencias as $experiencia )
         <p>
             <strong>Empresa : </strong> {{$experiencia->empresa}} </p>
         <p>
@@ -82,21 +84,7 @@
             <strong>Data de Inicio na Empresa: </strong> {{$experiencia->dataInE}}
 
             <strong>Data de Termino na Empresa : </strong> {{$experiencia->dataTermE}} </p>
-        <p>
-            <strong>Instituição: </strong> {{$experiencia->instituicao}} </p>
-        <p>
-            <strong>Curso: </strong> {{$experiencia->curso}} </p>
-
-        <p>
-            <strong>Data de Inicio do Curso: </strong> {{$experiencia->dataInI}}
-
-            <strong>Data de Termino do Curso : </strong> {{$experiencia->dataTermI}} </p>
-
-        <p>
-            <strong>Carga Horária do Curso: </strong> {{$experiencia->cargaHora}} Horas </p>
-
-        <p>
-            <strong>Característica do Candidato: </strong> {{$experiencia->aptidao}} </p>
+        @endforeach
 
     </div>
 
@@ -104,9 +92,22 @@
     <div class="secao">
 
         <caption>
-            <h2>Formação</h2>
+            <h2>Qualificações</h2>
         </caption>
+        @foreach ($qualificacoes as $qualificacao)
+        <p>
+            <strong>Instituição: </strong> {{$qualificacao->instituicao}} </p>
+        <p>
+            <strong>Curso: </strong> {{$qualificacao->curso}} </p>
 
+        <p>
+            <strong>Data de Inicio do Curso: </strong> {{$qualificacao->dataInI}}
+
+            <strong>Data de Termino do Curso : </strong> {{$qualificacao->dataTermI}} </p>
+
+        <p>
+            <strong>Carga Horária do Curso: </strong> {{$qualificacao->cargaHora}} Horas </p>
+        @endforeach
 
     </div>
 
