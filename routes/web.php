@@ -15,22 +15,26 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', ['as'=>'home','uses'=>'Site\SiteController@home']);
 Route::get('/publicacoes/{publicacao}/{titulo?}', ['as'=>'detalhes','uses'=>'Site\SiteController@detalhes']);
 
-//-------------------------Inscrições--------------------------------------------
-
-Route::group(['as'=> 'inscricoes.', 'prefix' =>'inscricoes'], function(){
-
-  Route::get('', ['as'=>'index','uses'=>'InscricaoController@index']);
-  Route::get('{publicacao}/criar', ['as'=> 'create','uses'=>'InscricaoController@create']);
-  Route::post('{publicacao}/salvar', ['as'=> 'store','uses'=>'InscricaoController@store']);
-  Route::get('{id}/{publicacao}/editar', ['as'=> 'edit','uses'=>'InscricaoController@edit']);
-  Route::put('{id}/{publicacao}/atualizar', ['as'=> 'update','uses'=>'InscricaoController@update']);
-
-  Route::get('{publicacao}/confirmacao', ['as'=> 'confirmacao','uses'=>'InscricaoController@indexConfirmacao']); 
-  Route::get('confirmarInscricao/{id}/{publicacao}',['as'=>'inscricaopdf','uses'=>'InscricaoController@pdfConfirmarInscricao']) ;
-});
-
 Auth::routes();
 
+//-------------------------Inscrições--------------------------------------------
+
+Route:: group(['middleware' => 'auth', 'prefix' => 'user'], function(){
+
+  Route::group(['as'=> 'inscricoes.', 'prefix' =>'inscricao'], function(){
+
+    Route::get('', ['as'=>'index','uses'=>'InscricaoController@index']);
+    Route::get('{publicacao}/criar', ['as'=> 'create','uses'=>'InscricaoController@create']);
+    Route::post('{publicacao}/salvar', ['as'=> 'store','uses'=>'InscricaoController@store']);
+    Route::get('{id}/{publicacao}/editar', ['as'=> 'edit','uses'=>'InscricaoController@edit']);
+    Route::put('{id}/{publicacao}/atualizar', ['as'=> 'update','uses'=>'InscricaoController@update']);
+
+    Route::get('{publicacao}/confirmacao', ['as'=> 'confirmacao','uses'=>'InscricaoController@indexConfirmacao']); 
+    Route::get('{id}/{publicacao}/confirmacaoPDF',['as'=>'confirmacaoPDF','uses'=>'InscricaoController@confirmacaoPDF']) ;
+  });
+});
+
+//---------------------------------------Admin---------------------------------------
 Route:: group (['middleware' => 'auth', 'prefix' =>'dashboard'], function () {
 
   Route::get('/', 'Admin\AdminController@index');

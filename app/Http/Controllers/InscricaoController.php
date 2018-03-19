@@ -10,6 +10,7 @@ use App\Qualificacao;
 use App\Experiencia;
 use DB;
 use PDF;
+use Illuminate\Support\Facades\Gate;
 use App\Http\Requests\InscricaoRequest;
 
 class InscricaoController extends Controller
@@ -21,6 +22,10 @@ class InscricaoController extends Controller
      */
     public function index()
     {
+        if(Gate::denies('perfil-view')){
+            abort(403,"Não autorizado!");
+        }
+
         $user = Auth()->user();
         $inscricao = Inscricao::find($user->inscricao_id);
         
@@ -45,6 +50,10 @@ class InscricaoController extends Controller
      */
     public function create(Publicacao $publicacao)
     {
+        if(Gate::denies('perfil-view')){
+            abort(403,"Não autorizado!");
+        }
+
         $user = Auth()->user();
 
         $cargos = $publicacao->cargos;
@@ -69,6 +78,10 @@ class InscricaoController extends Controller
      */
     public function store(InscricaoRequest $request, Publicacao $publicacao)
     {
+        if(Gate::denies('perfil-view')){
+            abort(403,"Não autorizado!");
+        }
+
         $user = Auth()->user();
         
         $dados = $request->all();
@@ -121,6 +134,10 @@ class InscricaoController extends Controller
      */
     public function edit( $id, Publicacao $publicacao)
     {
+        if(Gate::denies('perfil-view')){
+            abort(403,"Não autorizado!");
+        }
+        
         $inscricao = Inscricao::find($id);
         
         $cargos = $publicacao->cargos;
@@ -137,6 +154,10 @@ class InscricaoController extends Controller
      */
     public function update(InscricaoRequest $request, $id, $idPublicacao)
     {
+        if(Gate::denies('perfil-view')){
+            abort(403,"Não autorizado!");
+        }
+
         DB::table('qualificacoes')->where('inscricao_id', $id)->delete();
         DB::table('experiencias')->where('inscricao_id', $id)->delete();
 
@@ -188,20 +209,26 @@ class InscricaoController extends Controller
 
     public function indexConfirmacao(Publicacao $publicacao)
     {
+        if(Gate::denies('perfil-view')){
+            abort(403,"Não autorizado!");
+        }
+
         $user = Auth()->user();
         $inscricao = Inscricao::find($user->inscricao_id);
         return view('inscricao.confirmacao', compact('inscricao','publicacao'));      
     }
 
-     public function pdfConfirmarInscricao($id, $idPublicacao){
+     public function confirmacaoPDF($id, $idPublicacao)
+     {
+        if(Gate::denies('perfil-view')){
+            abort(403,"Não autorizado!");
+        }
+
         $inscricao = Inscricao::find($id);
-        //$qualificacoes = Qualificacao::where('inscricao_id', $id);
-        //$experiencias = Experiencia::where('inscricao_id', $id);
         $publicacao = Publicacao::find($idPublicacao);
 
         $pdf=PDF::loadView('inscricao.confirmarIncricaoPDF',['inscricao'=>$inscricao],['publicacao'=>$publicacao]);
         return $pdf->stream('Inscrição.pdf');
-
     }
 
 }
