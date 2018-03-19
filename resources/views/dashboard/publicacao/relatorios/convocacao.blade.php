@@ -17,7 +17,7 @@
         <div class="card-panel white">
             <div class="row">
                 <div class="col s12">
-                    <form action="{{ route('inscricoes.update',$inscricao->id) }}" method="post">
+                    <form action="{{ route('inscricoes.update'[$publicacao->id, $inscricao->id]) }}" method="post">
                         {{csrf_field()}}
                         {{ method_field('PUT') }}
                             

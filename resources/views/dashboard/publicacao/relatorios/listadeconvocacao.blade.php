@@ -35,7 +35,7 @@
                 <td>{{ $inscricao->pontuacao }}</td>
                 <td>{{ $inscricao->convocacao }}</td>
                 <td>
-                    <a title="Deferimento" class="btn blue" href="{{ route('publicacoes.relatorio.convocacao',$inscricao->id) }}"><i class="material-icons">assignment_turned_in</i></a>
+                    <a title="Deferimento" class="btn blue" href="{{ route('publicacoes.relatorios.convocacao',[$publicacao->id, $inscricao->id]) }}"><i class="material-icons">assignment_turned_in</i></a>
                 </td>
             </tr>
         @endforeach

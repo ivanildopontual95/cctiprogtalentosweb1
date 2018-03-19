@@ -346,6 +346,7 @@ class PublicacaoController extends Controller
         
         $publicacao = Publicacao::find($id);
         $inscricoes = $publicacao->inscricoes;
+        $inscricao = Inscricao::find($id);
         $caminhos = [
         ['url'=>'/dashboard','titulo'=>'Painel Principal'],
         ['url'=>route('publicacoes.index'),'titulo'=>'Publicações'],
@@ -364,6 +365,7 @@ class PublicacaoController extends Controller
         
         $publicacao = Publicacao::find($id);
         $inscricoes = $publicacao->inscricoes;
+        $inscricao = Inscricao::find($id);
         $caminhos = [
         ['url'=>'/dashboard','titulo'=>'Painel Principal'],
         ['url'=>route('publicacoes.index'),'titulo'=>'Publicações'],
@@ -374,22 +376,61 @@ class PublicacaoController extends Controller
 
     }
 
-    public function avaliacaoRelatorio($id){
+    public function deferimentoRelatorio($publicacao_id, $inscricao_id){
+        if(Gate::denies('publicacoes-edit')){
+            abort(403,"Não autorizado!");
+        }
+
+        $publicacao = Publicacao::find($publicacao_id);
+        $inscricao = Inscricao::find($inscricao_id);
+        $experiencia = Experiencia::where('inscricao_id', $inscricao_id);
+        $caminhos = [
+        ['url'=>'/dashboard','titulo'=>'Painel Principal'],
+        ['url'=>route('publicacoes.index'),'titulo'=>'Publicações'],
+        ['url'=>'','titulo'=>'Relatórios'],
+        ['url'=>'','titulo'=>'Deferimentos'],
+        ['url'=>'','titulo'=>'Deferimento']
+        ];
+
+        return view('dashboard.publicacao.relatorios.deferimento',compact( 'publicacao','inscricao','experiencia','caminhos')); 
+    }
+
+    public function avaliacaoRelatorio($publicacao_id, $inscricao_id){
         
         if(Gate::denies('publicacoes-edit')){
             abort(403,"Não autorizado!");
         }
 
-        $publicacao = Publicacao::find($id);
-        $inscricao = Inscricao::find($id);
-        $experiencia = Experiencia::find($id);
+        $publicacao = Publicacao::find($publicacao_id);
+        $inscricao = Inscricao::find($inscricao_id);
+        $experiencia = Experiencia::where('inscricao_id', $inscricao_id);
         $caminhos = [
         ['url'=>'/dashboard','titulo'=>'Painel Principal'],
         ['url'=>route('publicacoes.index'),'titulo'=>'Publicações'],
-        ['url'=>'','titulo'=>'Lista de Inscritos']
+        ['url'=>'','titulo'=>'Relatórios'],
+        ['url'=>'','titulo'=>'Lista de Classificados'],
+        ['url'=>'','titulo'=>'Avaliação']
         ];
 
         return view('dashboard.publicacao.relatorios.avaliacao',compact( 'publicacao','inscricao','experiencia','caminhos'));      
+    }
+
+    public function convocacaoRelatorio($publicacao_id, $inscricao_id){
+        if(Gate::denies('publicacoes-edit')){
+            abort(403,"Não autorizado!");
+        }
+
+        $publicacao = Publicacao::find($publicacao_id);
+        $inscricao = Inscricao::find($inscricao_id);
+        $experiencia = Experiencia::where('inscricao_id', $inscricao_id);
+        $caminhos = [
+        ['url'=>'/dashboard','titulo'=>'Painel Principal'],
+        ['url'=>route('publicacoes.index'),'titulo'=>'Publicações'],
+        ['url'=>'','titulo'=>'Lista de Convocação'],
+        ['url'=>'','titulo'=>'Convocação']
+        ];
+
+        return view('dashboard.publicacao.relatorios.convocacao',compact( 'publicacao','inscricao','experiencia','caminhos'));      
     }
     //-------------------------------------------------------
 }
