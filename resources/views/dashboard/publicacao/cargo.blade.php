@@ -20,14 +20,29 @@
 					<div class="input-field col s4">
 						<input  type="text" name="escolaridade" class="validate" value="{{ isset($cargo->escolaridade) && !old('escolaridade') ? $cargo->escolaridade : '' }}{{old('escolaridade')}}">
 						<label for="escolaridade">Escolaridade</label>
+						@if($errors->has('escolaridade'))
+							<span class="red-text col">
+								<text>{{$errors->first('escolaridade')}}</text>
+							</span>
+						@endif
 					</div>
 					<div class="input-field col s6">
 						<input type="text" name="cargo" class="autocomplete" class="validate" value="{{ isset($cargo->cargo) && !old('cargo') ? $cargo->cargo : '' }}{{old('cargo')}}">
 						<label for="cargo">Cargo</label>
+						@if($errors->has('cargo'))
+							<span class="red-text col">
+								<text>{{$errors->first('cargo')}}</text>
+							</span>
+						@endif
 					</div>
 					<div class="input-field col s2">
 						<input type="number" name="pontuacao" min="0" max="10" class="validate" value="{{ isset($pontuacao->pontuacao) && !old('pontuacao') ? $pontuacao->pontuacao : '' }}{{old('pontuacao')}}">
 						<label for="pontuacao">Pontuação</label>
+						@if($errors->has('pontuacao'))
+							<span class="red-text col">
+								<text>{{$errors->first('pontuacao')}}</text>
+							</span>
+						@endif
 					</div>
 					<div class="input-field col s3">
 					<button  class="btn green">Adicionar</button>
