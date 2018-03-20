@@ -74,6 +74,7 @@ Route:: group (['middleware' => 'auth', 'prefix' =>'dashboard'], function () {
   Route::get('publicacoes/{publicacao}/relatorios/listadeclassificados', ['as'=> 'publicacoes.relatorios.listadeclassificados','uses'=>'Admin\PublicacaoController@listadeclassificadosRelatorio']);
   Route::get('publicacoes/{publicacao}/relatorios/listadeconvocacao', ['as'=> 'publicacoes.relatorios.listadeconvocacao','uses'=>'Admin\PublicacaoController@listadeconvocacaoRelatorio']);
   Route::get('publicacoes/{publicacao}/relatorios/{inscricao}/deferimento', ['as'=> 'publicacoes.relatorios.deferimento','uses'=>'Admin\PublicacaoController@deferimentoRelatorio']);
+  Route::put('publicacoes/{publicacao}/relatorios/{inscricao}/deferimento/Atualizar', ['as'=> 'deferimento.update','uses'=>'Admin\PublicacaoController@deferimentoUpdate']);
   Route::get('publicacoes/{publicacao}/relatorios/{inscricao}/avaliacao', ['as'=> 'publicacoes.relatorios.avaliacao','uses'=>'Admin\PublicacaoController@avaliacaoRelatorio']);
   Route::get('publicacoes/{publicacao}/relatorios/{inscricao}/convocacao', ['as'=> 'publicacoes.relatorios.convocacao','uses'=>'Admin\PublicacaoController@convocacaoRelatorio']);
   

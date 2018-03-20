@@ -21,8 +21,8 @@
                         <th>Id</th>
                         <th>Nome</th>
                         <th>CPF</th>
-                        <th>Cargo<th>
                         <th>Deferimento</th>
+                        <th>Cargo<th>
                         <th>Ação</th>
                     </tr>
                 </thead>
@@ -32,7 +32,20 @@
                         <td>{{ $inscricao->id }}</td>
                         <td>{{ $inscricao->nomeCompleto }}</td>
                         <td>{{ $inscricao->cpf }}</td>
-                        <td>{{ $inscricao->deferimento }}</td>
+                        <?php
+                            switch ($inscricao->pivot->deferimento){
+                                case 'A':
+                                    $inscricao->inscricao_status = 'Aguardando Deferimento';
+                                    break;
+                                case 'D':
+                                    $inscricao->inscricao_status = 'Deferido';
+                                    break;
+                                case 'I':
+                                    $inscricao->inscricao_status = 'Indeferido';
+                                    break;
+                            }
+                        ?>
+                        <td>{{ $inscricao->inscricao_status }}</td>
                         <td>{{ $inscricao->pivot->cargo_id }}</td>
                         <td>
                             <a title="Deferimento" class="btn blue" href="{{ route('publicacoes.relatorios.deferimento',[$publicacao->id , $inscricao->id]) }}"><i class="material-icons">assignment_turned_in</i></a>

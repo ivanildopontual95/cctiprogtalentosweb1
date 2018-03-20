@@ -334,6 +334,8 @@ class PublicacaoController extends Controller
         ['url'=>'','titulo'=>'Lista de Deferimentos']
         ];
 
+        //dd ($inscricoes);
+
         return view('dashboard.publicacao.relatorios.listadedeferimentos',compact('publicacao','inscricoes','caminhos'));      
     }
 
@@ -380,6 +382,11 @@ class PublicacaoController extends Controller
 
         $publicacao = Publicacao::find($publicacao_id);
         $inscricao = Inscricao::find($inscricao_id);
+        $inscricoes = $publicacao->inscricoes;
+        foreach($inscricoes as $inscricao){
+            $status = $inscricao->pivot->deferimento;
+        }
+        
         $experiencia = Experiencia::where('inscricao_id', $inscricao_id);
         $caminhos = [
         ['url'=>'/dashboard','titulo'=>'Painel Principal'],
@@ -389,7 +396,32 @@ class PublicacaoController extends Controller
         ['url'=>'','titulo'=>'Deferimento']
         ];
 
-        return view('dashboard.publicacao.relatorios.deferimento',compact('publicacao','inscricao','experiencia','caminhos')); 
+        return view('dashboard.publicacao.relatorios.deferimento',compact('publicacao','inscricao','experiencia','caminhos','status')); 
+    }
+
+    public function deferimentoUpdate(Request $request, $publicacao_id, $inscricao_id)
+    {
+        $dados = $request->all();
+        //dd($dados);
+
+        $publicacao = Publicacao::find($publicacao_id);
+        $inscricoes = $publicacao->inscricoes;
+        foreach($inscricoes as $inscricao){            
+            switch ($dados['deferimento']){
+                case 'A':
+                    $inscricao->pivot->update(['deferimento'=>'A']);
+                    break;
+                case 'D':
+                    $inscricao->pivot->update(['deferimento'=>'D']);
+                    break;
+                case 'I':
+                    $inscricao->pivot->update(['deferimento'=>'I']);
+                    break;
+            }
+            //dd($inscricao->pivot->update(['deferimento'=>D]));
+        }
+        return redirect()->back();
+
     }
 
     public function avaliacaoRelatorio($publicacao_id, $inscricao_id){

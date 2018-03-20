@@ -15,8 +15,6 @@
     </div>
     <div class="row">
         <div class="card-panel white">
-            <form class="form-horizontal" action="{{route('publicacoes.relatorios.pdfcurriculo', $inscricao->id)}}">
-            {{csrf_field()}}
             <div class="row">
                 <div class="col s12">
                     <ul class="tabs">                       
@@ -35,6 +33,8 @@
                         <div class="indicator teal lighten-1" style="z-index:1"></div> 
                     </ul>
                 </div>
+                <form class="form-horizontal" action="{{route('publicacoes.relatorios.pdfcurriculo', $inscricao->id)}}">
+                {{csrf_field()}}
                 <div id="dadosdocandidato" class="col s12">
                     <div class="row">
                     </div>
@@ -405,34 +405,30 @@
                         </div>
                     </div>
                 </div>
-
+            </form>
 
                 <div id="deferimento" class="col s12">
                     <div class="row">
                     </div>
     
                     <div class="col s12">
-                        <form action="{{ route('inscricoes.update',[$publicacao->id, $inscricao->id]) }}" method="post">
+                        <form action="{{ route('deferimento.update',[$publicacao->id, $inscricao->id]) }}" method="post">
                             {{csrf_field()}}
                             {{ method_field('PUT') }}
-                            
+
                             <div class="input-field col s12">
-                                <select>
-                                    <option value="1">Aguardando Deferimento</option>
-                                    <option value="2">Deferido</option>
-                                    <option value="3">Indeferido</option>
+                                <select name= "deferimento" >
+                                    <option value="" disabled selected >Selecione uma opção </option>
+                                    <option value="A" {{ old('deferimento', $status) == 'A' ? 'selected' : '' }} >Aguardando Deferimento</option>
+                                    <option value="D" {{ old('deferimento', $status) == 'D' ? 'selected' : '' }} >Deferido</option>
+                                    <option value="I" {{ old('deferimento', $status) == 'I' ? 'selected' : '' }} >Indeferido</option>
                                 </select>
                                 <label>Estado da Candidatura</label>
-                            </div>
-                            <div class="input-field col s12">
-                                <input id="icon_prefix" type="text" name="descricao" data-length="280" class="validate" value="{{ isset($publicacao->descricao) && !old('descricao') ? $inscricao->descricao : '' }}{{old('descricao')}}">
-                                <label>Obs.:</label>
                             </div>
                             <button class="btn blue">Salvar</button>
                         </form>
                     </div>
                 </div>
-            </form>
         </div>
     </div>
 </div>
