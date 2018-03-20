@@ -19,6 +19,7 @@
 						<th>Id</th>
 						<th>Nome</th>
 						<th>E-mail</th>
+						<th>Papel</th>
 						<th>Ação</th>
 					</tr>
 				</thead>
@@ -28,6 +29,11 @@
 						<td>{{ $usuario->id }}</td>
 						<td>{{ $usuario->name }}</td>
 						<td>{{ $usuario->email }}</td>
+
+						<?php $papeis = $usuario->papeis()->get(); ?>
+						@foreach($papeis as $papel)
+						<td>{{$papel->nome}}</td>
+						@endforeach
 						
 						<td>
 							<form action="{{route('usuarios.destroy',$usuario->id)}}" method="post">
