@@ -11,7 +11,7 @@
     <div class="row">
     </div>
 
-    <h5 class="center">Lista de Inscritos de {{$publicacao->titulo}}</h5>
+    <h5 class="center">Lista de Inscritos - {{$publicacao->titulo}}</h5>
     <div class="row">
     </div>
     <div class="row">

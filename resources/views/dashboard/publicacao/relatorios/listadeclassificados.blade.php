@@ -8,7 +8,7 @@
     @include('dashboard._caminho')
     <div class="row">
     </div>
-    <h5 class="center">Lista de Classificados de {{$publicacao->titulo}}</h5>
+    <h5 class="center">Lista de Classificados - {{$publicacao->titulo}}</h5>
     <div class="row">
     </div>
         <div class="card-panel white">
@@ -21,9 +21,9 @@
                         <th>Id</th>
                         <th>Nome</th>
                         <th>CPF</th>
-                        <th>Cargo<th>
                         <th>Classificação</th>
                         <th>Pontuação</th>
+                        <th>Cargo<th>
                         <th>Ação</th>
                     </tr>
                 </thead>
@@ -33,9 +33,9 @@
                         <td>{{ $inscricao->id }}</td>
                         <td>{{ $inscricao->nomeCompleto }}</td>
                         <td>{{ $inscricao->cpf }}</td>
-                        <td>{{ $inscricao->pivot->cargo_id }}</td>
                         <td>{{ $inscricao->classificacao }}</td>
                         <td>{{ $inscricao->pontuacao }}</td>
+                        <td>{{ $inscricao->pivot->cargo_id }}</td>
                         <td>
                             <a title="Avaliação" class="btn blue" href="{{ route('publicacoes.relatorios.avaliacao',[$publicacao->id, $inscricao->id]) }}"><i class="material-icons">assignment</i></a>
                         </td>
