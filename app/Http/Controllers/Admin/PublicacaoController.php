@@ -309,7 +309,7 @@ class PublicacaoController extends Controller
         $caminhos = [
         ['url'=>'/dashboard','titulo'=>'Painel Principal'],
         ['url'=>route('publicacoes.index'),'titulo'=>'Publicações'],
-        ['url'=>'','titulo'=>'Relatórios'],
+        ['url'=>route('publicacoes.relatorios.index', compact('publicacao')),'titulo'=>'Relatórios'],
         ['url'=>'','titulo'=>'Lista de Inscritos']
         ];
 
@@ -328,7 +328,7 @@ class PublicacaoController extends Controller
         $caminhos = [
         ['url'=>'/dashboard','titulo'=>'Painel Principal'],
         ['url'=>route('publicacoes.index'),'titulo'=>'Publicações'],
-        ['url'=>'','titulo'=>'Relatórios'],
+        ['url'=>route('publicacoes.relatorios.index', compact('publicacao')),'titulo'=>'Relatórios'],
         ['url'=>'','titulo'=>'Lista de Deferimentos']
         ];
 
@@ -348,7 +348,7 @@ class PublicacaoController extends Controller
         $caminhos = [
         ['url'=>'/dashboard','titulo'=>'Painel Principal'],
         ['url'=>route('publicacoes.index'),'titulo'=>'Publicações'],
-        ['url'=>'','titulo'=>'Relatórios'],
+        ['url'=>route('publicacoes.relatorios.index', compact('publicacao')),'titulo'=>'Relatórios'],
         ['url'=>'','titulo'=>'Lista de Classificados']
         ];
         return view('dashboard.publicacao.relatorios.listadeclassificados',compact('publicacao','inscricoes','caminhos'));
@@ -366,7 +366,7 @@ class PublicacaoController extends Controller
         $caminhos = [
         ['url'=>'/dashboard','titulo'=>'Painel Principal'],
         ['url'=>route('publicacoes.index'),'titulo'=>'Publicações'],
-        ['url'=>'','titulo'=>'Relatórios'],
+        ['url'=>route('publicacoes.relatorios.index', compact('publicacao')),'titulo'=>'Relatórios'],
         ['url'=>'','titulo'=>'Lista de Pontuação']
         ];
         return view('dashboard.publicacao.relatorios.listadepontuacao',compact('publicacao','inscricoes','caminhos'));
@@ -384,7 +384,7 @@ class PublicacaoController extends Controller
         $caminhos = [
         ['url'=>'/dashboard','titulo'=>'Painel Principal'],
         ['url'=>route('publicacoes.index'),'titulo'=>'Publicações'],
-        ['url'=>'','titulo'=>'Relatórios'],
+        ['url'=>route('publicacoes.relatorios.index', compact('publicacao')),'titulo'=>'Relatórios'],
         ['url'=>'','titulo'=>'Lista de Convocação']
         ];
         return view('dashboard.publicacao.relatorios.listadeconvocacao',compact('publicacao','inscricoes','caminhos'));
@@ -408,8 +408,8 @@ class PublicacaoController extends Controller
         $caminhos = [
         ['url'=>'/dashboard','titulo'=>'Painel Principal'],
         ['url'=>route('publicacoes.index'),'titulo'=>'Publicações'],
-        ['url'=>'','titulo'=>'Relatórios'],
-        ['url'=>'','titulo'=>'Deferimentos'],
+        ['url'=>route('publicacoes.relatorios.index', compact('publicacao')),'titulo'=>'Relatórios'],
+        ['url'=>route('publicacoes.relatorios.listadedeferimentos', compact('publicacao')),'titulo'=>'Deferimentos'],
         ['url'=>'','titulo'=>'Deferimento']
         ];
 
@@ -456,8 +456,8 @@ class PublicacaoController extends Controller
         $caminhos = [
         ['url'=>'/dashboard','titulo'=>'Painel Principal'],
         ['url'=>route('publicacoes.index'),'titulo'=>'Publicações'],
-        ['url'=>'','titulo'=>'Relatórios'],
-        ['url'=>'','titulo'=>'Lista de Classificados'],
+        ['url'=>route('publicacoes.relatorios.index', compact('publicacao')),'titulo'=>'Relatórios'],
+        ['url'=>route('publicacoes.relatorios.listadeclassificados', compact('publicacao')),'titulo'=>'Lista de Classificados'],
         ['url'=>'','titulo'=>'Avaliação']
         ];
 
@@ -503,8 +503,8 @@ class PublicacaoController extends Controller
         $caminhos = [
         ['url'=>'/dashboard','titulo'=>'Painel Principal'],
         ['url'=>route('publicacoes.index'),'titulo'=>'Publicações'],
-        ['url'=>'','titulo'=>'Relatórios'],
-        ['url'=>'','titulo'=>'Lista de Pontuação'],
+        ['url'=>route('publicacoes.relatorios.index', compact('publicacao')),'titulo'=>'Relatórios'],
+        ['url'=>route('publicacoes.relatorios.listadepontuacao', compact('publicacao')),'titulo'=>'Lista de Convocação'],
         ['url'=>'','titulo'=>'Pontuação']
         ];
 
@@ -533,8 +533,8 @@ class PublicacaoController extends Controller
         $caminhos = [
         ['url'=>'/dashboard','titulo'=>'Painel Principal'],
         ['url'=>route('publicacoes.index'),'titulo'=>'Publicações'],
-        ['url'=>'','titulo'=>'Relatórios'],
-        ['url'=>'','titulo'=>'Lista de Convocação'],
+        ['url'=>route('publicacoes.relatorios.index', compact('publicacao')),'titulo'=>'Relatórios'],
+        ['url'=>route('publicacoes.relatorios.listadeconvocacao', compact('publicacao')),'titulo'=>'Lista de Convocação'],
         ['url'=>'','titulo'=>'Convocação']
         ];
 
