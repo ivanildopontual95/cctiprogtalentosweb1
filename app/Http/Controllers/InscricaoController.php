@@ -218,17 +218,4 @@ class InscricaoController extends Controller
         return view('inscricao.confirmacao', compact('inscricao','publicacao'));      
     }
 
-     public function confirmacaoPDF($id, $idPublicacao)
-     {
-        if(Gate::denies('perfil-view')){
-            abort(403,"Não autorizado!");
-        }
-
-        $inscricao = Inscricao::find($id);
-        $publicacao = Publicacao::find($idPublicacao);
-
-        $pdf=PDF::loadView('inscricao.confirmarIncricaoPDF',['inscricao'=>$inscricao],['publicacao'=>$publicacao]);
-        return $pdf->stream('Inscrição.pdf');
-    }
-
 }
