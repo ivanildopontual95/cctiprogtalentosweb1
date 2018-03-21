@@ -294,8 +294,6 @@ class PublicacaoController extends Controller
         ['url'=>route('publicacoes.index'),'titulo'=>'Publicações'],
         ['url'=>'','titulo'=>'Relatórios']
         ];
-        
-        //dd($publicacao->inscricoes[0]->pivot->cargo_id);
 
         return view('dashboard.publicacao.relatorios.index',compact('publicacao','inscricao','caminhos'));      
     }
@@ -357,6 +355,24 @@ class PublicacaoController extends Controller
 
     }
 
+    public function listadepontuacaoRelatorio($id){
+        
+        if(Gate::denies('publicacoes-edit')){
+            abort(403,"Não autorizado!");
+        }
+        
+        $publicacao = Publicacao::find($id);
+        $inscricoes = $publicacao->inscricoes;
+        $caminhos = [
+        ['url'=>'/dashboard','titulo'=>'Painel Principal'],
+        ['url'=>route('publicacoes.index'),'titulo'=>'Publicações'],
+        ['url'=>'','titulo'=>'Relatórios'],
+        ['url'=>'','titulo'=>'Lista de Pontuação']
+        ];
+        return view('dashboard.publicacao.relatorios.listadepontuacao',compact('publicacao','inscricoes','caminhos'));
+
+    }
+
     public function listadeconvocacaoRelatorio($id){
         
         if(Gate::denies('publicacoes-edit')){
@@ -369,11 +385,13 @@ class PublicacaoController extends Controller
         ['url'=>'/dashboard','titulo'=>'Painel Principal'],
         ['url'=>route('publicacoes.index'),'titulo'=>'Publicações'],
         ['url'=>'','titulo'=>'Relatórios'],
-        ['url'=>'','titulo'=>'Lista de Convocacao']
+        ['url'=>'','titulo'=>'Lista de Convocação']
         ];
         return view('dashboard.publicacao.relatorios.listadeconvocacao',compact('publicacao','inscricoes','caminhos'));
 
     }
+
+    //-----------------------------------------------Deferimento-------------------------------------
 
     public function deferimentoRelatorio($publicacao_id, $inscricao_id){
         if(Gate::denies('publicacoes-edit')){
@@ -382,11 +400,10 @@ class PublicacaoController extends Controller
 
         $publicacao = Publicacao::find($publicacao_id);
         $inscricao = Inscricao::find($inscricao_id);
-        $inscricoes = $publicacao->inscricoes;
+        $inscricoes = $publicacao->inscricoes()->where('id', $inscricao_id)->get();
         foreach($inscricoes as $inscricao){
             $status = $inscricao->pivot->deferimento;
         }
-        
         $experiencia = Experiencia::where('inscricao_id', $inscricao_id);
         $caminhos = [
         ['url'=>'/dashboard','titulo'=>'Painel Principal'],
@@ -399,13 +416,13 @@ class PublicacaoController extends Controller
         return view('dashboard.publicacao.relatorios.deferimento',compact('publicacao','inscricao','experiencia','caminhos','status')); 
     }
 
+
     public function deferimentoUpdate(Request $request, $publicacao_id, $inscricao_id)
     {
         $dados = $request->all();
-        //dd($dados);
 
         $publicacao = Publicacao::find($publicacao_id);
-        $inscricoes = $publicacao->inscricoes;
+        $inscricoes = $publicacao->inscricoes()->where('id', $inscricao_id)->get();
         foreach($inscricoes as $inscricao){            
             switch ($dados['deferimento']){
                 case 'A':
@@ -418,20 +435,23 @@ class PublicacaoController extends Controller
                     $inscricao->pivot->update(['deferimento'=>'I']);
                     break;
             }
-            //dd($inscricao->pivot->update(['deferimento'=>D]));
         }
         return redirect()->back();
-
     }
 
-    public function avaliacaoRelatorio($publicacao_id, $inscricao_id){
-        
+    //---------------------------------------Classificação----------------------------------
+
+    public function classificacaoRelatorio($publicacao_id, $inscricao_id){
         if(Gate::denies('publicacoes-edit')){
             abort(403,"Não autorizado!");
         }
 
         $publicacao = Publicacao::find($publicacao_id);
         $inscricao = Inscricao::find($inscricao_id);
+        $inscricoes = $publicacao->inscricoes()->where('id', $inscricao_id)->get();
+        foreach($inscricoes as $inscricao){
+            $status = $inscricao->pivot->classificacao;
+        }
         $experiencia = Experiencia::where('inscricao_id', $inscricao_id);
         $caminhos = [
         ['url'=>'/dashboard','titulo'=>'Painel Principal'],
@@ -441,8 +461,62 @@ class PublicacaoController extends Controller
         ['url'=>'','titulo'=>'Avaliação']
         ];
 
-        return view('dashboard.publicacao.relatorios.avaliacao',compact('publicacao','inscricao','experiencia','caminhos'));      
+        return view('dashboard.publicacao.relatorios.classificacao',compact('publicacao','inscricao','experiencia','caminhos','status'));      
     }
+
+    public function classificacaoUpdate(Request $request, $publicacao_id, $inscricao_id)
+    {
+        $dados = $request->all();
+
+        $publicacao = Publicacao::find($publicacao_id);
+        $inscricoes = $publicacao->inscricoes()->where('id', $inscricao_id)->get();
+        foreach($inscricoes as $inscricao){            
+            switch ($dados['classificacao']){
+                case 'A':
+                    $inscricao->pivot->update(['classificacao'=>'A']);
+                    break;
+                case 'C':
+                    $inscricao->pivot->update(['classificacao'=>'C']);
+                    break;
+                case 'D':
+                    $inscricao->pivot->update(['classificacao'=>'D']);
+                    break;
+            }
+        }
+        return redirect()->back();
+    }
+
+    //----------------------------------------Pontuação----------------------------------
+
+    public function pontuacaoRelatorio($publicacao_id, $inscricao_id){
+        if(Gate::denies('publicacoes-edit')){
+            abort(403,"Não autorizado!");
+        }
+
+        $publicacao = Publicacao::find($publicacao_id);
+        $inscricao = Inscricao::find($inscricao_id);
+        $inscricoes = $publicacao->inscricoes()->where('id', $inscricao_id)->get();
+        foreach($inscricoes as $inscricao){
+            $status = $inscricao->pivot->classificacao;
+        }
+        $experiencia = Experiencia::where('inscricao_id', $inscricao_id);
+        $caminhos = [
+        ['url'=>'/dashboard','titulo'=>'Painel Principal'],
+        ['url'=>route('publicacoes.index'),'titulo'=>'Publicações'],
+        ['url'=>'','titulo'=>'Relatórios'],
+        ['url'=>'','titulo'=>'Lista de Pontuação'],
+        ['url'=>'','titulo'=>'Pontuação']
+        ];
+
+        return view('dashboard.publicacao.relatorios.pontuacao',compact('publicacao','inscricao','experiencia','caminhos','status'));      
+    }
+
+    /*public function pontuacaoUpdate(Request $request, $publicacao_id, $inscricao_id){
+        $publicacao = Publicacao::find($publicacao_id);
+        $inscricao = Inscricao::find($inscricao_id);
+    }*/
+
+    //---------------------------------------Convocação----------------------------------
 
     public function convocacaoRelatorio($publicacao_id, $inscricao_id){
         if(Gate::denies('publicacoes-edit')){
@@ -451,6 +525,10 @@ class PublicacaoController extends Controller
 
         $publicacao = Publicacao::find($publicacao_id);
         $inscricao = Inscricao::find($inscricao_id);
+        $inscricoes = $publicacao->inscricoes()->where('id', $inscricao_id)->get();
+        foreach($inscricoes as $inscricao){
+            $status = $inscricao->pivot->convocacao;
+        }
         $experiencia = Experiencia::where('inscricao_id', $inscricao_id);
         $caminhos = [
         ['url'=>'/dashboard','titulo'=>'Painel Principal'],
@@ -460,7 +538,29 @@ class PublicacaoController extends Controller
         ['url'=>'','titulo'=>'Convocação']
         ];
 
-        return view('dashboard.publicacao.relatorios.convocacao',compact('publicacao','inscricao','experiencia','caminhos'));      
+        return view('dashboard.publicacao.relatorios.convocacao',compact('publicacao','inscricao','experiencia','caminhos', 'status'));      
+    }
+
+    public function convocacaoUpdate(Request $request, $publicacao_id, $inscricao_id)
+    {
+        $dados = $request->all();
+
+        $publicacao = Publicacao::find($publicacao_id);
+        $inscricoes = $publicacao->inscricoes()->where('id', $inscricao_id)->get();
+        foreach($inscricoes as $inscricao){            
+            switch ($dados['convocacao']){
+                case 'A':
+                    $inscricao->pivot->update(['convocacao'=>'A']);
+                    break;
+                case 'C':
+                    $inscricao->pivot->update(['convocacao'=>'C']);
+                    break;
+                case 'L':
+                    $inscricao->pivot->update(['convocacao'=>'L']);
+                    break;
+            }
+        }
+        return redirect()->back();
     }
     //-------------------------------------------------------
 }

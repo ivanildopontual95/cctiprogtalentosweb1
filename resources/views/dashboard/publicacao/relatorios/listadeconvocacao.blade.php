@@ -11,7 +11,7 @@
     <div class="row">
     </div>
 
-    <h5 class="center">Lista de Classificados - {{$publicacao->titulo}}</h5>
+    <h5 class="center">Lista de Convocação - {{$publicacao->titulo}}</h5>
     <div class="row">
     </div>
     <div class="card-panel white">
@@ -33,18 +33,33 @@
                 </thead>
                 <tbody>
                 @foreach($inscricoes as $inscricao)
-                    <tr>
-                        <td>{{ $inscricao->id }}</td>
-                        <td>{{ $inscricao->nomeCompleto }}</td>
-                        <td>{{ $inscricao->cpf }}</td>
-                        <td>{{ $inscricao->classificacao }}</td>
-                        <td>{{ $inscricao->pontuacao }}</td>
-                        <td>{{ $inscricao->convocacao }}</td>
-                        <td>{{ $inscricao->pivot->cargo_id }}</td>
-                        <td>
-                            <a title="Convocação" class="btn blue" href="{{ route('publicacoes.relatorios.convocacao',[$publicacao->id, $inscricao->id]) }}"><i class="material-icons">assignment_turned_in</i></a>
-                        </td>
-                    </tr>
+                    @if($inscricao->pivot->classificacao == 'C')
+                        <tr>
+                            <td>{{ $inscricao->id }}</td>
+                            <td>{{ $inscricao->nomeCompleto }}</td>
+                            <td>{{ $inscricao->cpf }}</td>
+                            <td>{{ $inscricao->classificacao }}</td>
+                            <td>{{ $inscricao->pontuacao }}</td>
+                            <?php
+                            switch ($inscricao->pivot->convocacao){
+                                case 'A':
+                                    $inscricao->inscricao_status = 'Aguardando Convocação';
+                                    break;
+                                case 'C':
+                                    $inscricao->inscricao_status = 'Convocado';
+                                    break;
+                                case 'L':
+                                    $inscricao->inscricao_status = 'Lista de Espera';
+                                    break;
+                            }
+                            ?>
+                            <td>{{ $inscricao->inscricao_status }}</td>
+                            <td>{{ $inscricao->pivot->cargo_id }}</td>
+                            <td>
+                                <a title="Convocação" class="btn blue" href="{{ route('publicacoes.relatorios.convocacao',[$publicacao->id, $inscricao->id]) }}"><i class="material-icons">assignment_turned_in</i></a>
+                            </td>
+                        </tr>
+                    @endif
                 @endforeach
                 </tbody>
             </table>

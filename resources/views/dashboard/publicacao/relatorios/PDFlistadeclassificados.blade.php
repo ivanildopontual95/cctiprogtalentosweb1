@@ -200,24 +200,36 @@
                     <th class="column2">Nome</th>
                     <th class="column3">CPF</th>
                     <th class="column4">Classificacao</th>
-                    <th class="column5">Pontuação</th>
-                    <th class="column6">Cargo</th>
+                    <th class="column5">Cargo</th>
 
                 </tr>
             </thead>
             <tbody>
                 @foreach($inscricoes as $inscricao)
-                <tr>
-                    <td class="column1">{{ $inscricao->id }}</td>
-                    <td class="column2">{{ $inscricao->nomeCompleto }}</td>
-                    <td class="column3">{{ $inscricao->cpf }}</td>
-                    <td class="column4">{{ $inscricao->classificacao }}</td>
-                    <td class="column5">{{ $inscricao->pontuacao }}</td>
-                    <td class="column6">{{ $inscricao->pivot->cargo_id }}</td>
+                    @if($inscricao->pivot->deferimento == 'D')
+                        <tr>
+                            <td class="column1">{{ $inscricao->id }}</td>
+                            <td class="column2">{{ $inscricao->nomeCompleto }}</td>
+                            <td class="column3">{{ $inscricao->cpf }}</td>
+                            <?php
+                                switch ($inscricao->pivot->classificacao){
+                                    case 'A':
+                                        $inscricao->inscricao_status = 'Aguardando Classificação';
+                                        break;
+                                    case 'C':
+                                        $inscricao->inscricao_status = 'Classificado';
+                                        break;
+                                    case 'D':
+                                        $inscricao->inscricao_status = 'Desclassificado';
+                                        break;
+                                }
+                            ?>
+                            <td class="column4">{{ $inscricao->inscricao_status}}</td>
+                            <td class="column5">{{ $inscricao->pivot->cargo_id }}</td>
 
-                </tr>
+                        </tr>
+                    @endif
                 @endforeach
-
             </tbody>
         </table>
     </div>

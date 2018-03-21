@@ -10,7 +10,7 @@
 
     <div class="row">
     </div>
-    <h5 class="center">Deferimento da Candidatura de {{$inscricao->nomeCompleto}}</h5>
+    <h5 class="center">Classificação da Candidatura de {{$inscricao->nomeCompleto}}</h5>
     <div class="row">
     </div>
     <div class="row">
@@ -28,7 +28,7 @@
                             <a href="#experiencias" class="teal-text lighten-1-text">Experiências</a>
                         </li>
                         <li class="tab col s3">
-                            <a href="#deferimento" class="teal-text lighten-1-text">Deferimento</a>
+                            <a href="#classificacao" class="teal-text lighten-1-text">Classificação</a>
                         </li>
                         <div class="indicator teal lighten-1" style="z-index:1"></div> 
                     </ul>
@@ -407,23 +407,23 @@
                 </div>
             </form>
 
-                <div id="deferimento" class="col s12">
+                <div id="classificacao" class="col s12">
                     <div class="row">
                     </div>
     
                     <div class="col s12">
-                        <form action="{{ route('deferimento.update',[$publicacao->id, $inscricao->id]) }}" method="post">
+                        <form action="{{ route('classificacao.update',[$publicacao->id, $inscricao->id]) }}" method="post">
                             {{csrf_field()}}
                             {{ method_field('PUT') }}
 
                             <div class="input-field col s12">
-                                <select name= "deferimento" >
+                                <select name= "classificacao" >
                                     <option value="" disabled selected >Selecione uma opção </option>
-                                    <option value="A" {{ old('deferimento', $status) == 'A' ? 'selected' : '' }} >Aguardando Deferimento</option>
-                                    <option value="D" {{ old('deferimento', $status) == 'D' ? 'selected' : '' }} >Deferido</option>
-                                    <option value="I" {{ old('deferimento', $status) == 'I' ? 'selected' : '' }} >Indeferido</option>
+                                    <option value="A" {{ old('classificacao', $status) == 'A' ? 'selected' : '' }} >Aguardando Classificação</option>
+                                    <option value="C" {{ old('classificacao', $status) == 'C' ? 'selected' : '' }} >Classificado</option>
+                                    <option value="D" {{ old('classificacao', $status) == 'D' ? 'selected' : '' }} >Desclassificado</option>
                                 </select>
-                                <label>Estado do Deferimento</label>
+                                <label>Estado da Classificação</label>
                             </div>
                             <button class="btn blue">Salvar</button>
                         </form>

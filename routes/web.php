@@ -17,7 +17,7 @@ Route::get('/publicacoes/{publicacao}/{titulo?}', ['as'=>'detalhes','uses'=>'Sit
 
 Auth::routes();
 
-//-------------------------Inscrições--------------------------------------------
+//---------------------------------------Inscrições-----------------------------------
 
 Route:: group(['middleware' => 'auth', 'prefix' => 'user'], function(){
 
@@ -72,11 +72,16 @@ Route:: group (['middleware' => 'auth', 'prefix' =>'dashboard'], function () {
   Route::get('publicacoes/{publicacao}/relatorios/listadeinscritos', ['as'=> 'publicacoes.relatorios.listadeinscritos','uses'=>'Admin\PublicacaoController@listadeinscritosRelatorio']);
   Route::get('publicacoes/{publicacao}/relatorios/listadedeferimentos', ['as'=> 'publicacoes.relatorios.listadedeferimentos','uses'=>'Admin\PublicacaoController@listadedeferimentosRelatorio']);
   Route::get('publicacoes/{publicacao}/relatorios/listadeclassificados', ['as'=> 'publicacoes.relatorios.listadeclassificados','uses'=>'Admin\PublicacaoController@listadeclassificadosRelatorio']);
+  Route::get('publicacoes/{publicacao}/relatorios/listadepontuacao', ['as'=> 'publicacoes.relatorios.listadepontuacao','uses'=>'Admin\PublicacaoController@listadepontuacaoRelatorio']);
   Route::get('publicacoes/{publicacao}/relatorios/listadeconvocacao', ['as'=> 'publicacoes.relatorios.listadeconvocacao','uses'=>'Admin\PublicacaoController@listadeconvocacaoRelatorio']);
   Route::get('publicacoes/{publicacao}/relatorios/{inscricao}/deferimento', ['as'=> 'publicacoes.relatorios.deferimento','uses'=>'Admin\PublicacaoController@deferimentoRelatorio']);
   Route::put('publicacoes/{publicacao}/relatorios/{inscricao}/deferimento/Atualizar', ['as'=> 'deferimento.update','uses'=>'Admin\PublicacaoController@deferimentoUpdate']);
-  Route::get('publicacoes/{publicacao}/relatorios/{inscricao}/avaliacao', ['as'=> 'publicacoes.relatorios.avaliacao','uses'=>'Admin\PublicacaoController@avaliacaoRelatorio']);
+  Route::get('publicacoes/{publicacao}/relatorios/{inscricao}/classificacao', ['as'=> 'publicacoes.relatorios.classificacao','uses'=>'Admin\PublicacaoController@classificacaoRelatorio']);
+  Route::put('publicacoes/{publicacao}/relatorios/{inscricao}/classificacao/Atualizar', ['as'=> 'classificacao.update','uses'=>'Admin\PublicacaoController@classificacaoUpdate']);
+  Route::get('publicacoes/{publicacao}/relatorios/{inscricao}/pontuacao', ['as'=> 'publicacoes.relatorios.pontuacao','uses'=>'Admin\PublicacaoController@pontuacaoRelatorio']);
+  Route::put('publicacoes/{publicacao}/relatorios/{inscricao}/pontuacao/Atualizar', ['as'=> 'pontuacao.update','uses'=>'Admin\PublicacaoController@pontuacaoUpdate']);
   Route::get('publicacoes/{publicacao}/relatorios/{inscricao}/convocacao', ['as'=> 'publicacoes.relatorios.convocacao','uses'=>'Admin\PublicacaoController@convocacaoRelatorio']);
+  Route::put('publicacoes/{publicacao}/relatorios/{inscricao}/convocacao/Atualizar', ['as'=> 'convocacao.update','uses'=>'Admin\PublicacaoController@convocacaoUpdate']);
   
   //--------------------------------------PDFs---------------------------------
   

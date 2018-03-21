@@ -38,9 +38,7 @@
                             @endforeach
                         </tbody>
                     </table>
-                    <button class="btn green left">Baixar
-                        <i class="material-icons left">file_download</i>
-                    </button>
+                    <button class="btn green left">Baixar<i class="material-icons left">file_download</i></button>
                 </div>
             </form>
         </div>

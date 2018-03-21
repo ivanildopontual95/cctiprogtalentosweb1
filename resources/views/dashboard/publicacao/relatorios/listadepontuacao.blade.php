@@ -8,7 +8,7 @@
     @include('dashboard._caminho')
     <div class="row">
     </div>
-    <h5 class="center">Lista de Classificados - {{$publicacao->titulo}}</h5>
+    <h5 class="center">Lista de Pontuação - {{$publicacao->titulo}}</h5>
     <div class="row">
     </div>
         <div class="card-panel white">
@@ -21,35 +21,22 @@
                         <th>Id</th>
                         <th>Nome</th>
                         <th>CPF</th>
-                        <th>Classificação</th>
+                        <th>Pontuação</th>
                         <th>Cargo<th>
                         <th>Ação</th>
                     </tr>
                 </thead>
                 <tbody>
                 @foreach($inscricoes as $inscricao)
-                    @if($inscricao->pivot->deferimento == 'D')
+                    @if($inscricao->pivot->classificacao == 'C')
                         <tr>
                             <td>{{ $inscricao->id }}</td>
                             <td>{{ $inscricao->nomeCompleto }}</td>
                             <td>{{ $inscricao->cpf }}</td>
-                            <?php
-                                switch ($inscricao->pivot->classificacao){
-                                    case 'A':
-                                        $inscricao->inscricao_status = 'Aguardando Classificação';
-                                        break;
-                                    case 'C':
-                                        $inscricao->inscricao_status = 'Classificado';
-                                        break;
-                                    case 'D':
-                                        $inscricao->inscricao_status = 'Desclassificado';
-                                        break;
-                                }
-                            ?>
-                            <td>{{ $inscricao->inscricao_status }}</td>
+                            <td>{{ $inscricao->pontuacao }}</td>
                             <td>{{ $inscricao->pivot->cargo_id }}</td>
                             <td>
-                                <a title="Avaliação" class="btn blue" href="{{ route('publicacoes.relatorios.classificacao',[$publicacao->id, $inscricao->id]) }}"><i class="material-icons">assignment</i></a>
+                                <a title="Avaliação" class="btn blue" href="{{ route('publicacoes.relatorios.pontuacao',[$publicacao->id, $inscricao->id]) }}"><i class="material-icons">assignment</i></a>
                             </td>
                         </tr>
                     @endif

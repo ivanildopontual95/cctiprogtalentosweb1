@@ -50,6 +50,18 @@
       </div>
 
       <div class="col s12">
+        <div class="card teal lighten-1">
+          <div class="card-content white-text">
+            <span class="card-title">Lista de Pontuação</span>
+            <p>Gerenciar Lista de Pontuação</p>
+          </div>
+          <div class="card-action">
+            <a href="{{route('publicacoes.relatorios.listadepontuacao',$publicacao->id)}}">Visualizar</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col s12">
         <div class="card deep-orange accent-3">
           <div class="card-content white-text">
             <span class="card-title">Lista de Convocação</span>

@@ -25,7 +25,6 @@ class HomeController extends Controller
     public function index()
     {
         $user = Auth::user();
-        //dd($user->papeis[0]->nome);
         if($user->papeis[0]->nome == 'Admin' || $user->papeis[0]->nome == 'Gerente do Departamento' ||  $user->papeis[0]->nome == 'Auxiliar do Departamento' ) 
         {
             return view('dashboard.index');

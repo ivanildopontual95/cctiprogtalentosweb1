@@ -204,25 +204,36 @@
                     <th class="column1">Id</th>
                     <th class="column2">Nome</th>
                     <th class="column3">CPF</th>
-                    <th class="column4">Classificacao</th>
-                    <th class="column5">Pontuação</th>
-                    <th class="column6">Convocação</th>
-                    <th class="column7">Cargo</th>
+                    <th class="column4">Convocação</th>
+                    <th class="column5">Cargo</th>
 
                 </tr>
             </thead>
             <tbody>
                 @foreach($inscricoes as $inscricao)
-                <tr>
-                    <td class="column1">{{ $inscricao->id }}</td>
-                    <td class="column2">{{ $inscricao->nomeCompleto }}</td>
-                    <td class="column3">{{ $inscricao->cpf }}</td>
-                    <td class="column4">{{ $inscricao->classificacao }}</td>
-                    <td class="column5">{{ $inscricao->pontuacao }}</td>
-                    <td class="column6">{{ $inscricao->convocacao }}</td>
-                    <td class="column7">{{ $inscricao->pivot->cargo_id }}</td>
+                    @if($inscricao->pivot->classificacao == 'C')
+                        <tr>
+                            <td class="column1">{{ $inscricao->id }}</td>
+                            <td class="column2">{{ $inscricao->nomeCompleto }}</td>
+                            <td class="column3">{{ $inscricao->cpf }}</td>
+                            <?php
+                                switch ($inscricao->pivot->convocacao){
+                                    case 'A':
+                                        $inscricao->inscricao_status = 'Aguardando Convocação';
+                                        break;
+                                    case 'C':
+                                        $inscricao->inscricao_status = 'Convocado';
+                                        break;
+                                    case 'L':
+                                        $inscricao->inscricao_status = 'Lista de Espera';
+                                        break;
+                                }
+                            ?>
+                            <td class="column4">{{ $inscricao->inscricao_status}}</td>
+                            <td class="column7">{{ $inscricao->pivot->cargo_id }}</td>
 
-                </tr>
+                        </tr>
+                    @endif
                 @endforeach
 
             </tbody>

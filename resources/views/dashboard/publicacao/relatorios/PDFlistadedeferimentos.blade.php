@@ -204,20 +204,20 @@
                     <td class="column2">{{ $inscricao->nomeCompleto }}</td>
                     <td class="column3">{{ $inscricao->cpf }}</td>
                     <?php
-                            switch ($inscricao->pivot->deferimento){
-                                case 'A':
-                                    $inscricao->inscricao_status = 'Aguardando Deferimento';
-                                    break;
-                                case 'D':
-                                    $inscricao->inscricao_status = 'Deferido';
-                                    break;
-                                case 'I':
-                                    $inscricao->inscricao_status = 'Indeferido';
-                                    break;
-                            }
-                        ?>
-                        <td class="column4">{{ $inscricao->inscricao_status}}</td>
-                        <td class="column5">{{ $inscricao->pivot->cargo_id }}</td>
+                        switch ($inscricao->pivot->deferimento){
+                            case 'A':
+                                $inscricao->inscricao_status = 'Aguardando Deferimento';
+                                break;
+                            case 'D':
+                                $inscricao->inscricao_status = 'Deferido';
+                                break;
+                            case 'I':
+                                $inscricao->inscricao_status = 'Indeferido';
+                                break;
+                        }
+                    ?>
+                    <td class="column4">{{ $inscricao->inscricao_status}}</td>
+                    <td class="column5">{{ $inscricao->pivot->cargo_id }}</td>
 
                 </tr>
                 @endforeach
