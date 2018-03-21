@@ -31,8 +31,26 @@
                             <a title="Baixar" class="btn green" href="{{ $documento->url }}" download>Baixar<i class="material-icons left">file_download</i></a>                         
                         @endforeach
                     </div>
+                        <?php
+                            $publicacao->status = false; 
+                            $publicacao->periodo = false;
+                            $data = date('d/m/Y');
+                            $hora = date('h:i');                                 
+                        ?>
+                        @if($data >= $publicacao->dataInicio && $hora >= $publicacao->horaInicio)
+                            <?php $publicacao->periodo = true; $publicacao->status = true; ?>
+                        @endif
+                        @if($data >= $publicacao->dataTermino && $hora > $publicacao->horaTermino)
+                            <?php $publicacao->periodo = false; ?>
+                        @endif
                     <div class="card-action">
-                        <a href="{{route('login')}}">Inscreva-se!</a>
+                        @if($publicacao->status)
+                            @if($publicacao->periodo)
+                                <a href="{{route('login')}}">Inscreva-se!</a>
+                            @else
+                                <a>Inscrições encerradas!</a>
+                            @endif    
+                        @endif
                     </div>
                 </div>
             </div>

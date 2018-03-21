@@ -15,13 +15,25 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>Seletivo</th>
+                                <th>Seletivos</th>
                                 <th>Inscrições</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($publicacoes as $publicacao)
-                                <?php $publicacao->inscrito = false; ?>
+                                <?php 
+                                    $publicacao->status = false;
+                                    $publicacao->periodo = false; 
+                                    $publicacao->inscrito = false;
+                                    $data = date('d/m/Y');
+                                    $hora = date('h:i');                                 
+                                ?>
+                                @if($data >= $publicacao->dataInicio && $hora >= $publicacao->horaInicio)
+                                    <?php $publicacao->periodo = true;  $publicacao->status = true; ?>
+                                @endif
+                                @if($data >= $publicacao->dataTermino && $hora > $publicacao->horaTermino)
+                                    <?php $publicacao->periodo = false; ?>
+                                @endif
                                 @if($publicacaoInscrito)
                                     @foreach($publicacaoInscrito as $value)
                                         @if($value->id == $publicacao->id)
@@ -29,19 +41,23 @@
                                         @endif
                                     @endforeach
                                 @endif
-                            <tr>
-                                <td>{{ $publicacao->titulo }}</td>
-                                <td>{{$publicacao->dataInicio}} - {{$publicacao->horaInicio}}h até {{$publicacao->dataTermino}}
-                                    - {{$publicacao->horaTermino}}h</td>
+                                <tr>
+                                    <td>{{ $publicacao->titulo }}</td>
+                                    <td>{{$publicacao->dataInicio}} - {{$publicacao->horaInicio}}h até {{$publicacao->dataTermino}}
+                                        - {{$publicacao->horaTermino}}h</td>
 
-                                <td>
-                                    @if($publicacao->inscrito)
-                                        <a class="btn disabled">Inscrito</a>
-                                    @else
-                                        <a title="Inscrever" class="btn green" href="{{route('inscricoes.create', $publicacao)}}">Inscrever</a>
-                                    @endif
-                                </td>
-                            </tr>
+                                    <td>
+                                        @if($publicacao->status)
+                                            @if($publicacao->inscrito)
+                                                <a class="btn disabled">Inscrito</a>
+                                            @elseif($publicacao->periodo)
+                                                <a title="Inscrever" class="btn green" href="{{route('inscricoes.create', $publicacao)}}">Inscrever</a>
+                                            @else
+                                                <a class="btn disabled">Encerrada</a>
+                                            @endif
+                                        @endif
+                                    </td>
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>
