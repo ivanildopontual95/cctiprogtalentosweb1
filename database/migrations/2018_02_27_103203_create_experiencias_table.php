@@ -16,11 +16,11 @@ class CreateExperienciasTable extends Migration
         Schema::create('experiencias', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('inscricao_id')->unsigned();
-            $table->string('empresa');
-            $table->string('funcao');
-            $table->string('atividade');
-            $table->date('dataInE');
-            $table->date('dataTermE');
+            $table->string('empresa')->nullable();
+            $table->string('funcao')->nullable();
+            $table->string('atividade')->nullable();
+            $table->date('dataInE')->nullable();
+            $table->date('dataTermE')->nullable();
             $table->foreign('inscricao_id')->references('id')->on('inscricoes')->onDelete('cascade');
             $table->timestamps();
         });

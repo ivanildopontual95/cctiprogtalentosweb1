@@ -16,11 +16,11 @@ class CreateTableQualificacoes extends Migration
         Schema::create('qualificacoes', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('inscricao_id')->unsigned();
-            $table->string('instituicao');
-            $table->string('curso');
-            $table->date('dataInI');
-            $table->date('dataTermI');
-            $table->string('cargaHora');
+            $table->string('instituicao')->nullable();
+            $table->string('curso')->nullable();
+            $table->date('dataInI')->nullable();
+            $table->date('dataTermI')->nullable();
+            $table->string('cargaHora')->nullable();
             $table->foreign('inscricao_id')->references('id')->on('inscricoes')->onDelete('cascade');
             $table->timestamps();
         });

@@ -62,16 +62,16 @@ class InscricaoRequest extends FormRequest
             'telefone'=>'required',
             
             //qualificacao
-            'instituicao'=>'string|max:80',
-            'curso'=>'string|max:80',
-            'cargaHora'=>'numeric',
+            'instituicao'=>'',
+            'curso'=>'',
+            'cargaHora'=>'',
             'dataInI'=>'',
             'dataTermI'=>'',
 
             //experiencia
-            'empresa'=>'string|max:80',
-            'funcao'=>'string|max:80',
-            'atividade'=>'string|max:120',
+            'empresa'=>'',
+            'funcao'=>'',
+            'atividade'=>'',
             'dataInE'=>'',
             'dataTermE'=>'',
             
