@@ -67,7 +67,7 @@ class Publicacao extends Model
 
     public function inscricoes()
     {
-        return $this->belongsToMany(Inscricao::class)->withPivot('cargo_id','deferimento','classificacao','convocacao');
+        return $this->belongsToMany(Inscricao::class)->withPivot('cargo_id','deferimento','classificacao','convocacao','pontuacao_inscrito');
     }
 
     //----------Relatorios--------------------------------

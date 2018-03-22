@@ -204,8 +204,9 @@
                     <th class="column1">Id</th>
                     <th class="column2">Nome</th>
                     <th class="column3">CPF</th>
-                    <th class="column4">Convocação</th>
-                    <th class="column5">Cargo</th>
+                    <th class="column4">Pontuação</th>
+                    <th class="column5">Convocação</th>
+                    <th class="column6">Cargo</th>
 
                 </tr>
             </thead>
@@ -216,6 +217,7 @@
                             <td class="column1">{{ $inscricao->id }}</td>
                             <td class="column2">{{ $inscricao->nomeCompleto }}</td>
                             <td class="column3">{{ $inscricao->cpf }}</td>
+                            <td class="column4">{{ $inscricao->pivot->pontuacao_inscrito}}</td>
                             <?php
                                 switch ($inscricao->pivot->convocacao){
                                     case 'A':
@@ -229,8 +231,8 @@
                                         break;
                                 }
                             ?>
-                            <td class="column4">{{ $inscricao->inscricao_status}}</td>
-                            <td class="column7">{{ $inscricao->pivot->cargo_id }}</td>
+                            <td class="column5">{{ $inscricao->inscricao_status}}</td>
+                            <td class="column6">{{ $inscricao->pivot->cargo_id }}</td>
 
                         </tr>
                     @endif

@@ -30,7 +30,9 @@
                             </select>
                             <label>Estado da Convocação</label>
                         </div>
-                        <button class="btn blue">Salvar</button>
+                        <div class="col s12">
+                            <button class="btn blue">Salvar</button>
+                        </div>
                     </form>
                 </div>
             </div>

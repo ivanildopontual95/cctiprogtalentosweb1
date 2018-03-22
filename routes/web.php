@@ -89,6 +89,7 @@ Route:: group (['middleware' => 'auth', 'prefix' =>'dashboard'], function () {
   Route::get('publicacoes/relatorios/{inscricao}/listadeinscritospdf/',['as'=>'publicacoes.relatorios.pdflistadeinscritos','uses'=>'PDFController@pdflistadeInscritos']);
   Route::get('publicacoes/relatorios/{inscricao}/listadedeferimentospdf/',['as'=>'publicacoes.relatorios.pdflistadedeferimentos','uses'=>'PDFController@pdflistadeDeferimentos']);
   Route::get('publicacoes/relatorios/{inscricao}/listadeclassificadospdf/',['as'=>'publicacoes.relatorios.pdflistadeclassificados','uses'=>'PDFController@pdflistadeClassificados']);
+  Route::get('publicacoes/relatorios/{inscricao}/listadepontuacaopdf/',['as'=>'publicacoes.relatorios.pdflistadepontuacao','uses'=>'PDFController@pdflistadePontuacao']);
   Route::get('publicacoes/relatorios/{inscricao}/listadeconvocacaopdf/',['as'=>'publicacoes.relatorios.pdflistadeconvocacao','uses'=>'PDFController@pdflistadeConvocacao']);
   
   //---------------------------------------Perfis--------------------------

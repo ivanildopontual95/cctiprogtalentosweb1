@@ -425,7 +425,9 @@
                                 </select>
                                 <label>Estado da Classificação</label>
                             </div>
-                            <button class="btn blue">Salvar</button>
+                            <div class="col s12">
+                                <button class="btn blue">Salvar</button>
+                            </div>
                         </form>
                     </div>
                 </div>

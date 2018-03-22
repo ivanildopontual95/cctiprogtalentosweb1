@@ -13,7 +13,7 @@
   </div>
   
     <div class="row">
-      <div class="col s12">
+      <div class="col s12 m6">
         <div class="card green darken-1">
           <div class="card-content white-text">
             <span class="card-title">Lista de Inscritos</span>
@@ -25,7 +25,7 @@
         </div>
       </div>
 
-      <div class="col s12">
+      <div class="col s12 m6">
         <div class="card light-blue darken-4">
           <div class="card-content white-text">
             <span class="card-title">Deferimentos</span>
@@ -37,7 +37,7 @@
         </div>
       </div>
 
-      <div class="col s12">
+      <div class="col s12 m6">
         <div class="card purple darken-2">
           <div class="card-content white-text">
             <span class="card-title">Lista de Classificados</span>
@@ -49,7 +49,7 @@
         </div>
       </div>
 
-      <div class="col s12">
+      <div class="col s12 m6">
         <div class="card teal lighten-1">
           <div class="card-content white-text">
             <span class="card-title">Lista de Pontuação</span>
@@ -61,7 +61,7 @@
         </div>
       </div>
 
-      <div class="col s12">
+      <div class="col s12 m6">
         <div class="card deep-orange accent-3">
           <div class="card-content white-text">
             <span class="card-title">Lista de Convocação</span>

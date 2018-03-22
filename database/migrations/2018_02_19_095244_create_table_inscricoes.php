@@ -40,6 +40,7 @@ class CreateTableInscricoes extends Migration
             $table->integer('cargo_id')->unsigned();
             $table->enum('deferimento',["A","D","I"])->default("A");
             $table->enum('classificacao',["A","C","D"])->default("A");
+            $table->decimal('pontuacao_inscrito',5,2)->default(0)->nullable();
             $table->enum('convocacao',["A","C","L"])->default("A");
 
             $table->foreign('inscricao_id')->references('id')->on('inscricoes')->onDelete('cascade');

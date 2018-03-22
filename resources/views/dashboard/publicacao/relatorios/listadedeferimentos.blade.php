@@ -9,12 +9,12 @@
     <div class="row">
     </div>
     <h5 class="center">Lista de Deferimentos - {{$publicacao->titulo}}</h5>
+    <div class="row">
+    </div>
+    <div class="card-panel white">
+        <form class="form-horizontal" action="{{route('publicacoes.relatorios.pdflistadedeferimentos', $publicacao->id)}}">
+        {{csrf_field()}}
         <div class="row">
-        </div>
-        <div class="card-panel white">
-            <form class="form-horizontal" action="{{route('publicacoes.relatorios.pdflistadedeferimentos', $publicacao->id)}}">
-            {{csrf_field()}}
-            <div class="row">
             <table>
                 <thead>
                     <tr>
@@ -46,7 +46,13 @@
                             }
                         ?>
                         <td>{{ $inscricao->inscricao_status }}</td>
-                        <td>{{ $inscricao->pivot->cargo_id }}</td>
+                        <?php 
+                            $cargos = $publicacao->cargos()->where('id',$inscricao->pivot->cargo_id)->get();
+                            foreach($cargos as $cargo){
+                                $inscricao->cargo = $cargo->cargo; 
+                            }
+                        ?>
+                        <td>{{ $inscricao->cargo }}</td>
                         <td>
                             <a title="Deferimento" class="btn blue" href="{{ route('publicacoes.relatorios.deferimento',[$publicacao->id , $inscricao->id]) }}"><i class="material-icons">assignment_turned_in</i></a>
                         </td>
@@ -54,8 +60,11 @@
                 @endforeach
                 </tbody>
             </table>
-        <button class="btn green left">Baixar<i class="material-icons left">file_download</i></button>
+            <div class="row">
+            </div>
+            <button class="btn green left">Baixar<i class="material-icons left">file_download</i></button>
+        </div>
+        </form>
     </div>
-</form>
 </div>
 @endsection

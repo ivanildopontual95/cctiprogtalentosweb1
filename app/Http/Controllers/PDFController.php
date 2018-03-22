@@ -125,6 +125,13 @@ class PDFController extends Controller
         return $pdf->stream('ListadeClassificados.pdf');
     }
 
+    public function pdflistadePontuacao($id){
+        $publicacao = Publicacao::find($id);
+        $inscricoes = $publicacao->inscricoes;
+        $pdf=PDF::loadView('dashboard.publicacao.relatorios.PDFlistadepontuacao',['publicacao'=>$publicacao],['inscricoes'=>$inscricoes]);
+        return $pdf->stream('ListadePontuação.pdf');
+    }
+
     public function pdflistadeConvocacao($id){
         $publicacao = Publicacao::find($id);
         $inscricoes = $publicacao->inscricoes;

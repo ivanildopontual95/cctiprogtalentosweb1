@@ -30,14 +30,22 @@
                         <tbody>
                             @foreach($inscricoes as $inscricao)
                             <tr>
+                                <?php 
+                                    $cargos = $publicacao->cargos()->where('id',$inscricao->pivot->cargo_id)->get();
+                                    foreach($cargos as $cargo){
+                                        $inscricao->cargo = $cargo->cargo; 
+                                    }
+                                ?>
                                 <td>{{ $inscricao->id }}</td>
                                 <td>{{ $inscricao->nomeCompleto }}</td>
                                 <td>{{ $inscricao->cpf }}</td>
-                                <td>{{ $inscricao->pivot->cargo_id }}</td>
+                                <td>{{ $inscricao->cargo }}</td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
+                    <div class="row">
+                    </div>
                     <button class="btn green left">Baixar<i class="material-icons left">file_download</i></button>
                 </div>
             </form>

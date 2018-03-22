@@ -497,25 +497,32 @@ class PublicacaoController extends Controller
         $inscricao = Inscricao::find($inscricao_id);
         $inscricoes = $publicacao->inscricoes()->where('id', $inscricao_id)->get();
         foreach($inscricoes as $inscricao){
-            $status = $inscricao->pivot->classificacao;
+            $status = $inscricao->pivot->pontuacao_inscrito;
         }
         $experiencia = Experiencia::where('inscricao_id', $inscricao_id);
         $caminhos = [
         ['url'=>'/dashboard','titulo'=>'Painel Principal'],
         ['url'=>route('publicacoes.index'),'titulo'=>'Publicações'],
         ['url'=>route('publicacoes.relatorios.index', compact('publicacao')),'titulo'=>'Relatórios'],
-        ['url'=>route('publicacoes.relatorios.listadepontuacao', compact('publicacao')),'titulo'=>'Lista de Convocação'],
+        ['url'=>route('publicacoes.relatorios.listadepontuacao', compact('publicacao')),'titulo'=>'Lista de Pontuação'],
         ['url'=>'','titulo'=>'Pontuação']
         ];
 
         return view('dashboard.publicacao.relatorios.pontuacao',compact('publicacao','inscricao','experiencia','caminhos','status'));      
     }
 
-    /*public function pontuacaoUpdate(Request $request, $publicacao_id, $inscricao_id){
-        $publicacao = Publicacao::find($publicacao_id);
-        $inscricao = Inscricao::find($inscricao_id);
-    }*/
+    public function pontuacaoUpdate(Request $request, $publicacao_id, $inscricao_id)
+    {
+        $dados = $request->all();
 
+        $publicacao = Publicacao::find($publicacao_id);
+        $inscricoes = $publicacao->inscricoes()->where('id', $inscricao_id)->get();
+        foreach($inscricoes as $inscricao){ 
+            $inscricao->pivot->update(['pontuacao_inscrito'=>$dados['pontuacao_inscrito']]);
+        }
+
+        return redirect()->back();
+    }
     //---------------------------------------Convocação----------------------------------
 
     public function convocacaoRelatorio($publicacao_id, $inscricao_id){
