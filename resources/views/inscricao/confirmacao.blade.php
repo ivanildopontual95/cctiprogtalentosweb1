@@ -15,13 +15,11 @@
                     <div class="row">
                         <center>
                             <h5>{{$publicacao->titulo}}</h5>
-                            <p>Inscrição realizada com sucesso!</p>
+                            <p class='col s12'>Inscrição realizada com sucesso!</p>
                         </center>
 
 
-                        <div class="row">
-
-                        </div>
+                        <div class="row"></div>
                         <div class="col s12">
 
                             <div class="input-field col s4 ">
@@ -128,9 +126,8 @@
                             </button>
                         </div>
                     </div>
-
-
                 </form>
+                <a title="Página de seletivos" class="btn blue" href="{{route('inscricoes.index')}}">Seletivos</a>
             </div>
 
         </div>
