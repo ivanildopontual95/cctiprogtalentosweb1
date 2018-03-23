@@ -89,6 +89,7 @@
                             </p>
                             <br>
                             <table class="autenticacao tabela_comprovante">
+                                @foreach($inscricoes as $inscricao)
                                 <tr>
                                     <?php 
                                         $cargos = $publicacao->cargos()->where('id',$inscricao->pivot->cargo_id)->get();
@@ -130,6 +131,7 @@
                                         </div>
                                     </td>
                                 </tr>
+                                @endforeach
                             </table>
                         </div>
                         <div class="basesac after">
