@@ -75,7 +75,8 @@ return [
     |
     */
 
-    'timezone' => 'America/Boa_Vista',
+    //'timezone' => 'America/Boa_Vista',
+    'timezone' => 'UTC',
 
     /*
     |--------------------------------------------------------------------------
