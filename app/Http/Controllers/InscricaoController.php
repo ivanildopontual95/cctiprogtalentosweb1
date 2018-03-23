@@ -69,6 +69,12 @@ class InscricaoController extends Controller
             return view('inscricao.cadastro', compact('publicacao','cargos'));
         }
     }
+    public function dateFormat($date)
+    {
+        $date = str_replace('/', '-', $date);
+        $date = date('Y-m-d',strtotime($date));
+        return $date;
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -87,6 +93,7 @@ class InscricaoController extends Controller
         $dados = $request->all();
         $qualificacoes = [];
         $experiencias = [];
+        $dados['dataNascimento'] = $this->dateFormat($dados['dataNascimento']);
 
 
         $inscricao = Inscricao::create($dados);
@@ -164,7 +171,7 @@ class InscricaoController extends Controller
         $dados = $request->all();
         $qualificacoes = [];
         $experiencias = [];
-        
+        $dados['dataNascimento'] = $this->dateFormat($dados['dataNascimento']);
 
         $inscricao = Inscricao::find($id);
         $inscricao->update($dados);
