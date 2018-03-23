@@ -15,7 +15,7 @@
                         <p><strong>Descrição:</strong> {{$publicacao->descricao}}</p>
                         <div class="row">
                         </div>
-                        <p><strong>Período de Inscrições:</strong> de {{$publicacao->dataInicio}} - {{$publicacao->horaInicio}}h até {{$publicacao->dataTermino}} - {{$publicacao->horaTermino}}h (Horário de Boa Vista).</p>
+                        <p><strong>Período de Inscrições:</strong> de {{date('d/m/Y', strtotime($publicacao->dataInicio))}} - {{$publicacao->horaInicio}}h até {{date('d/m/Y', strtotime($publicacao->dataTermino))}} - {{$publicacao->horaTermino}}h (Horário de Boa Vista).</p>
                         <div class="row">
                         </div>
                         <div class="divider"></div>
