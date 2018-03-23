@@ -10,7 +10,7 @@
         </center>
         <div class="col s12">
             <div class="card-panel white">
-                <form class="form-horizontal"  action="{{route('inscricoes.confirmacaoPDF', [$inscricao->id,$publicacao->id])}}">
+                <form class="form-horizontal"  action="{{route('inscricoes.confirmacaoPDF', [$cargo,$inscricao->id,$publicacao->id])}}">
                     {{csrf_field()}}
                     <div class="row">
                         <center>
@@ -110,10 +110,16 @@
                             </div>
 
                             <div class="input-field col s8 ">
-                                Processo Seletivo :
+                                Processo Seletivo:
                                 <strong>{{$publicacao->titulo}}</strong>
                                 </p>
                             </div>
+
+                            <div class="input-field col s8 ">
+                                    Cargo:
+                                    <strong>{{$cargo->cargo}}</strong>
+                                    </p>
+                                </div>
 
                             <div class="row">
 
