@@ -25,7 +25,7 @@
                                     $publicacao->status = false;
                                     $publicacao->periodo = false; 
                                     $publicacao->inscrito = false;
-                                    $data = date('d/m/Y');
+                                    $data = date('Y-m-d');
                                     $hora = date('h:i');                                 
                                 ?>
                                 @if($data >= $publicacao->dataInicio && $hora >= $publicacao->horaInicio)
@@ -43,7 +43,7 @@
                                 @endif
                                 <tr>
                                     <td>{{ $publicacao->titulo }}</td>
-                                    <td>{{$publicacao->dataInicio}} - {{$publicacao->horaInicio}}h até {{$publicacao->dataTermino}}
+                                    <td>{{date('d/m/Y', strtotime($publicacao->dataInicio))}} - {{$publicacao->horaInicio}}h até {{date('d/m/Y', strtotime($publicacao->dataTermino))}}
                                         - {{$publicacao->horaTermino}}h</td>
 
                                     <td>
