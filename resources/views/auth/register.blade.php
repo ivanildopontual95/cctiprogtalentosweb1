@@ -8,7 +8,7 @@
         <div class="row">
         </div>
         <div class="row">
-            <div class="col s8 offset-s2">
+            <div class="col s12 ">
                 <div class="card-panel white">
                     <div class="row">
                         <center><img class="responsive-img" src="/images/cctibulb.png"</i><center>
