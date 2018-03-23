@@ -5,7 +5,7 @@
         <div class="row">
         </div>
             <div class="row">
-                <div class="col s4 offset-s4">
+                <div class="col s8 offset-s2">
                     <div class="card-panel white"> 
                         <center><img class="responsive-img" src="/images/user.png"</i><center>
                         <h6>Bem-vindo!</h6>
