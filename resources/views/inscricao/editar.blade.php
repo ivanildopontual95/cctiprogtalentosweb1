@@ -48,7 +48,7 @@
                                 </div>
                                 
                                 <div class="input-field col s4 {{$errors->has('dataNascimento') ? 'has-error' : ''}}">
-                                    <input type="text" name = "dataNascimento" class="datepicker" value="{{ isset($inscricao->dataNascimento) && !old('dataNascimento') ? $inscricao->dataNascimento : '' }}{{old('dataNascimento')}}">
+                                    <input type="text" name = "dataNascimento" class="datepicker" value="{{ isset($inscricao->dataNascimento) && !old('dataNascimento') ? date('d/m/Y', strtotime($inscricao->dataNascimento)) : '' }}{{old('dataNascimento')}}">
                                     <label >Data de Nascimento</label>
                                     @if($errors->has('dataNascimento'))
                                         <span class = "red-text">
@@ -255,7 +255,7 @@
                                                 </div>
 
                                                 <div class="input-field col s3 {{$errors->has('dataInI') ? 'has-error' : ''}}">
-                                                    <input type="text" name="qualificacoes[{{$i}}][dataInI]" class="datepicker" value="{{ isset($qualificacao->dataInI) && !old('$qualificacao->dataInI') ? $qualificacao->dataInI : '' }}{{old('$qualificacao->dataInI')}}">
+                                                    <input type="text" name="qualificacoes[{{$i}}][dataInI]" class="datepicker" value="{{ isset($qualificacao->dataInI) && !old('$qualificacao->dataInI') ? date('d/m/Y', strtotime($qualificacao->dataInI)) : '' }}{{old('$qualificacao->dataInI')}}">
                                                     <label>Data de inicio</label>
                                                     @if($errors->has('dataInI'))
                                                     <span class="red-text">
@@ -265,7 +265,7 @@
                                                 </div>
 
                                                 <div class="input-field col s3 {{$errors->has('dataTermI') ? 'has-error' : ''}}">
-                                                    <input type="text" name="qualificacoes[{{$i}}][dataTermI]" class="datepicker" value="{{ isset($qualificacao->dataTermI) && !old('$qualificacao->dataTermI') ? $qualificacao->dataTermI : '' }}{{old('$qualificacao->dataTermI')}}">
+                                                    <input type="text" name="qualificacoes[{{$i}}][dataTermI]" class="datepicker" value="{{ isset($qualificacao->dataTermI) && !old('$qualificacao->dataTermI') ? date('d/m/Y', strtotime($qualificacao->dataTermI)) : '' }}{{old('$qualificacao->dataTermI')}}">
                                                     <label>Data de fim</label>
                                                     @if($errors->has('dataTermI'))
                                                     <span class="red-text">
@@ -397,7 +397,7 @@
                                                 </div>
 
                                                 <div class="input-field col s3 {{$errors->has('dataInE') ? 'has-error' : ''}}">
-                                                    <input type="text" name="experiencias[{{$i}}][dataInE]" class="datepicker" value="{{ isset($experiencia->dataInE) && !old('$experiencia->dataInE') ? $experiencia->dataInE : '' }}{{old('$experiencia->dataInE')}}">
+                                                    <input type="text" name="experiencias[{{$i}}][dataInE]" class="datepicker" value="{{ isset($experiencia->dataInE) && !old('$experiencia->dataInE') ? date('d/m/Y', strtotime($experiencia->dataInE)) : '' }}{{old('$experiencia->dataInE')}}">
                                                     <label>Data de inicio</label>
                                                     @if($errors->has('dataInE'))
                                                     <span class="red-text">
@@ -407,7 +407,7 @@
                                                 </div>
 
                                                 <div class="input-field col s3 {{$errors->has('dataTermE') ? 'has-error' : ''}}">
-                                                    <input type="text" name="experiencias[{{$i}}][dataTermE]" class="datepicker" value="{{ isset($experiencia->dataTermE) && !old('$experiencia->dataTermE') ? $experiencia->dataTermE : '' }}{{old('$experiencia->dataTermE')}}">
+                                                    <input type="text" name="experiencias[{{$i}}][dataTermE]" class="datepicker" value="{{ isset($experiencia->dataTermE) && !old('$experiencia->dataTermE') ? date('d/m/Y', strtotime($experiencia->dataTermE)) : '' }}{{old('$experiencia->dataTermE')}}">
                                                     <label>Data de fim</label>
                                                     @if($errors->has('dataTermE'))
                                                     <span class="red-text">

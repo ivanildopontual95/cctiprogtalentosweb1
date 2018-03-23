@@ -94,6 +94,10 @@ class InscricaoController extends Controller
         $qualificacoes = [];
         $experiencias = [];
         $dados['dataNascimento'] = $this->dateFormat($dados['dataNascimento']);
+        $dados['dataInI'] = $this->dateFormat($dados['dataInI']);
+        $dados['dataTermI'] = $this->dateFormat($dados['dataTermI']);
+        $dados['dataInE'] = $this->dateFormat($dados['dataInE']);
+        $dados['dataTermE'] = $this->dateFormat($dados['dataTermE']);
 
 
         $inscricao = Inscricao::create($dados);
@@ -172,6 +176,10 @@ class InscricaoController extends Controller
         $qualificacoes = [];
         $experiencias = [];
         $dados['dataNascimento'] = $this->dateFormat($dados['dataNascimento']);
+        $dados['dataInI'] = $this->dateFormat($dados['dataInI']);
+        $dados['dataTermI'] = $this->dateFormat($dados['dataTermI']);
+        $dados['dataInE'] = $this->dateFormat($dados['dataInE']);
+        $dados['dataTermE'] = $this->dateFormat($dados['dataTermE']);
 
         $inscricao = Inscricao::find($id);
         $inscricao->update($dados);
