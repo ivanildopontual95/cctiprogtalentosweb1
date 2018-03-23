@@ -48,10 +48,11 @@
                                                     />
                                                 </li>
                                                 <li class="info center ">
-                                                    <h2>Comprovante de Inscrição Seletivo CCTI</h2></li>
-                                                    <li class="fn clr">
-                                                        <!-- -->
-                                                    </li>
+                                                    <h2>Comprovante de Inscrição Seletivo CCTI</h2>
+                                                </li>
+                                                <li class="fn clr">
+                                                    <!-- -->
+                                                </li>
                                             </ul>
                                         </td>
                                     </tr>
@@ -121,6 +122,17 @@
 
                                             <p>
                                                 <strong>Processo Seletivo: </strong> {{$publicacao->titulo}} </p>
+
+                                            <?php 
+                                                $cargos = $publicacao->cargos()->where('id',$inscricao->pivot->cargo_id)->get();
+                                                foreach($cargos as $cargo){
+                                                    $inscricao->cargo = $cargo->cargo; 
+                                                }
+                                                
+
+                                            ?>
+                                            <p>
+                                                <strong>Cargo: </strong> {{$inscricao->cargo}} </p>
 
                                         </div>
                                     </td>
