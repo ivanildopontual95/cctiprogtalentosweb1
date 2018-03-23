@@ -23,7 +23,7 @@ class AuthServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    /*public function boot()
+    public function boot()
     {
         $this->registerPolicies();
 
@@ -36,5 +36,5 @@ class AuthServiceProvider extends ServiceProvider
 
     public function listapermissoes(){
         return Permissao::with('papeis')->get();
-    }*/
+    }
 }
