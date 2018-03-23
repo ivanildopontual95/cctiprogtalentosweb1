@@ -48,7 +48,7 @@
                                                     />
                                                 </li>
                                                 <li class="info center ">
-                                                    <h2>Comprovante de Inscrição Seletivo CCTI</h2 </li>
+                                                    <h2>Comprovante de Inscrição Seletivo CCTI</h2></li>
                                                     <li class="fn clr">
                                                         <!-- -->
                                                     </li>
