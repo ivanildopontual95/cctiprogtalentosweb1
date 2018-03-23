@@ -75,11 +75,20 @@ class PublicacaoController extends Controller
             'dataTermino' => 'required',
             'horaTermino' => 'required'
         ]);
-        $dados = $request->all();
+        $dados =$request->all() ;
+
+        $dados['dataInicio'] = $this->dateFormat($dados['dataInicio']);
+        $dados['dataTermino'] = $this->dateFormat($dados['dataTermino']);
         Publicacao::create($dados);
         return redirect()->route('publicacoes.index');
     }
     
+    public function dateFormat($date)
+    {
+        $date = str_replace('/', '-', $date);
+        $date = date('Y-m-d',strtotime($date));
+        return $date;
+    }
 
     /**
      * Display the specified resource.
@@ -126,7 +135,10 @@ class PublicacaoController extends Controller
         if(Gate::denies('publicacoes-edit')){
             abort(403,"Não autorizado!");
         }
-        Publicacao::find($id)->update($request->all());
+        $dados = $request->all();
+        $dados['dataInicio'] = $this->dateFormat($dados['dataInicio']);
+        $dados['dataTermino'] = $this->dateFormat($dados['dataTermino']);
+        Publicacao::find($id)->update($dados);
         return redirect()->route('publicacoes.index');
     }
 
