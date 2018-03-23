@@ -1,61 +1,17 @@
 <?php
 
 namespace App;
-use Carbon\Carbon;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Publicacao extends Model
 {
-    protected $dateFormat = 'd/m/Y H:i';
+    
     protected $table = 'publicacoes';
     protected $fillable = 
             [ 'id', 'titulo', 'descricao','dataInicio', 'horaInicio', 'dataTermino', 'horaTermino','deletado'];
     
     public $with = ['inscricoes','cargos'];
-    
-    protected $dates = ['dataInicio','dataTermino', 'horaInicio', 'horaTermino'];
-
-    //--------Periodo de inscricao------------------------
-    function setDataInicioAttribute($date)
-    {
-        return $this->attributes['dataInicio'] = Carbon::createFromFormat('d/m/Y', $date)->format('d/m/Y');
-    }
-
-    function setHoraInicioAttribute($date)
-    {
-        return $this->attributes['horaInicio'] = Carbon::createFromFormat('H:i', $date)->format('H:i');
-    }
-
-    function setDataTerminoAttribute($date)
-    {
-        return $this->attributes['dataTermino'] = Carbon::createFromFormat('d/m/Y', $date)->format('d/m/Y');
-    }
-
-    function setHoraTerminoAttribute($date)
-    {
-        return $this->attributes['horaTermino'] = Carbon::createFromFormat('H:i', $date)->format('H:i');
-    }
-
-    function getDataInicioAttribute()
-    {
-        return $this->attributes['dataInicio'];
-    }
-
-    function getHoraInicioAttribute()
-    {
-        return $this->attributes['horaInicio'];
-    }
-
-    function getDataTerminoAttribute()
-    {
-        return $this->attributes['dataTermino'];
-    }
-    
-    function getHoraTerminoAttribute()
-    {
-        return $this->attributes['horaTermino'];
-    }
 
     //--------Adiciona Cargos-----------------------------------
     public function cargos()
