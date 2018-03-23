@@ -12,7 +12,7 @@
             <div class="card-panel white">
                 <form class="form-horizontal"  action="{{route('inscricoes.confirmacaoPDF', [$inscricao->id,$publicacao->id])}}">
                     {{csrf_field()}}
-                    {{dd($cargo)}}
+                    {{dd($cargoteste)}}
                     <div class="row">
                         <center>
                             <h5>{{$publicacao->titulo}}</h5>
