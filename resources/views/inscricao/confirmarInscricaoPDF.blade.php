@@ -44,14 +44,16 @@
                                         <td>
                                             <ul class="cabecalho after">
                                                 <li class="logo transacao">
-                                                    <img src="http://ccti.boavista.rr.gov.br/novo/img/logo-ccti.png" width="160" height="90"
-                                                        class="tabindex tabfirst" id="logoComprovante" />
+                                                    <img src="http://ccti.boavista.rr.gov.br/novo/img/logo-ccti.png" width="160" height="90" class="tabindex tabfirst" id="logoComprovante"
+                                                    />
                                                 </li>
-                                                <li class="info">
-                                                    <h2>Comprovante de Inscrição do Seletivo {{$publicacao->titulo}}</h </li>
-                                                        <li class="fn clr">
-                                                            <!-- -->
-                                                        </li>
+                                                <li class="info center ">
+                                                    <h2>Comprovante de Inscrição Seletivo CCTI</h2
+                                            
+                                                </li>
+                                                <li class="fn clr">
+                                                    <!-- -->
+                                                </li>
                                             </ul>
                                         </td>
                                     </tr>
@@ -81,7 +83,11 @@
                         </div>
                         <div class="conteudo_linha pt20 after mt0 bt0">
                             <p>
-                                <b><font size="4"><strong-2>Dados Cadastrais</strong-2></font></b>
+                                <b>
+                                    <font size="4">
+                                        <strong-2>Dados Cadastrais</strong-2>
+                                    </font>
+                                </b>
                             </p>
                             <br>
                             <table class="autenticacao tabela_comprovante">
@@ -114,7 +120,7 @@
 
                                             <p>
                                                 <strong>Nº: </strong> {{$inscricao->numero}} </p>
-
+                                                
                                             <p>
                                                 <strong>Processo Seletivo: </strong> {{$publicacao->titulo}} </p>
 
