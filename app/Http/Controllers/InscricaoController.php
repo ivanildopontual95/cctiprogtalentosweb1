@@ -109,12 +109,16 @@ class InscricaoController extends Controller
 
 
         foreach($dados['qualificacoes'] as $q => $qualificacao){
+            $qualificacao['dataInI'] = $this->dateFormat($qualificacao['dataInI']);
+            $qualificacao['dataTermI'] = $this->dateFormat($qualificacao['dataTermI']);
             $qualificacoes[$q] = new Qualificacao($qualificacao);                      
         }
         $inscricao->qualificacoes()->saveMany($qualificacoes);  
 
 
         foreach($dados['experiencias'] as $i => $experiencia){
+            $experiencia['dataInE'] = $this->dateFormat($experiencia['dataInE']);
+            $experiencia['dataTermE'] = $this->dateFormat($experiencia['dataTermE']);
             $experiencias[$i] = new Experiencia($experiencia);                      
         }
         $inscricao->experiencias()->saveMany($experiencias);  
@@ -187,12 +191,16 @@ class InscricaoController extends Controller
         
 
         foreach($dados['qualificacoes'] as $q => $qualificacao){
+            $qualificacao['dataInI'] = $this->dateFormat($qualificacao['dataInI']);
+            $qualificacao['dataTermI'] = $this->dateFormat($qualificacao['dataTermI']);
             $qualificacoes[$q] = new Qualificacao($qualificacao);                      
         }
         $inscricao->qualificacoes()->saveMany($qualificacoes);  
 
 
         foreach($dados['experiencias'] as $i => $experiencia){
+            $experiencia['dataInE'] = $this->dateFormat($experiencia['dataInE']);
+            $experiencia['dataTermE'] = $this->dateFormat($experiencia['dataTermE']);
             $experiencias[$i] = new Experiencia($experiencia);                      
         }
         $inscricao->experiencias()->saveMany($experiencias);  
