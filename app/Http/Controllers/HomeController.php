@@ -28,7 +28,7 @@ class HomeController extends Controller
         if($user->papeis[0]->nome == 'Admin' || $user->papeis[0]->nome == 'Gerente do Departamento' ||  $user->papeis[0]->nome == 'Auxiliar do Departamento' ) 
         {
             return view('dashboard.index');
-        }elseif($user->papeis[0]->nome == 'Usuário')
+        }elseif($user->papeis[0]->nome == 'Usuario')
         {
             return redirect()->route('inscricoes.index');
         }

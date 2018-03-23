@@ -129,12 +129,8 @@ class UsuarioController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
-    
-        if(User:: all()->count ()== 0){
-            $user->adicionaPapel('Admin');
-        }else{
+
         $user->adicionaPapel('Usuario');
-        }
         return redirect()->route('usuarios.index');
     }
 

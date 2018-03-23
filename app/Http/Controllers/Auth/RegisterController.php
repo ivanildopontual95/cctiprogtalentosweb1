@@ -70,8 +70,9 @@ class RegisterController extends Controller
 
         if(User:: all()->count ()== 0){
             $user->adicionaPapel('Admin');
+        }else{
+            $user->adicionaPapel('Usuario');
         }
-        $user->adicionaPapel('Usuário');
         return $user;
     }
 }
