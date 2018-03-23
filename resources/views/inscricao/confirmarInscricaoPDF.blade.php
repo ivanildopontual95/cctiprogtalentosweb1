@@ -90,6 +90,12 @@
                             <br>
                             <table class="autenticacao tabela_comprovante">
                                 <tr>
+                                    <?php 
+                                        $cargos = $publicacao->cargos()->where('id',$inscricao->pivot->cargo_id)->get();
+                                        foreach($cargos as $cargo){
+                                            $inscricao->cargo = $cargo->cargo; 
+                                        }
+                                    ?>
                                     <td>
                                         <div class="tabelaPre">
                                             <p>
@@ -100,7 +106,6 @@
                                                 <strong>Telefone: </strong> {{$inscricao->telefone}}</p>
                                             <p>
                                                 <strong>Sexo: </strong> {{$inscricao->sexo}}</p>
-
                                             <p>
                                                 <strong>CPF: </strong> {{$inscricao->cpf}}</p>
                                             <p>
@@ -115,12 +120,12 @@
                                                 <strong>Endereço: </strong> {{$inscricao->endereco}}</p>
                                             <p>
                                                 <strong>Bairro: </strong> {{$inscricao->bairro}} </p>
-
                                             <p>
                                                 <strong>Nº: </strong> {{$inscricao->numero}} </p>
-
                                             <p>
                                                 <strong>Processo Seletivo: </strong> {{$publicacao->titulo}} </p>
+                                            <p>
+                                                <strong>Cargo Pretendido: </strong> {{$inscricao->cargo}} </p>
 
                                         </div>
                                     </td>
