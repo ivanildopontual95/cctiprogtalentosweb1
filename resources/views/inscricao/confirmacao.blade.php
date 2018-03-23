@@ -10,6 +10,7 @@
         </center>
         <div class="col s12">
             <div class="card-panel white">
+                {{dd($cargo)}}
                 <form class="form-horizontal"  action="{{route('inscricoes.confirmacaoPDF', [$cargo->id, $inscricao->id,$publicacao->id])}}">
                     {{csrf_field()}}
                     <div class="row">
