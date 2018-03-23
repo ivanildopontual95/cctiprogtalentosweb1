@@ -28,7 +28,7 @@
                             <p>{{ $documento->titulo }}</p>
                             <div class="row">
                             </div>
-                            <a title="Baixar" class="btn green" href="{{ $documento->url }}" download>Baixar<i class="material-icons left">file_download</i></a>                         
+                            <a title="Baixar" class="btn green" href="/{{ $documento->url }}" download>Baixar<i class="material-icons left">file_download</i></a>                         
                         @endforeach
                     </div>
                         <?php

@@ -53,7 +53,7 @@
 
 										<td>
 											<form action="{{route('publicacoes.documentos.destroy',[$publicacao->id,$documento->id])}}" method="post">
-													<a title="Baixar" class="btn green" href="{{ $documento->url }}" download><i class="material-icons">file_download</i></a>
+													<a title="Baixar" class="btn green" href="/{{ $documento->url }}" download><i class="material-icons">file_download</i></a>
 													{{ method_field('DELETE') }}
 													{{ csrf_field() }}
 													<button title="Deletar" class="btn red"><i class="material-icons">delete</i></button>
