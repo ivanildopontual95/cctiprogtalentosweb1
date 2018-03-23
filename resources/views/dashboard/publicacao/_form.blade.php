@@ -28,7 +28,7 @@
 	<div class="col s12">
 		<div class="col"></div>
 		<div class="input-field col s2">
-			<input type="text" name="dataInicio" class="datepicker" value="{{ isset($publicacao->dataInicio) && !old('dataInicio') ? $publicacao->dataInicio : '' }}{{old('dataInicio')}}">   
+			<input type="text" name="dataInicio" class="datepicker" value="{{ isset($publicacao->dataInicio) && !old('dataInicio') ? date('d/m/Y', strtotime($publicacao->dataInicio))  : '' }}{{old('dataInicio')}}">   
 			<label>Data de Início</label>
 			@if($errors->has('dataInicio'))
 				<span class="red-text col">
@@ -48,7 +48,7 @@
 		</div>
 
 		<div class="input-field col s2">
-			<input type="text" name="dataTermino" class="datepicker" value="{{ isset($publicacao->dataTermino) && !old('dataTermino') ? $publicacao->dataTermino : '' }}{{old('dataTermino')}}">   
+			<input type="text" name="dataTermino" class="datepicker" value="{{ isset($publicacao->dataTermino) && !old('dataTermino') ? date('d/m/Y', strtotime($publicacao->dataTermino)) : '' }}{{old('dataTermino')}}">   
 			<label>Data de Término</label>
 			@if($errors->has('dataTermino'))
 				<span class="red-text col">
