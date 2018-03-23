@@ -34,7 +34,7 @@
                         <?php
                             $publicacao->status = false; 
                             $publicacao->periodo = false;
-                            $data = date('d/m/Y');
+                            $data = date('Y-m-d');
                             $hora = date('h:i');                                 
                         ?>
                         @if($data >= $publicacao->dataInicio && $hora >= $publicacao->horaInicio)
@@ -49,7 +49,9 @@
                                 <a href="{{route('login')}}">Inscreva-se!</a>
                             @else
                                 <a>Inscrições encerradas!</a>
-                            @endif    
+                            @endif 
+                        @else
+                            <a>Aguarde as inscrições!</a>  
                         @endif
                     </div>
                 </div>

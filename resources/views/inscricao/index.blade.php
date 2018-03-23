@@ -25,7 +25,7 @@
                                     $publicacao->status = false;
                                     $publicacao->periodo = false; 
                                     $publicacao->inscrito = false;
-                                    $data = date('d/m/Y');
+                                    $data = date('Y-m-d');
                                     $hora = date('h:i');                                 
                                 ?>
                                 @if($data >= $publicacao->dataInicio && $hora >= $publicacao->horaInicio)
@@ -55,6 +55,8 @@
                                             @else
                                                 <a class="btn disabled">Encerrada</a>
                                             @endif
+                                        @else
+                                            <a class="btn disabled">Aguardando</a>
                                         @endif
                                     </td>
                                 </tr>
