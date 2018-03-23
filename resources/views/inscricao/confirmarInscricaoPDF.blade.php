@@ -127,7 +127,6 @@
                                                 <strong>Processo Seletivo: </strong> {{$publicacao->titulo}} </p>
                                             <p>
                                                 <strong>Cargo Pretendido: </strong> {{$inscricao->cargo}} </p>
-
                                         </div>
                                     </td>
                                 </tr>
