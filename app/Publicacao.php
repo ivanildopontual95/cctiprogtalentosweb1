@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Publicacao extends Model
 {
+    protected $dateFormat = 'd/m/Y';
     protected $table = 'publicacoes';
     protected $fillable = 
             [ 'id', 'titulo', 'descricao','dataInicio', 'horaInicio', 'dataTermino', 'horaTermino','deletado'];
