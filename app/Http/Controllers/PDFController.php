@@ -88,8 +88,9 @@ class PDFController extends Controller
     }
 
     public function pdfConfirmarInscricao($id, $idPublicacao){
-        $inscricao = Inscricao::find($id);
         $publicacao = Publicacao::find($idPublicacao);
+        $inscricoes = $publicacao->inscricoes;
+        $inscricao = Inscricao::find($id);
         $pdf=PDF::loadView('inscricao.confirmarInscricaoPDF',['inscricao'=>$inscricao],['publicacao'=>$publicacao]);
         return $pdf->stream('Inscrição.pdf');
 
