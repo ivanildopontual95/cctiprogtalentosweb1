@@ -26,6 +26,7 @@ class PublicacaoController extends Controller
         if(Gate::denies('publicacoes-view')){
             abort(403,"Não autorizado!");
         }
+        dd(date('d/m/Y H:i'));
         $publicacoes = Publicacao::orderBy("id","DESC")->paginate(10);
         $caminhos = [
             ['url'=>'/dashboard','titulo'=>'Painel Principal'],
