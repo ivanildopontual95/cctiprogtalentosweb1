@@ -185,7 +185,7 @@ class InscricaoController extends Controller
         $inscricao->update($dados);
         $dados['inscricao_id'] = $inscricao->id;
         
-
+        dd($dados);
         foreach($dados['qualificacoes'] as $q => $qualificacao){
             $qualificacoes[$q] = new Qualificacao($qualificacao);                      
         }
