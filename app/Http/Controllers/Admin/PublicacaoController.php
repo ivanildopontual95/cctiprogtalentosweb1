@@ -75,7 +75,10 @@ class PublicacaoController extends Controller
             'dataTermino' => 'required',
             'horaTermino' => 'required'
         ]);
-        Publicacao::create($request->all());
+        $dados = $request->all();
+        $dados['dataInicio'] = date('Y-m-d');
+        $dados['dataTermino'] = date('Y-m-d');
+        Publicacao::create($dados);
         return redirect()->route('publicacoes.index');
     }
     
