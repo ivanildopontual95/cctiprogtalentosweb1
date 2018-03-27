@@ -91,9 +91,6 @@ class PDFController extends Controller
         $publicacao = Publicacao::find($idPublicacao);
         $user = Auth()->user();
         $inscricao = $publicacao->inscricoes()->where('id','=',$user->inscricao_id)->first();
-        /*foreach($inscricoes as $inscricao){
-            $inscricao->where('id','=',$user->inscricao_id)->get();
-        }*/
         $cargo = $publicacao->cargos()->where('id','=',$inscricao->pivot->cargo_id)->first();
         
         $pdf=PDF::loadView('inscricao.confirmarInscricaoPDF',['inscricao'=>$inscricao, 'publicacao'=>$publicacao, 'cargo'=>$cargo]);
