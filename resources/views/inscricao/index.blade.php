@@ -26,14 +26,20 @@
                                     $publicacao->periodo = false; 
                                     $publicacao->inscrito = false;
                                     $data = date('Y-m-d');
-                                    $hora = date('h:i');                                 
+                                    $hora = date('H:i');                                 
                                 ?>
-                                @if($data >= $publicacao->dataInicio && $hora >= $publicacao->horaInicio)
-                                    <?php $publicacao->periodo = true;  $publicacao->status = true; ?>
+                                @if($data == $publicacao->dataInicio && $hora >= $publicacao->horaInicio)
+                                    <?php $publicacao->periodo = true; $publicacao->status = true; ?>
                                 @endif
-                                @if($data >= $publicacao->dataTermino && $hora > $publicacao->horaTermino)
+                                @if($data > $publicacao->dataInicio)
+                                    <?php $publicacao->periodo = true; $publicacao->status = true; ?>
+                                @endif
+                                @if($data == $publicacao->dataTermino && $hora > $publicacao->horaTermino)
                                     <?php $publicacao->periodo = false; ?>
                                 @endif
+                                @if($data > $publicacao->dataTermino)
+                                    <?php $publicacao->periodo = false; ?>
+                                @endif                                
                                 @if($publicacaoInscrito)
                                     @foreach($publicacaoInscrito as $value)
                                         @if($value->id == $publicacao->id)
@@ -43,7 +49,7 @@
                                 @endif
                                 <tr>
                                     <td>{{ $publicacao->titulo }}</td>
-                                    <td>{{$publicacao->dataInicio}} - {{$publicacao->horaInicio}}h até {{$publicacao->dataTermino}}
+                                    <td>{{date('d/m/Y', strtotime($publicacao->dataInicio))}} - {{$publicacao->horaInicio}}h até {{date('d/m/Y', strtotime($publicacao->dataTermino))}}
                                         - {{$publicacao->horaTermino}}h</td>
 
                                     <td>
@@ -56,7 +62,7 @@
                                                 <a class="btn disabled">Encerrada</a>
                                             @endif
                                         @else
-                                            <a class="btn disabled">Aguardando</a>
+                                            <a class="btn disabled">Aguarde</a>
                                         @endif
                                     </td>
                                 </tr>

@@ -15,7 +15,7 @@
                         <p><strong>Descrição:</strong> {{$publicacao->descricao}}</p>
                         <div class="row">
                         </div>
-                        <p><strong>Período de Inscrições:</strong> de {{$publicacao->dataInicio}} - {{$publicacao->horaInicio}}h até {{$publicacao->dataTermino}} - {{$publicacao->horaTermino}}h (Horário de Boa Vista).</p>
+                        <p><strong>Período de Inscrições:</strong> de {{date('d/m/Y', strtotime($publicacao->dataInicio))}} - {{$publicacao->horaInicio}}h até {{date('d/m/Y', strtotime($publicacao->dataTermino))}} - {{$publicacao->horaTermino}}h (Horário de Boa Vista).</p>
                         <div class="row">
                         </div>
                         <div class="divider"></div>
@@ -28,19 +28,25 @@
                             <p>{{ $documento->titulo }}</p>
                             <div class="row">
                             </div>
-                            <a title="Baixar" class="btn green" href="{{ $documento->url }}" download>Baixar<i class="material-icons left">file_download</i></a>                         
+                            <a title="Baixar" class="btn green" href="/{{ $documento->url }}" download>Baixar<i class="material-icons left">file_download</i></a>                         
                         @endforeach
                     </div>
                         <?php
                             $publicacao->status = false; 
                             $publicacao->periodo = false;
                             $data = date('Y-m-d');
-                            $hora = date('h:i');                                 
+                            $hora = date('H:i');                                 
                         ?>
-                        @if($data >= $publicacao->dataInicio && $hora >= $publicacao->horaInicio)
+                        @if($data == $publicacao->dataInicio && $hora >= $publicacao->horaInicio)
                             <?php $publicacao->periodo = true; $publicacao->status = true; ?>
                         @endif
-                        @if($data >= $publicacao->dataTermino && $hora > $publicacao->horaTermino)
+                        @if($data > $publicacao->dataInicio)
+                            <?php $publicacao->periodo = true; $publicacao->status = true; ?>
+                        @endif
+                        @if($data == $publicacao->dataTermino && $hora > $publicacao->horaTermino)
+                            <?php $publicacao->periodo = false; ?>
+                        @endif
+                        @if($data > $publicacao->dataTermino)
                             <?php $publicacao->periodo = false; ?>
                         @endif
                     <div class="card-action">
