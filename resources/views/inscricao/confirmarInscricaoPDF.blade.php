@@ -123,6 +123,9 @@
                                                 
                                             <p>
                                                 <strong>Processo Seletivo: </strong> {{$publicacao->titulo}} </p>
+                                            
+                                            <p>
+                                                <strong>Cargo: </strong> {{$cargo->cargo}} </p>
 
                                         </div>
                                     </td>

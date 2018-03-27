@@ -87,10 +87,16 @@ class PDFController extends Controller
         //
     }
 
-    public function pdfConfirmarInscricao($id, $idPublicacao){
-        $inscricao = Inscricao::find($id);
+    public function pdfConfirmarInscricao($idPublicacao){
         $publicacao = Publicacao::find($idPublicacao);
-        $pdf=PDF::loadView('inscricao.confirmarInscricaoPDF',['inscricao'=>$inscricao],['publicacao'=>$publicacao]);
+        $user = Auth()->user();
+        $inscricoes = $publicacao->inscricoes;
+        foreach($inscricoes as $inscricao){
+            $inscricao->where('id','=',$user->inscricao_id)->get();
+        }
+        $cargo = $publicacao->cargos()->where('id','=',$inscricao->pivot->cargo_id)->first();
+        
+        $pdf=PDF::loadView('inscricao.confirmarInscricaoPDF',['inscricao'=>$inscricao, 'publicacao'=>$publicacao, 'cargo'=>$cargo]);
         return $pdf->stream('Inscrição.pdf');
 
     }

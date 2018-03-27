@@ -30,7 +30,7 @@ Route:: group(['middleware' => 'auth', 'prefix' => 'user'], function(){
     Route::put('{id}/{publicacao}/atualizar', ['as'=> 'update','uses'=>'InscricaoController@update']);
 
     Route::get('{publicacao}/confirmacao', ['as'=> 'confirmacao','uses'=>'InscricaoController@indexConfirmacao']); 
-    Route::get('{id}/{publicacao}/confirmacaoPDF',['as'=>'confirmacaoPDF','uses'=>'PDFController@pdfConfirmarInscricao']) ;
+    Route::get('{publicacao}/confirmacaoPDF',['as'=>'confirmacaoPDF','uses'=>'PDFController@pdfConfirmarInscricao']) ;
   });
 });
 

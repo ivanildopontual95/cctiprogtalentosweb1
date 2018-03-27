@@ -70,7 +70,7 @@ class InscricaoController extends Controller
         }
     }
 
-    /**
+        /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -214,8 +214,12 @@ class InscricaoController extends Controller
         }
 
         $user = Auth()->user();
-        $inscricao = Inscricao::find($user->inscricao_id);
-        return view('inscricao.confirmacao', compact('inscricao','publicacao'));      
+        $inscricoes = $publicacao->inscricoes;
+        foreach($inscricoes as $inscricao){
+            $inscricao->where('id','=',$user->inscricao_id)->get();
+        }
+        $cargo = $publicacao->cargos()->where('id','=',$inscricao->pivot->cargo_id)->first();
+        return view('inscricao.confirmacao', compact('inscricao','publicacao','cargo'));      
     }
 
 }
