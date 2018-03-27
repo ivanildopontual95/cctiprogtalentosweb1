@@ -209,9 +209,8 @@ class InscricaoController extends Controller
         $publicacao = Publicacao::find($idPublicacao); 
        
         $publicacao->inscricoes()->attach( $inscricao, ['cargo_id' => $dados['cargo_id']] );
-        $cargoteste = Cargo::find($dados['cargo_id']);
         
-        return redirect()->route('inscricoes.confirmacao', compact('cargoteste','publicacao'));
+        return redirect()->route('inscricoes.confirmacao', compact('publicacao'));
     }
 
     /**

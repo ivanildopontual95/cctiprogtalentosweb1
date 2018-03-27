@@ -89,7 +89,6 @@
                             </p>
                             <br>
                             <table class="autenticacao tabela_comprovante">
-                                @foreach($inscricoes as $inscricao)
                                 <tr>
                                     <td>
                                         <div class="tabelaPre">
@@ -124,7 +123,6 @@
                                         </div>
                                     </td>
                                 </tr>
-                                @endforeach
                             </table>
                         </div>
                         <div class="basesac after">
