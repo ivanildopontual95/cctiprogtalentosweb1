@@ -44,7 +44,7 @@
 
                             <div class="input-field col s4 ">
                                 Data Nascimento:
-                                <strong>{{$inscricao->dataNascimento}}</strong>
+                                <strong>{{date('d/m/Y', strtotime($inscricao->dataNascimento))}}</strong>
                                 </p>
 
                             </div>

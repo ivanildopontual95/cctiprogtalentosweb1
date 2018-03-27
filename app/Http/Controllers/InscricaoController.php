@@ -238,7 +238,6 @@ class InscricaoController extends Controller
         /*foreach($inscricoes as $inscricao){
             $inscricao->where('id','=',$user->inscricao_id)->get();
         }*/
-        dd($inscricao);
         $cargo = $publicacao->cargos()->where('id','=',$inscricao->pivot->cargo_id)->first();
         return view('inscricao.confirmacao', compact('inscricao','publicacao','cargo'));      
     }

@@ -95,7 +95,7 @@
                                             <p>
                                                 <strong>Nome Completo: </strong>{{$inscricao->nomeCompleto}}</p>
                                             <p>
-                                                <strong>Data de Nascimento: </strong> {{$inscricao->dataNascimento}}</p>
+                                                <strong>Data de Nascimento: </strong>{{date('d/m/Y', strtotime($inscricao->dataNascimento))}}</p>
                                             <p>
                                                 <strong>Telefone: </strong> {{$inscricao->telefone}}</p>
                                             <p>
