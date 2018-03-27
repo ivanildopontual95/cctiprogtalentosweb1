@@ -35,12 +35,18 @@
                             $publicacao->status = false; 
                             $publicacao->periodo = false;
                             $data = date('Y-m-d');
-                            $hora = date('h:i');                                 
+                            $hora = date('H:i');                                 
                         ?>
-                        @if($data >= $publicacao->dataInicio && $hora >= $publicacao->horaInicio)
+                        @if($data == $publicacao->dataInicio && $hora >= $publicacao->horaInicio)
                             <?php $publicacao->periodo = true; $publicacao->status = true; ?>
                         @endif
-                        @if($data >= $publicacao->dataTermino && $hora > $publicacao->horaTermino)
+                        @if($data > $publicacao->dataInicio)
+                            <?php $publicacao->periodo = true; $publicacao->status = true; ?>
+                        @endif
+                        @if($data == $publicacao->dataTermino && $hora > $publicacao->horaTermino)
+                            <?php $publicacao->periodo = false; ?>
+                        @endif
+                        @if($data > $publicacao->dataTermino)
                             <?php $publicacao->periodo = false; ?>
                         @endif
                     <div class="card-action">
@@ -49,7 +55,9 @@
                                 <a href="{{route('login')}}">Inscreva-se!</a>
                             @else
                                 <a>Inscrições encerradas!</a>
-                            @endif    
+                            @endif 
+                        @else
+                            <a>Aguarde as inscrições!</a>  
                         @endif
                     </div>
                 </div>
