@@ -62,7 +62,7 @@ class InscricaoController extends Controller
 
         if($id != null)
         {
-            return redirect()->route('inscricoes.edit', compact('publicacao', 'id'));
+            return redirect()->route('inscricoes.edit', compact('publicacao'));
         }
         else
         {
@@ -94,11 +94,6 @@ class InscricaoController extends Controller
         $qualificacoes = [];
         $experiencias = [];
         $dados['dataNascimento'] = $this->dateFormat($dados['dataNascimento']);
-        /*$dados['dataInI'] = $this->dateFormat($dados['dataInI']);
-        $dados['dataTermI'] = $this->dateFormat($dados['dataTermI']);
-        $dados['dataInE'] = $this->dateFormat($dados['dataInE']);
-        $dados['dataTermE'] = $this->dateFormat($dados['dataTermE']);*/
-
 
         $inscricao = Inscricao::create($dados);
         $dados['inscricao_id'] = $inscricao->id;
@@ -109,21 +104,24 @@ class InscricaoController extends Controller
 
 
         foreach($dados['qualificacoes'] as $q => $qualificacao){
-            $qualificacao['dataInI'] = $this->dateFormat($qualificacao['dataInI']);
-            $qualificacao['dataTermI'] = $this->dateFormat($qualificacao['dataTermI']);
+            if($qualificacao != null){
+                $qualificacao['dataInI'] = $this->dateFormat($qualificacao['dataInI']);
+                $qualificacao['dataTermI'] = $this->dateFormat($qualificacao['dataTermI']);
+            }
             $qualificacoes[$q] = new Qualificacao($qualificacao);                      
         }
         $inscricao->qualificacoes()->saveMany($qualificacoes);  
 
 
         foreach($dados['experiencias'] as $i => $experiencia){
-            $experiencia['dataInE'] = $this->dateFormat($experiencia['dataInE']);
-            $experiencia['dataTermE'] = $this->dateFormat($experiencia['dataTermE']);
+            if($experiencia != null){
+                $experiencia['dataInE'] = $this->dateFormat($experiencia['dataInE']);
+                $experiencia['dataTermE'] = $this->dateFormat($experiencia['dataTermE']);
+            }            
             $experiencias[$i] = new Experiencia($experiencia);                      
         }
         $inscricao->experiencias()->saveMany($experiencias);  
 
-        //$cargo = Cargo::find($dados['cargo_id']);
        
         $publicacao->inscricoes()->attach( $inscricao, ['cargo_id' => $dados['cargo_id']] );
 
@@ -147,13 +145,14 @@ class InscricaoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit( $id, Publicacao $publicacao)
+    public function edit(Publicacao $publicacao)
     {
         if(Gate::denies('perfil-view')){
             abort(403,"Não autorizado!");
         }
         
-        $inscricao = Inscricao::find($id);
+        $user = Auth()->user();
+        $inscricao = Inscricao::find($user->inscricao_id);
         
         $cargos = $publicacao->cargos;
 
@@ -167,49 +166,47 @@ class InscricaoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(InscricaoRequest $request, $id, $idPublicacao)
+    public function update(InscricaoRequest $request, $idPublicacao)
     {
         if(Gate::denies('perfil-view')){
             abort(403,"Não autorizado!");
         }
-
-        DB::table('qualificacoes')->where('inscricao_id', $id)->delete();
-        DB::table('experiencias')->where('inscricao_id', $id)->delete();
+        $user = Auth()->user();
+        
+        DB::table('qualificacoes')->where('inscricao_id', $user->inscricao_id)->delete();
+        DB::table('experiencias')->where('inscricao_id', $user->inscricao_id)->delete();
 
         $dados = $request->all();
         $qualificacoes = [];
         $experiencias = [];
         $dados['dataNascimento'] = $this->dateFormat($dados['dataNascimento']);
-        /*$dados['dataInI'] = $this->dateFormat($dados['dataInI']);
-        $dados['dataTermI'] = $this->dateFormat($dados['dataTermI']);
-        $dados['dataInE'] = $this->dateFormat($dados['dataInE']);
-        $dados['dataTermE'] = $this->dateFormat($dados['dataTermE']);*/
 
-        $inscricao = Inscricao::find($id);
+        $inscricao = Inscricao::find($user->inscricao_id);
         $inscricao->update($dados);
         $dados['inscricao_id'] = $inscricao->id;
         
 
         foreach($dados['qualificacoes'] as $q => $qualificacao){
-            $qualificacao['dataInI'] = $this->dateFormat($qualificacao['dataInI']);
-            $qualificacao['dataTermI'] = $this->dateFormat($qualificacao['dataTermI']);
+            if($qualificacao != null){
+                $qualificacao['dataInI'] = $this->dateFormat($qualificacao['dataInI']);
+                $qualificacao['dataTermI'] = $this->dateFormat($qualificacao['dataTermI']);
+            }
             $qualificacoes[$q] = new Qualificacao($qualificacao);                      
         }
         $inscricao->qualificacoes()->saveMany($qualificacoes);  
 
 
         foreach($dados['experiencias'] as $i => $experiencia){
-            $experiencia['dataInE'] = $this->dateFormat($experiencia['dataInE']);
-            $experiencia['dataTermE'] = $this->dateFormat($experiencia['dataTermE']);
+            if($experiencia != null){
+                $experiencia['dataInE'] = $this->dateFormat($experiencia['dataInE']);
+                $experiencia['dataTermE'] = $this->dateFormat($experiencia['dataTermE']);
+            }            
             $experiencias[$i] = new Experiencia($experiencia);                      
         }
-        $inscricao->experiencias()->saveMany($experiencias);  
+        $inscricao->experiencias()->saveMany($experiencias);    
 
         
         $publicacao = Publicacao::find($idPublicacao); 
-
-
-        //$cargo = Cargo::find($dados['cargo_id']);
        
         $publicacao->inscricoes()->attach( $inscricao, ['cargo_id' => $dados['cargo_id']] );
         $cargoteste = Cargo::find($dados['cargo_id']);
@@ -238,8 +235,12 @@ class InscricaoController extends Controller
         }
 
         $user = Auth()->user();
-        $inscricao = Inscricao::find($user->inscricao_id);
-        return view('inscricao.confirmacao', compact('inscricao','publicacao'));      
+        $inscricoes = $publicacao->inscricoes;
+        foreach($inscricoes as $inscricao){
+            $inscricao->where('id','=',$user->inscricao_id)->get();
+        }
+        $cargo = $publicacao->cargos()->where('id','=',$inscricao->pivot->cargo_id)->first();
+        return view('inscricao.confirmacao', compact('inscricao','publicacao','cargo'));      
     }
 
 }

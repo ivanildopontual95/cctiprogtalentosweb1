@@ -117,10 +117,10 @@
                             </div>
 
                             <div class="input-field col s8 ">
-                                    Cargo:
-                                    <strong>{{$cargo->cargo}}</strong>
-                                    </p>
-                                </div>
+                                Cargo:
+                                <strong>{{$cargo->cargo}}</strong>
+                                </p>
+                            </div>
 
                             <div class="row">
 
