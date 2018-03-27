@@ -62,7 +62,7 @@ class InscricaoController extends Controller
 
         if($id != null)
         {
-            return redirect()->route('inscricoes.edit', compact('publicacao', 'id'));
+            return redirect()->route('inscricoes.edit', compact('publicacao'));
         }
         else
         {
@@ -108,7 +108,6 @@ class InscricaoController extends Controller
         }
         $inscricao->experiencias()->saveMany($experiencias);  
 
-        //$cargo = Cargo::find($dados['cargo_id']);
        
         $publicacao->inscricoes()->attach( $inscricao, ['cargo_id' => $dados['cargo_id']] );
 
@@ -132,13 +131,14 @@ class InscricaoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit( $id, Publicacao $publicacao)
+    public function edit(Publicacao $publicacao)
     {
         if(Gate::denies('perfil-view')){
             abort(403,"Não autorizado!");
         }
-        
-        $inscricao = Inscricao::find($id);
+
+        $user = Auth()->user();
+        $inscricao = Inscricao::find($user->inscricao_id);
         
         $cargos = $publicacao->cargos;
 
@@ -152,21 +152,21 @@ class InscricaoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(InscricaoRequest $request, $id, $idPublicacao)
+    public function update(InscricaoRequest $request, $idPublicacao)
     {
         if(Gate::denies('perfil-view')){
             abort(403,"Não autorizado!");
         }
-
-        DB::table('qualificacoes')->where('inscricao_id', $id)->delete();
-        DB::table('experiencias')->where('inscricao_id', $id)->delete();
+        $user = Auth()->user();
+        
+        DB::table('qualificacoes')->where('inscricao_id', $user->inscricao_id)->delete();
+        DB::table('experiencias')->where('inscricao_id', $user->inscricao_id)->delete();
 
         $dados = $request->all();
         $qualificacoes = [];
         $experiencias = [];
         
-
-        $inscricao = Inscricao::find($id);
+        $inscricao = Inscricao::find($user->inscricao_id);
         $inscricao->update($dados);
         $dados['inscricao_id'] = $inscricao->id;
         
@@ -184,10 +184,7 @@ class InscricaoController extends Controller
 
         
         $publicacao = Publicacao::find($idPublicacao); 
-
-
-        //$cargo = Cargo::find($dados['cargo_id']);
-       
+               
         $publicacao->inscricoes()->attach( $inscricao, ['cargo_id' => $dados['cargo_id']] );
 
         return redirect()->route('inscricoes.confirmacao', compact('publicacao'));

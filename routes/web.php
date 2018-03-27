@@ -26,8 +26,8 @@ Route:: group(['middleware' => 'auth', 'prefix' => 'user'], function(){
     Route::get('', ['as'=>'index','uses'=>'InscricaoController@index']);
     Route::get('{publicacao}/criar', ['as'=> 'create','uses'=>'InscricaoController@create']);
     Route::post('{publicacao}/salvar', ['as'=> 'store','uses'=>'InscricaoController@store']);
-    Route::get('{id}/{publicacao}/editar', ['as'=> 'edit','uses'=>'InscricaoController@edit']);
-    Route::put('{id}/{publicacao}/atualizar', ['as'=> 'update','uses'=>'InscricaoController@update']);
+    Route::get('{publicacao}/editar', ['as'=> 'edit','uses'=>'InscricaoController@edit']);
+    Route::put('{publicacao}/atualizar', ['as'=> 'update','uses'=>'InscricaoController@update']);
 
     Route::get('{publicacao}/confirmacao', ['as'=> 'confirmacao','uses'=>'InscricaoController@indexConfirmacao']); 
     Route::get('{publicacao}/confirmacaoPDF',['as'=>'confirmacaoPDF','uses'=>'PDFController@pdfConfirmarInscricao']) ;

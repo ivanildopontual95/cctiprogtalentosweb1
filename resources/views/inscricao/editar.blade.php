@@ -7,7 +7,7 @@
     </div>
     
     <div class="row">
-        <form class="form-horizontal" id="regForm" action="{{route('inscricoes.update', [$inscricao->id, $publicacao->id] )}}" method="post">
+        <form class="form-horizontal" id="regForm" action="{{route('inscricoes.update', $publicacao->id )}}" method="post">
             {{csrf_field()}}
             {{ method_field('PUT') }}
 
