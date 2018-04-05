@@ -66,7 +66,7 @@ class InscricaoController extends Controller
         }
         else
         {
-            return view('inscricao.cadastro', compact('publicacao','cargos'));
+            return view('inscricao.cadastro', compact('publicacao','cargos', 'user'));
         }
     }
 

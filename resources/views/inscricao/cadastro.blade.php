@@ -36,7 +36,7 @@
 
                         <div class="col s12">
                                 <div class="input-field col s8 {{$errors->has('nomeCompleto') ? 'has-error' : ''}}">
-                                    <input type="text" name = "nomeCompleto" class="validate"  value = "{{old('nomeCompleto')}}">
+                                    <input type="text" name = "nomeCompleto" class="validate"  value="{{ isset($user->name) && !old('nomeCompleto') ? $user->name : '' }}{{old('nomeCompleto')}}">
                                     <label >Nome Completo</label>
                                     @if($errors->has('nomeCompleto'))
                                         <span class = "red-text">
@@ -193,7 +193,7 @@
         
                             <div class="col s12">
                                 <div class="input-field col s6 {{$errors->has('email') ? 'has-error' : ''}}">
-                                    <input type="text" name = "email" class="validate" value="{{old('email')}}">
+                                    <input type="text" name = "email" class="validate" value="{{ isset($user->email) && !old('email') ? $user->email : '' }}{{old('email')}}">
                                     <label >Email </label>
                                     @if($errors->has('email'))
                                         <span class = "red-text">
